@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../../routes/app_pages.dart';
 
 class Confirmpassword extends StatelessWidget{
   const Confirmpassword({super.key});
@@ -52,6 +55,7 @@ class Confirmpassword extends StatelessWidget{
                      shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(5))
                      ),
                      onPressed: (){
+                       Get.toNamed(Routes.websitecompany);
                       // Navigator.push(context, MaterialPageRoute(builder: (context) => const secondpage(),));
                      }, child:Text('SUBMIT',style: TextStyle(fontSize: 20),) ),
                    ),
