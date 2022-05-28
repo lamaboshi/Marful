@@ -12,11 +12,23 @@ class HomeView extends GetView<HomeController> {
         centerTitle: true,
       ),
       body: Center(
-          child: IconButton(
+          child: Column(
+        children: [
+          IconButton(
               icon: Icon(Icons.done),
               onPressed: () async {
-                controller.hub.Ping();
-              })),
+                controller.pickImage();
+              }),
+          Obx(() => controller.imagefile.value.path.isNotEmpty
+              ? Container(
+                  child: Image.file(
+                    controller.imagefile.value,
+                    fit: BoxFit.cover,
+                  ),
+                )
+              : SizedBox.shrink())
+        ],
+      )),
     );
   }
 }

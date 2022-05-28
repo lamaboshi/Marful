@@ -1,16 +1,26 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
+import 'package:q_overlay/q_overlay.dart';
 
 import 'app/routes/app_pages.dart';
 
 void main() {
-  runApp(
-    GetMaterialApp(
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    Get.put(Dio());
+    QOverlay.navigationKey = Get.key;
+    return GetMaterialApp(
       title: "Application",
-      initialRoute: AppPages.INITIAL,
+      initialRoute: AppPages.iNITIAL,
       getPages: AppPages.routes,
       debugShowCheckedModeBanner: false,
-    ),
-  );
+    );
+  }
 }

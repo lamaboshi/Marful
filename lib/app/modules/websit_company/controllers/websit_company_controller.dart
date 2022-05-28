@@ -1,20 +1,22 @@
 import 'package:get/get.dart';
+import 'package:marful/app/modules/websit_company/data/model/Product.dart';
+
+import '../data/websit_company_repository.dart';
 
 class WebsitcompanyController extends GetxController {
-  //TODO: Implement HomeController
-
-  final count = 0.obs;
+  final webRepo = WebsiteCompanyRepository();
+  var allProducts = <Product>[].obs;
+  final loading = false.obs;
   @override
   void onInit() {
     super.onInit();
+    getAllProduct();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  Future<void> getAllProduct() async {
+    loading.value = true;
+    var data = await webRepo.getdata();
+    allProducts.assignAll(data);
+    loading.value = false;
   }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
 }

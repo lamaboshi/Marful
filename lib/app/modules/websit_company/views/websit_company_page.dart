@@ -2,10 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marful/app/modules/settings/views/setting_view.dart';
+import 'package:marful/app/modules/websit_company/controllers/websit_company_controller.dart';
+import 'package:marful/app/modules/websit_company/data/model/Product.dart';
 import 'package:q_overlay/q_overlay.dart';
-
-import '../../../routes/app_pages.dart';
 
 class WebsiteCompanyPage extends StatefulWidget {
   @override
@@ -13,6 +12,7 @@ class WebsiteCompanyPage extends StatefulWidget {
 }
 
 class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
+  final conroller = Get.find<WebsitcompanyController>();
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -89,59 +89,20 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
               height: 20,
             ),
             Container(
-              child: Wrap(
-                children: [
-                  photo(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqb4dUl9phz_ak5GUzb3ZzeGM7FUzsJabpkA&usqp=CAU',
-                      height,
-                      width,
-                      'Foundation',
-                      '370'),
-                  photo(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1YrNUJI0NwfXs_u7A-iv7BlJcaeQ2I2srbA&usqp=CAU',
-                      height,
-                      width,
-                      'CareKream',
-                      '290'),
-                  photo(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2raCIs34o3IqrJ0SeAI5bzT26LPktzocdCA&usqp=CAU',
-                      height,
-                      width,
-                      'CareSun',
-                      '400'),
-                  photo(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTigwaTrxus-otRu8NuS0px6ZfBkY6Ci-ORDQ&usqp=CAU',
-                      height,
-                      width,
-                      'Plasher',
-                      '250'),
-                  photo(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPK985zgWcdJDSVEfY_WLopJf5ilbWC0Y_Xg&usqp=CAU',
-                      height,
-                      width,
-                      'parphan',
-                      '600'),
-                  photo(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzaTQ3VKsvKUMLTRnaW5KUfx6rTeIUtvbW3Q&usqp=CAU',
-                      height,
-                      width,
-                      'Oclador',
-                      '178'),
-                  photo(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnc9JiWdgca1njVozBR4QJ5tC0S3We3zJrRA&usqp=CAU',
-                      height,
-                      width,
-                      'Mascara',
-                      '1300'),
-                  photo(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwoOxC5J6MZhQfrdRUg0hcmnhyQMQ1qsulMQ&usqp=CAU',
-                      height,
-                      width,
-                      'Tant',
-                      '700')
-                ],
-              ),
-            ),
+                child: Obx(
+              () => conroller.loading.value
+                  ? const Center(child: CircularProgressIndicator())
+                  : Wrap(
+                      children: conroller.allProducts
+                          .map(
+                            (element) => photo(
+                                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqb4dUl9phz_ak5GUzb3ZzeGM7FUzsJabpkA&usqp=CAU',
+                                height,
+                                width,
+                                element),
+                          )
+                          .toList()),
+            )),
             Padding(
               padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
               child: Align(
@@ -154,9 +115,15 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                         size: 50,
                       ))),
             ),
-            IconButton(icon: Icon(Icons.abc), onPressed: () { 
-              Get.dialog(Text('assd'));
-             },)
+            IconButton(
+              icon: Icon(Icons.abc),
+              onPressed: () {
+                QPanel(
+                        child: Text('Hi Buttom'),
+                        alignment: Alignment.bottomCenter)
+                    .show();
+              },
+            )
           ],
         ),
       ),
@@ -164,8 +131,7 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
   }
 
 ////////////////////////////////////////////////////
-  Widget photo(
-      String url, double height, double width, String name, String price) {
+  Widget photo(String url, double height, double width, Product product) {
     return Padding(
       padding: const EdgeInsets.all(4.0),
       child: InkWell(
@@ -188,7 +154,7 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                     ),
                     Center(
                         child: Text(
-                      name,
+                      product.name!,
                       style: TextStyle(fontSize: 30, color: Colors.black54),
                     )),
                     Padding(
@@ -196,7 +162,7 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                       child: Wrap(
                         children: [
                           Text(
-                            'This help you  to save in safe body and save hands  \n addation to previuos  who take care for dray face.',
+                            product.description!,
                             style: TextStyle(
                               fontSize: 15,
                             ),
@@ -220,7 +186,7 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                             width: 10,
                           ),
                           Text(
-                            price + '\$',
+                            product.price.toString() + '\$',
                             style: TextStyle(fontSize: 20),
                           )
                         ],
@@ -308,19 +274,18 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        name,
+                        product.name!,
                         style: TextStyle(fontSize: 16, color: Colors.black),
                       ),
                     ),
                     SizedBox(width: width / 8),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(price,
+                      child: Text(product.price.toString(),
                           style: TextStyle(fontSize: 16, color: Colors.black)),
                     ),
                   ],
                 ),
-                 
               ],
             ),
           ),

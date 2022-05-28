@@ -15,7 +15,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.HOME;
+  static const iNITIAL = Routes.websitecompany;
 
   static final routes = [
     GetPage(
@@ -25,7 +25,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.ConfirmPassword,
-      page: () => Confirmpassword(),
+      page: () => const Confirmpassword(),
       binding: PasswordBinding(),
     ),
     GetPage(
@@ -33,13 +33,13 @@ class AppPages {
       page: () => PasswordPage(),
       binding: PasswordBinding(),
     ),
-        GetPage(
+    GetPage(
       name: _Paths.websitecompany,
-      page: () =>  WebsiteCompanyPage(),
+      page: () => WebsiteCompanyPage(),
       binding: WebsitcompanyBinding(),
     ),
     GetPage(
-      name: _Paths.setting ,
+      name: _Paths.setting,
       page: () => SettingPage(),
       binding: SettingBinding(),
     ),
