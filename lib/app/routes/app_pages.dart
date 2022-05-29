@@ -1,8 +1,17 @@
 import 'package:get/get.dart';
+import 'package:marful/app/modules/firstsplash_page/bindings/firstSplash_binding.dart';
+import 'package:marful/app/modules/firstsplash_page/views/firstSplash_view.dart';
+import 'package:marful/app/modules/intro_page/bindings/intro_binding.dart';
+import 'package:marful/app/modules/intro_page/view/intro_view.dart';
 import 'package:marful/app/modules/password_page/bindings/password_binding.dart';
 import 'package:marful/app/modules/password_page/views/confirm_password.dart';
 import 'package:marful/app/modules/password_page/views/password_page.dart';
-
+import 'package:marful/app/modules/signIn_page/bindings/signIn_binding.dart';
+import 'package:marful/app/modules/signIn_page/view/signIn_view.dart';
+import 'package:marful/app/modules/signUp_page/bindings/signUp_binding.dart';
+import 'package:marful/app/modules/signUp_page/view/signUpComp_view.dart';
+import 'package:marful/app/modules/signUp_page/view/signUpInf_view.dart';
+import 'package:marful/app/modules/signUp_page/view/signUpUser_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 
@@ -11,7 +20,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.Password;
+  static const INITIAL = Routes.FirstSplash;
 
   static final routes = [
     GetPage(
@@ -19,16 +28,46 @@ class AppPages {
       page: () => HomeView(),
       binding: HomeBinding(),
     ),
-              GetPage(
+    GetPage(
       name: _Paths.ConfirmPassword,
       page: () => Confirmpassword(),
-        binding: PasswordBinding(),
-     
+      binding: PasswordBinding(),
     ),
-      GetPage(
+    GetPage(
       name: _Paths.Password,
       page: () => PasswordPage(),
       binding: PasswordBinding(),
+    ),
+   
+     GetPage(
+      name: _Paths.Intro,
+      page: () =>IntroPage(),
+      binding:IntroBinding(),
+    ),
+     GetPage(
+      name: _Paths.SignUpUserPage,
+      page: () => SignUpUserPage(),
+      binding:SignUpBinding(),
+    ),
+    GetPage(
+      name: _Paths.SignIn,
+      page: () => SignInPage(),
+      binding:SignInBinding(),
+    ),
+   GetPage(
+      name: _Paths.FirstSplash,
+      page: () => FiestSplashPage(),
+      binding: FirstSplashBinding(),
+    ),
+    GetPage(
+      name: _Paths.SignUpInfluencer,
+      page: () => SignUpInfluencer(),
+      binding:SignUpBinding(),
+    ),
+    GetPage(
+      name: _Paths.SignUpCompany,
+      page: () => SignUpCompanyPage(),
+      binding:SignUpBinding(),
     ),
   ];
 }
