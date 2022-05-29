@@ -17,7 +17,8 @@ class IntroPage extends GetView<IntroController> {
         pages: page(context),
         
         onDone: () {
-          Get.toNamed(Routes.SignIn);
+          Get.offAndToNamed(Routes.Intro);
+         
         },
         // onSkip: () {
         //   Get.toNamed(Routes.SignUpUserPage);
