@@ -97,7 +97,7 @@ List<PageViewModel> page(BuildContext context) {
     // //////تسجيل الدخول او حساب
     PageViewModel(
       decoration: const PageDecoration(
-        imagePadding: EdgeInsets.fromLTRB(20, 40, 20, 40),
+        imagePadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
         imageFlex: 0,
         titlePadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
         contentMargin: EdgeInsets.all(20),
@@ -144,9 +144,6 @@ List<PageViewModel> page(BuildContext context) {
               ),
             ),
           ),
-          const SizedBox(
-            height: 5,
-          ),
 
           ///you Have Account? sign in
           InkWell(
@@ -164,7 +161,7 @@ List<PageViewModel> page(BuildContext context) {
     /////company
     PageViewModel(
       decoration: const PageDecoration(
-        imagePadding: EdgeInsets.fromLTRB(20, 40, 20, 40),
+        imagePadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
         imageFlex: 0,
         titlePadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
         contentMargin: EdgeInsets.all(20),
@@ -232,7 +229,7 @@ List<PageViewModel> page(BuildContext context) {
     PageViewModel(
       decoration: const PageDecoration(
        
-        imagePadding: EdgeInsets.fromLTRB(20, 40, 20, 40),
+        imagePadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
         imageFlex: 0,
         titlePadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
         contentMargin: EdgeInsets.all(20),
@@ -281,9 +278,7 @@ List<PageViewModel> page(BuildContext context) {
               ),
             ),
           ),
-          const SizedBox(
-            height: 5,
-          ),
+
 
           ///you Have Account? sign in
           InkWell(

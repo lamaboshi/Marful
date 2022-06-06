@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../settings/views/setting_view.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -17,7 +18,8 @@ class HomeView extends GetView<HomeController> {
           IconButton(
               icon: Icon(Icons.done),
               onPressed: () async {
-                controller.pickImage();
+                //  controller.pickImage();
+                Get.to(() => SettingPage());
               }),
           Obx(() => controller.imagefile.value.path.isNotEmpty
               ? Container(

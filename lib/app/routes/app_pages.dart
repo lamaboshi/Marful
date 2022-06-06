@@ -6,14 +6,14 @@ import 'package:marful/app/modules/intro_page/view/intro_view.dart';
 import 'package:marful/app/modules/password_page/bindings/password_binding.dart';
 import 'package:marful/app/modules/password_page/views/confirm_password.dart';
 import 'package:marful/app/modules/password_page/views/password_page.dart';
+import 'package:marful/app/modules/settings/bindings/setting_binding.dart';
+import 'package:marful/app/modules/settings/views/setting_view.dart';
 import 'package:marful/app/modules/signIn_page/bindings/signIn_binding.dart';
 import 'package:marful/app/modules/signIn_page/view/signIn_view.dart';
 import 'package:marful/app/modules/signUp_page/bindings/signUp_binding.dart';
 import 'package:marful/app/modules/signUp_page/view/signUpComp_view.dart';
 import 'package:marful/app/modules/signUp_page/view/signUpInf_view.dart';
 import 'package:marful/app/modules/signUp_page/view/signUpUser_view.dart';
-import 'package:marful/app/modules/settings/bindings/setting_binding.dart';
-import 'package:marful/app/modules/settings/views/setting_view.dart';
 import 'package:marful/app/modules/websit_company/bindings/websit_company_binding.dart';
 import 'package:marful/app/modules/websit_company/views/websit_company_page.dart';
 
@@ -23,10 +23,7 @@ import '../modules/home/views/home_view.dart';
 part 'app_routes.dart';
 
 class AppPages {
-  AppPages._();
-
-  static const iNITIAL = Routes.websitecompany;
-
+  static const iNITIAL = Routes.setting;
 
   static final routes = [
     GetPage(
@@ -44,7 +41,7 @@ class AppPages {
       page: () => PasswordPage(),
       binding: PasswordBinding(),
     ),
-      GetPage(
+    GetPage(
       name: _Paths.websitecompany,
       page: () => WebsiteCompanyPage(),
       binding: WebsitcompanyBinding(),
@@ -54,22 +51,22 @@ class AppPages {
       page: () => SettingPage(),
       binding: SettingBinding(),
     ),
-     GetPage(
+    GetPage(
       name: _Paths.Intro,
-      page: () =>IntroPage(),
-      binding:IntroBinding(),
+      page: () => IntroPage(),
+      binding: IntroBinding(),
     ),
-     GetPage(
+    GetPage(
       name: _Paths.SignUpUserPage,
       page: () => SignUpUserPage(),
-      binding:SignUpBinding(),
+      binding: SignUpBinding(),
     ),
     GetPage(
       name: _Paths.SignIn,
       page: () => SignInPage(),
-      binding:SignInBinding(),
+      binding: SignInBinding(),
     ),
-   GetPage(
+    GetPage(
       name: _Paths.FirstSplash,
       page: () => FiestSplashPage(),
       binding: FirstSplashBinding(),
@@ -77,12 +74,12 @@ class AppPages {
     GetPage(
       name: _Paths.SignUpInfluencer,
       page: () => SignUpInfluencer(),
-      binding:SignUpBinding(),
+      binding: SignUpBinding(),
     ),
     GetPage(
       name: _Paths.SignUpCompany,
       page: () => SignUpCompanyPage(),
-      binding:SignUpBinding(),
+      binding: SignUpBinding(),
     ),
   ];
 }
