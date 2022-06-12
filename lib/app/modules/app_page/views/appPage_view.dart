@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:marful/app/core/values/app_colors.dart';
 import 'package:marful/app/modules/app_page/views/page1App.dart';
+import 'package:marful/app/modules/content_page/views/content_view.dart';
+import 'package:marful/app/modules/settings/views/setting_view.dart';
 
 import 'searchDelegat.dart';
 
@@ -14,7 +16,8 @@ class AppPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.orange,
-          bottom: const TabBar(tabs: [
+          bottom: const TabBar(indicatorColor: Colors.white,
+            tabs: [
             Tab(
               icon: Icon(Icons.home),
             ),
@@ -22,7 +25,7 @@ class AppPage extends StatelessWidget {
               icon: Icon(Icons.search),
             ),
             Tab(
-              icon: Icon(Icons.search),
+              icon: Icon(Icons.settings),
             )
           ]),
           title: const Text('MarFlu'),
@@ -37,14 +40,10 @@ class AppPage extends StatelessWidget {
                 icon: const Icon(Icons.search))
           ],
         ),
-        body: const TabBarView(children: [
-          PageOneApp(),
-          Center(
-            child: Text('2'),
-          ),
-          Center(
-            child: Text('3'),
-          ),
+        body: TabBarView(children: [
+          const PageOneApp(),
+          ContentView(),
+          SettingPage(),
         ]),
       ),
     );

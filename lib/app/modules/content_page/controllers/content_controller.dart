@@ -1,11 +1,10 @@
 import 'package:get/get.dart';
 
-class MainPageController extends GetxController{
+class ContentController extends GetxController {
   final count = 0.obs;
-  final isShown = false.obs;
+
   @override
   void onInit() {
-    print('ffffffff');
     super.onInit();
   }
 

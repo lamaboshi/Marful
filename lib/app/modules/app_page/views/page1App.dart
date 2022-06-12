@@ -13,11 +13,11 @@ class PageOneApp extends StatelessWidget {
         slivers: [
           SliverToBoxAdapter(
             child: SizedBox(
-              height: height * 1 / 4.89,
+              height: height * 1 / 6,
               child: ListView.separated(
                 itemCount: 6,
                 scrollDirection: Axis.horizontal,
-                padding: const EdgeInsets.all(30),
+                padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
                 separatorBuilder: (BuildContext context, int index) {
                   return const SizedBox(
                     width: 12,
@@ -49,50 +49,73 @@ class PageOneApp extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(50),
               child: Image.asset(
-                'assets/images/person.png',
+                'assets/images/h.jpg',
                 height: 80,
                 width: 80,
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          // const SizedBox(
-          //   height: 7,
-          // ),
           Text('comidy'),
         ],
       );
-  Widget buildpost(int index) => SizedBox(
-      //  height: 180,
+  Widget buildpost(int index) => Padding(
+        padding: const EdgeInsets.only(left: 10, right: 10,top: 5,bottom: 5),
         child: Card(
-          elevation: 15,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Column(
-            children: [
-              ListTile(
-                leading: CircleAvatar(
-                  radius: 10,
-                  child: Image.asset(
-                    'assets/images/person.png',
-                    fit: BoxFit.cover,
+          elevation: 2,
+         
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    ClipRRect(//radius: 30,
+              borderRadius: BorderRadius.circular(40),
+              child: Image.asset(
+                'assets/images/ghaith.jpg',
+                height: 60,
+                width: 60,
+                fit: BoxFit.cover,
+              ),
+            ),
+                    // CircleAvatar(
+                    //   radius: 30,
+                    //   child: Image.asset(
+                    //     'assets/images/h.jpg',
+                    //     fit: BoxFit.cover,
+                    //   ),
+                    // ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    const Text(
+                      'Haya Eid',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  'Decstfgvmshgjhvgsfj nmgjhgvhv hj hj hjffggvhjgfcg gxdgfghjgffcvbfd',
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      IconButton(onPressed: () {}, icon: Icon(Icons.logo_dev)),
+                      IconButton(
+                          onPressed: () {}, icon: Icon(Icons.link_off_rounded)),
+                      IconButton(onPressed: () {}, icon: Icon(Icons.logo_dev)),
+                    ],
                   ),
                 ),
-                title: Text('Haya Eid'),
-                subtitle: Text('Hi EveryOne How Are You Today.............'),
-              ),
-              ButtonBar(
-                children: [
-                  IconButton(
-                      onPressed: () {}, icon: Icon(Icons.living_outlined)),
-                  IconButton(
-                      onPressed: () {}, icon: Icon(Icons.living_outlined)),
-                  IconButton(
-                      onPressed: () {}, icon: Icon(Icons.living_outlined)),
-                ],
-              )
-            ],
+              ],
+            ),
           ),
         ),
       );

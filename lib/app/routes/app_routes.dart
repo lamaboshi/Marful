@@ -14,9 +14,8 @@ abstract class Routes {
   static const SignUpCompany = _Paths.SignUpCompany;
   static const websitecompany = _Paths.websitecompany;
   static const setting = _Paths.setting;
-  static const MainPage = _Paths.MainPage;
-  static const AppPage = _Paths.AppPage;
-
+static const appPage = _Paths.appPage;
+static const Content = _Paths.Content;
 }
    
 abstract class _Paths {
@@ -33,7 +32,7 @@ abstract class _Paths {
   static const SignUpCompany = '/SignUpCompany';
   static const websitecompany = '/websitecompany';
   static const setting = '/setting ';
-   static const MainPage = '/MainPage ';
-  
+    static const appPage  = '/appPage';
+    static const Content = '/Content';
 }
 

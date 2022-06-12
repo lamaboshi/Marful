@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marful/app/modules/app_page/views/appPage_view.dart';
 
+import '../../settings/views/setting_view.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -17,7 +19,8 @@ class HomeView extends GetView<HomeController> {
           IconButton(
               icon: Icon(Icons.done),
               onPressed: () async {
-                controller.pickImage();
+                //  controller.pickImage();
+                Get.to(() =>AppPage());
               }),
           Obx(() => controller.imagefile.value.path.isNotEmpty
               ? Container(
