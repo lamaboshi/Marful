@@ -1,8 +1,11 @@
 import 'package:get/get.dart';
 import 'package:marful/app/modules/firstsplash_page/bindings/firstSplash_binding.dart';
 import 'package:marful/app/modules/firstsplash_page/views/firstSplash_view.dart';
+import 'package:marful/app/modules/home_page/views/homePage_view.dart';
 import 'package:marful/app/modules/intro_page/bindings/intro_binding.dart';
 import 'package:marful/app/modules/intro_page/view/intro_view.dart';
+import 'package:marful/app/modules/main_page/bindings/mainPage_binding.dart';
+import 'package:marful/app/modules/main_page/views/mainPage_view.dart';
 import 'package:marful/app/modules/password_page/bindings/password_binding.dart';
 import 'package:marful/app/modules/password_page/views/confirm_password.dart';
 import 'package:marful/app/modules/password_page/views/password_page.dart';
@@ -17,6 +20,8 @@ import 'package:marful/app/modules/settings/views/setting_view.dart';
 import 'package:marful/app/modules/websit_company/bindings/websit_company_binding.dart';
 import 'package:marful/app/modules/websit_company/views/websit_company_page.dart';
 
+import '../modules/app_page/bindings/appPage_binding.dart';
+import '../modules/app_page/views/appPage_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 
@@ -25,7 +30,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const iNITIAL = Routes.websitecompany;
+  static const iNITIAL = Routes.HOME;
 
 
   static final routes = [
@@ -83,6 +88,16 @@ class AppPages {
       name: _Paths.SignUpCompany,
       page: () => SignUpCompanyPage(),
       binding:SignUpBinding(),
+    ),
+    // GetPage(
+    //   name: _Paths.MainPage,
+    //   page: () => MainPage(),
+    //   binding:MainPageBinding(),
+    // ),
+    GetPage(
+      name: _Paths.AppPage,
+      page: () =>const AppPage(),
+      binding:AppPageBinding(),
     ),
   ];
 }

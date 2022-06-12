@@ -17,8 +17,8 @@ class IntroPage extends GetView<IntroController> {
         pages: page(context),
         
         onDone: () {
-          Get.offAndToNamed(Routes.Intro);
-         
+         // Get.toNamed(Routes.HomePage);
+      
         },
         // onSkip: () {
         //   Get.toNamed(Routes.SignUpUserPage);
@@ -300,3 +300,23 @@ List<PageViewModel> page(BuildContext context) {
     ),
   ];
 }
+
+
+
+
+
+  // appBar: AppBar(
+      //   bottom: TabBar(tabs: [
+      //     Tab(
+      //       icon: const Icon(Icons.home),
+      //     ),
+      //     Tab(
+      //       icon: const Icon(Icons.search),
+      //     ),
+      //     Tab(
+      //       icon: const Icon(Icons.search),
+      //     )
+      //   ]),
+      //   title: const Text('MarFlu'),
+      //   actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
+      // ),
