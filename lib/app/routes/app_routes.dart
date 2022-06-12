@@ -12,8 +12,11 @@ abstract class Routes {
   static const FirstSplash = _Paths.FirstSplash;
     static const SignUpInfluencer = _Paths.SignUpInfluencer;
       static const SignUpCompany = _Paths.SignUpCompany;
-               static const websitecompany = _Paths.websitecompany ;
-           static const setting = _Paths.setting ;
+    static const websitecompany = _Paths.websitecompany ;
+    static const setting = _Paths.setting ;
+    static const menu = _Paths.menu ;
+
+
 }
 
 abstract class _Paths {
@@ -29,4 +32,5 @@ abstract class _Paths {
      static const SignUpCompany = '/SignUpCompany';
           static const websitecompany = '/websitecompany';
         static const setting  = '/setting '; 
+           static const menu  = '/menu ';
 }

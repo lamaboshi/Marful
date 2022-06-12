@@ -3,6 +3,8 @@ import 'package:marful/app/modules/firstsplash_page/bindings/firstSplash_binding
 import 'package:marful/app/modules/firstsplash_page/views/firstSplash_view.dart';
 import 'package:marful/app/modules/intro_page/bindings/intro_binding.dart';
 import 'package:marful/app/modules/intro_page/view/intro_view.dart';
+import 'package:marful/app/modules/menu/bindings/menu_binding.dart';
+import 'package:marful/app/modules/menu/views/menu_view.dart';
 import 'package:marful/app/modules/password_page/bindings/password_binding.dart';
 import 'package:marful/app/modules/password_page/views/confirm_password.dart';
 import 'package:marful/app/modules/password_page/views/password_page.dart';
@@ -25,7 +27,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const iNITIAL = Routes.websitecompany;
+  static const iNITIAL = Routes.Password;
 
 
   static final routes = [
@@ -84,5 +86,11 @@ class AppPages {
       page: () => SignUpCompanyPage(),
       binding:SignUpBinding(),
     ),
+      GetPage(
+      name: _Paths.menu,
+      page: () => MenuPage(),
+      binding:MenuBinding(),
+    ),
+    
   ];
 }
