@@ -26,12 +26,9 @@ import '../modules/content_page/bindings/content_binding.dart';
 import '../modules/content_page/views/content_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
-<<<<<<< HEAD
 import '../modules/report_page/bindings/report_binding.dart';
 import '../modules/report_page/views/report_view.dart';
-=======
 import '../modules/profile/views/profile_view.dart';
->>>>>>> 5266e2305886d02ebae74dd6bedf42d0c4a02470
 
 part 'app_routes.dart';
 
@@ -105,13 +102,6 @@ class AppPages {
       page: () => const AppPage(),
       binding: AppPageBinding(),
     ),
-<<<<<<< HEAD
-    GetPage(
-      name: _Paths.report,
-      page: () =>const ReportView(),
-      binding: ReportBinding(),
-    ),
-=======
       GetPage(
       name: _Paths.menu,
       page: () => MenuPage(),
@@ -121,8 +111,11 @@ class AppPages {
       name: _Paths.menu,
       page: () => ProfilePage(),
       binding:ProfileBinding(),
+    ), GetPage(
+      name: _Paths.report,
+      page: () =>const ReportView(),
+      binding: ReportBinding(),
     ),
     
->>>>>>> 5266e2305886d02ebae74dd6bedf42d0c4a02470
   ];
 }
