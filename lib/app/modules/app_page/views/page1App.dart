@@ -101,7 +101,7 @@ class PageOneApp extends StatelessWidget {
                   height: 20,
                 ),
                 const Text(
-                  'Decstfgvmshgjhvgsfj nmgjhgvhv hj hj hjffggvhjgfcg gxdgfghjgffcvbfd',
+                  'Decstfgvmshgjhvgsfj nmgjhgvhv hj hj hjffggvhjgfcg gxdgfghjgjhgh fghfhgh ffcvbfd',
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 15),
