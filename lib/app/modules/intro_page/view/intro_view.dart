@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:marful/app/modules/app_page/views/appPage_view.dart';
 import 'package:marful/app/modules/intro_page/controllers/intro_controller.dart';
+import 'package:marful/app/modules/settings/views/setting_view.dart';
+import 'package:marful/app/modules/signIn_page/view/signIn_view.dart';
+import 'package:marful/app/modules/signUp_page/view/signUpComp_view.dart';
+import 'package:marful/app/modules/signUp_page/view/signUpInf_view.dart';
+import 'package:marful/app/modules/signUp_page/view/signUpUser_view.dart';
 import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
 
@@ -15,23 +21,20 @@ class IntroPage extends GetView<IntroController> {
     return Scaffold(
       body: IntroductionScreen(
         pages: page(context),
-        
+
         onDone: () {
-          Get.offAndToNamed(Routes.Intro);
-         
+           Get.to(()=> const AppPage());
         },
-        // onSkip: () {
-        //   Get.toNamed(Routes.SignUpUserPage);
-        // },
+       
         showNextButton: true,
         showBackButton: true,
         showSkipButton: false,
         back: const Text("Back",
             style:
-                TextStyle(color: AppColors.blue, fontWeight: FontWeight.w600)) ,
-       next: const Text("Next",
+                TextStyle(color: AppColors.blue, fontWeight: FontWeight.w600)),
+        next: const Text("Next",
             style:
-                TextStyle(color: AppColors.blue, fontWeight: FontWeight.w600)), 
+                TextStyle(color: AppColors.blue, fontWeight: FontWeight.w600)),
         // skip: const Text("Skip",
         //     style:
         //         TextStyle(color: AppColors.blue, fontWeight: FontWeight.w600)),
@@ -55,49 +58,10 @@ class IntroPage extends GetView<IntroController> {
 List<PageViewModel> page(BuildContext context) {
   final height = MediaQuery.of(context).size.height;
   return [
-    //////الاسم
-    // PageViewModel(
-    //   decoration: const PageDecoration(
-    //       imagePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-    //       imageFlex: 0,
-    //       titlePadding: EdgeInsets.only(top: 0, bottom: 0),
-    //       contentMargin: EdgeInsets.all(0),
-    //       footerPadding: EdgeInsets.all(0),
-    //       imageAlignment: Alignment.topLeft,
-    //       bodyFlex: 0,
-    //       bodyPadding: EdgeInsets.fromLTRB(0, 0, 0, 00),
-    //       //   pageColor: AppColors.orange,
-    //       titleTextStyle: TextStyle(
-    //           color: Colors.orange,
-    //           fontWeight: FontWeight.w700,
-    //           fontSize: 25.0)),
-    //   image: SizedBox(
-    //     height: height * .5,
-    //   ),
-    //   titleWidget: Padding(
-    //     padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
-    //     child: Row(
-    //       mainAxisAlignment: MainAxisAlignment.center,
-    //       children: const [
-    //         Text('Mar',
-    //             style: TextStyle(
-    //                 color: AppColors.orange,
-    //                 fontWeight: FontWeight.bold,
-    //                 fontSize: 45.0)),
-    //         SizedBox(
-    //           width: 5,
-    //         ),
-    //         Text('Flu',
-    //             style: TextStyle(
-    //                 color: AppColors.blue,
-    //                 fontWeight: FontWeight.bold,
-    //                 fontSize: 45.0)),
-    //       ],
-    //     ),
     // //////تسجيل الدخول او حساب
     PageViewModel(
       decoration: const PageDecoration(
-        imagePadding: EdgeInsets.fromLTRB(20, 40, 20, 40),
+        imagePadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
         imageFlex: 0,
         titlePadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
         contentMargin: EdgeInsets.all(20),
@@ -107,6 +71,7 @@ List<PageViewModel> page(BuildContext context) {
         bodyAlignment: Alignment.center,
         bodyPadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
       ),
+
       ///
       image: const Text('Be Influencer',
           textAlign: TextAlign.start,
@@ -114,11 +79,12 @@ List<PageViewModel> page(BuildContext context) {
               color: AppColors.orange,
               fontWeight: FontWeight.bold,
               fontSize: 45.0)),
+
       ///image
       titleWidget: Center(
         child: Image.asset(
           'assets/images/Selfie.gif',
-          height: height *1.25/ 3,
+          height: height * 1.25 / 3,
         ),
       ),
 
@@ -136,16 +102,14 @@ List<PageViewModel> page(BuildContext context) {
                 fixedSize: MaterialStateProperty.all(Size.fromWidth(height)),
               ),
               onPressed: () {
-                Get.toNamed(Routes.SignUpInfluencer);
+               // Get.to(() => SignUpInfluencer());
+                Get.rootDelegate.toNamed(Routes.SignUpInfluencer);
               },
               child: const Text(
                 "Sign Up As Influencer",
                 style: TextStyle(fontSize: 18),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 5,
           ),
 
           ///you Have Account? sign in
@@ -155,7 +119,8 @@ List<PageViewModel> page(BuildContext context) {
               style: TextStyle(color: Colors.grey),
             ),
             onTap: () {
-              Get.toNamed(Routes.SignIn);
+               Get.rootDelegate.toNamed(Routes.SignIn);
+          
             },
           ),
         ],
@@ -164,7 +129,7 @@ List<PageViewModel> page(BuildContext context) {
     /////company
     PageViewModel(
       decoration: const PageDecoration(
-        imagePadding: EdgeInsets.fromLTRB(20, 40, 20, 40),
+        imagePadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
         imageFlex: 0,
         titlePadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
         contentMargin: EdgeInsets.all(20),
@@ -174,6 +139,7 @@ List<PageViewModel> page(BuildContext context) {
         bodyAlignment: Alignment.center,
         bodyPadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
       ),
+
       ///
       image: const Text('Be Company',
           textAlign: TextAlign.start,
@@ -181,11 +147,12 @@ List<PageViewModel> page(BuildContext context) {
               color: AppColors.orange,
               fontWeight: FontWeight.bold,
               fontSize: 45.0)),
+
       ///image
       titleWidget: Center(
         child: Image.asset(
           'assets/images/Company.gif',
-          height: height *1.25/ 3,
+          height: height * 1.25 / 3,
         ),
       ),
 
@@ -203,7 +170,8 @@ List<PageViewModel> page(BuildContext context) {
                 fixedSize: MaterialStateProperty.all(Size.fromWidth(height)),
               ),
               onPressed: () {
-                Get.toNamed(Routes.SignUpCompany);
+                     Get.rootDelegate.toNamed(Routes.SignUpCompany);
+          
               },
               child: const Text(
                 "Sign Up As Company",
@@ -222,7 +190,8 @@ List<PageViewModel> page(BuildContext context) {
               style: TextStyle(color: Colors.grey),
             ),
             onTap: () {
-              Get.toNamed(Routes.SignIn);
+                   Get.rootDelegate.toNamed(Routes.SignIn);
+             
             },
           ),
         ],
@@ -231,8 +200,7 @@ List<PageViewModel> page(BuildContext context) {
     ////user
     PageViewModel(
       decoration: const PageDecoration(
-       
-        imagePadding: EdgeInsets.fromLTRB(20, 40, 20, 40),
+        imagePadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
         imageFlex: 0,
         titlePadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
         contentMargin: EdgeInsets.all(20),
@@ -255,7 +223,7 @@ List<PageViewModel> page(BuildContext context) {
       titleWidget: Center(
         child: Image.asset(
           'assets/images/In no time.gif',
-         height: height *1.25/ 3,
+          height: height * 1.25 / 3,
         ),
       ),
 
@@ -273,16 +241,14 @@ List<PageViewModel> page(BuildContext context) {
                 fixedSize: MaterialStateProperty.all(Size.fromWidth(height)),
               ),
               onPressed: () {
-                Get.toNamed(Routes.SignUpUserPage);
+                
+                     Get.rootDelegate.toNamed(Routes.SignUpUserPage);
               },
               child: const Text(
                 "Sign Up As User",
                 style: TextStyle(fontSize: 18),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 5,
           ),
 
           ///you Have Account? sign in
@@ -292,7 +258,8 @@ List<PageViewModel> page(BuildContext context) {
               style: TextStyle(color: Colors.grey),
             ),
             onTap: () {
-              Get.toNamed(Routes.SignIn);
+                   Get.rootDelegate.toNamed(Routes.SignIn);
+            
             },
           ),
         ],
@@ -300,3 +267,19 @@ List<PageViewModel> page(BuildContext context) {
     ),
   ];
 }
+
+// appBar: AppBar(
+//   bottom: TabBar(tabs: [
+//     Tab(
+//       icon: const Icon(Icons.home),
+//     ),
+//     Tab(
+//       icon: const Icon(Icons.search),
+//     ),
+//     Tab(
+//       icon: const Icon(Icons.search),
+//     )
+//   ]),
+//   title: const Text('MarFlu'),
+//   actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
+// ),

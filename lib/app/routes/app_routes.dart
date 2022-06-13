@@ -16,12 +16,13 @@ abstract class Routes {
     static const setting = _Paths.setting ;
     static const menu = _Paths.menu ;
       static const profile = _Paths.profile ;
-
-
+static const appPage = _Paths.appPage;
+static const Content = _Paths.Content;
 }
-
+   
 abstract class _Paths {
   _Paths._();
+   static const AppPage = '/apppage ';
   static const HOME = '/home';
   static const Password = '/password';
   static const ConfirmPassword = '/confirmpassword';
@@ -35,4 +36,8 @@ abstract class _Paths {
         static const setting  = '/setting '; 
            static const menu  = '/menu ';
             static const profile  = '/profile ';    
+
+    static const appPage  = '/appPage';
+    static const Content = '/Content';
 }
+

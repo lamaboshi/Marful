@@ -1,14 +1,10 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
 
-
-
 class PasswordPage extends StatefulWidget {
-
   @override
   State<PasswordPage> createState() => _PasswordPageState();
 }
@@ -17,8 +13,7 @@ class _PasswordPageState extends State<PasswordPage> {
   int _counter = 0;
 
   void _incrementCounter() {
-    setState(() {
-    });
+    setState(() {});
   }
 
   @override
@@ -122,6 +117,7 @@ class _PasswordPageState extends State<PasswordPage> {
            
           
         ),
+
       ),
     );
   }
