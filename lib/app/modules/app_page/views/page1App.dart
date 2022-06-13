@@ -60,34 +60,26 @@ class PageOneApp extends StatelessWidget {
         ],
       );
   Widget buildpost(int index) => Padding(
-        padding: const EdgeInsets.only(left: 10, right: 10,top: 5,bottom: 5),
+        padding: const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
         child: Card(
           elevation: 2,
-         
           child: Padding(
             padding: const EdgeInsets.all(15),
             child: Column(
               children: [
                 Row(
                   children: [
-                    ClipRRect(//radius: 30,
-              borderRadius: BorderRadius.circular(40),
-              child: Image.asset(
-                'assets/images/ghaith.jpg',
-                height: 60,
-                width: 60,
-                fit: BoxFit.cover,
-              ),
-            ),
-                    // CircleAvatar(
-                    //   radius: 30,
-                    //   child: Image.asset(
-                    //     'assets/images/h.jpg',
-                    //     fit: BoxFit.cover,
-                    //   ),
-                    // ),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(40),
+                      child: Image.asset(
+                        'assets/images/ghaith.jpg',
+                        height: 60,
+                        width: 60,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                     const SizedBox(
-                      width: 15,
+                      width: 20,
                     ),
                     const Text(
                       'Haya Eid',
@@ -97,7 +89,16 @@ class PageOneApp extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
+                ),
+                Image.asset(
+                  'assets/images/ghaith.jpg',
+                  height: 220,
+                  width: 380,
+                  fit: BoxFit.cover,
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
                 const Text(
                   'Decstfgvmshgjhvgsfj nmgjhgvhv hj hj hjffggvhjgfcg gxdgfghjgffcvbfd',

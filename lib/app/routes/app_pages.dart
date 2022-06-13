@@ -23,6 +23,8 @@ import '../modules/content_page/bindings/content_binding.dart';
 import '../modules/content_page/views/content_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/report_page/bindings/report_binding.dart';
+import '../modules/report_page/views/report_view.dart';
 
 part 'app_routes.dart';
 
@@ -94,6 +96,11 @@ class AppPages {
       name: _Paths.AppPage,
       page: () => const AppPage(),
       binding: AppPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.report,
+      page: () =>const ReportView(),
+      binding: ReportBinding(),
     ),
   ];
 }

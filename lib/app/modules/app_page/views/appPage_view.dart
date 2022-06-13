@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:marful/app/core/values/app_colors.dart';
 import 'package:marful/app/modules/app_page/views/page1App.dart';
 import 'package:marful/app/modules/content_page/views/content_view.dart';
+import 'package:marful/app/modules/report_page/views/report_view.dart';
 import 'package:marful/app/modules/settings/views/setting_view.dart';
+import 'package:marful/app/routes/app_pages.dart';
 
 import 'searchDelegat.dart';
 
@@ -16,8 +19,7 @@ class AppPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.orange,
-          bottom: const TabBar(indicatorColor: Colors.white,
-            tabs: [
+          bottom: const TabBar(indicatorColor: Colors.white, tabs: [
             Tab(
               icon: Icon(Icons.home),
             ),
@@ -43,9 +45,22 @@ class AppPage extends StatelessWidget {
         body: TabBarView(children: [
           const PageOneApp(),
           ContentView(),
-          SettingPage(),
+         SS(),
         ]),
       ),
+    );
+  }
+}
+
+class SS extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: IconButton(
+          onPressed: () {
+            Get.rootDelegate.toNamed(Routes.report);
+          },
+          icon: Icon(Icons.search)),
     );
   }
 }

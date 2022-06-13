@@ -16,6 +16,7 @@ abstract class Routes {
   static const setting = _Paths.setting;
 static const appPage = _Paths.appPage;
 static const Content = _Paths.Content;
+static const report = _Paths.report;
 }
    
 abstract class _Paths {
@@ -34,5 +35,7 @@ abstract class _Paths {
   static const setting = '/setting ';
     static const appPage  = '/appPage';
     static const Content = '/Content';
+        static const report = '/report';
+
 }
 
