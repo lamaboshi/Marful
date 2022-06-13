@@ -9,7 +9,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: 4.6.3
   signalr_core: ^1.1.1
- 
   dio: ^4.0.6
   flutter: 
     sdk: flutter
@@ -26,6 +25,6 @@ dev_dependencies:
 
 flutter: 
   uses-material-design: true
-
   assets:
-    - assets/images/
+   - assets/images/
+   

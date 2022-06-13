@@ -2,9 +2,13 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marful/app/modules/menu/views/menu_view.dart';
 import 'package:marful/app/modules/websit_company/controllers/websit_company_controller.dart';
 import 'package:marful/app/modules/websit_company/data/model/Product.dart';
+import 'package:marful/app/routes/app_pages.dart';
 import 'package:q_overlay/q_overlay.dart';
+
+import '../../../core/values/app_colors.dart';
 
 class WebsiteCompanyPage extends StatefulWidget {
   @override
@@ -20,7 +24,7 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
     bool edit = false;
     bool delet = true;
     String description =
-        ' Juicy Beauty was first founded in 2012 in Syria, Damascus. Juicy Beauty was first introduced in Lebanon in 2018.Juicy Beauty is an example of innovation in form due to its display with the largest makeup color made of vibrant and pure pigments and in substancethanks to the exclusive formulas and the revolutionary texture of its makeup products.Behind each product is the excellent research of an expert scientific team that develops new technologies and original formulas.High quality and extreme safety in addition to creativity, taste, and a focus on detail.That’s how JUICY ensures the finest standards of excellence through products that are both gentle and highly effective: Makeup formulas are produced in Europe. The range is subjected to accurate and in-depth safety evaluation.Juicy Beauty is the definition of having fun with makeup, trying new things,and feeling free! Not sure where to start? Why not visit our branches that are all over lebanon and test our products!';
+        ' Juicy Beauty was first founded in 2012 in Syria, Damascus. Juicy Beauty was first introduced in Lebanon in 2018.';
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -48,7 +52,7 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                           width: width / 1.8,
                           child: Text(
                             description,
-                            style: TextStyle(fontSize: 16),
+                            style: TextStyle(fontSize: 20),
                           )),
                     ),
                   ],
@@ -75,13 +79,13 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                   SizedBox(
                     width: width / 4.0,
                   ),
-                  // textbtn('Accessories'),
-                  // textbtn('BodyCare'),
-                  // textbtn('Eyes'),
-                  // textbtn('Nails'),
-                  // textbtn('Face'),
-                  // textbtn('JuicyBrowse'),
-                  // textbtn('Lips'),
+                  textbtn('Accessories',width,height),
+                  textbtn('BodyCare',width,height),
+                  textbtn('Eyes',width,height),
+                  textbtn('Nails',width,height),
+                  textbtn('Face',width,height),
+                  textbtn('JuicyBrowse',width,height),
+                  textbtn('Lips',width,height),
                 ],
               ),
             ),
@@ -115,22 +119,63 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                         size: 50,
                       ))),
             ),
+            
             IconButton(
-              icon: Icon(Icons.abc),
+              icon: Icon(Icons.add),
               onPressed: () {
                 QPanel(
-                        child: Text('Hi Buttom'),
-                        alignment: Alignment.bottomCenter)
+                  color: Colors.grey[100],
+                   width: width/3,
+                height: height/2,
+                        child: 
+                        SingleChildScrollView(child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(children: [
+                              
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Center(child: Text('The Products ',style: TextStyle(fontSize: 20,
+                                  color: Colors.black54),)),
+                                ),
+                                   panel('Consiler', 9000,"assets/images/1.jpg" , width, height),
+                                 panel('Foundation', 70099, "assets/images/3.jpg", width, height),
+                                  panel('Rog', 30030, "assets/images/4.jpg", width, height),
+                                 panel('Hilitere', 3289,"assets/images/5.jpg", width, height),
+                                   panel('Blusher', 39089,"assets/images/2.jpg", width, height),
+                                    panel('Maskara', 33389, "assets/images/5.jpg", width, height),
+                                     panel('Iliner', 09889, "assets/images/4.jpg", width, height),     
+                            ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(AppColors.blue),
+                            fixedSize: MaterialStateProperty.all(
+                                const Size.fromWidth(150))),
+                        onPressed: () {
+                         Get.toNamed(Routes.ConfirmPassword);
+                        },
+                        child: const Text(
+                          "Save",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                                     
+                          ],),
+                        )),
+                        alignment: Alignment.center)
                     .show();
               },
-            )
+            ),
+            ElevatedButton(onPressed: (){
+           Navigator.push(context, MaterialPageRoute(builder: (context) =>  MenuPage(),));
+            }, child: Text('Go1'))  ,
           ],
         ),
       ),
     );
   }
-
-////////////////////////////////////////////////////
   Widget photo(String url, double height, double width, Product product) {
     return Padding(
       padding: const EdgeInsets.all(4.0),
@@ -293,59 +338,98 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
       ),
     );
   }
+  Widget panel( String name, int price, String url,double width,double height){
+ return Padding(
+   padding: const EdgeInsets.all(5.0),
+   child: Container( width: width/3,height: height/5,
+    child: Card( shadowColor: Colors.grey,
+     child: Column(crossAxisAlignment:  CrossAxisAlignment.start,
+      children: [
+      Row(children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(8, 8, 0, 0),
+          child: Container(
+                 height: 60.0,
+                        width: 60.0,
+                         decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                         image: DecorationImage(
+                            image: new AssetImage(url),
+                               fit: BoxFit.cover
+                         ),
+                         )   ),
+        ),
+                       SizedBox(width: 15,),
+                       Text(name),
+      ],),
+                  Row(children: [
+                     SizedBox(width: 80,),
+                        Text('price :'),
+                 Text(price.toString()+'\$',style: TextStyle(fontWeight: FontWeight.bold),),
+                   SizedBox(width: 25,),
+                 Text('count: 3'),
+                   SizedBox(width: 30,),
+                 IconButton(onPressed: (){}, icon:Icon(Icons.edit,size: 20,color: Colors.grey,), ),
+                  IconButton(onPressed: (){}, icon:Icon(Icons.delete,size: 20,color: Colors.red,), ),
+                   ],),
+     ],)
 
-  // Widget textbtn(String name) {
-  //   return Padding(
-  //     padding: const EdgeInsets.all(8.0),
-  //     child: TextButton(
-  //         style: TextButton.styleFrom(primary: Colors.pink),
-  //         onPressed: () async {
-  //           // await QPanel(
-  //           //     alignment: Alignment.center,
-  //           //     width: 200,
-  //           //     color: Colors.red,
-  //           //     height: 100,
-  //           //     child: Column(
-  //           //       children: [
-  //           //         Text('DDDDDDDDDD'),
-  //           //         Text('DDDDDDDDDD'),
-  //           //         Text('DDDDDDDDDD'),
-  //           //         Text('DDDDDDDDDD'),
-  //           //         Text('DDDDDDDDDD'),
-  //           //       ],
-  //           //     )).show();
-  //         },
-  //         child: Text(
-  //           name,
-  //           style: TextStyle(fontSize: 16),
-  //         )),
-  //   );
-  // }
-
-  InkWell Daliog(bool e, bool d) {
-    return InkWell(
-      child: Text('hwwwww'),
-    );
-    // return Get.dialog(
-    // Center(
-    //   child: Container(
-    //     child: Card(child: Column(children: [
-    //        Row(children: [
-    //           Text('Kram Care :',style: TextStyle(fontSize: 16),),
-    //           e==false?
-    //             Text(' 400',style: TextStyle(fontSize: 20),)
-    //            : Row(children: [],),
-    //            IconButton(onPressed: (){
-    //             e=true;
-    //            }, icon: Icon(Icons.edit,size: 15,)) ,
-    //            IconButton(onPressed: (){
-    //              d=true;
-    //            }, icon: Icon(Icons.delete_rounded,size: 15,color: Colors.red,))
-    //        ],)
-    //     ],)),
-    //   ),
-    // )
-
-    // );
+   ),),
+ );
   }
-}
+  Widget textbtn(String name,double width,double height) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: TextButton(
+          style: TextButton.styleFrom(primary: Colors.pink),
+          onPressed: () async {
+            await QPanel(
+                alignment: Alignment.center,
+                width: width/10,
+               
+                height: height/4,
+                child: SingleChildScrollView(
+                  child: Column(crossAxisAlignment:  CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text('Items : ',style:  TextStyle(fontSize: 18),),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextButton(onPressed: (){}, child: Text(name)),
+                      ),
+
+                          Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextButton(onPressed: (){}, child: Text('hiuiokml')),
+                      ),
+                        Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextButton(onPressed: (){}, child: Text('hiuiokml')),
+                      ),
+                       Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextButton(onPressed: (){}, child: Text('hiuiokml')),
+                      ),
+                         Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextButton(onPressed: (){}, child: Text('hiuiokml')),
+                      ),
+                    Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextButton(onPressed: (){}, child: Text('hiuiokml')),
+                      ),
+                    ],
+                  ),
+                )).show();
+          },
+          child: Text(
+            name,
+            style: TextStyle(fontSize: 16),
+          )),
+    );
+  }
+
+  }
+
