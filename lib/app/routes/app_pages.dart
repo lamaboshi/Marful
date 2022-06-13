@@ -8,6 +8,7 @@ import 'package:marful/app/modules/menu/views/menu_view.dart';
 import 'package:marful/app/modules/password_page/bindings/password_binding.dart';
 import 'package:marful/app/modules/password_page/views/confirm_password.dart';
 import 'package:marful/app/modules/password_page/views/password_page.dart';
+import 'package:marful/app/modules/profile/binding/profile_binding.dart';
 import 'package:marful/app/modules/signIn_page/bindings/signIn_binding.dart';
 import 'package:marful/app/modules/signIn_page/view/signIn_view.dart';
 import 'package:marful/app/modules/signUp_page/bindings/signUp_binding.dart';
@@ -21,6 +22,7 @@ import 'package:marful/app/modules/websit_company/views/websit_company_page.dart
 
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/profile/views/profile_view.dart';
 
 part 'app_routes.dart';
 
@@ -90,6 +92,11 @@ class AppPages {
       name: _Paths.menu,
       page: () => MenuPage(),
       binding:MenuBinding(),
+    ),
+       GetPage(
+      name: _Paths.menu,
+      page: () => ProfilePage(),
+      binding:ProfileBinding(),
     ),
     
   ];

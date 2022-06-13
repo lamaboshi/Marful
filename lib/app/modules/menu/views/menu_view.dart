@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marful/app/core/values/app_colors.dart';
 
+import '../../profile/views/profile_view.dart';
+
 class MenuPage extends StatefulWidget {
   @override
   State<MenuPage> createState() => _MenuPageState();
@@ -50,7 +52,9 @@ class _MenuPageState extends State<MenuPage> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.fromLTRB(2, 0, 8, 8),
-                    child: IconButton(onPressed: (){}, icon: Icon(Icons.person)),
+                    child: IconButton(onPressed: (){
+                      
+                    }, icon: Icon(Icons.person)),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -58,7 +62,7 @@ class _MenuPageState extends State<MenuPage> {
                   )
               ],),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>ProfilePage(),) );
               },
             ),
                   ListTile(

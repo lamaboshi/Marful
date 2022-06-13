@@ -15,6 +15,7 @@ abstract class Routes {
     static const websitecompany = _Paths.websitecompany ;
     static const setting = _Paths.setting ;
     static const menu = _Paths.menu ;
+      static const profile = _Paths.profile ;
 
 
 }
@@ -33,4 +34,5 @@ abstract class _Paths {
           static const websitecompany = '/websitecompany';
         static const setting  = '/setting '; 
            static const menu  = '/menu ';
+            static const profile  = '/profile ';    
 }

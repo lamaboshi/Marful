@@ -170,20 +170,12 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
             ),
             ElevatedButton(onPressed: (){
            Navigator.push(context, MaterialPageRoute(builder: (context) =>  MenuPage(),));
-           //   Get.toNamed(Routes.menu);
             }, child: Text('Go1'))  ,
-            
-        
-
           ],
         ),
       ),
     );
   }
-
-////////////////////////////////////////////////////
-///
-
   Widget photo(String url, double height, double width, Product product) {
     return Padding(
       padding: const EdgeInsets.all(4.0),
@@ -379,19 +371,12 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                    SizedBox(width: 30,),
                  IconButton(onPressed: (){}, icon:Icon(Icons.edit,size: 20,color: Colors.grey,), ),
                   IconButton(onPressed: (){}, icon:Icon(Icons.delete,size: 20,color: Colors.red,), ),
-
-
-
                    ],),
-      
-
-
      ],)
 
    ),),
  );
   }
-
   Widget textbtn(String name,double width,double height) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -412,7 +397,7 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: TextButton(onPressed: (){}, child: Text('hiuiokml')),
+                        child: TextButton(onPressed: (){}, child: Text(name)),
                       ),
 
                           Padding(

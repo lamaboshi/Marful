@@ -88,13 +88,7 @@ class _PasswordPageState extends State<PasswordPage> {
                                   color: AppColors.orange, width: 1.5),
                             )),
                       ),
-                //  Padding(
-                //    padding: const EdgeInsets.all(8.0),
-                //    child: Container( width:400,
-                //      child: TextField( decoration: InputDecoration(border:OutlineInputBorder(),
-                //      hintText: 'Enter Your Password' ,labelText: 'Email'),),
-                //    ),
-                //  ),
+               
                  SizedBox(height: 20,),
                   ElevatedButton(
                         style: ButtonStyle(
