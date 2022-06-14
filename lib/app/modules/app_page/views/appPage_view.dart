@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:marful/app/core/values/app_colors.dart';
 import 'package:marful/app/modules/app_page/views/page1App.dart';
 import 'package:marful/app/modules/content_page/views/content_view.dart';
+import 'package:marful/app/modules/profile/views/profile_view.dart';
 import 'package:marful/app/modules/settings/views/setting_view.dart';
+import 'package:marful/app/modules/websit_company/views/websit_company_page.dart';
 
 import 'searchDelegat.dart';
 
@@ -41,7 +43,7 @@ class AppPage extends StatelessWidget {
           ],
         ),
         body: TabBarView(children: [
-          const PageOneApp(),
+         const PageOneApp(),
           ContentView(),
           SettingPage(),
         ]),
