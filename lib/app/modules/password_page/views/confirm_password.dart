@@ -34,25 +34,12 @@ class Confirmpassword extends StatelessWidget{
                    ),
       ],),
         Card(elevation: 10,child: Container( width: width/2,height: height/2,
-        child: Image.asset('assets/images/comf.gif'))),
+        child: Image.asset('assets/images/Social media (1).gif'))),
          Padding(
            padding: const EdgeInsets.all(8.0),
            child: Text('Enter your new password below',style: TextStyle(fontSize: 20,color: Colors.black54),),
          )   ,
-          // Padding(
-          //          padding: const EdgeInsets.all(8.0),
-          //          child: Container( width:400,
-          //            child: TextField( decoration: InputDecoration(border:OutlineInputBorder(),
-          //            hintText: 'Enter New Password' ,labelText: 'New Password'),),
-          //          ),
-          //        ),
-                //    Padding(
-                //    padding: const EdgeInsets.all(8.0),
-                //    child: Container( width:400,
-                //      child: TextField( decoration: InputDecoration(border:OutlineInputBorder(),
-                //      hintText: 'Enter Your Confrim password' ,labelText: 'Confrim password'),),
-                //    ),
-                //  ),
+        
                  SizedBox(height: 10,),
                    const TextField(
                         keyboardType: TextInputType.emailAddress,
@@ -111,19 +98,7 @@ class Confirmpassword extends StatelessWidget{
                                   color: AppColors.orange, width: 1.5),
                             )),
                       ),
-                 
-                  //  Padding(
-                  //    padding: const EdgeInsets.all(8.0),
-                  //    child: ElevatedButton(
-                  //    style:ElevatedButton.styleFrom(primary:  AppColors.blue,minimumSize: 
-                  //    Size(405, 60),
-                  //    shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(5))
-                  //    ),
-                  //    onPressed: (){
-                  //      Get.toNamed(Routes.websitecompany);
-                  //     // Navigator.push(context, MaterialPageRoute(builder: (context) => const secondpage(),));
-                  //    }, child:Text('SUBMIT',style: TextStyle(fontSize: 20),) ),
-                  //  ),
+                
                     SizedBox(height: 20,),
                   ElevatedButton(
                         style: ButtonStyle(

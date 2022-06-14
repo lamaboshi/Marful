@@ -42,7 +42,7 @@ class _PasswordPageState extends State<PasswordPage> {
                  ],),
                ),
                    Card(elevation: 10,child: Container( width: width/2,height:height/2.3,
-        child: Image.asset('assets/images/forget.gif'))),
+        child: Image.asset('assets/images/Social ideas.gif'))),
                Padding(
                  padding: const EdgeInsets.all(8.0),
                  child: Text('Enter the registerd email address'
