@@ -32,9 +32,14 @@ part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
-  static const iNITIAL = Routes.appPage;
+  static const iNITIAL = Routes.websitecompany;
 
   static final routes = [
+      GetPage(
+      name: _Paths.websitecompany,
+      page: () => WebsiteCompanyPage(),
+      binding: WebsitcompanyBinding(),
+    ),
     GetPage(
       name: _Paths.FirstSplash,
       page: () => FiestSplashPage(),
@@ -54,11 +59,6 @@ class AppPages {
       name: _Paths.Password,
       page: () => PasswordPage(),
       binding: PasswordBinding(),
-    ),
-    GetPage(
-      name: _Paths.websitecompany,
-      page: () => WebsiteCompanyPage(),
-      binding: WebsitcompanyBinding(),
     ),
     GetPage(
       name: _Paths.setting,
