@@ -34,10 +34,11 @@ class AppPage extends StatelessWidget {
           actions: [
             IconButton(
                 onPressed: () {
-                  showSearch(
-                    context: context,
-                    delegate: MySearchDelegat(),
-                  );
+                  Get.rootDelegate.toNamed(Routes.search);
+                  // showSearch(
+                  //   context: context,
+                  //   delegate: MySearchDelegat(),
+                  // );
                 },
                 icon: const Icon(Icons.search))
           ],
@@ -45,7 +46,7 @@ class AppPage extends StatelessWidget {
         body: TabBarView(children: [
           const PageOneApp(),
           ContentView(),
-         SS(),
+          SS(),
         ]),
       ),
     );

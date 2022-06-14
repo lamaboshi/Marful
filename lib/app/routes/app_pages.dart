@@ -9,6 +9,8 @@ import 'package:marful/app/modules/password_page/bindings/password_binding.dart'
 import 'package:marful/app/modules/password_page/views/confirm_password.dart';
 import 'package:marful/app/modules/password_page/views/password_page.dart';
 import 'package:marful/app/modules/profile/binding/profile_binding.dart';
+import 'package:marful/app/modules/search_page/bindings/search_binding.dart';
+import 'package:marful/app/modules/search_page/views/search_view.dart';
 import 'package:marful/app/modules/settings/bindings/setting_binding.dart';
 import 'package:marful/app/modules/settings/views/setting_view.dart';
 import 'package:marful/app/modules/signIn_page/bindings/signIn_binding.dart';
@@ -102,20 +104,25 @@ class AppPages {
       page: () => const AppPage(),
       binding: AppPageBinding(),
     ),
-      GetPage(
+    GetPage(
       name: _Paths.menu,
       page: () => MenuPage(),
-      binding:MenuBinding(),
+      binding: MenuBinding(),
     ),
-       GetPage(
+    GetPage(
       name: _Paths.menu,
       page: () => ProfilePage(),
-      binding:ProfileBinding(),
-    ), GetPage(
+      binding: ProfileBinding(),
+    ),
+    GetPage(
       name: _Paths.report,
-      page: () =>const ReportView(),
+      page: () => const ReportView(),
       binding: ReportBinding(),
     ),
-    
+    GetPage(
+      name: _Paths.search,
+      page: () => const SearchView(),
+      binding: SearchBinding(),
+    ),
   ];
 }
