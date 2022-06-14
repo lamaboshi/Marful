@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:marful/app/core/values/app_colors.dart';
 import 'package:marful/app/modules/app_page/views/page1App.dart';
 import 'package:marful/app/modules/content_page/views/content_view.dart';
+
 import 'package:marful/app/modules/profile/views/profile_view.dart';
 import 'package:marful/app/modules/settings/views/setting_view.dart';
 import 'package:marful/app/modules/websit_company/views/websit_company_page.dart';
-
-import 'searchDelegat.dart';
-
+import 'package:marful/app/modules/report_page/views/report_view.dart';
+import 'package:marful/app/modules/settings/views/setting_view.dart';
+import 'package:marful/app/routes/app_pages.dart';
 class AppPage extends StatelessWidget {
   const AppPage({Key? key}) : super(key: key);
 
@@ -18,8 +20,7 @@ class AppPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.orange,
-          bottom: const TabBar(indicatorColor: Colors.white,
-            tabs: [
+          bottom: const TabBar(indicatorColor: Colors.white, tabs: [
             Tab(
               icon: Icon(Icons.home),
             ),
@@ -34,10 +35,11 @@ class AppPage extends StatelessWidget {
           actions: [
             IconButton(
                 onPressed: () {
-                  showSearch(
-                    context: context,
-                    delegate: MySearchDelegat(),
-                  );
+                  Get.rootDelegate.toNamed(Routes.search);
+                  // showSearch(
+                  //   context: context,
+                  //   delegate: MySearchDelegat(),
+                  // );
                 },
                 icon: const Icon(Icons.search))
           ],
@@ -45,9 +47,22 @@ class AppPage extends StatelessWidget {
         body: TabBarView(children: [
          const PageOneApp(),
           ContentView(),
-          SettingPage(),
+          SS(),
         ]),
       ),
+    );
+  }
+}
+
+class SS extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: IconButton(
+          onPressed: () {
+            Get.rootDelegate.toNamed(Routes.report);
+          },
+          icon: Icon(Icons.search)),
     );
   }
 }

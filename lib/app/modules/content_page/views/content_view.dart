@@ -21,8 +21,8 @@ class ContentView extends StatelessWidget {
                       title: Text('Haya Eid'),
                       leading: Image.asset(
                         'assets/images/b.jpg',
-                        height: 70,
-                        width: 70,
+                        height: 90,
+                        width: 80,
                         fit: BoxFit.cover,
                       ),
                       subtitle:

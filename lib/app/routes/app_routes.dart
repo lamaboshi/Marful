@@ -10,34 +10,37 @@ abstract class Routes {
   static const SignIn = _Paths.SignIn;
   static const SignUpUserPage = _Paths.SignUpUserPage;
   static const FirstSplash = _Paths.FirstSplash;
-    static const SignUpInfluencer = _Paths.SignUpInfluencer;
-      static const SignUpCompany = _Paths.SignUpCompany;
-    static const websitecompany = _Paths.websitecompany ;
-    static const setting = _Paths.setting ;
-    static const menu = _Paths.menu ;
-      static const profile = _Paths.profile ;
-static const appPage = _Paths.appPage;
-static const Content = _Paths.Content;
+  static const SignUpInfluencer = _Paths.SignUpInfluencer;
+  static const SignUpCompany = _Paths.SignUpCompany;
+  static const websitecompany = _Paths.websitecompany;
+  static const setting = _Paths.setting;
+  static const menu = _Paths.menu;
+  static const profile = _Paths.profile;
+  static const appPage = _Paths.appPage;
+  static const Content = _Paths.Content;
+  static const report = _Paths.report;
+  static const search = _Paths.search;
 }
-   
+
 abstract class _Paths {
   _Paths._();
-   static const AppPage = '/apppage ';
+  static const AppPage = '/apppage ';
   static const HOME = '/home';
   static const Password = '/password';
   static const ConfirmPassword = '/confirmpassword';
   static const Intro = '/intro';
   static const SignIn = '/SignIn';
   static const SignUpUserPage = '/SignUpUserPage';
-   static const FirstSplash = '/FirstSplash';
-    static const SignUpInfluencer = '/SignUpInfluencer';
-     static const SignUpCompany = '/SignUpCompany';
-          static const websitecompany = '/websitecompany';
-        static const setting  = '/setting '; 
-           static const menu  = '/menu ';
-            static const profile  = '/profile ';    
+  static const FirstSplash = '/FirstSplash';
+  static const SignUpInfluencer = '/SignUpInfluencer';
+  static const SignUpCompany = '/SignUpCompany';
+  static const websitecompany = '/websitecompany';
+  static const setting = '/setting ';
+  static const menu = '/menu ';
+  static const profile = '/profile ';
 
-    static const appPage  = '/appPage';
-    static const Content = '/Content';
+  static const appPage = '/appPage';
+  static const Content = '/Content';
+  static const report = '/report';
+  static const search = '/search';
 }
-

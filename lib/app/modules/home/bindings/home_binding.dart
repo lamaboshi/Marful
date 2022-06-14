@@ -23,6 +23,7 @@ class HomeBinding extends Bindings {
     //     await hubConnection.start();
     //   }
     // }
+    
     // hubConnection.onclose((error) {
     //   print("Connection Closed $error");
     // });
