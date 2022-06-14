@@ -9,13 +9,10 @@ import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
 import '../controllers/profile_controller.dart';
 
-class ProfilePage extends StatefulWidget {
-   
-  @override
-  State<ProfilePage> createState() => _MenuPageState();
-}
-class _MenuPageState extends State<ProfilePage> {
- //final conroller = Get.find<ProfileController>();
+
+class ProfilePage extends GetView<ProfileController> {
+ProfilePage({Key?key}):super(key:key);
+// final conroller = Get.find<ProfileController>();
   @override
   Widget build(BuildContext context) {
     bool kind=false;
@@ -259,6 +256,7 @@ class _MenuPageState extends State<ProfilePage> {
                             ) ,
                   ],),
                 ),
+             
               //       Container(
               //   child: Obx(
               // () => conroller.kind.value

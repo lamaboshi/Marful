@@ -3,12 +3,15 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/menu/views/menu_view.dart';
+import 'package:marful/app/modules/password_page/views/password_page.dart';
+import 'package:marful/app/modules/profile/views/profile_view.dart';
 import 'package:marful/app/modules/websit_company/controllers/websit_company_controller.dart';
 import 'package:marful/app/modules/websit_company/data/model/Product.dart';
 import 'package:marful/app/routes/app_pages.dart';
 import 'package:q_overlay/q_overlay.dart';
 
 import '../../../core/values/app_colors.dart';
+import '../../password_page/views/confirm_password.dart';
 
 class WebsiteCompanyPage extends StatefulWidget {
   @override
@@ -164,12 +167,12 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                                      
                           ],),
                         )),
-                        alignment: Alignment.center)
+                        alignment: Alignment.topRight)
                     .show();
               },
             ),
             ElevatedButton(onPressed: (){
-           Navigator.push(context, MaterialPageRoute(builder: (context) =>  MenuPage(),));
+           Navigator.push(context, MaterialPageRoute(builder: (context) => Confirmpassword (),));
             }, child: Text('Go1'))  ,
           ],
         ),
@@ -341,7 +344,7 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
   Widget panel( String name, int price, String url,double width,double height){
  return Padding(
    padding: const EdgeInsets.all(5.0),
-   child: Container( width: width/3,height: height/5,
+   child: Container( width: width/3,height: height,
     child: Card( shadowColor: Colors.grey,
      child: Column(crossAxisAlignment:  CrossAxisAlignment.start,
       children: [
@@ -369,7 +372,11 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                    SizedBox(width: 25,),
                  Text('count: 3'),
                    SizedBox(width: 30,),
-                 IconButton(onPressed: (){}, icon:Icon(Icons.edit,size: 20,color: Colors.grey,), ),
+                   Row(children: [
+                   IconButton(onPressed: (){}, icon:Icon(Icons.add,size: 20,color: Colors.grey,), ),
+                       IconButton(onPressed: (){}, icon:Icon(Icons.remove,size: 20,color: Colors.grey,), ),
+                   ],),
+             
                   IconButton(onPressed: (){}, icon:Icon(Icons.delete,size: 20,color: Colors.red,), ),
                    ],),
      ],)

@@ -34,7 +34,7 @@ class Confirmpassword extends StatelessWidget{
                    ),
       ],),
         Card(elevation: 10,child: Container( width: width/2,height: height/2,
-        child: Image.asset('assets/images/comf.gif'))),
+        child: Image.asset('assets/images/Social media (1).gif'))),
          Padding(
            padding: const EdgeInsets.all(8.0),
            child: Text('Enter your new password below',style: TextStyle(fontSize: 20,color: Colors.black54),),
