@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:marful/app/modules/firstsplash_page/bindings/firstSplash_binding.dart';
 import 'package:marful/app/modules/firstsplash_page/views/firstSplash_view.dart';
+import 'package:marful/app/modules/homeMain_page/bindings/homeMain_binding.dart';
+import 'package:marful/app/modules/homeMain_page/views/homeMain_view.dart';
 import 'package:marful/app/modules/intro_page/bindings/intro_binding.dart';
 import 'package:marful/app/modules/intro_page/view/intro_view.dart';
 import 'package:marful/app/modules/menu/bindings/menu_binding.dart';
@@ -21,9 +23,6 @@ import 'package:marful/app/modules/signUp_page/view/signUpInf_view.dart';
 import 'package:marful/app/modules/signUp_page/view/signUpUser_view.dart';
 import 'package:marful/app/modules/websit_company/bindings/websit_company_binding.dart';
 import 'package:marful/app/modules/websit_company/views/websit_company_page.dart';
-
-import '../modules/app_page/bindings/appPage_binding.dart';
-import '../modules/app_page/views/appPage_view.dart';
 import '../modules/content_page/bindings/content_binding.dart';
 import '../modules/content_page/views/content_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -36,18 +35,18 @@ part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
-  static const iNITIAL = Routes.appPage;
+  //static const iNITIAL = Routes.appPage;
 
   static final routes = [
     GetPage(
       name: _Paths.FirstSplash,
-      page: () => FiestSplashPage(),
+      page: () => FiestSplashView(),
       binding: FirstSplashBinding(),
     ),
     GetPage(
       name: _Paths.HOME,
       page: () => HomeView(),
-      binding: HomeBinding(),
+      bindings: [HomeBinding(), HomeMainBinding()],
     ),
     GetPage(
       name: _Paths.ConfirmPassword,
@@ -99,11 +98,7 @@ class AppPages {
       page: () => SignUpCompanyPage(),
       binding: SignUpBinding(),
     ),
-    GetPage(
-      name: _Paths.AppPage,
-      page: () => const AppPage(),
-      binding: AppPageBinding(),
-    ),
+   
     GetPage(
       name: _Paths.menu,
       page: () => MenuPage(),

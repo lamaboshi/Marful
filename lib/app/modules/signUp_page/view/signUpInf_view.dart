@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signUp_page/controllers/signUp_controller.dart';
+import 'package:marful/app/routes/app_pages.dart';
 
 import '../../../core/values/app_colors.dart';
 
@@ -27,17 +28,22 @@ class SignUpInfluencer extends GetView<SignUpController> {
           child: Card(
             elevation: 15,
             clipBehavior: Clip.antiAlias,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),
+            shape: RoundedRectangleBorder(    borderRadius: BorderRadius.only(
+                topRight: Radius.circular(30),
+                topLeft: Radius.circular(30),
+              ),
             ),
             child: Center(
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    CircleAvatar(
-                      radius: height * 80 / height,
-                      backgroundImage:
-                          const AssetImage('assets/images/person.png'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: CircleAvatar(
+                        radius: height * 80 / height,
+                        backgroundImage:
+                            const AssetImage('assets/images/person.png'),
+                      ),
                     ),
                     const SizedBox(
                       height: 5,
@@ -53,43 +59,44 @@ class SignUpInfluencer extends GetView<SignUpController> {
                       child: Column(
                         children: [
                           ///Name
-                          const TextField(
+                           TextField(
                             keyboardType: TextInputType.name,
-                            // TextInputType.visiblePassword,
                             cursorColor: AppColors.blue,
                             cursorHeight: 20,
                             autofocus: false,
                             decoration: InputDecoration(
-                                labelStyle: TextStyle(color: Colors.grey),
+                                labelStyle:const TextStyle(color: Colors.black),
+                                hintStyle: TextStyle(color: Colors.grey[350]),
                                 labelText: 'Name',
                                 hintText: "Haya Eid",
-                                prefixIcon: Icon(
+                                prefixIcon:const Icon(
                                   Icons.person,
                                   color: AppColors.orange,
                                 ),
-                                border: UnderlineInputBorder(
+                                border:const UnderlineInputBorder(
                                   borderSide: BorderSide(
                                       color: AppColors.orange, width: 1.5),
                                 ),
-                                contentPadding: EdgeInsets.symmetric(
+                                contentPadding:const EdgeInsets.symmetric(
                                     vertical: 15, horizontal: 15),
-                                enabledBorder: UnderlineInputBorder(
+                                enabledBorder:const UnderlineInputBorder(
                                   borderSide: BorderSide(
                                       color: AppColors.orange, width: 1.5),
                                 ),
-                                focusedBorder: UnderlineInputBorder(
+                                focusedBorder:const UnderlineInputBorder(
                                   borderSide: BorderSide(
                                       color: AppColors.orange, width: 1.5),
                                 )),
                           ),
                           ////////UserName
-                          const TextField(
+                           TextField(
                             keyboardType: TextInputType.name,
                             cursorColor: AppColors.blue,
                             cursorHeight: 20,
                             autofocus: false,
                             decoration: InputDecoration(
-                                labelStyle: TextStyle(color: Colors.grey),
+                                labelStyle:const TextStyle(color: Colors.black),
+                                hintStyle: TextStyle(color: Colors.grey[350]),
                                 labelText: 'User Name',
                                 hintText: "haya",
                                 prefixIcon: Icon(
@@ -112,14 +119,13 @@ class SignUpInfluencer extends GetView<SignUpController> {
                                 )),
                           ),
                       ///Description
-                              const TextField(
-                        
-                            // TextInputType.visiblePassword,
+                               TextField(
                             cursorColor: AppColors.blue,
                             cursorHeight: 20,
                             autofocus: false,
                             decoration: InputDecoration(
-                                labelStyle: TextStyle(color: Colors.grey),
+                                labelStyle:const TextStyle(color: Colors.black),
+                                hintStyle: TextStyle(color: Colors.grey[350]),
                                 labelText: 'Description',
                                 hintText: "I have so many bfghfccgbfg",
                                 prefixIcon: Icon(
@@ -142,14 +148,15 @@ class SignUpInfluencer extends GetView<SignUpController> {
                                 )),
                           ),  
                           /////Phone
-                          const TextField(
+                           TextField(
                             keyboardType: TextInputType.number,
                             // TextInputType.visiblePassword,
                             cursorColor: AppColors.blue,
                             cursorHeight: 20,
                             autofocus: false,
                             decoration: InputDecoration(
-                                labelStyle: TextStyle(color: Colors.grey),
+                                labelStyle:const TextStyle(color: Colors.black),
+                                hintStyle: TextStyle(color: Colors.grey[350]),
                                 labelText: 'PhoneNumber',
                                 hintText: "099717424666",
                                 prefixIcon: Icon(
@@ -173,14 +180,15 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           ),
      
                           ///////address
-                          const TextField(
+                           TextField(
                             keyboardType: TextInputType.number,
                             // TextInputType.visiblePassword,
                             cursorColor: AppColors.blue,
                             cursorHeight: 20,
                             autofocus: false,
                             decoration: InputDecoration(
-                                labelStyle: const TextStyle(color: Colors.grey),
+                                labelStyle:const TextStyle(color: Colors.black),
+                                hintStyle: TextStyle(color: Colors.grey[350]),
                                 labelText: 'location',
                                 hintText: "aleppo",
                                 prefixIcon: const Icon(
@@ -203,14 +211,15 @@ class SignUpInfluencer extends GetView<SignUpController> {
                                 )),
                           ),
                        ///PayBal
-                           const TextField(
+                            TextField(
                             keyboardType: TextInputType.number,
                             // TextInputType.visiblePassword,
                             cursorColor: AppColors.blue,
                             cursorHeight: 20,
                             autofocus: false,
                             decoration: InputDecoration(
-                                labelStyle: TextStyle(color: Colors.grey),
+                                labelStyle:const TextStyle(color: Colors.black),
+                                hintStyle: TextStyle(color: Colors.grey[350]),
                                 labelText: 'PayBal',
                                 hintText: "hsd235dfgdf",
                                 prefixIcon: Icon(
@@ -234,13 +243,14 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           ),                        
   
                           //////////Email
-                          const TextField(
+                           TextField(
                             keyboardType: TextInputType.emailAddress,
                             cursorColor: AppColors.blue,
                             cursorHeight: 20,
                             autofocus: false,
                             decoration: InputDecoration(
-                                labelStyle: TextStyle(color: Colors.grey),
+                                labelStyle:const TextStyle(color: Colors.black),
+                                hintStyle: TextStyle(color: Colors.grey[350]),
                                 labelText: 'Email',
                                 hintText: "hy@gmail.com",
                                 prefixIcon: Icon(
@@ -271,8 +281,8 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               cursorHeight: 20,
                               autofocus: false,
                               decoration: InputDecoration(
-                                  labelStyle:
-                                      const TextStyle(color: Colors.grey),
+                                labelStyle:const TextStyle(color: Colors.black),
+                                hintStyle: TextStyle(color: Colors.grey[350]),
                                   labelText: 'Passeword',
                                   hintText: "***",
                                   suffixIcon: IconButton(
@@ -317,7 +327,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                                 fixedSize: MaterialStateProperty.all(
                                     const Size.fromWidth(150))),
                             onPressed: () {
-                              // On button presed
+                              Get.rootDelegate.offNamed(Routes.HOME);
                             },
                             child: const Text(
                               "Sign Up",

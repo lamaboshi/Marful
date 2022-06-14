@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marful/app/core/values/app_colors.dart';
 import 'package:marful/app/modules/search_page/controllers/search_controller.dart';
 import 'package:marful/app/routes/app_pages.dart';
 
@@ -38,7 +37,7 @@ class SearchView extends GetView<SearchController> {
                         prefixIcon: Icon(Icons.search),
                         suffixIcon: IconButton(
                           onPressed: () {
-                            Get.rootDelegate.offNamed(Routes.appPage);
+                            Get.rootDelegate.offAndToNamed(Routes.HOME);
                           },
                           icon: Icon(Icons.clear),
                         ),

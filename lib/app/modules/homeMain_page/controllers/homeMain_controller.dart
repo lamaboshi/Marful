@@ -1,9 +1,8 @@
 import 'package:get/get.dart';
 
-class AppPageController extends GetxController {
-  final count = 0.obs;
+class HomeMainController extends GetxController{
+   final count = 0.obs;
 
-  final isChecked = false.obs;
   @override
   void onInit() {
     super.onInit();

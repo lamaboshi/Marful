@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:marful/app/modules/app_page/views/appPage_view.dart';
 import 'package:marful/app/modules/intro_page/controllers/intro_controller.dart';
-import 'package:marful/app/modules/settings/views/setting_view.dart';
-import 'package:marful/app/modules/signIn_page/view/signIn_view.dart';
-import 'package:marful/app/modules/signUp_page/view/signUpComp_view.dart';
-import 'package:marful/app/modules/signUp_page/view/signUpInf_view.dart';
-import 'package:marful/app/modules/signUp_page/view/signUpUser_view.dart';
 import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
 
@@ -17,15 +10,17 @@ class IntroPage extends GetView<IntroController> {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: IntroductionScreen(
-        pages: page(context),
-
+        pages: [
+          interPage(context),
+          interInfluncerPage(context),
+          interCompanyPage(context),
+          interUserPage(context)
+        ],
         onDone: () {
-           Get.to(()=> const AppPage());
+          Get.rootDelegate.offNamed(Routes.HOME);
         },
-       
         showNextButton: true,
         showBackButton: true,
         showSkipButton: false,
@@ -35,12 +30,10 @@ class IntroPage extends GetView<IntroController> {
         next: const Text("Next",
             style:
                 TextStyle(color: AppColors.blue, fontWeight: FontWeight.w600)),
-        // skip: const Text("Skip",
-        //     style:
-        //         TextStyle(color: AppColors.blue, fontWeight: FontWeight.w600)),
         done: const Text("Done",
             style:
                 TextStyle(fontWeight: FontWeight.w600, color: AppColors.blue)),
+        globalBackgroundColor: Colors.white,
         dotsDecorator: const DotsDecorator(
           size: Size(10.0, 10.0),
           color: AppColors.blue,
@@ -55,231 +48,355 @@ class IntroPage extends GetView<IntroController> {
   }
 }
 
-List<PageViewModel> page(BuildContext context) {
+//interpage
+PageViewModel interPage(context) {
   final height = MediaQuery.of(context).size.height;
-  return [
-    // //////تسجيل الدخول او حساب
-    PageViewModel(
-      decoration: const PageDecoration(
-        imagePadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-        imageFlex: 0,
-        titlePadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-        contentMargin: EdgeInsets.all(20),
-        footerPadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-        imageAlignment: Alignment.topLeft,
-        bodyFlex: 0,
-        bodyAlignment: Alignment.center,
-        bodyPadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+  return PageViewModel(
+    decoration: const PageDecoration(
+      pageColor: Colors.white,
+      imagePadding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+      imageFlex: 1,
+      titlePadding: EdgeInsets.fromLTRB(0, 0, 0, 15),
+      contentMargin: EdgeInsets.all(20),
+      footerPadding: EdgeInsets.fromLTRB(0, 20, 0, 90),
+      imageAlignment: Alignment.topLeft,
+      bodyFlex: 0,
+      bodyAlignment: Alignment.topLeft,
+      bodyPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+    ),
+    //text
+    image: Center(
+      child: Image.asset(
+        'assets/images/intro.gif',
+        height: height * 1.43 / 3,
       ),
+    ),
 
-      ///
-      image: const Text('Be Influencer',
-          textAlign: TextAlign.start,
-          style: TextStyle(
-              color: AppColors.orange,
-              fontWeight: FontWeight.bold,
-              fontSize: 45.0)),
+    ///image
+    titleWidget: const Align(
+        alignment: Alignment.topLeft,
+        child: Text(
+          'You Can Choose Acount To SignUp',
+          style: TextStyle(fontSize: 15),
+        )),
 
-      ///image
-      titleWidget: Center(
-        child: Image.asset(
-          'assets/images/Selfie.gif',
-          height: height * 1.25 / 3,
-        ),
-      ),
-
-      ///text
-      bodyWidget: const Text(
-          'Here you can write the description of the page, to explain someting...'),
-      footer: Column(
-        children: [
-          ///btn Sign Up As Influencer
-          Padding(
-            padding: const EdgeInsets.only(left: 40, right: 40),
+    ///text
+    bodyWidget: SizedBox(
+      height: 0,
+    ),
+    footer: Row(
+      children: [
+        //Influencer
+        Padding(
+          padding: const EdgeInsets.only(left: 0, right: 3),
+          child: SizedBox(
+            width: 130,
+            height: 38,
             child: ElevatedButton(
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(AppColors.orange),
-                fixedSize: MaterialStateProperty.all(Size.fromWidth(height)),
               ),
               onPressed: () {
-               // Get.to(() => SignUpInfluencer());
-                Get.rootDelegate.toNamed(Routes.SignUpInfluencer);
+                Get.rootDelegate.offNamed(Routes.SignUpInfluencer);
               },
               child: const Text(
-                "Sign Up As Influencer",
+                " Influencer",
                 style: TextStyle(fontSize: 18),
               ),
             ),
           ),
-
-          ///you Have Account? sign in
-          InkWell(
-            child: const Text(
-              'You Have Account? Sign In',
-              style: TextStyle(color: Colors.grey),
-            ),
-            onTap: () {
-               Get.rootDelegate.toNamed(Routes.SignIn);
-          
-            },
-          ),
-        ],
-      ),
-    ),
-    /////company
-    PageViewModel(
-      decoration: const PageDecoration(
-        imagePadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-        imageFlex: 0,
-        titlePadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-        contentMargin: EdgeInsets.all(20),
-        footerPadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-        imageAlignment: Alignment.topLeft,
-        bodyFlex: 0,
-        bodyAlignment: Alignment.center,
-        bodyPadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-      ),
-
-      ///
-      image: const Text('Be Company',
-          textAlign: TextAlign.start,
-          style: TextStyle(
-              color: AppColors.orange,
-              fontWeight: FontWeight.bold,
-              fontSize: 45.0)),
-
-      ///image
-      titleWidget: Center(
-        child: Image.asset(
-          'assets/images/Company.gif',
-          height: height * 1.25 / 3,
         ),
-      ),
-
-      ///text
-      bodyWidget: const Text(
-          'Here you can write the description of the page, to explain someting...'),
-      footer: Column(
-        children: [
-          ///btn Sign Up As Company
-          Padding(
-            padding: const EdgeInsets.only(left: 40, right: 40),
+        //company
+        Padding(
+          padding: const EdgeInsets.only(left: 3, right: 3),
+          child: SizedBox(
+            width: 130,
+            height: 38,
             child: ElevatedButton(
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(AppColors.orange),
-                fixedSize: MaterialStateProperty.all(Size.fromWidth(height)),
               ),
               onPressed: () {
-                     Get.rootDelegate.toNamed(Routes.SignUpCompany);
-          
+                Get.rootDelegate.offNamed(Routes.SignUpCompany);
               },
               child: const Text(
-                "Sign Up As Company",
+                " Company",
                 style: TextStyle(fontSize: 18),
               ),
             ),
           ),
-          const SizedBox(
-            height: 5,
-          ),
-
-          ///you Have Account? sign in
-          InkWell(
-            child: const Text(
-              'You Have Account? Sign In',
-              style: TextStyle(color: Colors.grey),
-            ),
-            onTap: () {
-                   Get.rootDelegate.toNamed(Routes.SignIn);
-             
-            },
-          ),
-        ],
-      ),
-    ),
-    ////user
-    PageViewModel(
-      decoration: const PageDecoration(
-        imagePadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-        imageFlex: 0,
-        titlePadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-        contentMargin: EdgeInsets.all(20),
-        footerPadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-        imageAlignment: Alignment.topLeft,
-        bodyFlex: 0,
-        bodyAlignment: Alignment.center,
-        bodyPadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-      ),
-
-      ///
-      image: const Text('Be User',
-          textAlign: TextAlign.start,
-          style: TextStyle(
-              color: AppColors.orange,
-              fontWeight: FontWeight.bold,
-              fontSize: 45.0)),
-
-      ///image
-      titleWidget: Center(
-        child: Image.asset(
-          'assets/images/In no time.gif',
-          height: height * 1.25 / 3,
         ),
-      ),
-
-      ///text
-      bodyWidget: const Text(
-          'Here you can write the description of the page, to explain someting...'),
-      footer: Column(
-        children: [
-          ///btn Sign Up As User
-          Padding(
-            padding: const EdgeInsets.only(left: 40, right: 40),
+        //user
+        Padding(
+          padding: const EdgeInsets.only(left: 3, right: 0),
+          child: SizedBox(
+            width: 120,
+            height: 38,
             child: ElevatedButton(
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(AppColors.orange),
-                fixedSize: MaterialStateProperty.all(Size.fromWidth(height)),
               ),
               onPressed: () {
-                
-                     Get.rootDelegate.toNamed(Routes.SignUpUserPage);
+                Get.rootDelegate.offNamed(Routes.SignUpUserPage);
               },
               child: const Text(
-                "Sign Up As User",
+                " User",
                 style: TextStyle(fontSize: 18),
               ),
             ),
           ),
-
-          ///you Have Account? sign in
-          InkWell(
-            child: const Text(
-              'You Have Account? Sign In',
-              style: TextStyle(color: Colors.grey),
-            ),
-            onTap: () {
-                   Get.rootDelegate.toNamed(Routes.SignIn);
-            
-            },
-          ),
-        ],
-      ),
+        ),
+      ],
     ),
-  ];
+  );
 }
 
-// appBar: AppBar(
-//   bottom: TabBar(tabs: [
-//     Tab(
-//       icon: const Icon(Icons.home),
-//     ),
-//     Tab(
-//       icon: const Icon(Icons.search),
-//     ),
-//     Tab(
-//       icon: const Icon(Icons.search),
-//     )
-//   ]),
-//   title: const Text('MarFlu'),
-//   actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
-// ),
+//inter Influncer page
+PageViewModel interInfluncerPage(context) {
+  final height = MediaQuery.of(context).size.height;
+  return PageViewModel(
+    decoration: const PageDecoration(
+      pageColor: Colors.white,
+      imagePadding: EdgeInsets.fromLTRB(20, 35, 20, 20),
+      imageFlex: 0,
+      titlePadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+      contentMargin: EdgeInsets.all(20),
+      footerPadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+      imageAlignment: Alignment.topLeft,
+      bodyFlex: 0,
+      bodyAlignment: Alignment.center,
+      bodyPadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+    ),
+    image: const Text('Be Influencer',
+        textAlign: TextAlign.start,
+        style: TextStyle(
+            color: AppColors.orange,
+            fontWeight: FontWeight.bold,
+            fontSize: 45.0)),
+    //image
+    titleWidget: Center(
+      child: Image.asset(
+        'assets/images/influencerr.gif',
+        height: height * 1.25 / 3,
+      ),
+    ),
+    //text
+    bodyWidget: const Text(
+        'Here you can write the description of the page, to explain someting...'),
+    footer: Column(
+      children: [
+        ///btn Sign Up As Influencer
+        Padding(
+          padding: const EdgeInsets.only(left: 40, right: 40),
+          child: ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(AppColors.orange),
+              fixedSize: MaterialStateProperty.all(Size.fromWidth(height)),
+            ),
+            onPressed: () {
+              // Get.to(() => SignUpInfluencer());
+              Get.rootDelegate.offNamed(Routes.SignUpInfluencer);
+            },
+            child: const Text(
+              "Sign Up As Influencer",
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
+        ),
+
+        ///you Have Account? sign in
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('you Have Account?',
+                style: TextStyle(
+                  color: Colors.grey,
+                )),
+            const SizedBox(
+              width: 3,
+            ),
+            InkWell(
+              child: Text(
+                'sign in',
+                style: TextStyle(
+                  color: Colors.grey,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+              onTap: () {
+                Get.rootDelegate.offNamed(Routes.SignIn);
+              },
+            ),
+          ],
+        ),
+      ],
+    ),
+  );
+}
+
+//inter company page
+PageViewModel interCompanyPage(context) {
+  final height = MediaQuery.of(context).size.height;
+  return PageViewModel(
+    decoration: const PageDecoration(
+      pageColor: Colors.white,
+      imagePadding: EdgeInsets.fromLTRB(20, 35, 20, 20),
+      imageFlex: 0,
+      titlePadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+      contentMargin: EdgeInsets.all(20),
+      footerPadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+      imageAlignment: Alignment.topLeft,
+      bodyFlex: 0,
+      bodyAlignment: Alignment.center,
+      bodyPadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+    ),
+    image: const Text('Be Company',
+        textAlign: TextAlign.start,
+        style: TextStyle(
+            color: AppColors.orange,
+            fontWeight: FontWeight.bold,
+            fontSize: 45.0)),
+    //image
+    titleWidget: Center(
+      child: Image.asset(
+        'assets/images/aa.gif',
+        height: height * 1.25 / 3,
+      ),
+    ),
+
+    ///text
+    bodyWidget: const Text(
+        'Here you can write the description of the page, to explain someting...'),
+    footer: Column(
+      children: [
+        ///btn Sign Up As Company
+        Padding(
+          padding: const EdgeInsets.only(left: 40, right: 40),
+          child: ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(AppColors.orange),
+              fixedSize: MaterialStateProperty.all(Size.fromWidth(height)),
+            ),
+            onPressed: () {
+              Get.rootDelegate.offNamed(Routes.SignUpCompany);
+            },
+            child: const Text(
+              "Sign Up As Company",
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
+        ),
+
+        ///you Have Account? sign in
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('you Have Account?',
+                style: TextStyle(
+                  color: Colors.grey,
+                )),
+            const SizedBox(
+              width: 3,
+            ),
+            InkWell(
+              child: Text(
+                'sign in',
+                style: TextStyle(
+                  color: Colors.grey,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+              onTap: () {
+                Get.rootDelegate.offNamed(Routes.SignIn);
+              },
+            ),
+          ],
+        ),
+      ],
+    ),
+  );
+}
+
+//inter user page
+PageViewModel interUserPage(context) {
+  final height = MediaQuery.of(context).size.height;
+  return PageViewModel(
+    decoration: const PageDecoration(
+      pageColor: Colors.white,
+      imagePadding: EdgeInsets.fromLTRB(20, 35, 20, 20),
+      imageFlex: 0,
+      titlePadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+      contentMargin: EdgeInsets.all(20),
+      footerPadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+      imageAlignment: Alignment.topLeft,
+      bodyFlex: 0,
+      bodyAlignment: Alignment.center,
+      bodyPadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+    ),
+    image: const Text('Be User',
+        textAlign: TextAlign.start,
+        style: TextStyle(
+            color: AppColors.orange,
+            fontWeight: FontWeight.bold,
+            fontSize: 45.0)),
+
+    ///image
+    titleWidget: Center(
+      child: Image.asset(
+        'assets/images/user.gif',
+        height: height * 1.25 / 3,
+      ),
+    ),
+
+    ///text
+    bodyWidget: const Text(
+        'Here you can write the description of the page, to explain someting...'),
+    footer: Column(
+      children: [
+        ///btn Sign Up As User
+        Padding(
+          padding: const EdgeInsets.only(left: 40, right: 40),
+          child: ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(AppColors.orange),
+              fixedSize: MaterialStateProperty.all(Size.fromWidth(height)),
+            ),
+            onPressed: () {
+              Get.rootDelegate.offNamed(Routes.SignUpUserPage);
+            },
+            child: const Text(
+              "Sign Up As User",
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
+        ),
+
+        ///you Have Account? sign in
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('you Have Account?',
+                style: TextStyle(
+                  color: Colors.grey,
+                )),
+            const SizedBox(
+              width: 3,
+            ),
+            InkWell(
+              child: Text(
+                'sign in',
+                style: TextStyle(
+                  color: Colors.grey,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+              onTap: () {
+                Get.rootDelegate.offNamed(Routes.SignIn);
+              },
+            ),
+          ],
+        ),
+      ],
+    ),
+  );
+}

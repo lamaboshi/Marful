@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:marful/app/modules/firstsplash_page/controllers/firstSplash_controller.dart';
 import '../../../core/values/app_colors.dart';
 
-class FiestSplashPage extends GetView<FirstSplashController> {
-  const FiestSplashPage({Key? key}) : super(key: key);
+class FiestSplashView extends GetView<FirstSplashController> {
+  const FiestSplashView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,12 +13,12 @@ class FiestSplashPage extends GetView<FirstSplashController> {
         child: Column(
           children: [
             const Spacer(
-              flex:1,
+              flex: 1,
             ),
             Obx(() {
               return AnimatedOpacity(
                 opacity: controller.opacity.value,
-                duration:const Duration(seconds: 2),
+                duration: const Duration(seconds: 2),
                 child: Column(
                   children: [
                     ///MarFul
@@ -38,13 +38,13 @@ class FiestSplashPage extends GetView<FirstSplashController> {
                                 color: AppColors.blue,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 45.0)),
-                      ],
+                                                                 ],
                     ),
                     const SizedBox(
                       height: 5,
                     ),
 
-                    ///,arketing Influencer
+                    ///Marketing Influencer
                     const Text('Marketing Influencer',
                         style: TextStyle(fontSize: 20.0, color: Colors.grey)),
                   ],

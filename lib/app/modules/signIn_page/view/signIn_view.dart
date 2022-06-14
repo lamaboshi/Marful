@@ -3,14 +3,15 @@ import 'package:get/get.dart';
 import 'package:marful/app/modules/signIn_page/controllers/signIn_controller.dart';
 
 import '../../../core/values/app_colors.dart';
+import '../../../routes/app_pages.dart';
 import '../../password_page/views/password_page.dart';
 
 class SignInPage extends GetView<SignInController> {
-   SignInPage({Key? key}) : super(key: key);
+  SignInPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-   // final controller = Get.find<SignInController>();
+    // final controller = Get.find<SignInController>();
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Stack(children: [
@@ -28,8 +29,11 @@ class SignInPage extends GetView<SignInController> {
           height: height * 4 / 3,
           child: Card(
             elevation: 15,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(20),
+                topLeft: Radius.circular(20),
+              ),
             ),
             child: Center(
               child: SingleChildScrollView(
@@ -51,13 +55,14 @@ class SignInPage extends GetView<SignInController> {
                         height: 50,
                       ),
                       //////////Email
-                      const TextField(
+                      TextField(
                         keyboardType: TextInputType.emailAddress,
                         cursorColor: AppColors.blue,
                         cursorHeight: 20,
                         autofocus: false,
                         decoration: InputDecoration(
-                            labelStyle: TextStyle(color: Colors.grey),
+                            labelStyle: const TextStyle(color: Colors.black),
+                            hintStyle: TextStyle(color: Colors.grey[350]),
                             labelText: 'Email',
                             hintText: "hy@gmail.com",
                             prefixIcon: Icon(
@@ -88,7 +93,8 @@ class SignInPage extends GetView<SignInController> {
                           cursorHeight: 20,
                           autofocus: false,
                           decoration: InputDecoration(
-                              labelStyle: const TextStyle(color: Colors.grey),
+                              labelStyle: const TextStyle(color: Colors.black),
+                              hintStyle: TextStyle(color: Colors.grey[350]),
                               labelText: 'Passeword',
                               hintText: "***",
                               suffixIcon: IconButton(
@@ -150,7 +156,7 @@ class SignInPage extends GetView<SignInController> {
                             fixedSize: MaterialStateProperty.all(
                                 const Size.fromWidth(150))),
                         onPressed: () {
-                          // On button presed
+                          Get.rootDelegate.offNamed(Routes.HOME);
                         },
                         child: const Text(
                           "Sign In",
