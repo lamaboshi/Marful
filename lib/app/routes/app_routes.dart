@@ -16,15 +16,14 @@ abstract class Routes {
   static const setting = _Paths.setting;
   static const menu = _Paths.menu;
   static const profile = _Paths.profile;
-  static const appPage = _Paths.appPage;
   static const Content = _Paths.Content;
   static const report = _Paths.report;
   static const search = _Paths.search;
+
 }
 
 abstract class _Paths {
   _Paths._();
-  static const AppPage = '/apppage ';
   static const HOME = '/home';
   static const Password = '/password';
   static const ConfirmPassword = '/confirmpassword';

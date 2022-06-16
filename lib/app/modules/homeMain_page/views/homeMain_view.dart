@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../core/values/app_colors.dart';
 
-class PageOneApp extends StatelessWidget {
-  const PageOneApp({Key? key}) : super(key: key);
+class HomeMainView extends StatelessWidget {
+  const HomeMainView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

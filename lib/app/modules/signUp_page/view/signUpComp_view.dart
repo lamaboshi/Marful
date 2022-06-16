@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:marful/app/modules/signUp_page/controllers/signUp_controller.dart';
 
 import '../../../core/values/app_colors.dart';
+import '../../../routes/app_pages.dart';
 
 class SignUpCompanyPage extends GetView<SignUpController> {
   const SignUpCompanyPage({Key? key}) : super(key: key);
@@ -27,17 +28,23 @@ class SignUpCompanyPage extends GetView<SignUpController> {
           child: Card(
             elevation: 15,
             clipBehavior: Clip.antiAlias,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),
+            shape:const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(30),
+                topLeft: Radius.circular(30),
+              ),
             ),
             child: Center(
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    CircleAvatar(
-                      radius: height * 80 / height,
-                      backgroundImage:
-                          const AssetImage('assets/images/person.png'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: CircleAvatar(
+                        radius: height * 80 / height,
+                        backgroundImage:
+                            const AssetImage('assets/images/person.png'),
+                      ),
                     ),
                     const SizedBox(
                       height: 5,
@@ -53,14 +60,15 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                       child: Column(
                         children: [
                           ///Name
-                          const TextField(
+                          TextField(
                             keyboardType: TextInputType.name,
-                            // TextInputType.visiblePassword,
                             cursorColor: AppColors.blue,
                             cursorHeight: 20,
                             autofocus: false,
                             decoration: InputDecoration(
-                                labelStyle: TextStyle(color: Colors.grey),
+                                labelStyle:
+                                    const TextStyle(color: Colors.black),
+                                hintStyle: TextStyle(color: Colors.grey[350]),
                                 labelText: 'Company Name',
                                 hintText: "narin",
                                 prefixIcon: Icon(
@@ -82,15 +90,17 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                                       color: AppColors.orange, width: 1.5),
                                 )),
                           ),
-                                                  /////Phone
-                          const TextField(
+                          /////Phone
+                          TextField(
                             keyboardType: TextInputType.number,
                             // TextInputType.visiblePassword,
                             cursorColor: AppColors.blue,
                             cursorHeight: 20,
                             autofocus: false,
                             decoration: InputDecoration(
-                                labelStyle: TextStyle(color: Colors.grey),
+                                labelStyle:
+                                    const TextStyle(color: Colors.black),
+                                hintStyle: TextStyle(color: Colors.grey[350]),
                                 labelText: 'PhoneNumber',
                                 hintText: "099717424666",
                                 prefixIcon: Icon(
@@ -114,13 +124,15 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                           ),
 
                           ///TelePhone
-                          const TextField(
+                          TextField(
                             keyboardType: TextInputType.number,
                             cursorColor: AppColors.blue,
                             cursorHeight: 20,
                             autofocus: false,
                             decoration: InputDecoration(
-                                labelStyle: TextStyle(color: Colors.grey),
+                                labelStyle:
+                                    const TextStyle(color: Colors.black),
+                                hintStyle: TextStyle(color: Colors.grey[350]),
                                 labelText: 'TelePhone',
                                 hintText: "5225356",
                                 prefixIcon: Icon(
@@ -142,16 +154,18 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                                       color: AppColors.orange, width: 1.5),
                                 )),
                           ),
-  
+
                           ///Description
-                          const TextField(
+                          TextField(
                             keyboardType: TextInputType.none,
                             // TextInputType.visiblePassword,
                             cursorColor: AppColors.blue,
                             cursorHeight: 20,
                             autofocus: false,
                             decoration: InputDecoration(
-                                labelStyle: TextStyle(color: Colors.grey),
+                                labelStyle:
+                                    const TextStyle(color: Colors.black),
+                                hintStyle: TextStyle(color: Colors.grey[350]),
                                 labelText: 'Description',
                                 hintText: "i am gdfsdfj,gh ",
                                 prefixIcon: Icon(
@@ -174,16 +188,17 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                                 )),
                           ),
 
-                         
-                         ///////location
-                          const TextField(
+                          ///////location
+                          TextField(
                             keyboardType: TextInputType.number,
                             // TextInputType.visiblePassword,
                             cursorColor: AppColors.blue,
                             cursorHeight: 20,
                             autofocus: false,
                             decoration: InputDecoration(
-                                labelStyle: const TextStyle(color: Colors.grey),
+                                labelStyle:
+                                    const TextStyle(color: Colors.black),
+                                hintStyle: TextStyle(color: Colors.grey[350]),
                                 labelText: 'location',
                                 hintText: "aleppo",
                                 prefixIcon: const Icon(
@@ -207,13 +222,15 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                           ),
 
                           //////////Email
-                          const TextField(
+                          TextField(
                             keyboardType: TextInputType.emailAddress,
                             cursorColor: AppColors.blue,
                             cursorHeight: 20,
                             autofocus: false,
                             decoration: InputDecoration(
-                                labelStyle: TextStyle(color: Colors.grey),
+                                labelStyle:
+                                    const TextStyle(color: Colors.black),
+                                hintStyle: TextStyle(color: Colors.grey[350]),
                                 labelText: 'Email',
                                 hintText: "hy@gmail.com",
                                 prefixIcon: Icon(
@@ -238,14 +255,15 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                           ////////Passeword
                           Obx(() {
                             return TextField(
-                              obscureText:! controller.isShownCompany.value,
+                              obscureText: !controller.isShownCompany.value,
                               keyboardType: TextInputType.visiblePassword,
                               cursorColor: AppColors.blue,
                               cursorHeight: 20,
                               autofocus: false,
                               decoration: InputDecoration(
                                   labelStyle:
-                                      const TextStyle(color: Colors.grey),
+                                      const TextStyle(color: Colors.black),
+                                  hintStyle: TextStyle(color: Colors.grey[350]),
                                   labelText: 'Passeword',
                                   hintText: "***",
                                   suffixIcon: IconButton(
@@ -290,7 +308,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                                 fixedSize: MaterialStateProperty.all(
                                     const Size.fromWidth(150))),
                             onPressed: () {
-                              // On button presed
+                              Get.rootDelegate.offNamed(Routes.HOME);
                             },
                             child: const Text(
                               "Sign Up",
