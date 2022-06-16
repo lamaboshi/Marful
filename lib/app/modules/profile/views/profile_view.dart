@@ -11,11 +11,8 @@ import '../controllers/profile_controller.dart';
 
 
 class ProfilePage extends GetView<ProfileController> {
-ProfilePage({Key?key}):super(key:key);
-// final conroller = Get.find<ProfileController>();
   @override
   Widget build(BuildContext context) {
-    bool kind=false;
     final random=Random();
     final List grid=List.generate(1000, (index) => null);
      var width = MediaQuery.of(context).size.width;
@@ -244,39 +241,24 @@ ProfilePage({Key?key}):super(key:key);
                     Tooltip(message: 'Photo',
                       child: IconButton( icon:Icon(Icons.photo,size: 30,
                            color: Colors.black54), onPressed: (){
-                      kind=true;
+                      
                            },),
                     ) ,
                          SizedBox(width: width/4,),
                     Tooltip(message: 'Posts',
                               child: IconButton( icon:Icon(Icons.post_add,size: 30,
                          color: Colors.black54), onPressed: (){
-                            kind=false;
+                       
                          },),
                             ) ,
                   ],),
                 ),
              
-              //       Container(
-              //   child: Obx(
-              // () => conroller.kind.value
-              //     ? Wrap(
-              //            children: [
-              //         photo("assets/images/6.jpg",width,height), 
-              //                photo("assets/images/1.jpg",width,height),
-              //               photo("assets/images/2.jpg",width,height),
-              //                 photo("assets/images/3.jpg",width,height),
-              //               photo("assets/images/h.jpg",width,height),   
-              //                   photo("assets/images/4.jpg",width,height),
-              //                   photo("assets/images/5.jpg",width,height),
-              //                    photo("assets/images/Castle.gif",width,height),
-              //                     photo("assets/images/ghaith.jpg",width,height),    
-              //       ],
-              //     )
-                 // : Wrap()
-             //   ))
-                  kind==true ?Wrap(
-                    children: [
+                  Obx(
+              () =>  Container(
+                child:  controller.kind.value
+                  ? Wrap(
+                         children: [
                       photo("assets/images/6.jpg",width,height), 
                              photo("assets/images/1.jpg",width,height),
                             photo("assets/images/2.jpg",width,height),
@@ -287,7 +269,8 @@ ProfilePage({Key?key}):super(key:key);
                                  photo("assets/images/Castle.gif",width,height),
                                   photo("assets/images/ghaith.jpg",width,height),    
                     ],
-                  ):Column(
+                  )
+                 : Column(
                     children: [
                       buildpost(1),
                       buildpost(1),
@@ -298,6 +281,30 @@ ProfilePage({Key?key}):super(key:key);
                       //    posts(width, height, "assets/images/11.jpg", 'This is the product i wish to be good '), 
                     ],
                   )
+               )),
+                  // kind==true ?Wrap(
+                  //   children: [
+                  //     photo("assets/images/6.jpg",width,height), 
+                  //            photo("assets/images/1.jpg",width,height),
+                  //           photo("assets/images/2.jpg",width,height),
+                  //             photo("assets/images/3.jpg",width,height),
+                  //           photo("assets/images/h.jpg",width,height),   
+                  //               photo("assets/images/4.jpg",width,height),
+                  //               photo("assets/images/5.jpg",width,height),
+                  //                photo("assets/images/Castle.gif",width,height),
+                  //                 photo("assets/images/ghaith.jpg",width,height),    
+                  //   ],
+                  // ):Column(
+                  //   children: [
+                  //     buildpost(1),
+                  //     buildpost(1),
+                  //       buildpost(1),
+                  //        buildpost(1),   
+                  //     // posts(width, height, "assets/images/6.jpg", 'Hi  We will show product more in t'),
+                  //     //   posts(width, height, "assets/images/9.jpg", 'The New product with the cost ..... '),
+                  //     //    posts(width, height, "assets/images/11.jpg", 'This is the product i wish to be good '), 
+                  //   ],
+                  // )
         ],),
   
      ),

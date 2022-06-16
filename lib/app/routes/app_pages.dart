@@ -105,9 +105,9 @@ class AppPages {
       binding: AppPageBinding(),
     ),
     GetPage(
-      name: _Paths.menu,
-      page: () => MenuPage(),
-      binding: MenuBinding(),
+      name: _Paths.profile,
+      page: () => ProfilePage(),
+      binding: ProfileBinding(),
     ),
     GetPage(
       name: _Paths.menu,
