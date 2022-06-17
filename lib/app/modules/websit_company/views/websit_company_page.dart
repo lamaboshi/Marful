@@ -194,7 +194,7 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                          child: SizedBox(
                           width: width*width,
                             height: height / 4,
-                            child: Image.network(url)),
+                            child: Image.network(url,fit: BoxFit.cover,)),
                        ),
                     Center(
                         child: Text(
