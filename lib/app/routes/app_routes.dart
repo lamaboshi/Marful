@@ -12,14 +12,15 @@ abstract class Routes {
   static const FirstSplash = _Paths.FirstSplash;
   static const SignUpInfluencer = _Paths.SignUpInfluencer;
   static const SignUpCompany = _Paths.SignUpCompany;
-  static const websitecompany = _Paths.websitecompany;
-  static const setting = _Paths.setting;
-  static const menu = _Paths.menu;
-  static const profile = _Paths.profile;
+  static const WebsiteCompany = _Paths.WebsiteCompany;
+  static const Setting = _Paths.Setting;
+  static const Menu = _Paths.Menu;
+  static const Profile = _Paths.Profile;
   static const Content = _Paths.Content;
-  static const report = _Paths.report;
-  static const search = _Paths.search;
-
+  static const Report = _Paths.Report;
+  static const Search = _Paths.Search;
+  static const CHAT_PAGE = _Paths.CHAT_PAGE;
+  static const CONVERSATION_PAGE = _Paths.CONVERSATION_PAGE;
 }
 
 abstract class _Paths {
@@ -33,13 +34,14 @@ abstract class _Paths {
   static const FirstSplash = '/FirstSplash';
   static const SignUpInfluencer = '/SignUpInfluencer';
   static const SignUpCompany = '/SignUpCompany';
-  static const websitecompany = '/websitecompany';
-  static const setting = '/setting ';
-  static const menu = '/menu ';
-  static const profile = '/profile ';
-
-  static const appPage = '/appPage';
+  static const WebsiteCompany = '/WebsiteCompany';
+  static const Setting = '/Setting ';
+  static const Menu = '/Menu ';
+  static const Profile = '/Profile ';
+  static const AppPage = '/AppPage';
   static const Content = '/Content';
-  static const report = '/report';
-  static const search = '/search';
+  static const Report = '/Report';
+  static const Search = '/Search';
+  static const CHAT_PAGE = '/chat-page';
+  static const CONVERSATION_PAGE = '/conversation-page';
 }

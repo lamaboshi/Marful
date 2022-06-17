@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
 import '../../content_page/views/content_view.dart';
@@ -32,12 +33,17 @@ class HomeView extends GetView<HomeController> {
           actions: [
             IconButton(
                 onPressed: () {
-                  Get.rootDelegate.toNamed(Routes.search);
+                  Get.rootDelegate.toNamed(Routes.Search);
                 },
-                icon: const Icon(Icons.search))
+                icon: const Icon(Icons.search)),
+            IconButton(
+                onPressed: () {
+                  Get.rootDelegate.toNamed(Routes.CONVERSATION_PAGE);
+                },
+                icon: const Icon(Icons.message))
           ],
         ),
-    drawer: MenuPage(),
+        drawer: MenuPage(),
         body: TabBarView(children: [
           const HomeMainView(),
           const ContentView(),
@@ -54,7 +60,7 @@ class SS extends StatelessWidget {
     return Scaffold(
       body: IconButton(
           onPressed: () {
-            Get.rootDelegate.toNamed(Routes.report);
+            Get.rootDelegate.toNamed(Routes.Report);
           },
           icon: Icon(Icons.search)),
     );
