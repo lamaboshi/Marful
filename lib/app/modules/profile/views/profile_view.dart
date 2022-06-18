@@ -27,7 +27,9 @@ ProfilePage({Key?key}):super(key:key);
               Padding(
                        padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
                        child: IconButton(onPressed: (){
-                       Navigator.push(context, MaterialPageRoute(builder: (context) => WebsiteCompanyPage(),));
+                         Get.back();
+                        // Get.rootDelegate.offNamed(Routes.HOME);
+                    //   Navigator.push(context, MaterialPageRoute(builder: (context) => WebsiteCompanyPage(),));
                        }, 
                        icon:Icon(Icons.arrow_back_ios,size: 15,
                        color: Colors.black,) ),
@@ -111,14 +113,14 @@ ProfilePage({Key?key}):super(key:key);
                                Text('Followors ',style: TextStyle(fontSize: 18),),
                           ],),
                             ),
-                                    VerticalDivider(color: Colors.grey,thickness: 2,),
-                             Padding(
-                               padding: const EdgeInsets.all(8.0),
-                               child: Column(children: [
-                            Text('789   ',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
-                               Text('Following   ',style: TextStyle(fontSize: 18),),
-                          ],),
-                             ),           
+                          //           VerticalDivider(color: Colors.grey,thickness: 2,),
+                          //    Padding(
+                          //      padding: const EdgeInsets.all(8.0),
+                          //      child: Column(children: [
+                          //   Text('789   ',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                          //      Text('Following   ',style: TextStyle(fontSize: 18),),
+                          // ],),
+                          //    ),           
                       ],),
                     ),
                   ),
@@ -138,7 +140,9 @@ ProfilePage({Key?key}):super(key:key);
                 ),
                 Wrap(
                   children: [
-                  Container( width:width/5 ,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container( width:width/5 ,
              child:  Card(
               color: Color.fromARGB(random.nextInt(256), random.nextInt(256),
                random.nextInt(256), random.nextInt(256)),
@@ -150,15 +154,18 @@ ProfilePage({Key?key}):super(key:key);
               children: [
               Align(alignment: Alignment.center,
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text('comidi',style: TextStyle(fontSize: 17),),
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text('comidi',style: TextStyle(fontSize: 17),),
                 )),
                
-                     ],),
+                       ],),
           ),
                 ),
                ),
-                       Container( width:width/5 ,
+                  ),
+                       Padding(
+                         padding: const EdgeInsets.all(8.0),
+                         child: Container( width:width/5 ,
              child:  Card(
               color: Color.fromARGB(random.nextInt(256), random.nextInt(256),
                random.nextInt(256), random.nextInt(256)),
@@ -171,33 +178,37 @@ ProfilePage({Key?key}):super(key:key);
               Align(alignment: Alignment.center,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text('Mack up',style: TextStyle(fontSize: 17),),
+                  child: Text('Mack ',style: TextStyle(fontSize: 17),),
                 )),
                 
                      ],),
           ),
                 ),
-               ),          Container( width:width/5 ,
-             child:  Card(
-              color: Color.fromARGB(random.nextInt(256), random.nextInt(256),
-               random.nextInt(256), random.nextInt(256)),
-            elevation: 50, shape: RoundedRectangleBorder(
-             borderRadius: BorderRadius.circular(15),
-              ),
-          child: Center(
-            child: Row(crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-              Align(alignment: Alignment.center,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text('Fashoin',style: TextStyle(fontSize: 17),),
-                )),
+               ),
+                       ),   
+                // Container( width:width/5 ,
+          //    child:  Card(
+          //     color: Color.fromARGB(random.nextInt(256), random.nextInt(256),
+          //      random.nextInt(256), random.nextInt(256)),
+          //   elevation: 50, shape: RoundedRectangleBorder(
+          //    borderRadius: BorderRadius.circular(15),
+          //     ),
+          // child: Center(
+          //   child: Row(crossAxisAlignment: CrossAxisAlignment.start,
+          //     children: [
+          //     Align(alignment: Alignment.center,
+          //       child: Padding(
+          //         padding: const EdgeInsets.all(8.0),
+          //         child: Text('Fashoin',style: TextStyle(fontSize: 17),),
+          //       )),
                  
-                     ],),
-          ),
-                ),
-               ),
-                       Container( width:width/5 ,
+          //            ],),
+          // ),
+          //       ),
+          //      ),
+                       Padding(
+                         padding: const EdgeInsets.all(8.0),
+                         child: Container( width:width/5 ,
              child:  Card(
               color: Color.fromARGB(random.nextInt(256), random.nextInt(256),
                random.nextInt(256), random.nextInt(256)),
@@ -216,7 +227,10 @@ ProfilePage({Key?key}):super(key:key);
           ),
                 ),
                ),
-                         Container( width:width/5 ,
+                       ),
+                         Padding(
+                           padding: const EdgeInsets.all(8.0),
+                           child: Container( width:width/5 ,
              child:  Card(
               color: Color.fromARGB(random.nextInt(256), random.nextInt(256),
                random.nextInt(256), random.nextInt(256)),
@@ -235,6 +249,7 @@ ProfilePage({Key?key}):super(key:key);
           ),
                 ),
                ),
+                         ),
                 ],),
                 Padding(
                   padding: const EdgeInsets.all(8.0),

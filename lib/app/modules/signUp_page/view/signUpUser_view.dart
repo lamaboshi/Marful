@@ -1,8 +1,7 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signUp_page/controllers/signUp_controller.dart';
+import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -14,7 +13,7 @@ class SignUpUserPage extends GetView<SignUpController> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    
+
     return Scaffold(
       body: Stack(children: [
         Image(
@@ -31,7 +30,8 @@ class SignUpUserPage extends GetView<SignUpController> {
           child: Card(
             elevation: 15,
             clipBehavior: Clip.antiAlias,
-            shape: RoundedRectangleBorder(    borderRadius: BorderRadius.only(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
                 topRight: Radius.circular(30),
                 topLeft: Radius.circular(30),
               ),
@@ -52,12 +52,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                       height: 5,
                     ),
                     InkWell(
-                        onTap: () {
-
-                          
-                        },
-                        
-                         child: const Text('Add Your Photo..')),
+                        onTap: () {}, child: const Text('Add Your Photo..')),
                     const SizedBox(
                       height: 20,
                     ),
@@ -66,222 +61,55 @@ class SignUpUserPage extends GetView<SignUpController> {
                           const EdgeInsets.only(left: 20, top: 10, right: 20),
                       child: Column(
                         children: [
-                          ///Name
-                           TextField(
-                            keyboardType: TextInputType.name,
-                            cursorColor: AppColors.blue,
-                            cursorHeight: 20,
-                            autofocus: false,
-                            decoration: InputDecoration(
-                                labelStyle:const TextStyle(color: Colors.black),
-                                hintStyle: TextStyle(color: Colors.grey[350]),
-                                labelText: 'Name',
-                                hintText: "Haya Eid",
-                                prefixIcon: Icon(
-                                  Icons.person,
-                                  color: AppColors.orange,
-                                ),
-                                border: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: AppColors.orange, width: 1.5),
-                                ),
-                                contentPadding: EdgeInsets.symmetric(
-                                    vertical: 15, horizontal: 15),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: AppColors.orange, width: 1.5),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: AppColors.orange, width: 1.5),
-                                )),
+                          //Name
+                          TextFieldWidget(
+                            Type: TextInputType.name,
+                            Label: ' Name',
+                            Hint: "Haya Eid",
+                            PrefIcon: Icons.person,
                           ),
-                          ////////UserName
-                           TextField(
-                            keyboardType: TextInputType.name,
-                            cursorColor: AppColors.blue,
-                            cursorHeight: 20,
-                            autofocus: false,
-                            decoration: InputDecoration(
-                                labelStyle:const TextStyle(color: Colors.black),
-                                hintStyle: TextStyle(color: Colors.grey[350]),
-                                labelText: 'User Name',
-                                hintText: "haya",
-                                prefixIcon: Icon(
-                                  Icons.person,
-                                  color: AppColors.orange,
-                                ),
-                                border: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: AppColors.orange, width: 1.5),
-                                ),
-                                contentPadding: EdgeInsets.symmetric(
-                                    vertical: 15, horizontal: 15),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: AppColors.orange, width: 1.5),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: AppColors.orange, width: 1.5),
-                                )),
+                          //UserName
+                          TextFieldWidget(
+                            Type: TextInputType.name,
+                            Label: 'User Name',
+                            Hint: "Haya ",
+                            PrefIcon: Icons.person,
                           ),
-                          /////Phone
-                           TextField(
-                            keyboardType: TextInputType.number,
-                            // TextInputType.visiblePassword,
-                            cursorColor: AppColors.blue,
-                            cursorHeight: 20,
-                            autofocus: false,
-                            decoration: InputDecoration(
-                                labelStyle:const TextStyle(color: Colors.black),
-                                hintStyle: TextStyle(color: Colors.grey[350]),
-                                labelText: 'PhoneNumber',
-                                hintText: "099717424666",
-                                prefixIcon: Icon(
-                                  Icons.phone,
-                                  color: AppColors.orange,
-                                ),
-                                border: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: AppColors.orange, width: 1.5),
-                                ),
-                                contentPadding: EdgeInsets.symmetric(
-                                    vertical: 15, horizontal: 15),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: AppColors.orange, width: 1.5),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: AppColors.orange, width: 1.5),
-                                )),
+                          //Description
+                          TextFieldWidget(
+                            Type: TextInputType.number,
+                            Label: 'Age',
+                            Hint: "21 ",
+                            PrefIcon: Icons.description,
+                          ),
+                          //Phone
+                          TextFieldWidget(
+                            Type: TextInputType.number,
+                            Label: 'PhoneNumber',
+                            Hint: "099717424666 ",
+                            PrefIcon: Icons.phone,
+                          ),
+                          //address
+                          TextFieldWidget(
+                            Type: TextInputType.number,
+                            Label: 'location',
+                            Hint: "aleppo ",
+                            PrefIcon: Icons.location_on,
+                          ),
+                          //PayBal
+                          TextFieldWidget(
+                            Type: TextInputType.number,
+                            Label: 'PayBal',
+                            Hint: "hsd235dfgdf ",
+                            PrefIcon: Icons.paypal,
                           ),
 
-                          //age
-                           TextField(
-                            keyboardType: TextInputType.number,
-                            // TextInputType.visiblePassword,
-                            cursorColor: AppColors.blue,
-                            cursorHeight: 20,
-                            autofocus: false,
-                            decoration: InputDecoration(
-                                labelStyle:const TextStyle(color: Colors.black),
-                                hintStyle: TextStyle(color: Colors.grey[350]),
-                                labelText: 'Age',
-                                hintText: "21",
-                                prefixIcon: Icon(
-                                  Icons.assignment_turned_in,
-                                  color: AppColors.orange,
-                                ),
-                                border: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: AppColors.orange, width: 1.5),
-                                ),
-                                contentPadding: EdgeInsets.symmetric(
-                                    vertical: 15, horizontal: 15),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: AppColors.orange, width: 1.5),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: AppColors.orange, width: 1.5),
-                                )),
-                          ),
-                          ///////location
-                           TextField(
-                            keyboardType: TextInputType.number,
-                            // TextInputType.visiblePassword,
-                            cursorColor: AppColors.blue,
-                            cursorHeight: 20,
-                            autofocus: false,
-                            decoration: InputDecoration(
-                                labelStyle:const TextStyle(color: Colors.black),
-                                hintStyle: TextStyle(color: Colors.grey[350]),
-                                labelText: 'location',
-                                hintText: "aleppo",
-                                prefixIcon: const Icon(
-                                  Icons.location_on,
-                                  color: AppColors.orange,
-                                ),
-                                border: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: AppColors.orange, width: 1.5),
-                                ),
-                                contentPadding: EdgeInsets.symmetric(
-                                    vertical: 15, horizontal: 15),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: AppColors.orange, width: 1.5),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: AppColors.orange, width: 1.5),
-                                )),
-                          ),
-
-                          ///PayBal
-                           TextField(
-                            keyboardType: TextInputType.number,
-                            // TextInputType.visiblePassword,
-                            cursorColor: AppColors.blue,
-                            cursorHeight: 20,
-                            autofocus: false,
-                            decoration: InputDecoration(
-                                labelStyle:const TextStyle(color: Colors.black),
-                                hintStyle: TextStyle(color: Colors.grey[350]),
-                                labelText: 'PayBal',
-                                hintText: "hsd235dfgdf",
-                                prefixIcon: Icon(
-                                  Icons.paypal,
-                                  color: AppColors.orange,
-                                ),
-                                border: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: AppColors.orange, width: 1.5),
-                                ),
-                                contentPadding: EdgeInsets.symmetric(
-                                    vertical: 15, horizontal: 15),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: AppColors.orange, width: 1.5),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: AppColors.orange, width: 1.5),
-                                )),
-                          ),
-
-                          //////////Email
-                           TextField(
-                            keyboardType: TextInputType.emailAddress,
-                            cursorColor: AppColors.blue,
-                            cursorHeight: 20,
-                            autofocus: false,
-                            decoration: InputDecoration(
-                                labelStyle:const TextStyle(color: Colors.black),
-                                hintStyle: TextStyle(color: Colors.grey[350]),
-                                labelText: 'Email',
-                                hintText: "hy@gmail.com",
-                                prefixIcon: Icon(
-                                  Icons.email,
-                                  color: AppColors.orange,
-                                ),
-                                border: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: AppColors.orange, width: 1.5),
-                                ),
-                                contentPadding: EdgeInsets.symmetric(
-                                    vertical: 15, horizontal: 15),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: AppColors.orange, width: 1.5),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: AppColors.orange, width: 1.5),
-                                )),
+                          //Email
+                          TextFieldWidget(
+                            Type: TextInputType.emailAddress,
+                            Label: 'Email',
+                            Hint: "hy@gmail.com ",
+                            PrefIcon: Icons.email,
                           ),
                           ////////Passeword
                           Obx(() {
@@ -292,18 +120,18 @@ class SignUpUserPage extends GetView<SignUpController> {
                               cursorHeight: 20,
                               autofocus: false,
                               decoration: InputDecoration(
-                                labelStyle:const TextStyle(color: Colors.black),
-                                hintStyle: TextStyle(color: Colors.grey[350]),
+                                  labelStyle:
+                                      const TextStyle(color: Colors.black),
+                                  hintStyle: TextStyle(color: Colors.grey[350]),
                                   labelText: 'Passeword',
                                   hintText: "***",
                                   suffixIcon: IconButton(
                                     onPressed: () {
                                       controller.isShownUser.value =
                                           !controller.isShownUser.value;
-                                       
                                     },
                                     icon: Icon(
-                                      controller.isShownUser.value==true
+                                      controller.isShownUser.value == true
                                           ? Icons.remove_red_eye
                                           : Icons.disabled_visible,
                                       color: Colors.black,

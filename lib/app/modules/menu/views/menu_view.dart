@@ -1,107 +1,59 @@
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:marful/app/core/values/app_colors.dart';
+import 'package:get/get.dart';
+import 'package:marful/app/routes/app_pages.dart';
 
-import '../../profile/views/profile_view.dart';
+import '../../../core/values/my_flutter_app_icons.dart';
 
-class MenuPage extends StatefulWidget {
-  @override
-  State<MenuPage> createState() => _MenuPageState();
-}
-class _MenuPageState extends State<MenuPage> {
+class HomeMenuView extends StatelessWidget {
+  const HomeMenuView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          appBar: AppBar(title: Text('skdkckds')),
-      body: const Center(
-        child: Text('My Page!'), 
-    ),
-    ////menu
-     drawer: Drawer(
-        child: ListView(
-            padding: EdgeInsets.zero,
+      body: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Column(
           children: [
-                DrawerHeader(
-              decoration: BoxDecoration(
-                color: AppColors.blue,
-              ),
-              child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                Container(
-             height: 60.0,
-                    width: 60.0,
-                     decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                     image: DecorationImage(
-                        image: new AssetImage("assets/images/Castle.gif"),
-                           fit: BoxFit.cover
-                     ),
-                     )   ),
-           Padding(
-             padding: const EdgeInsets.all(8.0),
-             child: Text('Asia  Badnjki',style: TextStyle(fontSize: 16),),
-           ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text('+1 93426 4566',style: TextStyle(fontSize: 16),),
-                    ),
-              ]),
+            buildCard('Edit profil', Icons.edit),
+            buildCard('Setting', Icons.settings),
+            buildCard('Report', AppIcons.trending_up),
+            buildCard('About', Icons.abc_outlined),
+            buildCard('Log out', Icons.logout),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildCard(String title, IconData icon) {
+    return InkWell(
+      child: SizedBox(
+        height: 80,
+        child: Card(
+          elevation: 5,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: Row(
+              children: [
+                Icon(icon),
+                const SizedBox(
+                  width: 20,
+                ),
+                Text(
+                  title,
+                  style: const TextStyle(fontSize: 17),
+                ),
+              ],
             ),
-                ListTile(
-              title: Row(crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(2, 0, 8, 8),
-                    child: IconButton(onPressed: (){
-                      
-                    }, icon: Icon(Icons.person)),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('Profile',style: TextStyle(fontSize: 18),),
-                  )
-              ],),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>ProfilePage(),) );
-              },
-            ),
-                  ListTile(
-              title: Row(crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(2, 0, 8, 8),
-                    child: IconButton(onPressed: (){}, icon: Icon(Icons.settings)),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('Setting',style: TextStyle(fontSize: 18),),
-                  )
-              ],),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-                     ListTile(
-              title: Row(crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(2, 0, 8, 8),
-                    child: IconButton(onPressed: (){}, icon: Icon(Icons.edit)),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('EditProfile',style: TextStyle(fontSize: 18),),
-                  )
-              ],),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-          ]
-        )
-     )
-    
-    
-     );
-  }}
+          ),
+        ),
+      ),
+      onTap: () {
+        Get.rootDelegate.toNamed(Routes.report);
+      },
+    );
+  }
+}

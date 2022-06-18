@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/websit_company/data/model/Product.dart';
-
 import 'adapter/website_company_adapter.dart';
 
 class WebsiteCompanyRepository implements IWebsiteCompanyRepository {

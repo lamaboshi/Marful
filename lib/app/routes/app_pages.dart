@@ -51,7 +51,7 @@ class AppPages {
     GetPage(
       name: _Paths.HOME,
       page: () => HomeView(),
-      bindings: [HomeBinding(), HomeMainBinding()],
+      bindings: [HomeBinding(), HomeMainBinding(), MenuBinding(),ProfileBinding()],
     ),
     GetPage(
       name: _Paths.ConfirmPassword,
@@ -98,16 +98,11 @@ class AppPages {
       page: () => SignUpCompanyPage(),
       binding: SignUpBinding(),
     ),
-    GetPage(
-      name: _Paths.menu,
-      page: () => MenuPage(),
-      binding: MenuBinding(),
-    ),
-    GetPage(
-      name: _Paths.menu,
-      page: () => ProfilePage(),
-      binding: ProfileBinding(),
-    ),
+    // GetPage(
+    //   name: _Paths.menu,
+    //   page: () => ProfilePage(),
+    //   binding: ProfileBinding(),
+    // ),
     GetPage(
       name: _Paths.report,
       page: () => const ReportView(),

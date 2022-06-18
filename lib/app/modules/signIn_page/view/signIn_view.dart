@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signIn_page/controllers/signIn_controller.dart';
 
+import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
-import '../../password_page/views/password_page.dart';
 
 class SignInPage extends GetView<SignInController> {
   SignInPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // final controller = Get.find<SignInController>();
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Stack(children: [
@@ -41,7 +40,7 @@ class SignInPage extends GetView<SignInController> {
                   padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Column(
                     children: [
-                      //////////Sign In to your account
+                      //Sign In to your account
                       const Align(
                         alignment: Alignment.topLeft,
                         child: Text(
@@ -54,36 +53,38 @@ class SignInPage extends GetView<SignInController> {
                       const SizedBox(
                         height: 50,
                       ),
-                      //////////Email
-                      TextField(
-                        keyboardType: TextInputType.emailAddress,
-                        cursorColor: AppColors.blue,
-                        cursorHeight: 20,
-                        autofocus: false,
-                        decoration: InputDecoration(
-                            labelStyle: const TextStyle(color: Colors.black),
-                            hintStyle: TextStyle(color: Colors.grey[350]),
-                            labelText: 'Email',
-                            hintText: "hy@gmail.com",
-                            prefixIcon: Icon(
-                              Icons.email,
-                              color: AppColors.orange,
-                            ),
-                            border: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: AppColors.orange, width: 1.5),
-                            ),
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 15, horizontal: 15),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: AppColors.orange, width: 1.5),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: AppColors.orange, width: 1.5),
-                            )),
-                      ),
+                      //Email
+                    TextFieldWidget(Type: TextInputType.emailAddress,Label: 'Email',Hint:"hy@gmail.com",PrefIcon:Icons.email,),
+                      // TextField(
+                      //   keyboardType: TextInputType.emailAddress,
+                      //   cursorColor: AppColors.blue,
+                      //   cursorHeight: 20,
+                      //   autofocus: false,
+                      //   decoration: InputDecoration(
+                      //       labelStyle: const TextStyle(color: Colors.black),
+                      //       hintStyle: TextStyle(color: Colors.grey[350]),
+                      //       labelText: 'Email',
+                      //       hintText: "hy@gmail.com",
+                      //       prefixIcon: Icon(
+                      //         Icons.email,
+                      //         color: AppColors.orange,
+                      //       ),
+                      //       border: UnderlineInputBorder(
+                      //         borderSide: BorderSide(
+                      //             color: AppColors.orange, width: 1.5),
+                      //       ),
+                      //       contentPadding: EdgeInsets.symmetric(
+                      //           vertical: 15, horizontal: 15),
+                      //       enabledBorder: UnderlineInputBorder(
+                      //         borderSide: BorderSide(
+                      //             color: AppColors.orange, width: 1.5),
+                      //       ),
+                      //       focusedBorder: UnderlineInputBorder(
+                      //         borderSide: BorderSide(
+                      //             color: AppColors.orange, width: 1.5),
+                      //       )),
+                      // ),
+               
                       //////////passeword
                       Obx(() {
                         return TextField(
@@ -136,8 +137,8 @@ class SignInPage extends GetView<SignInController> {
                       Align(
                         alignment: Alignment.topRight,
                         child: InkWell(
-                          onTap: () async {
-                            await Get.to(PasswordPage());
+                          onTap: () {
+                            Get.rootDelegate.toNamed(Routes.Password);
                           },
                           child: const Text(
                             'Forgot Your Passeword?',
