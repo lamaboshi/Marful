@@ -64,7 +64,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.Password,
-      page: () => PasswordPage(),
+      page: () => PasswordPageView(),
       binding: PasswordBinding(),
     ),
     GetPage(
