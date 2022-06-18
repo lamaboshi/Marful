@@ -19,4 +19,19 @@ class PasswordRepository implements IPasswordRepository{
     }
     return list;
   }
+  
+  @override
+  Future<List<Infulonser>> updatedata(Infulonser i) async  {
+      var result = await _dio.put('https://localhost:7192/api/Infuloncer');
+      print(result);
+      var list = <Infulonser>[];
+      for (var item in result.data) {
+        list.assign(Infulonser.fromJson(item));
+        }
+        return list;
+  }
+  
+  
+  
+
 }

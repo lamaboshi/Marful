@@ -8,9 +8,12 @@ import '../data/password_repository.dart';
 
 class PasswordController extends GetxController {
   var allEmails=<Infulonser>[].obs;
+  var infuloncer =Infulonser(id: 0, name: '', phone: 'phone', email:' email', paypal: 'paypal', address: 'address', password: 'password', userName: 'userName', image: null, description: 'description');
   final passRepo= PasswordRepository();
   final entrvalue=''.obs;
+ final email=''.obs;
   final result=false.obs;
+  
   @override
   void onInit() {
     super.onInit();
@@ -18,14 +21,27 @@ class PasswordController extends GetxController {
   Result();
   }
     Future<void> Result() async {
-    if(allEmails.contains(entrvalue)){
+   Infulonser i=allEmails.firstWhere((element) => element.email==email);
+    if(i!=null){
       result.value=true;
     }
     
   }
+  
     Future<void> getAllEmails() async {
     var data = await passRepo.getdata();
     allEmails.assignAll(data);
   }
+   Future<void> Resetpassword(String email) async {
+  infuloncer.email=email;
+     passRepo. updatedata( infuloncer);
+ 
+    //   await _auth
+    //     .sendPasswordResetEmail(email: email)
+    //     .then((value) => _status = AuthStatus.successful)
+    //     .catchError((e) => _status = AuthExceptionHandler.handleAuthException(e));
+    // return _status;
+  }
+
 
 }

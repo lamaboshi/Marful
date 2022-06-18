@@ -5,4 +5,5 @@ import 'package:marful/app/modules/websit_company/data/model/companycontent.dart
 
 abstract class IPasswordRepository {
   Future<List<Infulonser>> getdata();
+   Future<List<Infulonser>> updatedata(Infulonser i);
 }
