@@ -1,41 +1,38 @@
 import 'dart:typed_data';
 
-class Infulonser {
+class UserModel {
   int? id;
   String? name;
   String? phone;
   String? email;
   String? paypal;
-  String? address;
+  int? age;
   String? password;
   String? userName;
   Uint8List? image;
-  String? description;
 
-  Infulonser({
+  UserModel({
     required this.id,
     required this.name,
     required this.phone,
     required this.email,
     required this.paypal,
-    required this.address,
+    required this.age,
     required this.password,
     required this.userName,
-    required this.image,
-    required this.description,
+    this.image,
   });
 
-  Infulonser.fromJson(Map<String, dynamic> json) {
+  UserModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     phone = json['phone'];
     email = json['email'];
     paypal = json['paypal'];
-    address = json['address'];
+    age = json['age'];
     password = json['password'];
     userName = json['userName'];
-    description = json['description'];
-    image = json['image'] == null ? null : json['image'];
+    image = json['image'];
   }
 
   Map<String, dynamic> toJson() {
@@ -45,10 +42,9 @@ class Infulonser {
     json['phone'] = phone;
     json['email'] = email;
     json['paypal'] = paypal;
-    json['address'] = address;
+    json['age'] = age;
     json['password'] = password;
     json['userName'] = userName;
-    json['description'] = description;
     json['image'] = image;
     return json;
   }
