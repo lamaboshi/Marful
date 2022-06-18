@@ -1,6 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signUp_page/controllers/signUp_controller.dart';
+import 'package:marful/app/modules/signUp_page/data/model/influencer.dart';
 import 'package:marful/app/routes/app_pages.dart';
 
 import '../../../core/component/textField.dart';
@@ -12,7 +14,16 @@ class SignUpInfluencer extends GetView<SignUpController> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    //  final controller = Get.find<SignInController>();
+    Influencer influncer = Influencer(
+        id: 0,
+        name: '',
+        userName: '',
+        email: '',
+        passeword: '',
+        phone: '',
+        paybal: '',
+        address: '',
+        description: '');
     return Scaffold(
       body: Stack(children: [
         Image(
@@ -61,42 +72,60 @@ class SignUpInfluencer extends GetView<SignUpController> {
                       child: Column(
                         children: [
                           //Name
-                          const TextFieldWidget(
+                          TextFieldWidget(
+                            onChanged: (value) {
+                              influncer.name = value;
+                            },
                             type: TextInputType.name,
                             label: ' Name',
                             hint: "Haya Eid",
                             prefIcon: Icons.person,
                           ),
                           //UserName
-                          const TextFieldWidget(
+                          TextFieldWidget(
+                            onChanged: (value) {
+                              influncer.userName = value;
+                            },
                             type: TextInputType.name,
                             label: 'User Name',
                             hint: "Haya ",
                             prefIcon: Icons.person,
                           ),
                           //Description
-                          const TextFieldWidget(
+                          TextFieldWidget(
+                            onChanged: (value) {
+                              influncer.description = value;
+                            },
                             type: TextInputType.name,
                             label: 'Description',
                             hint: "I have so many bfghfccgbfg ",
                             prefIcon: Icons.description,
                           ),
                           //Phone
-                          const TextFieldWidget(
+                          TextFieldWidget(
+                            onChanged: (value) {
+                              influncer.phone = value;
+                            },
                             type: TextInputType.number,
                             label: 'PhoneNumber',
                             hint: "099717424666 ",
                             prefIcon: Icons.phone,
                           ),
-                          const //address
+                          //address
                           TextFieldWidget(
-                            type: TextInputType.number,
+                            onChanged: (value) {
+                              influncer.address = value;
+                            },
+                            type: TextInputType.name,
                             label: 'location',
                             hint: "aleppo ",
                             prefIcon: Icons.location_on,
                           ),
                           //PayBal
-                          const TextFieldWidget(
+                          TextFieldWidget(
+                            onChanged: (value) {
+                              influncer.paybal = value;
+                            },
                             type: TextInputType.number,
                             label: 'PayBal',
                             hint: "hsd235dfgdf ",
@@ -104,7 +133,10 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           ),
 
                           //Email
-                          const TextFieldWidget(
+                          TextFieldWidget(
+                            onChanged: (value) {
+                              influncer.email = value;
+                            },
                             type: TextInputType.emailAddress,
                             label: 'Email',
                             hint: "hy@gmail.com ",
@@ -113,6 +145,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           ////////Passeword
                           Obx(() {
                             return TextField(
+                               onChanged: (value){influncer.passeword=value;},
                               obscureText: !controller.isShownInfluencer.value,
                               keyboardType: TextInputType.visiblePassword,
                               cursorColor: AppColors.blue,
@@ -165,7 +198,12 @@ class SignUpInfluencer extends GetView<SignUpController> {
                                     MaterialStateProperty.all(AppColors.blue),
                                 fixedSize: MaterialStateProperty.all(
                                     const Size.fromWidth(150))),
-                            onPressed: () {
+                            onPressed: () async {
+                              final _dio = Get.find<Dio>();
+                              influncer.toJson();
+
+                              await _dio.post('https://localhost:7192/api/Infulonser',
+                                  data: influncer);
                               Get.rootDelegate.offNamed(Routes.HOME);
                             },
                             child: const Text(

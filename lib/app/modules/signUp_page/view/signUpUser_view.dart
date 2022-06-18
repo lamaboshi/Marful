@@ -1,9 +1,11 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signUp_page/controllers/signUp_controller.dart';
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
+import '../data/model/user.dart';
 
 class SignUpUserPage extends GetView<SignUpController> {
   const SignUpUserPage({Key? key}) : super(key: key);
@@ -12,6 +14,16 @@ class SignUpUserPage extends GetView<SignUpController> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
 
+    User user = User(
+        userId: 1,
+        name: '',
+        userName: '',
+        email: '',
+        passeword: '',
+        phone: '',
+        age: '',
+        baybal: '',
+        location: '');
     return Scaffold(
       body: Stack(children: [
         Image(
@@ -28,7 +40,7 @@ class SignUpUserPage extends GetView<SignUpController> {
           child: Card(
             elevation: 15,
             clipBehavior: Clip.antiAlias,
-            shape:const RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(30),
                 topLeft: Radius.circular(30),
@@ -60,42 +72,61 @@ class SignUpUserPage extends GetView<SignUpController> {
                       child: Column(
                         children: [
                           //Name
-                          const TextFieldWidget(
+
+                          TextFieldWidget(
+                            onChanged: (value) {
+                              user.name = value;
+                            },
                             type: TextInputType.name,
                             label: ' Name',
                             hint: "Haya Eid",
                             prefIcon: Icons.person,
                           ),
                           //UserName
-                          const TextFieldWidget(
+                          TextFieldWidget(
+                            onChanged: (value) {
+                              user.userName = value;
+                            },
                             type: TextInputType.name,
                             label: 'User Name',
                             hint: "Haya ",
                             prefIcon: Icons.person,
                           ),
-                          //Description
-                          const TextFieldWidget(
+                          //Age
+                          TextFieldWidget(
+                            onChanged: (value) {
+                              user.age = value;
+                            },
                             type: TextInputType.number,
                             label: 'Age',
                             hint: "21 ",
                             prefIcon: Icons.description,
                           ),
                           //Phone
-                          const TextFieldWidget(
+                          TextFieldWidget(
+                            onChanged: (value) {
+                              user.phone = value;
+                            },
                             type: TextInputType.number,
                             label: 'PhoneNumber',
                             hint: "099717424666 ",
                             prefIcon: Icons.phone,
                           ),
                           //address
-                          const TextFieldWidget(
+                          TextFieldWidget(
+                            onChanged: (value) {
+                              user.location;
+                            },
                             type: TextInputType.number,
                             label: 'location',
                             hint: "aleppo ",
                             prefIcon: Icons.location_on,
                           ),
                           //PayBal
-                          const TextFieldWidget(
+                          TextFieldWidget(
+                            onChanged: (value) {
+                              user.baybal = value;
+                            },
                             type: TextInputType.number,
                             label: 'PayBal',
                             hint: "hsd235dfgdf ",
@@ -103,7 +134,10 @@ class SignUpUserPage extends GetView<SignUpController> {
                           ),
 
                           //Email
-                          const TextFieldWidget(
+                          TextFieldWidget(
+                            onChanged: (value) {
+                              user.email = value;
+                            },
                             type: TextInputType.emailAddress,
                             label: 'Email',
                             hint: "hy@gmail.com ",
@@ -112,6 +146,9 @@ class SignUpUserPage extends GetView<SignUpController> {
                           ////////Passeword
                           Obx(() {
                             return TextField(
+                              onChanged: (value) {
+                                user.passeword = value;
+                              },
                               obscureText: !controller.isShownUser.value,
                               keyboardType: TextInputType.visiblePassword,
                               cursorColor: AppColors.blue,
@@ -164,7 +201,12 @@ class SignUpUserPage extends GetView<SignUpController> {
                                     MaterialStateProperty.all(AppColors.blue),
                                 fixedSize: MaterialStateProperty.all(
                                     const Size.fromWidth(150))),
-                            onPressed: () {
+                            onPressed: () async {
+                              final _dio = Get.find<Dio>();
+                              user.toJson();
+
+                              await _dio.post('https://localhost:7192/api/User',
+                                  data: user);
                               Get.rootDelegate.offNamed(Routes.HOME);
                             },
                             child: const Text(
