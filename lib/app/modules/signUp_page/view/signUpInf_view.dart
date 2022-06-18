@@ -29,7 +29,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
           child: Card(
             elevation: 15,
             clipBehavior: Clip.antiAlias,
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(30),
                 topLeft: Radius.circular(30),
@@ -61,54 +61,54 @@ class SignUpInfluencer extends GetView<SignUpController> {
                       child: Column(
                         children: [
                           //Name
-                          TextFieldWidget(
-                            Type: TextInputType.name,
-                            Label: ' Name',
-                            Hint: "Haya Eid",
-                            PrefIcon: Icons.person,
+                          const TextFieldWidget(
+                            type: TextInputType.name,
+                            label: ' Name',
+                            hint: "Haya Eid",
+                            prefIcon: Icons.person,
                           ),
                           //UserName
-                          TextFieldWidget(
-                            Type: TextInputType.name,
-                            Label: 'User Name',
-                            Hint: "Haya ",
-                            PrefIcon: Icons.person,
+                          const TextFieldWidget(
+                            type: TextInputType.name,
+                            label: 'User Name',
+                            hint: "Haya ",
+                            prefIcon: Icons.person,
                           ),
                           //Description
-                          TextFieldWidget(
-                            Type: TextInputType.name,
-                            Label: 'Description',
-                            Hint: "I have so many bfghfccgbfg ",
-                            PrefIcon: Icons.description,
+                          const TextFieldWidget(
+                            type: TextInputType.name,
+                            label: 'Description',
+                            hint: "I have so many bfghfccgbfg ",
+                            prefIcon: Icons.description,
                           ),
                           //Phone
-                          TextFieldWidget(
-                            Type: TextInputType.number,
-                            Label: 'PhoneNumber',
-                            Hint: "099717424666 ",
-                            PrefIcon: Icons.phone,
+                          const TextFieldWidget(
+                            type: TextInputType.number,
+                            label: 'PhoneNumber',
+                            hint: "099717424666 ",
+                            prefIcon: Icons.phone,
                           ),
-                          //address
+                          const //address
                           TextFieldWidget(
-                            Type: TextInputType.number,
-                            Label: 'location',
-                            Hint: "aleppo ",
-                            PrefIcon: Icons.location_on,
+                            type: TextInputType.number,
+                            label: 'location',
+                            hint: "aleppo ",
+                            prefIcon: Icons.location_on,
                           ),
                           //PayBal
-                          TextFieldWidget(
-                            Type: TextInputType.number,
-                            Label: 'PayBal',
-                            Hint: "hsd235dfgdf ",
-                            PrefIcon: Icons.paypal,
+                          const TextFieldWidget(
+                            type: TextInputType.number,
+                            label: 'PayBal',
+                            hint: "hsd235dfgdf ",
+                            prefIcon: Icons.paypal,
                           ),
 
                           //Email
-                          TextFieldWidget(
-                            Type: TextInputType.emailAddress,
-                            Label: 'Email',
-                            Hint: "hy@gmail.com ",
-                            PrefIcon: Icons.email,
+                          const TextFieldWidget(
+                            type: TextInputType.emailAddress,
+                            label: 'Email',
+                            hint: "hy@gmail.com ",
+                            prefIcon: Icons.email,
                           ),
                           ////////Passeword
                           Obx(() {

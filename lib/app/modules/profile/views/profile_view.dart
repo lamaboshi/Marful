@@ -11,8 +11,6 @@ import '../controllers/profile_controller.dart';
 
 
 class ProfilePage extends GetView<ProfileController> {
-ProfilePage({Key?key}):super(key:key);
-// final conroller = Get.find<ProfileController>();
   @override
   Widget build(BuildContext context) {
     bool kind=false;
@@ -27,16 +25,15 @@ ProfilePage({Key?key}):super(key:key);
               Padding(
                        padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
                        child: IconButton(onPressed: (){
-                         Get.back();
-                        // Get.rootDelegate.offNamed(Routes.HOME);
-                    //   Navigator.push(context, MaterialPageRoute(builder: (context) => WebsiteCompanyPage(),));
+                       Navigator.push(context, 
+                       MaterialPageRoute(builder: (context) => WebsiteCompanyPage(),));
                        }, 
                        icon:Icon(Icons.arrow_back_ios,size: 15,
                        color: Colors.black,) ),
                      ),
                     Center(
                       child: Container(
-                   height: height/3,
+                   height: height/4,
                             width: width/3,
                              decoration: BoxDecoration(
                           shape: BoxShape.circle,
@@ -96,8 +93,9 @@ ProfilePage({Key?key}):super(key:key);
                   padding: const EdgeInsets.fromLTRB(8, 12, 8, 8),
                   child: IntrinsicHeight(
                     child: Center(
-                      child: Row(children: [
-                           SizedBox(width: width/4.3,),
+                      child: Row(crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                           SizedBox(width: width/3.4,),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(children: [
@@ -112,15 +110,7 @@ ProfilePage({Key?key}):super(key:key);
                               Text('6,200 ',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
                                Text('Followors ',style: TextStyle(fontSize: 18),),
                           ],),
-                            ),
-                          //           VerticalDivider(color: Colors.grey,thickness: 2,),
-                          //    Padding(
-                          //      padding: const EdgeInsets.all(8.0),
-                          //      child: Column(children: [
-                          //   Text('789   ',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
-                          //      Text('Following   ',style: TextStyle(fontSize: 18),),
-                          // ],),
-                          //    ),           
+                            ),          
                       ],),
                     ),
                   ),
@@ -140,116 +130,10 @@ ProfilePage({Key?key}):super(key:key);
                 ),
                 Wrap(
                   children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container( width:width/5 ,
-             child:  Card(
-              color: Color.fromARGB(random.nextInt(256), random.nextInt(256),
-               random.nextInt(256), random.nextInt(256)),
-            elevation: 50, shape: RoundedRectangleBorder(
-             borderRadius: BorderRadius.circular(15),
-              ),
-          child: Center(
-            child: Row(crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-              Align(alignment: Alignment.center,
-                child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('comidi',style: TextStyle(fontSize: 17),),
-                )),
-               
-                       ],),
-          ),
-                ),
-               ),
-                  ),
-                       Padding(
-                         padding: const EdgeInsets.all(8.0),
-                         child: Container( width:width/5 ,
-             child:  Card(
-              color: Color.fromARGB(random.nextInt(256), random.nextInt(256),
-               random.nextInt(256), random.nextInt(256)),
-            elevation: 50, shape: RoundedRectangleBorder(
-             borderRadius: BorderRadius.circular(15),
-              ),
-          child: Center(
-            child: Row(crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-              Align(alignment: Alignment.center,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text('Mack ',style: TextStyle(fontSize: 17),),
-                )),
-                
-                     ],),
-          ),
-                ),
-               ),
-                       ),   
-                // Container( width:width/5 ,
-          //    child:  Card(
-          //     color: Color.fromARGB(random.nextInt(256), random.nextInt(256),
-          //      random.nextInt(256), random.nextInt(256)),
-          //   elevation: 50, shape: RoundedRectangleBorder(
-          //    borderRadius: BorderRadius.circular(15),
-          //     ),
-          // child: Center(
-          //   child: Row(crossAxisAlignment: CrossAxisAlignment.start,
-          //     children: [
-          //     Align(alignment: Alignment.center,
-          //       child: Padding(
-          //         padding: const EdgeInsets.all(8.0),
-          //         child: Text('Fashoin',style: TextStyle(fontSize: 17),),
-          //       )),
-                 
-          //            ],),
-          // ),
-          //       ),
-          //      ),
-                       Padding(
-                         padding: const EdgeInsets.all(8.0),
-                         child: Container( width:width/5 ,
-             child:  Card(
-              color: Color.fromARGB(random.nextInt(256), random.nextInt(256),
-               random.nextInt(256), random.nextInt(256)),
-            elevation: 50, shape: RoundedRectangleBorder(
-             borderRadius: BorderRadius.circular(15),
-              ),
-          child: Center(
-            child: Row(crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-              Align(alignment: Alignment.center,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text('Beuaty',style: TextStyle(fontSize: 17),),
-                )),
-                     ],),
-          ),
-                ),
-               ),
-                       ),
-                         Padding(
-                           padding: const EdgeInsets.all(8.0),
-                           child: Container( width:width/5 ,
-             child:  Card(
-              color: Color.fromARGB(random.nextInt(256), random.nextInt(256),
-               random.nextInt(256), random.nextInt(256)),
-            elevation: 50, shape: RoundedRectangleBorder(
-             borderRadius: BorderRadius.circular(15),
-              ),
-          child: Center(
-            child: Row(crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-              Align(alignment: Alignment.center,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text('Beuaty',style: TextStyle(fontSize: 17),),
-                )),
-                     ],),
-          ),
-                ),
-               ),
-                         ),
+           card('comidi', width, height, random),
+           card('fashion', width, height, random),
+           card('sport', width, height, random),
+           card('akkk', width, height, random),
                 ],),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -259,22 +143,22 @@ ProfilePage({Key?key}):super(key:key);
                     Tooltip(message: 'Photo',
                       child: IconButton( icon:Icon(Icons.photo,size: 30,
                            color: Colors.black54), onPressed: (){
-                      kind=true;
+                      
                            },),
                     ) ,
                          SizedBox(width: width/4,),
                     Tooltip(message: 'Posts',
                               child: IconButton( icon:Icon(Icons.post_add,size: 30,
                          color: Colors.black54), onPressed: (){
-                            kind=false;
+                       
                          },),
                             ) ,
                   ],),
                 ),
              
-              //       Container(
-              //   child: Obx(
-              // () => conroller.kind.value
+              //     Obx(
+              // () =>  Container(
+              //   child:  controller.kind.value
               //     ? Wrap(
               //            children: [
               //         photo("assets/images/6.jpg",width,height), 
@@ -288,8 +172,15 @@ ProfilePage({Key?key}):super(key:key);
               //                     photo("assets/images/ghaith.jpg",width,height),    
               //       ],
               //     )
-                 // : Wrap()
-             //   ))
+              //    : Column(
+              //       children: [
+              //         buildpost(1),
+              //         buildpost(1),
+              //           buildpost(1),
+              //            buildpost(1),    
+              //       ],
+              //     )
+              //  )),
                   kind==true ?Wrap(
                     children: [
                       photo("assets/images/6.jpg",width,height), 
@@ -308,9 +199,6 @@ ProfilePage({Key?key}):super(key:key);
                       buildpost(1),
                         buildpost(1),
                          buildpost(1),   
-                      // posts(width, height, "assets/images/6.jpg", 'Hi  We will show product more in t'),
-                      //   posts(width, height, "assets/images/9.jpg", 'The New product with the cost ..... '),
-                      //    posts(width, height, "assets/images/11.jpg", 'This is the product i wish to be good '), 
                     ],
                   )
         ],),
@@ -319,18 +207,28 @@ ProfilePage({Key?key}):super(key:key);
      
     );
   }
-  Widget card(String name,  ){
-    return Container( 
- child:  Card(
-  elevation: 50, shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(15),
- ),
-   child: Column(children: [
-     IconButton(onPressed: (){}, icon: Icon(Icons.close,size: 7),),
-     Text(name)
-   ],),
-  ),
-    );
+  Widget card(String name, double width,double height,var random ){
+   return Container( width:width/5 ,
+             child:  Card(
+              color: Color.fromARGB(random.nextInt(256), random.nextInt(256),
+               random.nextInt(256), random.nextInt(256)),
+            elevation: 50, shape: RoundedRectangleBorder(
+             borderRadius: BorderRadius.circular(15),
+              ),
+          child: Center(
+            child: Wrap(
+              //crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+              Align(alignment: Alignment.center,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(name,style: TextStyle(fontSize: 17),),
+                )),
+               
+                     ],),
+          ),
+                ),
+               );
   }
   Widget photo(String url,double width,double height){
     return Padding(
@@ -342,8 +240,8 @@ ProfilePage({Key?key}):super(key:key);
       ),
     );
   }
-  Widget buildpost(int index) => Padding(
-        padding: const EdgeInsets.only(left: 10, right: 10,top: 5,bottom: 5),
+   Widget buildpost(int index) => Padding(
+        padding: const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
         child: Card(
           elevation: 2,
           child: Padding(
@@ -352,17 +250,17 @@ ProfilePage({Key?key}):super(key:key);
               children: [
                 Row(
                   children: [
-                    ClipRRect(//radius: 30,
-              borderRadius: BorderRadius.circular(40),
-              child: Image.asset(
-                "assets/images/8.jpg" ,
-                height: 60,
-                width: 60,
-                fit: BoxFit.cover,
-              ),
-            ),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(40),
+                      child: Image.asset(
+                       "assets/images/8.jpg" ,
+                        height: 60,
+                        width: 60,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                     const SizedBox(
-                      width: 15,
+                      width: 20,
                     ),
                     const Text(
                       'Asia Badnjki',
@@ -372,10 +270,19 @@ ProfilePage({Key?key}):super(key:key);
                   ],
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
+                ),
+                Image.asset(
+                  'assets/images/markting.gif',
+                  height: 220,
+                  width: 380,
+                  fit: BoxFit.cover,
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
                 const Text(
-                  'The New Page WIth New Product For You',
+                  'Helllo In New Markating For Shopping From Diffirent Country Hello With You',
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 15),
@@ -394,56 +301,5 @@ ProfilePage({Key?key}):super(key:key);
           ),
         ),
       );
-  // Widget posts(double width,double height,String url,String data){
-  //   return Container( width: width/1,height: height/2,
-  //   child: Card(
-  //     elevation: 12,
-  //     shadowColor: Colors.black54,
-  //     child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-  //     children: [
-  //       Row(children: [
-  //        Padding(
-  //         padding: const EdgeInsets.all(9.0),
-  //         child: Container(
-  //                    height:50,
-  //                             width: 50,
-  //                              decoration: BoxDecoration(
-  //                           shape: BoxShape.circle,
-  //                              image: DecorationImage(
-  //                                 image: new AssetImage("assets/images/8.jpg" ),
-  //                                    fit: BoxFit.cover
-  //                              ),
-  //                              )   ),  ),
-  //                               Padding(
-  //                                 padding: const EdgeInsets.all(8.0),
-  //                                 child: Text('Asia  Badnjki',style: 
-  //              TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),        
-  //                                   ),
-  //       ],),
-         
-  //        Container( width: width/1,height: height/5,
-  //         child: Image.asset(url), ),
-  //  Wrap(children: [
-  //             Padding(
-  //               padding: const EdgeInsets.all(8.0),
-  //               child: Text(data ,style: TextStyle(fontSize: 17),),
-  //             )
-  //           ],) ,
-  //         SizedBox(height: 20,),
-  //      Align(alignment: Alignment.bottomCenter,
-  //        child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  //         children: [
-  //           IconButton(onPressed: (){}, icon: Icon(Icons.app_registration,
-  //                        color: Colors.black,)),
-  //                             IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back_ios,size: 15,
-  //                        color: Colors.black,)),
-  //                             IconButton(onPressed: (){}, icon: Icon(Icons.add_comment_rounded,size: 15,
-  //                        color: Colors.black,)),
-  //         ],),
-  //      ),
-  //     ],
-  //     ),
-  //   ),
-  //   );
-  // }
+
   }

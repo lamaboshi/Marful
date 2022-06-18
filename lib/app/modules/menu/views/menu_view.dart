@@ -52,7 +52,7 @@ class HomeMenuView extends StatelessWidget {
         ),
       ),
       onTap: () {
-        Get.rootDelegate.toNamed(Routes.report);
+        Get.rootDelegate.toNamed(Routes.Report);
       },
     );
   }

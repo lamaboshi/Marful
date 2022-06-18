@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:marful/app/modules/signUp_page/controllers/signUp_controller.dart';
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
-import 'package:image_picker/image_picker.dart';
-
 import '../../../routes/app_pages.dart';
 
 class SignUpUserPage extends GetView<SignUpController> {
@@ -30,7 +28,7 @@ class SignUpUserPage extends GetView<SignUpController> {
           child: Card(
             elevation: 15,
             clipBehavior: Clip.antiAlias,
-            shape: RoundedRectangleBorder(
+            shape:const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(30),
                 topLeft: Radius.circular(30),
@@ -62,54 +60,54 @@ class SignUpUserPage extends GetView<SignUpController> {
                       child: Column(
                         children: [
                           //Name
-                          TextFieldWidget(
-                            Type: TextInputType.name,
-                            Label: ' Name',
-                            Hint: "Haya Eid",
-                            PrefIcon: Icons.person,
+                          const TextFieldWidget(
+                            type: TextInputType.name,
+                            label: ' Name',
+                            hint: "Haya Eid",
+                            prefIcon: Icons.person,
                           ),
                           //UserName
-                          TextFieldWidget(
-                            Type: TextInputType.name,
-                            Label: 'User Name',
-                            Hint: "Haya ",
-                            PrefIcon: Icons.person,
+                          const TextFieldWidget(
+                            type: TextInputType.name,
+                            label: 'User Name',
+                            hint: "Haya ",
+                            prefIcon: Icons.person,
                           ),
                           //Description
-                          TextFieldWidget(
-                            Type: TextInputType.number,
-                            Label: 'Age',
-                            Hint: "21 ",
-                            PrefIcon: Icons.description,
+                          const TextFieldWidget(
+                            type: TextInputType.number,
+                            label: 'Age',
+                            hint: "21 ",
+                            prefIcon: Icons.description,
                           ),
                           //Phone
-                          TextFieldWidget(
-                            Type: TextInputType.number,
-                            Label: 'PhoneNumber',
-                            Hint: "099717424666 ",
-                            PrefIcon: Icons.phone,
+                          const TextFieldWidget(
+                            type: TextInputType.number,
+                            label: 'PhoneNumber',
+                            hint: "099717424666 ",
+                            prefIcon: Icons.phone,
                           ),
                           //address
-                          TextFieldWidget(
-                            Type: TextInputType.number,
-                            Label: 'location',
-                            Hint: "aleppo ",
-                            PrefIcon: Icons.location_on,
+                          const TextFieldWidget(
+                            type: TextInputType.number,
+                            label: 'location',
+                            hint: "aleppo ",
+                            prefIcon: Icons.location_on,
                           ),
                           //PayBal
-                          TextFieldWidget(
-                            Type: TextInputType.number,
-                            Label: 'PayBal',
-                            Hint: "hsd235dfgdf ",
-                            PrefIcon: Icons.paypal,
+                          const TextFieldWidget(
+                            type: TextInputType.number,
+                            label: 'PayBal',
+                            hint: "hsd235dfgdf ",
+                            prefIcon: Icons.paypal,
                           ),
 
                           //Email
-                          TextFieldWidget(
-                            Type: TextInputType.emailAddress,
-                            Label: 'Email',
-                            Hint: "hy@gmail.com ",
-                            PrefIcon: Icons.email,
+                          const TextFieldWidget(
+                            type: TextInputType.emailAddress,
+                            label: 'Email',
+                            hint: "hy@gmail.com ",
+                            prefIcon: Icons.email,
                           ),
                           ////////Passeword
                           Obx(() {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signUp_page/controllers/signUp_controller.dart';
-
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
@@ -12,7 +11,6 @@ class SignUpCompanyPage extends GetView<SignUpController> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    //  final controller = Get.find<SignInController>();
     return Scaffold(
       body: Stack(children: [
         Image(
@@ -61,52 +59,52 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                       child: Column(
                         children: [
                           //Name
-                          TextFieldWidget(
-                            Type: TextInputType.name,
-                            Label: 'Company Name',
-                            Hint: "narin",
-                            PrefIcon: Icons.person,
+                          const TextFieldWidget(
+                            type: TextInputType.name,
+                            label: 'Company Name',
+                            hint: "narin",
+                            prefIcon: Icons.person,
                           ),
 
                           //Phone
-                          TextFieldWidget(
-                            Type: TextInputType.number,
-                            Label: 'PhoneNumber',
-                            Hint: "099717424666",
-                            PrefIcon: Icons.phone,
+                          const TextFieldWidget(
+                            type: TextInputType.number,
+                            label: 'PhoneNumber',
+                            hint: "099717424666",
+                            prefIcon: Icons.phone,
                           ),
 
                           //TelePhone
-                          TextFieldWidget(
-                            Type: TextInputType.number,
-                            Label: 'TelePhone',
-                            Hint: "5225356",
-                            PrefIcon: Icons.phone,
+                          const TextFieldWidget(
+                            type: TextInputType.number,
+                            label: 'TelePhone',
+                            hint: "5225356",
+                            prefIcon: Icons.phone,
                           ),
 
                           ///Description
 
-                          TextFieldWidget(
-                            Type: TextInputType.none,
-                            Label: 'Description',
-                            Hint: "i am gdfsdfj,gh",
-                            PrefIcon: Icons.description,
+                          const TextFieldWidget(
+                            type: TextInputType.none,
+                            label: 'Description',
+                            hint: "i am gdfsdfj,gh",
+                            prefIcon: Icons.description,
                           ),
 
                           //location
-                          TextFieldWidget(
-                            Type: TextInputType.number,
-                            Label: 'location',
-                            Hint: "aleppo",
-                            PrefIcon: Icons.location_on,
+                          const TextFieldWidget(
+                            type: TextInputType.number,
+                            label: 'location',
+                            hint: "aleppo",
+                            prefIcon: Icons.location_on,
                           ),
 
                           //Email
-                          TextFieldWidget(
-                            Type: TextInputType.emailAddress,
-                            Label: 'Email',
-                            Hint: "hy@gmail.com",
-                            PrefIcon: Icons.email,
+                          const TextFieldWidget(
+                            type: TextInputType.emailAddress,
+                            label: 'Email',
+                            hint: "hy@gmail.com",
+                            prefIcon: Icons.email,
                           ),
 
                           ////////Passeword

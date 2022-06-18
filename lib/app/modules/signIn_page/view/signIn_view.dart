@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signIn_page/controllers/signIn_controller.dart';
-
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
 
 class SignInPage extends GetView<SignInController> {
-  SignInPage({Key? key}) : super(key: key);
+  const SignInPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Stack(children: [
-        //////////image
+        //image
         Image(
           height: height * 1.03 / 3,
           fit: BoxFit.fill,
@@ -22,7 +21,7 @@ class SignInPage extends GetView<SignInController> {
             "assets/images/signin.png",
           ),
         ),
-        ///////card with signUp information
+        //card with signUp information
         Container(
           padding: EdgeInsets.only(top: height * 0.93 / 3),
           height: height * 4 / 3,
@@ -54,37 +53,12 @@ class SignInPage extends GetView<SignInController> {
                         height: 50,
                       ),
                       //Email
-                    TextFieldWidget(Type: TextInputType.emailAddress,Label: 'Email',Hint:"hy@gmail.com",PrefIcon:Icons.email,),
-                      // TextField(
-                      //   keyboardType: TextInputType.emailAddress,
-                      //   cursorColor: AppColors.blue,
-                      //   cursorHeight: 20,
-                      //   autofocus: false,
-                      //   decoration: InputDecoration(
-                      //       labelStyle: const TextStyle(color: Colors.black),
-                      //       hintStyle: TextStyle(color: Colors.grey[350]),
-                      //       labelText: 'Email',
-                      //       hintText: "hy@gmail.com",
-                      //       prefixIcon: Icon(
-                      //         Icons.email,
-                      //         color: AppColors.orange,
-                      //       ),
-                      //       border: UnderlineInputBorder(
-                      //         borderSide: BorderSide(
-                      //             color: AppColors.orange, width: 1.5),
-                      //       ),
-                      //       contentPadding: EdgeInsets.symmetric(
-                      //           vertical: 15, horizontal: 15),
-                      //       enabledBorder: UnderlineInputBorder(
-                      //         borderSide: BorderSide(
-                      //             color: AppColors.orange, width: 1.5),
-                      //       ),
-                      //       focusedBorder: UnderlineInputBorder(
-                      //         borderSide: BorderSide(
-                      //             color: AppColors.orange, width: 1.5),
-                      //       )),
-                      // ),
-               
+                      const TextFieldWidget(
+                        type: TextInputType.emailAddress,
+                        label: 'Email',
+                        hint: "hy@gmail.com",
+                        prefIcon: Icons.email,
+                      ),
                       //////////passeword
                       Obx(() {
                         return TextField(
@@ -133,7 +107,7 @@ class SignInPage extends GetView<SignInController> {
                       const SizedBox(
                         height: 20,
                       ),
-                      //////////Forgot Your Passeword?
+                      //Forgot Your Passeword?
                       Align(
                         alignment: Alignment.topRight,
                         child: InkWell(
@@ -149,7 +123,7 @@ class SignInPage extends GetView<SignInController> {
                       const SizedBox(
                         height: 100,
                       ),
-                      //////////btn Sign In
+                      //btn Sign In
                       ElevatedButton(
                         style: ButtonStyle(
                             backgroundColor:

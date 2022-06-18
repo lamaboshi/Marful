@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 
 import '../values/app_colors.dart';
@@ -5,43 +7,43 @@ import '../values/app_colors.dart';
 class TextFieldWidget extends StatelessWidget {
   const TextFieldWidget(
       {Key? key,
-      required this.Type,
-      required this.Label,
-      required this.Hint,
-      required this.PrefIcon,
-      this.PostIcon})
+      required this.type,
+      required this.label,
+      required this.hint,
+      required this.prefIcon,
+      this.postIcon})
       : super(key: key);
 
-  @override
-  final TextInputType Type;
-  final String Label;
-  final String Hint;
-  final IconData PrefIcon;
-  final IconData? PostIcon;
-
+  
+  final TextInputType type;
+  final String label;
+  final String hint;
+  final IconData prefIcon;
+  final IconData? postIcon;
+@override
   Widget build(BuildContext context) {
     return TextField(
-      keyboardType:Type,
+      keyboardType:type,
       cursorColor: AppColors.blue,
       cursorHeight: 20,
       autofocus: false,
       decoration: InputDecoration(
           labelStyle: const TextStyle(color: Colors.black),
           hintStyle: TextStyle(color: Colors.grey[350]),
-          labelText: Label,
-          hintText: Hint,
+          labelText: label,
+          hintText: hint,
           prefixIcon: Icon(
-            PrefIcon,
+            prefIcon,
             color: AppColors.orange,
           ),
-          border: UnderlineInputBorder(
+          border:const UnderlineInputBorder(
             borderSide: BorderSide(color: AppColors.orange, width: 1.5),
           ),
-          contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-          enabledBorder: UnderlineInputBorder(
+          contentPadding:const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+          enabledBorder:const UnderlineInputBorder(
             borderSide: BorderSide(color: AppColors.orange, width: 1.5),
           ),
-          focusedBorder: UnderlineInputBorder(
+          focusedBorder:const UnderlineInputBorder(
             borderSide: BorderSide(color: AppColors.orange, width: 1.5),
           )),
     );

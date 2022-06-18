@@ -37,16 +37,17 @@ class HomeView extends GetView<HomeController> {
           actions: [
             IconButton(
                 onPressed: () {
-                  Get.rootDelegate.toNamed(Routes.search);
-                },
-                icon: const Icon(AppIcons.chat)),
-            IconButton(
-                onPressed: () {
-                  Get.rootDelegate.toNamed(Routes.search);
+                  Get.rootDelegate.toNamed(Routes.Search);
                 },
                 icon: const Icon(Icons.search)),
+            IconButton(
+                onPressed: () {
+                  Get.rootDelegate.toNamed(Routes.CONVERSATION_PAGE);
+                },
+                icon: const Icon(Icons.message))
           ],
         ),
+       // drawer: MenuPage(),
         body: TabBarView(children: [
           const HomeMainView(),
           const HomePostView(),
@@ -66,7 +67,7 @@ class SS extends StatelessWidget {
     return Scaffold(
       body: IconButton(
           onPressed: () {
-            Get.rootDelegate.toNamed(Routes.report);
+            Get.rootDelegate.toNamed(Routes.Report);
           },
           icon: const Icon(Icons.search)),
     );

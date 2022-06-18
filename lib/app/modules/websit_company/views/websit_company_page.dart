@@ -77,10 +77,11 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
             Card(
               color: Colors.grey[100],
               elevation: 10,
-              child: Row(
+              child: Row( mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                    width: width / 4.0,
+                    width: width / 5.0,
                   ),
                   textbtn('Accessories',width,height),
                   textbtn('BodyCare',width,height),
@@ -111,30 +112,19 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                           .toList()),
             )),
             Padding(
-              padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+              padding: const EdgeInsets.fromLTRB(8, 8, 30, 30),
               child: Align(
                   alignment: Alignment.bottomRight,
                   child: IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.add_shopping_cart,
-                        color: Colors.pink,
-                        size: 50,
-                      ))),
-            ),
-            
-            IconButton(
-              icon: Icon(Icons.add),
-              onPressed: () {
-                QPanel(
+                      onPressed: () {
+                         QPanel(
                   color: Colors.grey[100],
                    width: width/3,
-                height: height/2,
+                height: height,
                         child: 
                         SingleChildScrollView(child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Column(children: [
-                              
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Center(child: Text('The Products ',style: TextStyle(fontSize: 20,
@@ -157,7 +147,7 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                          Get.toNamed(Routes.ConfirmPassword);
                         },
                         child: const Text(
-                          "Save",
+                          "Total",
                           style: TextStyle(
                             fontSize: 18,
                             color: Colors.white,
@@ -169,11 +159,17 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                         )),
                         alignment: Alignment.topRight)
                     .show();
-              },
+                      },
+                      icon: Icon(
+                        Icons.add_shopping_cart,
+                        color: AppColors.orange,
+                        size: 60,
+                      ))),
             ),
-            ElevatedButton(onPressed: (){
-           Navigator.push(context, MaterialPageRoute(builder: (context) => Confirmpassword (),));
-            }, child: Text('Go1'))  ,
+          //   ElevatedButton(onPressed: (){
+          // // Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage (),));
+          //  Get.to(ProfilePage ());
+          //   }, child: Text('Go1'))  ,
           ],
         ),
       ),
@@ -187,19 +183,19 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
           Get.dialog(Center(
             child: Container(
                 width: width / 3.8,
-                height: 440,
+                height: height/1.5,
                 child: Card(
                     child: SingleChildScrollView(
                         child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                          width: width,
-                          height: height / 4,
-                          child: Image.network(url)),
-                    ),
+                       Padding(
+                         padding: const EdgeInsets.all(8.0),
+                         child: SizedBox(
+                          width: width*width,
+                            height: height / 4,
+                            child: Image.network(url,fit: BoxFit.cover,)),
+                       ),
                     Center(
                         child: Text(
                       product.name!,
@@ -212,7 +208,7 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                           Text(
                             product.description!,
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 18,
                             ),
                           ),
                         ],
@@ -227,7 +223,7 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                             child: Text(
                               'The price of One is :',
                               style: TextStyle(
-                                  fontSize: 15, color: Colors.black87),
+                                  fontSize: 18, color: Colors.black87),
                             ),
                           ),
                           SizedBox(
@@ -235,7 +231,7 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                           ),
                           Text(
                             product.price.toString() + '\$',
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(fontSize: 18),
                           )
                         ],
                       ),
@@ -248,13 +244,13 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                             padding: const EdgeInsets.fromLTRB(8, 0, 8, 2),
                             child: Text(
                               'Total Count You Need ',
-                              style: TextStyle(fontSize: 15),
+                              style: TextStyle(fontSize: 16),
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(8, 0, 8, 2),
                             child: Container(
-                                width: width / 14,
+                                width: width / 17,
                                 child: Padding(
                                   padding:
                                       const EdgeInsets.fromLTRB(8, 0, 8, 2),
@@ -271,14 +267,14 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                                     onPressed: () {},
                                     icon: Icon(
                                       Icons.add,
-                                      color: Colors.pink,
+                                      color: AppColors.blue,
                                       size: 20,
                                     )),
                                 IconButton(
                                     onPressed: () {},
                                     icon: Icon(
                                       Icons.remove,
-                                      color: Colors.pink,
+                                      color: AppColors.blue,
                                       size: 20,
                                     )),
                               ],
@@ -295,8 +291,8 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                               onPressed: () {},
                               icon: Icon(
                                 Icons.add_shopping_cart,
-                                color: Colors.pink,
-                                size: 30,
+                                color:AppColors.orange,
+                                size: 35,
                               ))),
                     ),
                   ],
@@ -304,8 +300,8 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
           ));
         },
         child: Container(
-          width: width / 4.2,
-          height: height / 1.7,
+          width: width / 5.2,
+          height: height / 2,
           child: Card(
             elevation: 2,
             child: Column(
@@ -313,7 +309,7 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
               children: [
                 Container(
                   height: height / 2.4,
-                  width: width / 5,
+                  width: width / 0.2,
                   child: Image.network(url),
                 ),
                 Row(
@@ -326,7 +322,7 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                         style: TextStyle(fontSize: 16, color: Colors.black),
                       ),
                     ),
-                    SizedBox(width: width / 8),
+                    SizedBox(width: width / 14),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(product.price.toString(),
@@ -344,7 +340,7 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
   Widget panel( String name, int price, String url,double width,double height){
  return Padding(
    padding: const EdgeInsets.all(5.0),
-   child: Container( width: width/3,height: height,
+   child: Container( width: width/3,height: height/5,
     child: Card( shadowColor: Colors.grey,
      child: Column(crossAxisAlignment:  CrossAxisAlignment.start,
       children: [
@@ -385,57 +381,20 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
  );
   }
   Widget textbtn(String name,double width,double height) {
-    return Padding(
+    return  Padding(
       padding: const EdgeInsets.all(8.0),
-      child: TextButton(
-          style: TextButton.styleFrom(primary: Colors.pink),
-          onPressed: () async {
-            await QPanel(
-                alignment: Alignment.center,
-                width: width/10,
-               
-                height: height/4,
-                child: SingleChildScrollView(
-                  child: Column(crossAxisAlignment:  CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text('Items : ',style:  TextStyle(fontSize: 18),),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextButton(onPressed: (){}, child: Text(name)),
-                      ),
-
-                          Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextButton(onPressed: (){}, child: Text('hiuiokml')),
-                      ),
-                        Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextButton(onPressed: (){}, child: Text('hiuiokml')),
-                      ),
-                       Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextButton(onPressed: (){}, child: Text('hiuiokml')),
-                      ),
-                         Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextButton(onPressed: (){}, child: Text('hiuiokml')),
-                      ),
-                    Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextButton(onPressed: (){}, child: Text('hiuiokml')),
-                      ),
-                    ],
-                  ),
-                )).show();
-          },
-          child: Text(
-            name,
-            style: TextStyle(fontSize: 16),
-          )),
+      child: DropdownButton<String>(
+        hint: Text(name),
+        items: <String>['A', 'B', 'C', 'D'].map((String value) {
+         return DropdownMenuItem<String>(
+           value: value,
+           child: Text(value),
+         );
+  }).toList(),
+  onChanged: (_) {},
+),
     );
+    
   }
 
   }
