@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-
 import '../modules/chat_page/bindings/chat_page_binding.dart';
 import '../modules/chat_page/views/chat_page_view.dart';
 import '../modules/content_page/bindings/content_binding.dart';
@@ -33,7 +32,6 @@ import '../modules/signUp_page/view/signUpInf_view.dart';
 import '../modules/signUp_page/view/signUpUser_view.dart';
 import '../modules/websit_company/bindings/websit_company_binding.dart';
 import '../modules/websit_company/views/websit_company_page.dart';
-
 part 'app_routes.dart';
 
 class AppPages {

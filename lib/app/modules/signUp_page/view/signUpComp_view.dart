@@ -1,9 +1,11 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signUp_page/controllers/signUp_controller.dart';
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
+import '../data/model/company.dart';
 
 class SignUpCompanyPage extends GetView<SignUpController> {
   const SignUpCompanyPage({Key? key}) : super(key: key);
@@ -11,6 +13,15 @@ class SignUpCompanyPage extends GetView<SignUpController> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
+    Company company = Company(
+        id: 0,
+        name: '',
+        email: '',
+        passeword: '',
+        phone: '',
+        telePhone: '',
+        address: '',
+        description: '');
     return Scaffold(
       body: Stack(children: [
         Image(
@@ -59,7 +70,10 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                       child: Column(
                         children: [
                           //Name
-                          const TextFieldWidget(
+                          TextFieldWidget(
+                            onChanged: (value) {
+                              company.name = value;
+                            },
                             type: TextInputType.name,
                             label: 'Company Name',
                             hint: "narin",
@@ -67,7 +81,10 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                           ),
 
                           //Phone
-                          const TextFieldWidget(
+                          TextFieldWidget(
+                            onChanged: (value) {
+                              company.phone = value;
+                            },
                             type: TextInputType.number,
                             label: 'PhoneNumber',
                             hint: "099717424666",
@@ -75,7 +92,10 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                           ),
 
                           //TelePhone
-                          const TextFieldWidget(
+                          TextFieldWidget(
+                            onChanged: (value) {
+                              company.telePhone = value;
+                            },
                             type: TextInputType.number,
                             label: 'TelePhone',
                             hint: "5225356",
@@ -84,15 +104,21 @@ class SignUpCompanyPage extends GetView<SignUpController> {
 
                           ///Description
 
-                          const TextFieldWidget(
+                          TextFieldWidget(
+                            onChanged: (value) {
+                              company.description = value;
+                            },
                             type: TextInputType.none,
                             label: 'Description',
                             hint: "i am gdfsdfj,gh",
                             prefIcon: Icons.description,
                           ),
 
-                          //location
-                          const TextFieldWidget(
+                          //Address
+                          TextFieldWidget(
+                            onChanged: (value) {
+                              company.address = value;
+                            },
                             type: TextInputType.number,
                             label: 'location',
                             hint: "aleppo",
@@ -100,7 +126,10 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                           ),
 
                           //Email
-                          const TextFieldWidget(
+                          TextFieldWidget(
+                            onChanged: (value) {
+                              company.email = value;
+                            },
                             type: TextInputType.emailAddress,
                             label: 'Email',
                             hint: "hy@gmail.com",
@@ -110,6 +139,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                           ////////Passeword
                           Obx(() {
                             return TextField(
+                              onChanged: (value){company.passeword=value;},
                               obscureText: !controller.isShownCompany.value,
                               keyboardType: TextInputType.visiblePassword,
                               cursorColor: AppColors.blue,
@@ -162,7 +192,13 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                                     MaterialStateProperty.all(AppColors.blue),
                                 fixedSize: MaterialStateProperty.all(
                                     const Size.fromWidth(150))),
-                            onPressed: () {
+                            onPressed: () async {
+                              final _dio = Get.find<Dio>();
+                              company.toJson();
+
+                              await _dio.post(
+                                  'https://localhost:7192/api/Company',
+                                  data: company);
                               Get.rootDelegate.offNamed(Routes.HOME);
                             },
                             child: const Text(
