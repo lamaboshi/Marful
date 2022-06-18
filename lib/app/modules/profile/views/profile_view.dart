@@ -143,44 +143,41 @@ class ProfilePage extends GetView<ProfileController> {
                     Tooltip(message: 'Photo',
                       child: IconButton( icon:Icon(Icons.photo,size: 30,
                            color: Colors.black54), onPressed: (){
-                      
                            },),
                     ) ,
                          SizedBox(width: width/4,),
                     Tooltip(message: 'Posts',
                               child: IconButton( icon:Icon(Icons.post_add,size: 30,
                          color: Colors.black54), onPressed: (){
-                       
                          },),
                             ) ,
                   ],),
                 ),
-             
-              //     Obx(
-              // () =>  Container(
-              //   child:  controller.kind.value
-              //     ? Wrap(
-              //            children: [
-              //         photo("assets/images/6.jpg",width,height), 
-              //                photo("assets/images/1.jpg",width,height),
-              //               photo("assets/images/2.jpg",width,height),
-              //                 photo("assets/images/3.jpg",width,height),
-              //               photo("assets/images/h.jpg",width,height),   
-              //                   photo("assets/images/4.jpg",width,height),
-              //                   photo("assets/images/5.jpg",width,height),
-              //                    photo("assets/images/Castle.gif",width,height),
-              //                     photo("assets/images/ghaith.jpg",width,height),    
-              //       ],
-              //     )
-              //    : Column(
-              //       children: [
-              //         buildpost(1),
-              //         buildpost(1),
-              //           buildpost(1),
-              //            buildpost(1),    
-              //       ],
-              //     )
-              //  )),
+                  Obx(
+              () =>  Container(
+                child:  controller.kind.value
+                  ? Wrap(
+                         children: [
+                      photo("assets/images/6.jpg",width,height), 
+                             photo("assets/images/1.jpg",width,height),
+                            photo("assets/images/2.jpg",width,height),
+                              photo("assets/images/3.jpg",width,height),
+                            photo("assets/images/h.jpg",width,height),   
+                                photo("assets/images/4.jpg",width,height),
+                                photo("assets/images/5.jpg",width,height),
+                                 photo("assets/images/Castle.gif",width,height),
+                                  photo("assets/images/ghaith.jpg",width,height),    
+                    ],
+                  )
+                 : Column(
+                    children: [
+                      buildpost(1),
+                      buildpost(1),
+                        buildpost(1),
+                         buildpost(1),    
+                    ],
+                  )
+               )),
                   kind==true ?Wrap(
                     children: [
                       photo("assets/images/6.jpg",width,height), 
@@ -202,9 +199,7 @@ class ProfilePage extends GetView<ProfileController> {
                     ],
                   )
         ],),
-  
      ),
-     
     );
   }
   Widget card(String name, double width,double height,var random ){
@@ -217,14 +212,12 @@ class ProfilePage extends GetView<ProfileController> {
               ),
           child: Center(
             child: Wrap(
-              //crossAxisAlignment: CrossAxisAlignment.start,
               children: [
               Align(alignment: Alignment.center,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(name,style: TextStyle(fontSize: 17),),
                 )),
-               
                      ],),
           ),
                 ),

@@ -166,10 +166,6 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                         size: 60,
                       ))),
             ),
-          //   ElevatedButton(onPressed: (){
-          // // Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage (),));
-          //  Get.to(ProfilePage ());
-          //   }, child: Text('Go1'))  ,
           ],
         ),
       ),
@@ -192,7 +188,7 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                        Padding(
                          padding: const EdgeInsets.all(8.0),
                          child: SizedBox(
-                          width: width*width,
+                          width: width/2,
                             height: height / 4,
                             child: Image.network(url,fit: BoxFit.cover,)),
                        ),
