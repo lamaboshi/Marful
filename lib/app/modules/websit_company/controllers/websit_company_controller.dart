@@ -6,6 +6,7 @@ import '../data/websit_company_repository.dart';
 class WebsitcompanyController extends GetxController {
   final webRepo = WebsiteCompanyRepository();
   var allProducts = <Product>[].obs;
+  
   final loading = false.obs;
   @override
   void onInit() {
