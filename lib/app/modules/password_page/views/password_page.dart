@@ -30,7 +30,9 @@ class _PasswordPageState extends State<PasswordPage> {
                  child: Row(children: [
                    Padding(
                      padding: const EdgeInsets.all(8.0),
-                     child: IconButton(onPressed: (){}, 
+                     child: IconButton(onPressed: (){
+                       Get.rootDelegate.offNamed(Routes.HOME);
+                     }, 
                      icon:Icon(Icons.arrow_back,size: 30,
                     color: AppColors.blue), ), ),
                    
@@ -92,7 +94,8 @@ class _PasswordPageState extends State<PasswordPage> {
                             fixedSize: MaterialStateProperty.all(
                                 const Size.fromWidth(150))),
                         onPressed: () {
-                         Get.toNamed(Routes.ConfirmPassword);
+                          Get.rootDelegate.offNamed(Routes.ConfirmPassword);
+                        // Get.toNamed(Routes.ConfirmPassword);
                         },
                         child: const Text(
                           "Send",

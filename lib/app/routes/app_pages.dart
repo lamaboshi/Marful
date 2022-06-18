@@ -14,6 +14,7 @@ import '../modules/home/views/home_view.dart';
 import '../modules/homeMain_page/bindings/homeMain_binding.dart';
 import '../modules/intro_page/bindings/intro_binding.dart';
 import '../modules/intro_page/view/intro_view.dart';
+import '../modules/menu/bindings/menu_binding.dart';
 import '../modules/password_page/bindings/password_binding.dart';
 import '../modules/password_page/views/confirm_password.dart';
 import '../modules/password_page/views/password_page.dart';
@@ -62,6 +63,16 @@ class AppPages {
       binding: WebsitcompanyBinding(),
     ),
     GetPage(
+      name: _Paths.HOME,
+      page: () => HomeView(),
+      bindings: [
+        HomeBinding(),
+        HomeMainBinding(),
+        MenuBinding(),
+        ProfileBinding()
+      ],
+    ),
+    GetPage(
       name: _Paths.ConfirmPassword,
       page: () => const Confirmpassword(),
       binding: PasswordBinding(),
@@ -101,13 +112,13 @@ class AppPages {
       page: () => SignUpCompanyPage(),
       binding: SignUpBinding(),
     ),
+    // GetPage(
+    //   name: _Paths.menu,
+    //   page: () => ProfilePage(),
+    //   binding: ProfileBinding(),
+    // ),
     GetPage(
       name: _Paths.Profile,
-      page: () => ProfilePage(),
-      binding: ProfileBinding(),
-    ),
-    GetPage(
-      name: _Paths.Menu,
       page: () => ProfilePage(),
       binding: ProfileBinding(),
     ),
