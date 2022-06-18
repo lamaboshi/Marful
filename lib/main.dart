@@ -20,10 +20,11 @@ class MyApp extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(
         const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     Get.put(Dio());
-    Get.put(AuthService());
+
     QOverlay.navigationKey = Get.key;
     var storge = Get.put(StorageService());
     storge.init();
+    Get.put(AuthService());
     return GetMaterialApp.router(
       title: "MarFul",
       key: key,

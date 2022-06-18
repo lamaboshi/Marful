@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signIn_page/controllers/signIn_controller.dart';
+
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
-import '../../password_page/views/password_page.dart';
-import '../../../routes/app_pages.dart';
 
 class SignInPage extends GetView<SignInController> {
   const SignInPage({Key? key}) : super(key: key);
@@ -55,11 +54,14 @@ class SignInPage extends GetView<SignInController> {
                       ),
 
                       //Email
-                      const TextFieldWidget(
+                      TextFieldWidget(
                         type: TextInputType.emailAddress,
                         label: 'Email',
                         hint: "hy@gmail.com",
                         prefIcon: Icons.email,
+                        onChanged: (value) {
+                          controller.email.value = value;
+                        },
                       ),
                       //////////passeword
                       Obx(() {
@@ -117,7 +119,7 @@ class SignInPage extends GetView<SignInController> {
                         alignment: Alignment.topRight,
                         child: InkWell(
                           onTap: () {
-                            Get.rootDelegate.toNamed(Routes.Password);
+                            controller.logIn();
                           },
                           child: const Text(
                             'Forgot Your Passeword?',
