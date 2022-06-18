@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-
 import '../../sheard/auth_service.dart';
 import '../modules/chat_page/bindings/chat_page_binding.dart';
 import '../modules/chat_page/views/chat_page_view.dart';
@@ -34,7 +33,6 @@ import '../modules/signUp_page/view/signUpInf_view.dart';
 import '../modules/signUp_page/view/signUpUser_view.dart';
 import '../modules/websit_company/bindings/websit_company_binding.dart';
 import '../modules/websit_company/views/websit_company_page.dart';
-
 part 'app_routes.dart';
 
 class AppPages {
@@ -79,7 +77,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.Password,
-      page: () => PasswordPage(),
+      page: () => PasswordPageView(),
       binding: PasswordBinding(),
     ),
     GetPage(

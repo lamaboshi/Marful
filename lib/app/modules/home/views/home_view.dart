@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:marful/app/core/values/my_flutter_app_icons.dart';
 import 'package:marful/app/modules/homePost_page/views/homePost_view.dart';
 import 'package:marful/app/modules/menu/views/menu_view.dart';
+import 'package:marful/app/modules/password_page/views/password_page.dart';
 import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
 import '../../homeMain_page/views/homeMain_view.dart';
@@ -51,7 +52,8 @@ class HomeView extends GetView<HomeController> {
         body: TabBarView(children: [
           const HomeMainView(),
           const HomePostView(),
-          ProfilePage(),
+          PasswordPageView(),
+        //  ProfilePage(),
           const HomeMenuView(),
         ]),
       ),
