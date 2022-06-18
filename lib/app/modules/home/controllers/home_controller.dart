@@ -5,9 +5,7 @@ import 'package:image_picker/image_picker.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
-  // final ManagementHub hub;
-  // final HubListenController listener;
-  // HomeController({required this.hub}) : listener = HubListenController(hub);
+
   final count = 0.obs;
   final imagefile = File('').obs;
 

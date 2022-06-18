@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:marful/app/core/values/my_flutter_app_icons.dart';
 import '../../../core/values/app_colors.dart';
 
 class HomeMainView extends StatelessWidget {
@@ -43,20 +43,23 @@ class HomeMainView extends StatelessWidget {
   Widget buildCircul(int index) => Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          CircleAvatar(
-            backgroundColor: AppColors.blue,
-            radius: 42,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(50),
-              child: Image.asset(
-                'assets/images/h.jpg',
-                height: 80,
-                width: 80,
-                fit: BoxFit.cover,
+          InkWell(
+            child: CircleAvatar(
+              backgroundColor: AppColors.blue,
+              radius: 42,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(50),
+                child: Image.asset(
+                  'assets/images/h.jpg',
+                  height: 80,
+                  width: 80,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
+            onTap: () {},
           ),
-          Text('comidy'),
+          const Text('comidy'),
         ],
       );
   Widget buildpost(int index) => Padding(
@@ -108,10 +111,16 @@ class HomeMainView extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      IconButton(onPressed: () {}, icon: Icon(Icons.logo_dev)),
                       IconButton(
-                          onPressed: () {}, icon: Icon(Icons.link_off_rounded)),
-                      IconButton(onPressed: () {}, icon: Icon(Icons.logo_dev)),
+                        onPressed: () {},
+                        icon:const Icon(AppIcons.basket,color:Colors.black,),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon:const Icon(AppIcons.thumbs_down,color: Colors.black,),
+                      ),
+                      IconButton(
+                          onPressed: () {}, icon:  Icon(AppIcons.favorite,color: Colors.black,)),
                     ],
                   ),
                 ),

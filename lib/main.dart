@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:q_overlay/q_overlay.dart';
-
 import 'app/routes/app_pages.dart';
 
 void main() {

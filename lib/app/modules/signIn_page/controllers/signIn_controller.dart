@@ -1,8 +1,9 @@
 import 'package:get/get.dart';
 
 class SignInController extends GetxController {
-  final count = 0.obs;
   final isShown = false.obs;
+  final Email = ''.obs;
+  final Passeword = ''.obs;
   @override
   void onInit() {
     super.onInit();
@@ -15,5 +16,4 @@ class SignInController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
 }

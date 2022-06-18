@@ -2,9 +2,7 @@ import 'managment_hub.dart';
 
 class HubListenController {
   final ManagementHub hub;
-  HubListenController(this.hub) {
-    ;
-  }
+  HubListenController(this.hub);
 
   void run() {
     // for (var channel in ManagementHubResponses.values) {
@@ -12,6 +10,7 @@ class HubListenController {
     //     notifications.add(ResponseNotification(describeEnum(channel), args));
     //   });
     // }
+    hub.connection.on('Chats', (args) => print(args.toString()));
   }
 
   void end() {
