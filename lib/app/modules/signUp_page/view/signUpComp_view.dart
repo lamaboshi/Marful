@@ -14,7 +14,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     Company company = Company(
-        id: 0,
+      
         name: '',
         email: '',
         passeword: '',
@@ -192,14 +192,11 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                                     MaterialStateProperty.all(AppColors.blue),
                                 fixedSize: MaterialStateProperty.all(
                                     const Size.fromWidth(150))),
-                            onPressed: () async {
-                              final _dio = Get.find<Dio>();
-                              company.toJson();
-
-                              await _dio.post(
-                                  'https://localhost:7192/api/Company',
-                                  data: company);
-                              Get.rootDelegate.offNamed(Routes.HOME);
+                            onPressed: ()async {
+                             bool h=await controller.regierterComp(company);
+                             if(h){    Get.rootDelegate.offNamed(Routes.HOME);}
+                             else print('noooooo');
+                          
                             },
                             child: const Text(
                               "Sign Up",

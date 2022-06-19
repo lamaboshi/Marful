@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import '../../sheard/auth_service.dart';
 import '../modules/chat_page/bindings/chat_page_binding.dart';
 import '../modules/chat_page/views/chat_page_view.dart';
 import '../modules/content_page/bindings/content_binding.dart';
@@ -39,7 +40,16 @@ class AppPages {
   //static const iNITIAL = Routes.websitecompany;
 
   static final routes = [
-   
+    GetPage(
+      name: _Paths.SignIn,
+      page: () => SignInPage(),
+      binding: SignInBinding(),
+    ),
+    GetPage(
+        name: _Paths.HOME,
+        page: () => HomeView(),
+        bindings: [HomeBinding(), HomeMainBinding()],
+        middlewares: [AuthMiddlware()]),
     GetPage(
       name: _Paths.FirstSplash,
       page: () => FiestSplashView(),
@@ -53,7 +63,12 @@ class AppPages {
     GetPage(
       name: _Paths.HOME,
       page: () => HomeView(),
-      bindings: [HomeBinding(), HomeMainBinding(), MenuBinding(),ProfileBinding()],
+      bindings: [
+        HomeBinding(),
+        HomeMainBinding(),
+        MenuBinding(),
+        ProfileBinding()
+      ],
     ),
     GetPage(
       name: _Paths.ConfirmPassword,
@@ -79,11 +94,6 @@ class AppPages {
       name: _Paths.SignUpUserPage,
       page: () => SignUpUserPage(),
       binding: SignUpBinding(),
-    ),
-    GetPage(
-      name: _Paths.SignIn,
-      page: () => SignInPage(),
-      binding: SignInBinding(),
     ),
     GetPage(
       name: _Paths.Content,

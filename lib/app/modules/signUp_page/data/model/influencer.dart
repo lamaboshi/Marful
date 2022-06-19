@@ -8,7 +8,7 @@ String influencerToJson(List<Influencer> data) =>
 
 class Influencer {
   Influencer({
-    required this.id,
+
     required this.name,
     required this.userName,
     required this.email,
@@ -20,7 +20,7 @@ class Influencer {
     required this.description,
   });
 
-   int id;
+   
    String name;
    String userName;
    String email;
@@ -32,7 +32,7 @@ class Influencer {
    String description;
 
   factory Influencer.fromJson(Map<String, dynamic> json) => Influencer(
-        id: json["Id"],
+      
         name: json["Name"],
         userName: json["UserName"],
         email: json["Email"],
@@ -45,7 +45,7 @@ class Influencer {
       );
 
   Map<String, dynamic> toJson() => {
-        "Id": id,
+      
         "Name": name,
         "UserName": userName,
         "Email": email,

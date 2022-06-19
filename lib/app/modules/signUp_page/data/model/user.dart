@@ -8,7 +8,7 @@ String commentsToJson(List<User> data) =>
 
 class User {
   User({
-    required this.userId,
+  
     required this.name,
     required this.userName,
     required this.email,
@@ -20,7 +20,6 @@ class User {
     this.image,
   });
   String? image;
-  int userId;
   String name;
   String userName;
   String age;
@@ -31,7 +30,7 @@ class User {
   String baybal;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-        userId: json["userId"],
+      
         name: json["Name"],
         userName: json["UserName"],
         email: json["Email"],
@@ -44,7 +43,7 @@ class User {
       );
 
   Map<String, dynamic> toJson() => {
-        "userId": userId,
+       
         "Name": name,
         "UserName": userName,
         "Email": email,

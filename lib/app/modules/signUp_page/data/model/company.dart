@@ -8,7 +8,7 @@ String companyToJson(List<Company> data) =>
 
 class Company {
   Company({
-    required this.id,
+    
     required this.name,
     required this.email,
     required this.passeword,
@@ -19,7 +19,7 @@ class Company {
     required this.description,
   });
 
-   int id;
+
    String name;
    String email;
    String passeword;
@@ -30,7 +30,7 @@ class Company {
    String description;
 
   factory Company.fromJson(Map<String, dynamic> json) => Company(
-        id: json["Id"],
+     
         name: json["Name"],
         email: json["Email"],
         passeword: json["Passeword"],
@@ -42,7 +42,7 @@ class Company {
       );
 
   Map<String, dynamic> toJson() => {
-        "Id": id,
+        
         "Name": name,
         "Email": email,
         "Passeword": passeword,
