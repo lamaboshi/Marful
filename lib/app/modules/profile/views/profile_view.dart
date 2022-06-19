@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:marful/app/modules/websit_company/views/websit_company_page.dart';
 
 import '../../../core/values/app_colors.dart';
+import '../../../core/values/my_flutter_app_icons.dart';
 import '../../../routes/app_pages.dart';
 import '../controllers/profile_controller.dart';
 
@@ -128,13 +129,16 @@ class ProfilePage extends GetView<ProfileController> {
                   padding: const EdgeInsets.all(9.0),
                   child: Text(' Contents',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
                 ),
-                Wrap(
-                  children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Wrap(
+                    children: [
            card('comidi', width, height, random),
            card('fashion', width, height, random),
            card('sport', width, height, random),
            card('akkk', width, height, random),
-                ],),
+                  ],),
+                ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(crossAxisAlignment: CrossAxisAlignment.center,
@@ -266,7 +270,7 @@ class ProfilePage extends GetView<ProfileController> {
                   height: 20,
                 ),
                 Image.asset(
-                  'assets/images/markting.gif',
+                  'assets/images/6.jpg',
                   height: 220,
                   width: 380,
                   fit: BoxFit.cover,
@@ -282,10 +286,16 @@ class ProfilePage extends GetView<ProfileController> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      IconButton(onPressed: () {}, icon: Icon(Icons.logo_dev)),
+                    IconButton(
+                        onPressed: () {},
+                        icon:const Icon(AppIcons.basket,color:AppColors.orange,),
+                      ),
                       IconButton(
-                          onPressed: () {}, icon: Icon(Icons.link_off_rounded)),
-                      IconButton(onPressed: () {}, icon: Icon(Icons.logo_dev)),
+                        onPressed: () {},
+                        icon:const Icon(AppIcons.thumbs_down,color: Colors.black,),
+                      ),
+                      IconButton(
+                          onPressed: () {}, icon:  Icon(AppIcons.favorite,color: Colors.red,)),
                     ],
                   ),
                 ),

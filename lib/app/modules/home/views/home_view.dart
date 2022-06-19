@@ -52,8 +52,8 @@ class HomeView extends GetView<HomeController> {
         body: TabBarView(children: [
           const HomeMainView(),
           const HomePostView(),
-          PasswordPageView(),
-        //  ProfilePage(),
+       //   PasswordPageView(),
+          ProfilePage(),
           const HomeMenuView(),
         ]),
       ),
