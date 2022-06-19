@@ -15,7 +15,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     Influencer influncer = Influencer(
-        id: 0,
+   
         name: '',
         userName: '',
         email: '',
@@ -198,12 +198,8 @@ class SignUpInfluencer extends GetView<SignUpController> {
                                     MaterialStateProperty.all(AppColors.blue),
                                 fixedSize: MaterialStateProperty.all(
                                     const Size.fromWidth(150))),
-                            onPressed: () async {
-                              final _dio = Get.find<Dio>();
-                              influncer.toJson();
-
-                              await _dio.post('https://localhost:7192/api/Infulonser',
-                                  data: influncer);
+                            onPressed: () {
+                              controller.regierterInflu(influncer);
                               Get.rootDelegate.offNamed(Routes.HOME);
                             },
                             child: const Text(

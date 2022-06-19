@@ -15,7 +15,7 @@ class SignUpUserPage extends GetView<SignUpController> {
     final height = MediaQuery.of(context).size.height;
 
     User user = User(
-        userId: 1,
+  
         name: '',
         userName: '',
         email: '',
@@ -201,12 +201,8 @@ class SignUpUserPage extends GetView<SignUpController> {
                                     MaterialStateProperty.all(AppColors.blue),
                                 fixedSize: MaterialStateProperty.all(
                                     const Size.fromWidth(150))),
-                            onPressed: () async {
-                              final _dio = Get.find<Dio>();
-                              user.toJson();
-
-                              await _dio.post('https://localhost:7192/api/User',
-                                  data: user);
+                            onPressed: () {
+                              controller.regierterUser(user);
                               Get.rootDelegate.offNamed(Routes.HOME);
                             },
                             child: const Text(

@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
     QOverlay.navigationKey = Get.key;
     return GetMaterialApp.router(
       title: "MarFul",
+      
       key: key,
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.cupertino,
