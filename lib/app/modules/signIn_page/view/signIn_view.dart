@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signIn_page/controllers/signIn_controller.dart';
+
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
-import '../../../routes/app_pages.dart';
 
 class SignInPage extends GetView<SignInController> {
   const SignInPage({Key? key}) : super(key: key);
@@ -52,12 +52,16 @@ class SignInPage extends GetView<SignInController> {
                       const SizedBox(
                         height: 50,
                       ),
+
                       //Email
-                      const TextFieldWidget(
+                      TextFieldWidget(
                         type: TextInputType.emailAddress,
                         label: 'Email',
                         hint: "hy@gmail.com",
                         prefIcon: Icons.email,
+                        onChanged: (value) {
+                          controller.email.value = value;
+                        },
                       ),
                       //////////passeword
                       Obx(() {
@@ -67,6 +71,9 @@ class SignInPage extends GetView<SignInController> {
                           cursorColor: AppColors.blue,
                           cursorHeight: 20,
                           autofocus: false,
+                          onChanged: (value) {
+                            controller.password.value = value;
+                          },
                           decoration: InputDecoration(
                               labelStyle: const TextStyle(color: Colors.black),
                               hintStyle: TextStyle(color: Colors.grey[350]),
@@ -112,7 +119,7 @@ class SignInPage extends GetView<SignInController> {
                         alignment: Alignment.topRight,
                         child: InkWell(
                           onTap: () {
-                            Get.rootDelegate.toNamed(Routes.Password);
+                            controller.logIn();
                           },
                           child: const Text(
                             'Forgot Your Passeword?',
@@ -131,7 +138,7 @@ class SignInPage extends GetView<SignInController> {
                             fixedSize: MaterialStateProperty.all(
                                 const Size.fromWidth(150))),
                         onPressed: () {
-                          Get.rootDelegate.offNamed(Routes.HOME);
+                          controller.logIn();
                         },
                         child: const Text(
                           "Sign In",

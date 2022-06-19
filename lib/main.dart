@@ -2,7 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:marful/sheard/auth_service.dart';
 import 'package:q_overlay/q_overlay.dart';
+
+import 'api/storge/storge_service.dart';
 import 'app/routes/app_pages.dart';
 
 void main() {
@@ -14,10 +17,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     SystemChrome.setSystemUIOverlayStyle(
+    SystemChrome.setSystemUIOverlayStyle(
         const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     Get.put(Dio());
+
     QOverlay.navigationKey = Get.key;
+    var storge = Get.put(StorageService());
+    storge.init();
+    Get.put(AuthService());
     return GetMaterialApp.router(
       title: "MarFul",
       
