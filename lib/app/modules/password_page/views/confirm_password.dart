@@ -1,14 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:q_overlay/q_overlay.dart';
 
 import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
+import '../controllers/password_controller.dart';
 
-class Confirmpassword extends StatelessWidget {
+class Confirmpassword  extends  GetView<PasswordController> {
   const Confirmpassword({super.key});
   @override
   Widget build(BuildContext context) {
+    String first='';
+    String comf='';
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -21,7 +25,8 @@ class Confirmpassword extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: IconButton(
                     onPressed: () {
-                      Get.toNamed(Routes.Password);
+                    
+             Get.rootDelegate.offNamed(Routes.Password);
                     },
                     icon: Icon(Icons.arrow_back,
                         size: 30, color: AppColors.blue)),
@@ -51,7 +56,10 @@ class Confirmpassword extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          const TextField(
+           TextField(
+           onChanged: (newText){
+                    first =newText;
+                        },
             keyboardType: TextInputType.emailAddress,
             cursorColor: AppColors.blue,
             cursorHeight: 20,
@@ -79,7 +87,10 @@ class Confirmpassword extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          const TextField(
+          TextField(
+            onChanged: (newText){
+                       comf =newText;
+                        },
             keyboardType: TextInputType.emailAddress,
             cursorColor: AppColors.blue,
             cursorHeight: 20,
@@ -113,7 +124,14 @@ class Confirmpassword extends StatelessWidget {
                 fixedSize:
                     MaterialStateProperty.all(const Size.fromWidth(150))),
             onPressed: () {
-              Get.toNamed(Routes.WebsiteCompany);
+              Get.rootDelegate.offNamed(Routes.WebsiteCompany);
+            // if(first!=comf){
+            //   QPanel(alignment: Alignment.bottomCenter,width: 40,height: 40,
+            //     child: Container(child: Text('Comfirm from value'),)).show();
+            //  }else{
+            //   controller.email.value=first;
+            //  }
+            //  Get.toNamed(Routes.WebsiteCompany);
             },
             child: const Text(
               "SUBMIT",

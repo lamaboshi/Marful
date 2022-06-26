@@ -87,7 +87,7 @@ class PasswordPageView  extends  GetView<PasswordController> {
                               fixedSize: MaterialStateProperty.all(
                                   const Size.fromWidth(150))),
                           onPressed: () {
-                       if(controller.result.value==true)
+                    //   if(controller.result.value==true)
                            Get.rootDelegate.offNamed(Routes.ConfirmPassword);
                           },
                           child: const Text(
