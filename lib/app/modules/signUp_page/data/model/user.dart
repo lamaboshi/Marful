@@ -22,7 +22,7 @@ class User {
   String? image;
   String name;
   String userName;
-  String age;
+  int age;
   String phone;
   String email;
   String passeword;

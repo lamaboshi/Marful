@@ -108,7 +108,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                             onChanged: (value) {
                               company.description = value;
                             },
-                            type: TextInputType.none,
+                            type: TextInputType.name,
                             label: 'Description',
                             hint: "i am gdfsdfj,gh",
                             prefIcon: Icons.description,
