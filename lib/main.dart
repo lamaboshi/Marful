@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
     Get.put(AuthService());
     return GetMaterialApp.router(
       title: "MarFul",
-      
+
       key: key,
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.cupertino,

@@ -8,14 +8,16 @@ class HomeMainView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
             child: SizedBox(
+              width: width,
               height: height * 1 / 6,
               child: ListView.separated(
-                itemCount: 6,
+                itemCount: 100,
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
                 separatorBuilder: (BuildContext context, int index) {
