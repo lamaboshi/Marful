@@ -4,6 +4,7 @@ import 'package:marful/app/modules/signIn_page/controllers/signIn_controller.dar
 
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
+import '../../../routes/app_pages.dart';
 
 class SignInPage extends GetView<SignInController> {
   const SignInPage({Key? key}) : super(key: key);
@@ -86,8 +87,8 @@ class SignInPage extends GetView<SignInController> {
                                 },
                                 icon: Icon(
                                   controller.isShown.value
-                                      ? Icons.remove_red_eye
-                                      : Icons.shower,
+                                      ? Icons.password
+                                      : Icons.remove_red_eye,
                                   color: Colors.black,
                                 ),
                               ),
@@ -131,22 +132,31 @@ class SignInPage extends GetView<SignInController> {
                         height: 100,
                       ),
                       //btn Sign In
-                      ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(AppColors.blue),
-                            fixedSize: MaterialStateProperty.all(
-                                const Size.fromWidth(150))),
-                        onPressed: () {
-                          controller.logIn();
-                        },
-                        child: const Text(
-                          "Sign In",
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.white,
+                      Column(
+                        children: [
+                          ElevatedButton(
+                            style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all(AppColors.blue),
+                                fixedSize: MaterialStateProperty.all(
+                                    const Size.fromWidth(150))),
+                            onPressed: () {
+                              controller.logIn();
+                            },
+                            child: const Text(
+                              "Sign In",
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                              ),
+                            ),
                           ),
-                        ),
+                          TextButton(
+                              onPressed: () {
+                                Get.rootDelegate.toNamed(Routes.Intro);
+                              },
+                              child: Text('Create Your Account?'))
+                        ],
                       ),
                     ],
                   ),
