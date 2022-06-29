@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 import '../../sheard/auth_service.dart';
 import '../modules/chat_page/bindings/chat_page_binding.dart';
 import '../modules/chat_page/views/chat_page_view.dart';
@@ -33,23 +34,27 @@ import '../modules/signUp_page/view/signUpInf_view.dart';
 import '../modules/signUp_page/view/signUpUser_view.dart';
 import '../modules/websit_company/bindings/websit_company_binding.dart';
 import '../modules/websit_company/views/websit_company_page.dart';
+
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
   //static const iNITIAL = Routes.websitecompany;
 
-  static final routes = [
+  static final routes = [   GetPage(
+        name: _Paths.HOME,
+        page: () => HomeView(),
+        bindings: [HomeBinding(), HomeMainBinding()],
+        middlewares: [AuthMiddlware()]),
     GetPage(
       name: _Paths.SignIn,
       page: () => SignInPage(),
       binding: SignInBinding(),
     ),
-    GetPage(
-        name: _Paths.HOME,
-        page: () => HomeView(),
-        bindings: [HomeBinding(), HomeMainBinding()],
-        middlewares: [AuthMiddlware()]),
+<<<<<<< HEAD
+ 
+=======
+>>>>>>> b4df03e8c33bf15730b8d5d7a67294c2fef607c3
     GetPage(
       name: _Paths.FirstSplash,
       page: () => FiestSplashView(),
@@ -60,16 +65,14 @@ class AppPages {
       page: () => WebsiteCompanyPage(),
       binding: WebsitcompanyBinding(),
     ),
-    GetPage(
-      name: _Paths.HOME,
-      page: () => HomeView(),
-      bindings: [
-        HomeBinding(),
-        HomeMainBinding(),
-        MenuBinding(),
-        ProfileBinding()
-      ],
-    ),
+    GetPage(name: _Paths.HOME, page: () => HomeView(), bindings: [
+      HomeBinding(),
+      HomeMainBinding(),
+      MenuBinding(),
+      ProfileBinding()
+    ], middlewares: [
+      AuthMiddlware()
+    ]),
     GetPage(
       name: _Paths.ConfirmPassword,
       page: () => const Confirmpassword(),

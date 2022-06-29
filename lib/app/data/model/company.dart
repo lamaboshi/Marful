@@ -12,15 +12,15 @@ class Company {
   String? description;
 
   Company({
-    required this.id,
-    required this.name,
-    required this.phone,
-    required this.email,
-    required this.address,
-    required this.password,
-    required this.telePhone,
-    required this.image,
-    required this.description,
+    this.id,
+    this.name,
+    this.phone,
+    this.email,
+    this.address,
+    this.password,
+    this.telePhone,
+    this.image,
+    this.description,
   });
 
   Company.fromJson(Map<String, dynamic> json) {

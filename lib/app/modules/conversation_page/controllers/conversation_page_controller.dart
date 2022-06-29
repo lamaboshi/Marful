@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:marful/sheard/auth_service.dart';
 import 'package:signalr_core/signalr_core.dart';
 
 import '../../../../api/socket/hub_listen.dart';
@@ -10,7 +11,7 @@ class ConversationPageController extends GetxController {
   late HubListenController listener;
   final allConversations = <ConversationModel>[].obs;
   final loading = false.obs;
-
+  final auth = Get.find<AuthService>();
   Future<void> conactionhub() async {
     final hubConnection = HubConnectionBuilder()
         .withUrl(
@@ -34,7 +35,7 @@ class ConversationPageController extends GetxController {
     hubConnection.onclose((error) {
       print("Connection Closed $error");
     });
-    hub = ManagementHub(connection: hubConnection);
+    hub = Get.put<ManagementHub>(ManagementHub(connection: hubConnection));
     listener = HubListenController(hub);
     getAllConversations();
   }

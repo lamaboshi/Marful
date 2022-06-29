@@ -15,13 +15,12 @@ class SignUpUserPage extends GetView<SignUpController> {
     final height = MediaQuery.of(context).size.height;
 
     User user = User(
-  
         name: '',
         userName: '',
         email: '',
         passeword: '',
         phone: '',
-        age: '',
+        age: 2,
         baybal: '',
         location: '');
     return Scaffold(
@@ -95,7 +94,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                           //Age
                           TextFieldWidget(
                             onChanged: (value) {
-                              user.age = value;
+                              //    user.age = value;
                             },
                             type: TextInputType.number,
                             label: 'Age',

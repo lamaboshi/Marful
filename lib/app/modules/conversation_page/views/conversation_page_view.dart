@@ -30,7 +30,8 @@ class ConversationPageView extends GetView<ConversationPageController> {
                         padding: const EdgeInsets.all(8.0),
                         child: InkWell(
                             onTap: () {
-                              Get.rootDelegate.toNamed(Routes.CHAT_PAGE);
+                              Get.rootDelegate.toNamed(Routes.CHAT_PAGE,
+                                  arguments: element.id);
                             },
                             child: SizedBox(
                                 height: 250,
@@ -71,13 +72,21 @@ class ConversationPageView extends GetView<ConversationPageController> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'some Text',
+                                            controller.auth.personType() ==
+                                                    'infulonser'
+                                                ? element.company!.name!
+                                                : controller.auth
+                                                            .personType() ==
+                                                        'comapny'
+                                                    ? element
+                                                        .infulonser!.userName!
+                                                    : '',
                                             style: const TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 18),
                                           ),
                                           Text(
-                                            ' another some Text',
+                                            element.start!,
                                             style: const TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 14),
