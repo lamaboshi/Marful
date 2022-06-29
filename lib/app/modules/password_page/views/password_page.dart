@@ -22,7 +22,7 @@ class PasswordPageView  extends  GetView<PasswordController> {
                      Padding(
                        padding: const EdgeInsets.all(8.0),
                        child: IconButton(onPressed: (){
-                         Get.rootDelegate.offNamed(Routes.HOME);
+                         Get.rootDelegate.offNamed(Routes.SignIn);
                        }, 
                        icon:Icon(Icons.arrow_back,size: 30,
                       color: AppColors.blue), ), ),

@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marful/app/modules/home/views/home_view.dart';
 import 'package:marful/app/modules/websit_company/views/websit_company_page.dart';
 
 import '../../../core/values/app_colors.dart';
@@ -27,7 +28,7 @@ class ProfilePage extends GetView<ProfileController> {
                        padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
                        child: IconButton(onPressed: (){
                        Navigator.push(context, 
-                       MaterialPageRoute(builder: (context) => WebsiteCompanyPage(),));
+                       MaterialPageRoute(builder: (context) =>HomeView(),));
                        }, 
                        icon:Icon(Icons.arrow_back_ios,size: 15,
                        color: Colors.black,) ),
@@ -62,6 +63,7 @@ class ProfilePage extends GetView<ProfileController> {
                               fixedSize: MaterialStateProperty.all(
                                   const Size.fromWidth(150))),
                           onPressed: () {
+                           Get.rootDelegate.offNamed(Routes.WebsiteCompany);
                           },
                           child: const Text(
                             "Follow",
@@ -157,31 +159,32 @@ class ProfilePage extends GetView<ProfileController> {
                             ) ,
                   ],),
                 ),
-                  Obx(
-              () =>  Container(
-                child:  controller.kind.value
-                  ? Wrap(
-                         children: [
-                      photo("assets/images/6.jpg",width,height), 
-                             photo("assets/images/1.jpg",width,height),
-                            photo("assets/images/2.jpg",width,height),
-                              photo("assets/images/3.jpg",width,height),
-                            photo("assets/images/h.jpg",width,height),   
-                                photo("assets/images/4.jpg",width,height),
-                                photo("assets/images/5.jpg",width,height),
-                                 photo("assets/images/Castle.gif",width,height),
-                                  photo("assets/images/ghaith.jpg",width,height),    
-                    ],
-                  )
-                 : Column(
-                    children: [
-                      buildpost(1),
-                      buildpost(1),
-                        buildpost(1),
-                         buildpost(1),    
-                    ],
-                  )
-               )),
+              //     Obx(
+              // () => 
+              //  Container(
+              //   child:  controller.kind.value
+              //     ? Wrap(
+              //            children: [
+              //         photo("assets/images/6.jpg",width,height), 
+              //                photo("assets/images/1.jpg",width,height),
+              //               photo("assets/images/2.jpg",width,height),
+              //                 photo("assets/images/3.jpg",width,height),
+              //               photo("assets/images/h.jpg",width,height),   
+              //                   photo("assets/images/4.jpg",width,height),
+              //                   photo("assets/images/5.jpg",width,height),
+              //                    photo("assets/images/Castle.gif",width,height),
+              //                     photo("assets/images/ghaith.jpg",width,height),    
+              //       ],
+              //     )
+              //    : Column(
+              //       children: [
+              //         buildpost(1),
+              //         buildpost(1),
+              //           buildpost(1),
+              //            buildpost(1),    
+              //       ],
+              //     )
+              //  )),
                   kind==true ?Wrap(
                     children: [
                       photo("assets/images/6.jpg",width,height), 
