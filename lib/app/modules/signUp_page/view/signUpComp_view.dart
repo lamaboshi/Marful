@@ -1,11 +1,9 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signUp_page/controllers/signUp_controller.dart';
+
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
-import '../../../routes/app_pages.dart';
-import '../data/model/company.dart';
 
 class SignUpCompanyPage extends GetView<SignUpController> {
   const SignUpCompanyPage({Key? key}) : super(key: key);
@@ -13,15 +11,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    Company company = Company(
-      
-        name: '',
-        email: '',
-        passeword: '',
-        phone: '',
-        telePhone: '',
-        address: '',
-        description: '');
+
     return Scaffold(
       body: Stack(children: [
         Image(
@@ -72,7 +62,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                           //Name
                           TextFieldWidget(
                             onChanged: (value) {
-                              company.name = value;
+                              controller.company.value.name = value;
                             },
                             type: TextInputType.name,
                             label: 'Company Name',
@@ -83,7 +73,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                           //Phone
                           TextFieldWidget(
                             onChanged: (value) {
-                              company.phone = value;
+                              controller.company.value.phone = value;
                             },
                             type: TextInputType.number,
                             label: 'PhoneNumber',
@@ -94,7 +84,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                           //TelePhone
                           TextFieldWidget(
                             onChanged: (value) {
-                              company.telePhone = value;
+                              controller.company.value.telePhone = value;
                             },
                             type: TextInputType.number,
                             label: 'TelePhone',
@@ -106,7 +96,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
 
                           TextFieldWidget(
                             onChanged: (value) {
-                              company.description = value;
+                              controller.company.value.description = value;
                             },
                             type: TextInputType.name,
                             label: 'Description',
@@ -117,7 +107,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                           //Address
                           TextFieldWidget(
                             onChanged: (value) {
-                              company.address = value;
+                              controller.company.value.address = value;
                             },
                             type: TextInputType.number,
                             label: 'location',
@@ -128,7 +118,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                           //Email
                           TextFieldWidget(
                             onChanged: (value) {
-                              company.email = value;
+                              controller.company.value.email = value;
                             },
                             type: TextInputType.emailAddress,
                             label: 'Email',
@@ -139,7 +129,9 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                           ////////Passeword
                           Obx(() {
                             return TextField(
-                              onChanged: (value){company.passeword=value;},
+                              onChanged: (value) {
+                                controller.company.value.password = value;
+                              },
                               obscureText: !controller.isShownCompany.value,
                               keyboardType: TextInputType.visiblePassword,
                               cursorColor: AppColors.blue,
@@ -192,11 +184,8 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                                     MaterialStateProperty.all(AppColors.blue),
                                 fixedSize: MaterialStateProperty.all(
                                     const Size.fromWidth(150))),
-                            onPressed: ()async {
-                             bool h=await controller.regierterComp(company);
-                             if(h){    Get.rootDelegate.offNamed(Routes.HOME);}
-                             else print('noooooo');
-                          
+                            onPressed: () async {
+                              controller.signUpCompany();
                             },
                             child: const Text(
                               "Sign Up",

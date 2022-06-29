@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:marful/app/core/values/my_flutter_app_icons.dart';
+
 import '../../../core/values/app_colors.dart';
+import '../controllers/homeMain_controller.dart';
 
 class HomeMainView extends StatelessWidget {
-  const HomeMainView({Key? key}) : super(key: key);
-
+  HomeMainView({Key? key}) : super(key: key);
+  final controller = Get.find<HomeMainController>();
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -14,6 +17,7 @@ class HomeMainView extends StatelessWidget {
         slivers: [
           SliverToBoxAdapter(
             child: SizedBox(
+<<<<<<< HEAD
               width: width,
               height: height * 1 / 6,
               child: ListView.separated(
@@ -30,6 +34,27 @@ class HomeMainView extends StatelessWidget {
                 },
               ),
             ),
+=======
+                height: height * 1 / 6,
+                child: Obx(
+                  () => controller.loading.value
+                      ? const Center(child: CircularProgressIndicator())
+                      : ListView.separated(
+                          itemCount: controller.contents.length,
+                          scrollDirection: Axis.horizontal,
+                          padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
+                          separatorBuilder: (BuildContext context, int index) {
+                            return const SizedBox(
+                              width: 12,
+                            );
+                          },
+                          itemBuilder: (BuildContext context, int index) {
+                            return buildCircul(
+                                controller.contents[index].name!);
+                          },
+                        ),
+                )),
+>>>>>>> b4df03e8c33bf15730b8d5d7a67294c2fef607c3
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(childCount: 30,
@@ -42,7 +67,7 @@ class HomeMainView extends StatelessWidget {
     );
   }
 
-  Widget buildCircul(int index) => Column(
+  Widget buildCircul(String name) => Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           InkWell(
@@ -52,7 +77,7 @@ class HomeMainView extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(50),
                 child: Image.asset(
-                  'assets/images/h.jpg',
+                  'assets/images/angryimg.png',
                   height: 80,
                   width: 80,
                   fit: BoxFit.cover,
@@ -61,7 +86,10 @@ class HomeMainView extends StatelessWidget {
             ),
             onTap: () {},
           ),
-          const Text('comidy'),
+          Padding(
+            padding: const EdgeInsets.all(3),
+            child: Text(name),
+          ),
         ],
       );
   Widget buildpost(int index) => Padding(
@@ -115,14 +143,24 @@ class HomeMainView extends StatelessWidget {
                     children: [
                       IconButton(
                         onPressed: () {},
-                        icon:const Icon(AppIcons.basket,color:Colors.black,),
+                        icon: const Icon(
+                          AppIcons.basket,
+                          color: Colors.black,
+                        ),
                       ),
                       IconButton(
                         onPressed: () {},
-                        icon:const Icon(AppIcons.thumbs_down,color: Colors.black,),
+                        icon: const Icon(
+                          AppIcons.thumbs_down,
+                          color: Colors.black,
+                        ),
                       ),
                       IconButton(
-                          onPressed: () {}, icon:  Icon(AppIcons.favorite,color: Colors.black,)),
+                          onPressed: () {},
+                          icon: Icon(
+                            AppIcons.favorite,
+                            color: Colors.black,
+                          )),
                     ],
                   ),
                 ),
