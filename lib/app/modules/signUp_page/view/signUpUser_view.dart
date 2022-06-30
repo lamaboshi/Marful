@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marful/app/data/model/user_model.dart';
 import 'package:marful/app/modules/signUp_page/controllers/signUp_controller.dart';
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
-import '../data/model/user.dart';
 
 class SignUpUserPage extends GetView<SignUpController> {
   const SignUpUserPage({Key? key}) : super(key: key);
@@ -14,15 +14,7 @@ class SignUpUserPage extends GetView<SignUpController> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
 
-    User user = User(
-        name: '',
-        userName: '',
-        email: '',
-        passeword: '',
-        phone: '',
-        age: 2,
-        baybal: '',
-        location: '');
+    UserModel user = UserModel();
     return Scaffold(
       body: Stack(children: [
         Image(
@@ -114,7 +106,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                           //address
                           TextFieldWidget(
                             onChanged: (value) {
-                              user.location;
+                            //  user.location;
                             },
                             type: TextInputType.number,
                             label: 'location',
@@ -124,7 +116,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                           //PayBal
                           TextFieldWidget(
                             onChanged: (value) {
-                              user.baybal = value;
+                              user.paypal = value;
                             },
                             type: TextInputType.number,
                             label: 'PayBal',
@@ -146,7 +138,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                           Obx(() {
                             return TextField(
                               onChanged: (value) {
-                                user.passeword = value;
+                                user.password = value;
                               },
                               obscureText: !controller.isShownUser.value,
                               keyboardType: TextInputType.visiblePassword,

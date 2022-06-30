@@ -2,9 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signUp_page/controllers/signUp_controller.dart';
-import 'package:marful/app/modules/signUp_page/data/model/influencer.dart';
 import 'package:marful/app/routes/app_pages.dart';
-
+import 'package:marful/app/data/model/infulonser.dart';
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
 
@@ -14,16 +13,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    Influencer influncer = Influencer(
-   
-        name: '',
-        userName: '',
-        email: '',
-        passeword: '',
-        phone: '',
-        paybal: '',
-        address: '',
-        description: '');
+  Infulonser influncer = Infulonser();
     return Scaffold(
       body: Stack(children: [
         Image(
@@ -124,7 +114,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           //PayBal
                           TextFieldWidget(
                             onChanged: (value) {
-                              influncer.paybal = value;
+                              influncer.paypal = value;
                             },
                             type: TextInputType.number,
                             label: 'PayBal',
@@ -145,7 +135,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           ////////Passeword
                           Obx(() {
                             return TextField(
-                               onChanged: (value){influncer.passeword=value;},
+                               onChanged: (value){influncer.password=value;},
                               obscureText: !controller.isShownInfluencer.value,
                               keyboardType: TextInputType.visiblePassword,
                               cursorColor: AppColors.blue,
