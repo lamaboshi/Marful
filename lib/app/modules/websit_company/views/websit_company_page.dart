@@ -422,17 +422,8 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
   Widget textbtn(String name,double width,double height) {
     return  Padding(
       padding: const EdgeInsets.all(8.0),
-      child: DropdownButton<String>(
-        hint: Text(name),
-        items: <String>['A', 'B', 'C', 'D'].map((String value) {
-         return DropdownMenuItem<String>(
-           value: value,
-           child: Text(value),
-         );
-  }).toList(),
-  onChanged: (_) {},
-),
-    );
+      child: QExpander(child: Text(name),expandChild:Column(children: <String>['A','B','C'].map((e) => Text(e)).toList() ,)
+    ));
     
   }
 
