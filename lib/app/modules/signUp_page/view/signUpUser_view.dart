@@ -1,11 +1,8 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signUp_page/controllers/signUp_controller.dart';
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
-import '../../../routes/app_pages.dart';
-import '../data/model/user.dart';
 
 class SignUpUserPage extends GetView<SignUpController> {
   const SignUpUserPage({Key? key}) : super(key: key);
@@ -14,15 +11,6 @@ class SignUpUserPage extends GetView<SignUpController> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
 
-    User user = User(
-        name: '',
-        userName: '',
-        email: '',
-        passeword: '',
-        phone: '',
-        age: 2,
-        baybal: '',
-        location: '');
     return Scaffold(
       body: Stack(children: [
         Image(
@@ -71,10 +59,9 @@ class SignUpUserPage extends GetView<SignUpController> {
                       child: Column(
                         children: [
                           //Name
-
                           TextFieldWidget(
                             onChanged: (value) {
-                              user.name = value;
+                              controller.user.value.name = value;
                             },
                             type: TextInputType.name,
                             label: ' Name',
@@ -84,7 +71,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                           //UserName
                           TextFieldWidget(
                             onChanged: (value) {
-                              user.userName = value;
+                              controller.user.value.userName = value;
                             },
                             type: TextInputType.name,
                             label: 'User Name',
@@ -94,7 +81,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                           //Age
                           TextFieldWidget(
                             onChanged: (value) {
-                              //    user.age = value;
+                              controller.user.value.age = int.parse(value);
                             },
                             type: TextInputType.number,
                             label: 'Age',
@@ -104,7 +91,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                           //Phone
                           TextFieldWidget(
                             onChanged: (value) {
-                              user.phone = value;
+                              controller.user.value.phone = value;
                             },
                             type: TextInputType.number,
                             label: 'PhoneNumber',
@@ -114,7 +101,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                           //address
                           TextFieldWidget(
                             onChanged: (value) {
-                              user.location;
+                              //        controller.user.value.l= value;
                             },
                             type: TextInputType.number,
                             label: 'location',
@@ -124,7 +111,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                           //PayBal
                           TextFieldWidget(
                             onChanged: (value) {
-                              user.baybal = value;
+                              controller.user.value.paypal = value;
                             },
                             type: TextInputType.number,
                             label: 'PayBal',
@@ -135,7 +122,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                           //Email
                           TextFieldWidget(
                             onChanged: (value) {
-                              user.email = value;
+                              controller.user.value.email = value;
                             },
                             type: TextInputType.emailAddress,
                             label: 'Email',
@@ -146,7 +133,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                           Obx(() {
                             return TextField(
                               onChanged: (value) {
-                                user.passeword = value;
+                                controller.user.value.password = value;
                               },
                               obscureText: !controller.isShownUser.value,
                               keyboardType: TextInputType.visiblePassword,
@@ -200,9 +187,8 @@ class SignUpUserPage extends GetView<SignUpController> {
                                     MaterialStateProperty.all(AppColors.blue),
                                 fixedSize: MaterialStateProperty.all(
                                     const Size.fromWidth(150))),
-                            onPressed: () {
-                              controller.regierterUser(user);
-                              Get.rootDelegate.offNamed(Routes.HOME);
+                            onPressed: () async {
+                              controller.signUpUser();
                             },
                             child: const Text(
                               "Sign Up",

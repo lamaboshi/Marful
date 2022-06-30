@@ -17,24 +17,6 @@ class HomeMainView extends StatelessWidget {
         slivers: [
           SliverToBoxAdapter(
             child: SizedBox(
-<<<<<<< HEAD
-              width: width,
-              height: height * 1 / 6,
-              child: ListView.separated(
-                itemCount: 100,
-                scrollDirection: Axis.horizontal,
-                padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
-                separatorBuilder: (BuildContext context, int index) {
-                  return const SizedBox(
-                    width: 12,
-                  );
-                },
-                itemBuilder: (BuildContext context, int index) {
-                  return buildCircul(index);
-                },
-              ),
-            ),
-=======
                 height: height * 1 / 6,
                 child: Obx(
                   () => controller.loading.value
@@ -54,7 +36,6 @@ class HomeMainView extends StatelessWidget {
                           },
                         ),
                 )),
->>>>>>> b4df03e8c33bf15730b8d5d7a67294c2fef607c3
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(childCount: 30,

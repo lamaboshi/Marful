@@ -8,21 +8,24 @@ class TextFieldWidget extends StatelessWidget {
     required this.type,
     required this.label,
     required this.hint,
-    required this.prefIcon,
+     this.prefIcon,
      this.onChanged,
     this.postIcon,
+       this.obscureText,
   }) : super(key: key);
 
   final TextInputType type;
   final String label;
   final String hint;
-  final IconData prefIcon;
+  final IconData? prefIcon;
   final IconData? postIcon;
   final Function(String)? onChanged;
+  final bool? obscureText;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+     // obscureText:obscureText,
       onChanged: onChanged,
       keyboardType: type,
       cursorColor: AppColors.blue,

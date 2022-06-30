@@ -12,14 +12,14 @@ class UserModel {
   Uint8List? image;
 
   UserModel({
-    required this.id,
-    required this.name,
-    required this.phone,
-    required this.email,
-    required this.paypal,
-    required this.age,
-    required this.password,
-    required this.userName,
+    this.id,
+    this.name,
+    this.phone,
+    this.email,
+    this.paypal,
+    this.age,
+    this.password,
+    this.userName,
     this.image,
   });
 

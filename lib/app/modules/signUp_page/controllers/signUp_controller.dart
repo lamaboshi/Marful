@@ -1,8 +1,8 @@
-import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-import 'package:marful/app/modules/signUp_page/data/model/influencer.dart';
-import 'package:marful/app/modules/signUp_page/data/model/user.dart';
-
+import 'package:marful/app/data/model/infulonser.dart';
+import 'package:marful/app/data/model/user_model.dart';
+import 'package:marful/app/modules/signUp_page/data/influencer_repo.dart';
+import 'package:marful/app/modules/signUp_page/data/user_repo.dart';
 import '../../../../sheard/auth_service.dart';
 import '../../../data/model/company.dart';
 import '../../../routes/app_pages.dart';
@@ -13,7 +13,13 @@ class SignUpController extends GetxController {
   final isShownInfluencer = false.obs;
   final isShownCompany = false.obs;
   final company = Company().obs;
+  final user = UserModel().obs;
+  final influencer = Infulonser().obs;
+
   final companyRpo = CompanyRepository();
+  final influencerRpo = InfluencerRepository();
+  final userRpo = UserRepository();
+
   final auth = Get.find<AuthService>();
   @override
   void onInit() {
@@ -33,17 +39,22 @@ class SignUpController extends GetxController {
     }
   }
 
-  @override
-  void onClose() {}
-  void regierterInflu(Influencer object) async {
-    final _dio = Get.find<Dio>();
-    final Response = await _dio.post('https://localhost:7192/api/Influncer',
-        data: object.toJson());
+  Future<void> signUpInfluencer() async {
+    var data = await influencerRpo.regierterInfluencer(influencer.value);
+    if (data) {
+      auth.logIn(influencer.value.email!, influencer.value.password!);
+      Get.rootDelegate.offNamed(Routes.HOME);
+    }
+  }
+  
+  Future<void> signUpUser() async {
+    var data = await userRpo.regierterUser(user.value);
+    if (data) {
+      auth.logIn(user.value.email!, user.value.password!);
+      Get.rootDelegate.offNamed(Routes.HOME);
+    }
   }
 
-  void regierterUser(User object) async {
-    final _dio = Get.find<Dio>();
-    final Response = await _dio.post('https://localhost:7192/api/User',
-        data: object.toJson());
-  }
+  @override
+  void onClose() {}
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signUp_page/controllers/signUp_controller.dart';
-
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
 

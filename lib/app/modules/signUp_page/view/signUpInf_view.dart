@@ -1,10 +1,6 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signUp_page/controllers/signUp_controller.dart';
-import 'package:marful/app/modules/signUp_page/data/model/influencer.dart';
-import 'package:marful/app/routes/app_pages.dart';
-
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
 
@@ -14,16 +10,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    Influencer influncer = Influencer(
-   
-        name: '',
-        userName: '',
-        email: '',
-        passeword: '',
-        phone: '',
-        paybal: '',
-        address: '',
-        description: '');
+
     return Scaffold(
       body: Stack(children: [
         Image(
@@ -74,7 +61,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           //Name
                           TextFieldWidget(
                             onChanged: (value) {
-                              influncer.name = value;
+                              controller.influencer.value.name = value;
                             },
                             type: TextInputType.name,
                             label: ' Name',
@@ -84,7 +71,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           //UserName
                           TextFieldWidget(
                             onChanged: (value) {
-                              influncer.userName = value;
+                              controller.influencer.value.userName = value;
                             },
                             type: TextInputType.name,
                             label: 'User Name',
@@ -94,7 +81,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           //Description
                           TextFieldWidget(
                             onChanged: (value) {
-                              influncer.description = value;
+                              controller.influencer.value.description = value;
                             },
                             type: TextInputType.name,
                             label: 'Description',
@@ -104,7 +91,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           //Phone
                           TextFieldWidget(
                             onChanged: (value) {
-                              influncer.phone = value;
+                              controller.influencer.value.phone = value;
                             },
                             type: TextInputType.number,
                             label: 'PhoneNumber',
@@ -114,7 +101,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           //address
                           TextFieldWidget(
                             onChanged: (value) {
-                              influncer.address = value;
+                              controller.influencer.value.address = value;
                             },
                             type: TextInputType.name,
                             label: 'location',
@@ -124,18 +111,17 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           //PayBal
                           TextFieldWidget(
                             onChanged: (value) {
-                              influncer.paybal = value;
+                              controller.influencer.value.paypal = value;
                             },
                             type: TextInputType.number,
                             label: 'PayBal',
                             hint: "hsd235dfgdf ",
                             prefIcon: Icons.paypal,
                           ),
-
                           //Email
                           TextFieldWidget(
                             onChanged: (value) {
-                              influncer.email = value;
+                              controller.influencer.value.email = value;
                             },
                             type: TextInputType.emailAddress,
                             label: 'Email',
@@ -145,7 +131,9 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           ////////Passeword
                           Obx(() {
                             return TextField(
-                               onChanged: (value){influncer.passeword=value;},
+                              onChanged: (value) {
+                                controller.influencer.value.password = value;
+                              },
                               obscureText: !controller.isShownInfluencer.value,
                               keyboardType: TextInputType.visiblePassword,
                               cursorColor: AppColors.blue,
@@ -198,9 +186,8 @@ class SignUpInfluencer extends GetView<SignUpController> {
                                     MaterialStateProperty.all(AppColors.blue),
                                 fixedSize: MaterialStateProperty.all(
                                     const Size.fromWidth(150))),
-                            onPressed: () {
-                              controller.regierterInflu(influncer);
-                              Get.rootDelegate.offNamed(Routes.HOME);
+                            onPressed: () async {
+                              controller.signUpInfluencer();
                             },
                             child: const Text(
                               "Sign Up",

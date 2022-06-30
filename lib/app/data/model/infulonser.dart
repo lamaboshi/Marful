@@ -13,16 +13,16 @@ class Infulonser {
   String? description;
 
   Infulonser({
-    required this.id,
-    required this.name,
-    required this.phone,
-    required this.email,
-    required this.paypal,
-    required this.address,
-    required this.password,
-    required this.userName,
-    required this.image,
-    required this.description,
+     this.id,
+     this.name,
+     this.phone,
+     this.email,
+     this.paypal,
+     this.address,
+     this.password,
+     this.userName,
+     this.image,
+     this.description,
   });
 
   Infulonser.fromJson(Map<String, dynamic> json) {

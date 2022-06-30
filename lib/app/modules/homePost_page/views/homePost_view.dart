@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../core/component/textField.dart';
 
 class HomePostView extends StatelessWidget {
   const HomePostView({Key? key}) : super(key: key);
@@ -18,11 +19,38 @@ class HomePostView extends StatelessWidget {
             padding: const EdgeInsets.all(15),
             child: Column(
               children: [
-                 Align(
-                  alignment: Alignment.topLeft,
-                  child: Text("Write a post"),
+                const SizedBox(
+                  height: 8,
                 ),
-                
+                const Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Add new post",
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(left: 10, right: 10),
+                  child: TextFieldWidget(
+                    label: 'Type',
+                    hint: 'Comidy',
+                    type: TextInputType.name,
+                    prefIcon: Icons.type_specimen,
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                const Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Post",
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+                  ),
+                ),
               ],
             ),
           ),

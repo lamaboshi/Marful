@@ -41,30 +41,13 @@ class AppPages {
   AppPages._();
   //static const iNITIAL = Routes.websitecompany;
 
-  static final routes = [   GetPage(
-        name: _Paths.HOME,
-        page: () => HomeView(),
-        bindings: [HomeBinding(), HomeMainBinding()],
-        middlewares: [AuthMiddlware()]),
-    GetPage(
-      name: _Paths.SignIn,
-      page: () => SignInPage(),
-      binding: SignInBinding(),
-    ),
-<<<<<<< HEAD
- 
-=======
->>>>>>> b4df03e8c33bf15730b8d5d7a67294c2fef607c3
-    GetPage(
+  static final routes = [
+  GetPage(
       name: _Paths.FirstSplash,
       page: () => FiestSplashView(),
       binding: FirstSplashBinding(),
     ),
-    GetPage(
-      name: _Paths.WebsiteCompany,
-      page: () => WebsiteCompanyPage(),
-      binding: WebsitcompanyBinding(),
-    ),
+
     GetPage(name: _Paths.HOME, page: () => HomeView(), bindings: [
       HomeBinding(),
       HomeMainBinding(),
@@ -73,6 +56,19 @@ class AppPages {
     ], middlewares: [
       AuthMiddlware()
     ]),
+    GetPage(
+      name: _Paths.SignIn,
+      page: () => SignInPage(),
+      binding: SignInBinding(),
+    ),
+
+  
+    GetPage(
+      name: _Paths.WebsiteCompany,
+      page: () => WebsiteCompanyPage(),
+      binding: WebsitcompanyBinding(),
+    ),
+
     GetPage(
       name: _Paths.ConfirmPassword,
       page: () => const Confirmpassword(),

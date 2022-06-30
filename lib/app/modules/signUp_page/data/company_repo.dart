@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-
 import '../../../data/model/company.dart';
 import 'adapter/company_adapter.dart';
 
