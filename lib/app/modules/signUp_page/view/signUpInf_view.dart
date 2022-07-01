@@ -10,7 +10,6 @@ class SignUpInfluencer extends GetView<SignUpController> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-
     return Scaffold(
       body: Stack(children: [
         Image(

@@ -6,6 +6,8 @@ import 'package:marful/app/modules/signUp_page/data/user_repo.dart';
 import '../../../../sheard/auth_service.dart';
 import '../../../data/model/company.dart';
 import '../../../routes/app_pages.dart';
+import 'package:marful/app/data/model/user_model.dart';
+import 'package:marful/app/data/model/infulonser.dart';
 import '../data/company_repo.dart';
 
 class SignUpController extends GetxController {

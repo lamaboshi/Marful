@@ -124,14 +124,21 @@ class Confirmpassword  extends  GetView<PasswordController> {
                 fixedSize:
                     MaterialStateProperty.all(const Size.fromWidth(150))),
             onPressed: () {
-              Get.rootDelegate.offNamed(Routes.WebsiteCompany);
-            // if(first!=comf){
-            //   QPanel(alignment: Alignment.bottomCenter,width: 40,height: 40,
-            //     child: Container(child: Text('Comfirm from value'),)).show();
-            //  }else{
-            //   controller.email.value=first;
-            //  }
-            //  Get.toNamed(Routes.WebsiteCompany);
+              if(first==comf){
+                controller.resrtpassword.value=first;
+                    QPanel(alignment: Alignment.bottomCenter,width: 40,height: 40,
+                child: Container(child: Text(' Saved New Password',
+                style: TextStyle(color: Colors.black),
+                ),)
+                ).show();
+              }
+              else{
+                QPanel(alignment: Alignment.bottomCenter,width: 40,height: 40,
+                child: Container(child: Text('Comfirm from the enter value',
+                style: TextStyle(color: Colors.red),
+                ),)
+                ).show();
+              }
             },
             child: const Text(
               "SUBMIT",

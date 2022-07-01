@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../core/component/textField.dart';
+import '../../../core/values/app_colors.dart';
 
 class HomePostView extends StatelessWidget {
   const HomePostView({Key? key}) : super(key: key);
@@ -32,14 +32,38 @@ class HomePostView extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 10, right: 10),
-                  child: TextFieldWidget(
-                    label: 'Type',
-                    hint: 'Comidy',
-                    type: TextInputType.name,
-                    prefIcon: Icons.type_specimen,
-                  ),
+                const Text(
+                  "Type",
+                ),
+                TextField(
+                  // onChanged:(){},
+                  keyboardType: TextInputType.name,
+                  cursorColor: AppColors.blue,
+                  cursorHeight: 20,
+                  autofocus: false,
+                  decoration: InputDecoration(
+                      labelStyle: const TextStyle(color: Colors.black),
+                      hintStyle: TextStyle(color: Colors.grey[350]),
+                      labelText: 'Type',
+                      //  hintText: hint,
+                      // prefixIcon: Icon(
+                      //   prefIcon,
+                      //   color: AppColors.orange,
+                      // ),
+                      border: const UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: AppColors.orange, width: 1.5),
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 15, horizontal: 15),
+                      enabledBorder: const UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: AppColors.orange, width: 1.5),
+                      ),
+                      focusedBorder: const UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: AppColors.orange, width: 1.5),
+                      )),
                 ),
                 const SizedBox(
                   height: 30,
@@ -49,6 +73,49 @@ class HomePostView extends StatelessWidget {
                   child: Text(
                     "Post",
                     style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  height: 180,
+                  child: Card(
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(15),
+                      child: TextField(
+                        // onChanged:(){},
+                        keyboardType: TextInputType.name,
+                        cursorColor: AppColors.blue,
+                        cursorHeight: 20,
+                        autofocus: false,
+                        decoration: InputDecoration(
+                          labelStyle: const TextStyle(color: Colors.black),
+                          labelText: 'Write post here',
+                          contentPadding: const EdgeInsets.symmetric(
+                              vertical: 15, horizontal: 15),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text('Publish'),
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(AppColors.blue),
+                        foregroundColor:
+                            MaterialStateProperty.all(Colors.white)),
                   ),
                 ),
               ],

@@ -255,10 +255,12 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.fromLTRB(8, 8, 8, 3),
-                            child: Text(
-                              'The price of One is :',
-                              style: TextStyle(
-                                  fontSize: 18, color: Colors.black87),
+                            child: Center(
+                              child: Text(
+                                'The price of One is :',
+                                style: TextStyle(
+                                    fontSize: 18, color: Colors.black87),
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -276,10 +278,12 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
                       child: Row(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(8, 0, 8, 2),
-                            child: Text(
-                              'Total Count You Need ',
-                              style: TextStyle(fontSize: 16),
+                            padding: const EdgeInsets.all(8),
+                            child: Center(
+                              child: Text(
+                                'Total Count You Need ',
+                                style: TextStyle(fontSize: 16),
+                              ),
                             ),
                           ),
                           Padding(
@@ -418,17 +422,8 @@ class _WebsiteCompanyPageState extends State<WebsiteCompanyPage> {
   Widget textbtn(String name,double width,double height) {
     return  Padding(
       padding: const EdgeInsets.all(8.0),
-      child: DropdownButton<String>(
-        hint: Text(name),
-        items: <String>['A', 'B', 'C', 'D'].map((String value) {
-         return DropdownMenuItem<String>(
-           value: value,
-           child: Text(value),
-         );
-  }).toList(),
-  onChanged: (_) {},
-),
-    );
+      child: QExpander(child: Text(name),expandChild:Column(children: <String>['A','B','C'].map((e) => Text(e)).toList() ,)
+    ));
     
   }
 

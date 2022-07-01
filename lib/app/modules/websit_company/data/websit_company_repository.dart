@@ -17,14 +17,10 @@ class WebsiteCompanyRepository implements IWebsiteCompanyRepository {
     }
     return list;
   }
-    Future<List<Company>> getdatacompany() async {
-    var result = await _dio.get('https://localhost:7192/api/Company');
+    Future<Company> getdatacompany(int id) async {
+    var result = await _dio.get('https://localhost:7192/api/Company/{$id}');
     print(result);
-    var list = <Company>[];
-    for (var item in result.data) {
-      list.add(Company.fromJson(item));
-    }
-    return list;
+    return Company.fromJson(result.data as Map<String,dynamic>);
   }
     Future<List<CompanyContent>> getdatacompcontent() async {
     var result = await _dio.get('https://localhost:7192/api/CompanyContent/{1}');

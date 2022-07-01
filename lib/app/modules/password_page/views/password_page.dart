@@ -22,7 +22,7 @@ class PasswordPageView  extends  GetView<PasswordController> {
                      Padding(
                        padding: const EdgeInsets.all(8.0),
                        child: IconButton(onPressed: (){
-                         Get.rootDelegate.offNamed(Routes.HOME);
+                         Get.rootDelegate.offNamed(Routes.SignIn);
                        }, 
                        icon:Icon(Icons.arrow_back,size: 30,
                       color: AppColors.blue), ), ),
@@ -30,7 +30,7 @@ class PasswordPageView  extends  GetView<PasswordController> {
                      Padding(
                        padding: const EdgeInsets.fromLTRB(12,0,0,0),
                        child: Text('Forgot  Your  Passwod' ,style: TextStyle(fontSize: 22
-                 , color: AppColors.blue), ),
+                 , color: Colors.black), ),
                      ),
                    ],),
                  ),
@@ -48,37 +48,40 @@ class PasswordPageView  extends  GetView<PasswordController> {
                    ),
                    Text(' your password',style: TextStyle(fontSize: 18,color: Colors.black45),),
                    SizedBox(height: 20,),
-                       TextField(
-                        onChanged: (newText){
-                       controller.entrvalue.value =newText;
-                        },
-                          keyboardType: TextInputType.emailAddress,
-                          cursorColor: AppColors.blue,
-                          cursorHeight: 20,
-                          autofocus: false,
-                          decoration: InputDecoration(
-                              labelStyle: TextStyle(color: Colors.grey),
-                              labelText: 'Email',
-                              hintText: "hy@gmail.com",
-                              prefixIcon: Icon(
-                                Icons.email,
-                                color: AppColors.orange,
-                              ),
-                              border: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: AppColors.orange, width: 1.5),
-                              ),
-                              contentPadding: EdgeInsets.symmetric(
-                                  vertical: 15, horizontal: 15),
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: AppColors.orange, width: 1.5),
-                              ),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: AppColors.orange, width: 1.5),
-                              )),
-                        ),
+                       Padding(
+                         padding: const EdgeInsets.all(8.0),
+                         child: TextField(
+                          onChanged: (newText){
+                         controller.email.value =newText;
+                          },
+                            keyboardType: TextInputType.emailAddress,
+                            cursorColor: AppColors.blue,
+                            cursorHeight: 20,
+                            autofocus: false,
+                            decoration: InputDecoration(
+                                labelStyle: TextStyle(color: Colors.grey),
+                                labelText: 'Email',
+                                hintText: "hy@gmail.com",
+                                prefixIcon: Icon(
+                                  Icons.email,
+                                  color: AppColors.orange,
+                                ),
+                                border: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: AppColors.orange, width: 1.5),
+                                ),
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 15, horizontal: 15),
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: AppColors.orange, width: 1.5),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: AppColors.orange, width: 1.5),
+                                )),
+                          ),
+                       ),
                    SizedBox(height: 20,),
                     ElevatedButton(
                           style: ButtonStyle(
@@ -87,8 +90,7 @@ class PasswordPageView  extends  GetView<PasswordController> {
                               fixedSize: MaterialStateProperty.all(
                                   const Size.fromWidth(150))),
                           onPressed: () {
-                    //   if(controller.result.value==true)
-                           Get.rootDelegate.offNamed(Routes.ConfirmPassword);
+                          controller.getEmail();
                           },
                           child: const Text(
                             "Send",

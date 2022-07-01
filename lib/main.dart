@@ -11,6 +11,7 @@ void main() {
   runApp(const MyApp());
 }
 
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -20,7 +21,6 @@ class MyApp extends StatelessWidget {
     //     const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     print('hi');
     Get.put(Dio());
-
     QOverlay.navigationKey = Get.key;
     var storge = Get.put(StorageService());
     storge.init();
