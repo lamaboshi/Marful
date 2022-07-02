@@ -42,7 +42,12 @@ class AppPages {
   //static const iNITIAL = Routes.websitecompany;
 
   static final routes = [
-  GetPage(
+    GetPage(
+      name: _Paths.SignIn,
+      page: () => SignInPage(),
+      binding: SignInBinding(),
+    ),
+    GetPage(
       name: _Paths.FirstSplash,
       page: () => FiestSplashView(),
       binding: FirstSplashBinding(),
@@ -56,13 +61,7 @@ class AppPages {
     ], middlewares: [
       AuthMiddlware()
     ]),
-    GetPage(
-      name: _Paths.SignIn,
-      page: () => SignInPage(),
-      binding: SignInBinding(),
-    ),
 
-  
     GetPage(
       name: _Paths.WebsiteCompany,
       page: () => WebsiteCompanyPage(),
