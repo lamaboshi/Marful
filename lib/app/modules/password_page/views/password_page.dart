@@ -25,7 +25,7 @@ class PasswordPageView  extends  GetView<PasswordController> {
                          Get.rootDelegate.offNamed(Routes.SignIn);
                        }, 
                        icon:Icon(Icons.arrow_back,size: 30,
-                      color: AppColors.blue), ), ),
+                      color: Colors.black), ), ),
                      
                      Padding(
                        padding: const EdgeInsets.fromLTRB(12,0,0,0),
@@ -42,14 +42,14 @@ class PasswordPageView  extends  GetView<PasswordController> {
                    ,style: TextStyle(fontSize: 20,color: Colors.black54),),
                  ),
                    Padding(
-                     padding: const EdgeInsets.all(8.0),
+                     padding: const EdgeInsets.all(4.0),
                      child: Text('we will email you a link to reset  ',style: TextStyle(fontSize: 18
                      ,color: Colors.black45),),
                    ),
                    Text(' your password',style: TextStyle(fontSize: 18,color: Colors.black45),),
                    SizedBox(height: 20,),
                        Padding(
-                         padding: const EdgeInsets.all(8.0),
+                         padding: const EdgeInsets.only(left: 20,right: 20),
                          child: TextField(
                           onChanged: (newText){
                          controller.email.value =newText;
