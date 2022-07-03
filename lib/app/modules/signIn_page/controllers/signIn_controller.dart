@@ -10,7 +10,7 @@ class SignInController extends GetxController {
   final authService = Get.find<AuthService>();
   final stroge = Get.find<StorageService>();
   final count = 0.obs;
-  final isShown = false.obs;
+  final isShown = true.obs;
   Future<void> logIn() async {
     await authService.logIn(email.value, password.value);
     if (!stroge.containsKey('type')) {

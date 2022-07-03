@@ -31,8 +31,14 @@ class HomeMainView extends StatelessWidget {
                             );
                           },
                           itemBuilder: (BuildContext context, int index) {
-                            return buildCircul(
-                                controller.contents[index].name!);
+                            return InkWell(
+                              onTap: () {
+                                controller.contentId.value =
+                                    controller.contents[index].id!;
+                              },
+                              child:
+                                  buildCircul(controller.contents[index].name!),
+                            );
                           },
                         ),
                 )),

@@ -21,6 +21,7 @@ abstract class Routes {
   static const Search = _Paths.Search;
   static const CHAT_PAGE = _Paths.CHAT_PAGE;
   static const CONVERSATION_PAGE = _Paths.CONVERSATION_PAGE;
+  static const HOMEPOST = _Paths.HOMEPOST;
 }
 
 abstract class _Paths {
@@ -44,4 +45,5 @@ abstract class _Paths {
   static const Search = '/Search';
   static const CHAT_PAGE = '/chat-page';
   static const CONVERSATION_PAGE = '/conversation-page';
+  static const HOMEPOST = '/homePost';
 }
