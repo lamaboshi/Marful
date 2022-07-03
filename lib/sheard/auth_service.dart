@@ -36,7 +36,7 @@ class AuthService {
   }
 
   Future<Object?> logIn(String email, String password) async {
-    var result = await _dio.get('https://localhost:7192/api/Auth',
+    var result = await _dio.get('https://localhost:7192/api/Auth/GetAuth',
         queryParameters: {"email": email, "password": password});
     print(result.data);
     if (result.statusCode == 200) {
