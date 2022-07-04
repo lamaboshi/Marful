@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signIn_page/controllers/signIn_controller.dart';
@@ -56,6 +57,7 @@ class SignInPage extends GetView<SignInController> {
 
                       //Email
                       TextFieldWidget(
+                        obscureText: false,
                         type: TextInputType.emailAddress,
                         label: 'Email',
                         hint: "hy@gmail.com",
@@ -66,50 +68,27 @@ class SignInPage extends GetView<SignInController> {
                       ),
                       //////////passeword
                       Obx(() {
-                        return TextField(
-                          obscureText: controller.isShown.value,
-                          keyboardType: TextInputType.visiblePassword,
-                          cursorColor: AppColors.blue,
-                          cursorHeight: 20,
-                          autofocus: false,
+                        return TextFieldWidget(
+                          type: TextInputType.visiblePassword,
+                          label: 'Passeword',
+                          hint: '***',
+                          obscureText: !controller.isShown.value,
                           onChanged: (value) {
                             controller.password.value = value;
                           },
-                          decoration: InputDecoration(
-                              labelStyle: const TextStyle(color: Colors.black),
-                              hintStyle: TextStyle(color: Colors.grey[350]),
-                              labelText: 'Passeword',
-                              hintText: "***",
-                              suffixIcon: IconButton(
-                                onPressed: () {
-                                  controller.isShown.value =
-                                      !controller.isShown.value;
-                                },
-                                icon: Icon(
-                                  controller.isShown.value
-                                      ? Icons.password
-                                      : Icons.remove_red_eye,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              prefixIcon: const Icon(
-                                Icons.key,
-                                color: AppColors.orange,
-                              ),
-                              border: const UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: AppColors.orange, width: 1.5),
-                              ),
-                              contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 15, horizontal: 15),
-                              enabledBorder: const UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: AppColors.orange, width: 1.5),
-                              ),
-                              focusedBorder: const UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: AppColors.orange, width: 1.5),
-                              )),
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              controller.isShown.value =
+                                  !controller.isShown.value;
+                            },
+                            icon: Icon(
+                              controller.isShown.value
+                                  ? Icons.remove_red_eye
+                                  : CupertinoIcons.eye_slash_fill,
+                              color: Colors.black,
+                            ),
+                          ),
+                          prefIcon: Icons.key,
                         );
                       }),
                       const SizedBox(
@@ -129,34 +108,39 @@ class SignInPage extends GetView<SignInController> {
                         ),
                       ),
                       const SizedBox(
-                        height: 100,
+                        height: 80,
                       ),
                       //btn Sign In
-                      Column(
-                        children: [
-                          ElevatedButton(
-                            style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all(AppColors.blue),
-                                fixedSize: MaterialStateProperty.all(
-                                    const Size.fromWidth(150))),
-                            onPressed: () {
-                              controller.logIn();
-                            },
-                            child: const Text(
-                              "Sign In",
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                              ),
-                            ),
+                      ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(AppColors.blue),
+                            fixedSize: MaterialStateProperty.all(
+                                const Size.fromWidth(150))),
+                        onPressed: () {
+                          controller.logIn();
+                        },
+                        child: const Text(
+                          "Sign In",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
                           ),
-                          TextButton(
-                              onPressed: () {
-                                Get.rootDelegate.toNamed(Routes.Intro);
-                              },
-                              child: Text('Create Your Account?'))
-                        ],
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Get.rootDelegate.toNamed(Routes.Intro);
+                        },
+                        // ignore: sort_child_properties_last
+                        child: const Text('Create Your Account?'),
+                        style: ButtonStyle(
+                          foregroundColor:
+                              MaterialStateProperty.all(Colors.black),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 70,
                       ),
                     ],
                   ),
@@ -164,7 +148,7 @@ class SignInPage extends GetView<SignInController> {
               ),
             ),
           ),
-        ),
+        )
       ]),
     );
   }

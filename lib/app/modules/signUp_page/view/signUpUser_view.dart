@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/data/model/user_model.dart';
@@ -61,6 +62,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                         children: [
                           //Name
                           TextFieldWidget(
+                            obscureText: false,
                             onChanged: (value) {
                               controller.user.value.name = value;
                             },
@@ -71,6 +73,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                           ),
                           //UserName
                           TextFieldWidget(
+                            obscureText: false,
                             onChanged: (value) {
                               controller.user.value.userName = value;
                             },
@@ -81,6 +84,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                           ),
                           //Age
                           TextFieldWidget(
+                            obscureText: false,
                             onChanged: (value) {
                               controller.user.value.age = int.parse(value);
                             },
@@ -91,6 +95,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                           ),
                           //Phone
                           TextFieldWidget(
+                            obscureText: false,
                             onChanged: (value) {
                               controller.user.value.phone = value;
                             },
@@ -101,6 +106,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                           ),
                           //address
                           TextFieldWidget(
+                            obscureText: false,
                             onChanged: (value) {
                               //        controller.user.value.l= value;
                             },
@@ -111,6 +117,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                           ),
                           //PayBal
                           TextFieldWidget(
+                            obscureText: false,
                             onChanged: (value) {
                               controller.user.value.paypal = value;
                             },
@@ -122,6 +129,7 @@ class SignUpUserPage extends GetView<SignUpController> {
 
                           //Email
                           TextFieldWidget(
+                            obscureText: false,
                             onChanged: (value) {
                               controller.user.value.email = value;
                             },
@@ -132,51 +140,27 @@ class SignUpUserPage extends GetView<SignUpController> {
                           ),
                           ////////Passeword
                           Obx(() {
-                            return TextField(
+                            return TextFieldWidget(
                               onChanged: (value) {
                                 controller.user.value.password = value;
                               },
+                              type: TextInputType.visiblePassword,
                               obscureText: !controller.isShownUser.value,
-                              keyboardType: TextInputType.visiblePassword,
-                              cursorColor: AppColors.blue,
-                              cursorHeight: 20,
-                              autofocus: false,
-                              decoration: InputDecoration(
-                                  labelStyle:
-                                      const TextStyle(color: Colors.black),
-                                  hintStyle: TextStyle(color: Colors.grey[350]),
-                                  labelText: 'Passeword',
-                                  hintText: "***",
-                                  suffixIcon: IconButton(
-                                    onPressed: () {
-                                      controller.isShownUser.value =
-                                          !controller.isShownUser.value;
-                                    },
-                                    icon: Icon(
-                                      controller.isShownUser.value == true
-                                          ? Icons.remove_red_eye
-                                          : Icons.disabled_visible,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                  prefixIcon: const Icon(
-                                    Icons.key,
-                                    color: AppColors.orange,
-                                  ),
-                                  border: const UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: AppColors.orange, width: 1.5),
-                                  ),
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      vertical: 15, horizontal: 15),
-                                  enabledBorder: const UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: AppColors.orange, width: 1.5),
-                                  ),
-                                  focusedBorder: const UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: AppColors.orange, width: 1.5),
-                                  )),
+                              label: 'Passeword',
+                              hint: "***",
+                              suffixIcon: IconButton(
+                                onPressed: () {
+                                  controller.isShownUser.value =
+                                      !controller.isShownUser.value;
+                                },
+                                icon: Icon(
+                                  controller.isShownUser.value == true
+                                      ? Icons.remove_red_eye
+                                      : CupertinoIcons.eye_slash_fill,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              prefIcon: Icons.key,
                             );
                           }),
                           const SizedBox(

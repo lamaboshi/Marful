@@ -1,4 +1,4 @@
-import 'package:get/get.dart';
++++import 'package:get/get.dart';
 
 import '../../sheard/auth_service.dart';
 import '../modules/chat_page/bindings/chat_page_binding.dart';
@@ -12,6 +12,8 @@ import '../modules/firstsplash_page/views/firstSplash_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/homeMain_page/bindings/homeMain_binding.dart';
+import '../modules/homePost_page/bindings/homePost_binding.dart';
+import '../modules/homePost_page/views/homePost_view.dart';
 import '../modules/intro_page/bindings/intro_binding.dart';
 import '../modules/intro_page/view/intro_view.dart';
 import '../modules/menu/bindings/menu_binding.dart';
@@ -47,17 +49,6 @@ class AppPages {
       page: () => FiestSplashView(),
       binding: FirstSplashBinding(),
     ),
-    GetPage(
-      name: _Paths.Intro,
-      page: () => IntroPage(),
-      binding: IntroBinding(),
-    ),
-    GetPage(
-      name: _Paths.SignIn,
-      page: () => SignInPage(),
-      binding: SignInBinding(),
-    ),
-
     GetPage(name: _Paths.HOME, page: () => HomeView(), bindings: [
       HomeBinding(),
       HomeMainBinding(),
@@ -66,6 +57,23 @@ class AppPages {
     ], middlewares: [
       AuthMiddlware()
     ]),
+    GetPage(
+      name: _Paths.Profile,
+      page: () => ProfilePage(),
+      binding: ProfileBinding(),
+    ),
+
+    GetPage(
+      name: _Paths.HOMEPOST,
+      page: () => const HomePostView(),
+      binding: HomePostBinding(),
+    ),
+
+    GetPage(
+      name: _Paths.SignIn,
+      page: () => SignInPage(),
+      binding: SignInBinding(),
+    ),
 
     GetPage(
       name: _Paths.WebsiteCompany,
@@ -114,11 +122,7 @@ class AppPages {
     //   page: () => ProfilePage(),
     //   binding: ProfileBinding(),
     // ),
-    GetPage(
-      name: _Paths.Profile,
-      page: () => ProfilePage(),
-      binding: ProfileBinding(),
-    ),
+
     GetPage(
       name: _Paths.Report,
       page: () => const ReportView(),

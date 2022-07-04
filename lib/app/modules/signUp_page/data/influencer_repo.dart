@@ -11,7 +11,6 @@ class InfluencerRepository extends IInfluencerRepository {
   final _dio = Get.find<Dio>();
   @override
   Future<bool> regierterInfluencer(Infulonser object) async {
-    //var json = object.toJson();
     var data = await _dio.post(
       'https://localhost:7192/api/Infulonser/AddInfulonser',
       data: jsonEncode(object.toJson()),
