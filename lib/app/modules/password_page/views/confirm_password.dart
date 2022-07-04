@@ -4,15 +4,12 @@ import 'package:get/get.dart';
 import 'package:q_overlay/q_overlay.dart';
 
 import '../../../core/values/app_colors.dart';
-import '../../../routes/app_pages.dart';
 import '../controllers/password_controller.dart';
 
-class Confirmpassword  extends  GetView<PasswordController> {
+class Confirmpassword extends GetView<PasswordController> {
   const Confirmpassword({super.key});
   @override
   Widget build(BuildContext context) {
-    String first='';
-    String comf='';
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -25,8 +22,7 @@ class Confirmpassword  extends  GetView<PasswordController> {
                 padding: const EdgeInsets.all(8.0),
                 child: IconButton(
                     onPressed: () {
-                    
-             Get.rootDelegate.offNamed(Routes.Password);
+                      Get.back();
                     },
                     icon: Icon(Icons.arrow_back,
                         size: 30, color: AppColors.blue)),
@@ -56,10 +52,10 @@ class Confirmpassword  extends  GetView<PasswordController> {
           SizedBox(
             height: 10,
           ),
-           TextField(
-           onChanged: (newText){
-                    first =newText;
-                        },
+          TextField(
+            onChanged: (newText) {
+              controller.resrtpassword.value = newText;
+            },
             keyboardType: TextInputType.emailAddress,
             cursorColor: AppColors.blue,
             cursorHeight: 20,
@@ -88,9 +84,9 @@ class Confirmpassword  extends  GetView<PasswordController> {
             height: 10,
           ),
           TextField(
-            onChanged: (newText){
-                       comf =newText;
-                        },
+            onChanged: (newText) {
+              controller.password.value = newText;
+            },
             keyboardType: TextInputType.emailAddress,
             cursorColor: AppColors.blue,
             cursorHeight: 20,
@@ -123,21 +119,21 @@ class Confirmpassword  extends  GetView<PasswordController> {
                 backgroundColor: MaterialStateProperty.all(AppColors.blue),
                 fixedSize:
                     MaterialStateProperty.all(const Size.fromWidth(150))),
-            onPressed: () {
-              if(first==comf){
-                controller.resrtpassword.value=first;
-                    QPanel(alignment: Alignment.bottomCenter,width: 40,height: 40,
-                child: Container(child: Text(' Saved New Password',
-                style: TextStyle(color: Colors.black),
-                ),)
-                ).show();
-              }
-              else{
-                QPanel(alignment: Alignment.bottomCenter,width: 40,height: 40,
-                child: Container(child: Text('Comfirm from the enter value',
-                style: TextStyle(color: Colors.red),
-                ),)
-                ).show();
+            onPressed: () async {
+              if (controller.password.value.length ==
+                  controller.resrtpassword.value.length) {
+                await controller.resetPassword();
+              } else {
+                QPanel(
+                    alignment: Alignment.bottomCenter,
+                    width: 40,
+                    height: 40,
+                    child: Container(
+                      child: Text(
+                        'Comfirm from the enter value',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    )).show();
               }
             },
             child: const Text(

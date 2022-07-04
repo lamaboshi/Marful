@@ -43,14 +43,19 @@ class AppPages {
 
   static final routes = [
     GetPage(
-      name: _Paths.SignIn,
-      page: () => SignInPage(),
-      binding: SignInBinding(),
-    ),
-    GetPage(
       name: _Paths.FirstSplash,
       page: () => FiestSplashView(),
       binding: FirstSplashBinding(),
+    ),
+    GetPage(
+      name: _Paths.Intro,
+      page: () => IntroPage(),
+      binding: IntroBinding(),
+    ),
+    GetPage(
+      name: _Paths.SignIn,
+      page: () => SignInPage(),
+      binding: SignInBinding(),
     ),
 
     GetPage(name: _Paths.HOME, page: () => HomeView(), bindings: [
@@ -69,25 +74,21 @@ class AppPages {
     ),
 
     GetPage(
-      name: _Paths.ConfirmPassword,
-      page: () => const Confirmpassword(),
-      binding: PasswordBinding(),
-    ),
-    GetPage(
-      name: _Paths.Password,
-      page: () => PasswordPageView(),
-      binding: PasswordBinding(),
-    ),
+        name: _Paths.Password,
+        page: () => PasswordPageView(),
+        binding: PasswordBinding(),
+        children: [
+          GetPage(
+            name: _Paths.ConfirmPassword,
+            page: () => const Confirmpassword(),
+          ),
+        ]),
     GetPage(
       name: _Paths.Setting,
       page: () => SettingPage(),
       binding: SettingBinding(),
     ),
-    GetPage(
-      name: _Paths.Intro,
-      page: () => IntroPage(),
-      binding: IntroBinding(),
-    ),
+
     GetPage(
       name: _Paths.SignUpUserPage,
       page: () => SignUpUserPage(),

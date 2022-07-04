@@ -120,7 +120,7 @@ class SignInPage extends GetView<SignInController> {
                         alignment: Alignment.topRight,
                         child: InkWell(
                           onTap: () {
-                            controller.logIn();
+                            Get.rootDelegate.toNamed(Routes.Password);
                           },
                           child: const Text(
                             'Forgot Your Passeword?',

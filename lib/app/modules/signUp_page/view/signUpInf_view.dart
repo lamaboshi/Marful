@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signUp_page/controllers/signUp_controller.dart';
+
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
 
@@ -186,7 +187,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                                 fixedSize: MaterialStateProperty.all(
                                     const Size.fromWidth(150))),
                             onPressed: () async {
-                              controller.signUpInfluencer();
+                              await controller.signUpInfluencer();
                             },
                             child: const Text(
                               "Sign Up",
