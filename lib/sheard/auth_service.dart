@@ -26,7 +26,7 @@ class AuthService {
       switch (personType()) {
         case 'user':
           return UserModel.fromJson(data as Map<String, dynamic>);
-        case 'comapny':
+        case 'comapny':                 
           return Company.fromJson(data as Map<String, dynamic>);
         case 'infulonser':
           return Infulonser.fromJson(data as Map<String, dynamic>);

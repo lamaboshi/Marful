@@ -23,6 +23,7 @@ final contents=<Content>[].obs;
   }
   void getDataperson(){
           switch (auth.personType()) {
+            
         case 'user':
           typeAuth.value=Auth.user;
           user.value=auth.getDataFromStorage() as UserModel;

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signUp_page/controllers/signUp_controller.dart';
@@ -60,6 +61,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                         children: [
                           //Name
                           TextFieldWidget(
+                            obscureText: false,
                             onChanged: (value) {
                               controller.company.value.name = value;
                             },
@@ -71,6 +73,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
 
                           //Phone
                           TextFieldWidget(
+                            obscureText: false,
                             onChanged: (value) {
                               controller.company.value.phone = value;
                             },
@@ -82,6 +85,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
 
                           //TelePhone
                           TextFieldWidget(
+                            obscureText: false,
                             onChanged: (value) {
                               controller.company.value.telePhone = value;
                             },
@@ -94,6 +98,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                           ///Description
 
                           TextFieldWidget(
+                            obscureText: false,
                             onChanged: (value) {
                               controller.company.value.description = value;
                             },
@@ -105,10 +110,11 @@ class SignUpCompanyPage extends GetView<SignUpController> {
 
                           //Address
                           TextFieldWidget(
+                            obscureText: false,
                             onChanged: (value) {
                               controller.company.value.address = value;
                             },
-                            type: TextInputType.number,
+                            type: TextInputType.none,
                             label: 'location',
                             hint: "aleppo",
                             prefIcon: Icons.location_on,
@@ -116,6 +122,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
 
                           //Email
                           TextFieldWidget(
+                            obscureText: false,
                             onChanged: (value) {
                               controller.company.value.email = value;
                             },
@@ -127,51 +134,27 @@ class SignUpCompanyPage extends GetView<SignUpController> {
 
                           ////////Passeword
                           Obx(() {
-                            return TextField(
+                            return TextFieldWidget(
                               onChanged: (value) {
                                 controller.company.value.password = value;
                               },
                               obscureText: !controller.isShownCompany.value,
-                              keyboardType: TextInputType.visiblePassword,
-                              cursorColor: AppColors.blue,
-                              cursorHeight: 20,
-                              autofocus: false,
-                              decoration: InputDecoration(
-                                  labelStyle:
-                                      const TextStyle(color: Colors.black),
-                                  hintStyle: TextStyle(color: Colors.grey[350]),
-                                  labelText: 'Passeword',
-                                  hintText: "***",
-                                  suffixIcon: IconButton(
-                                    onPressed: () {
-                                      controller.isShownCompany.value =
-                                          !controller.isShownCompany.value;
-                                    },
-                                    icon: Icon(
-                                      controller.isShownCompany.value
-                                          ? Icons.remove_red_eye
-                                          : Icons.disabled_visible,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                  prefixIcon: const Icon(
-                                    Icons.key,
-                                    color: AppColors.orange,
-                                  ),
-                                  border: const UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: AppColors.orange, width: 1.5),
-                                  ),
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      vertical: 15, horizontal: 15),
-                                  enabledBorder: const UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: AppColors.orange, width: 1.5),
-                                  ),
-                                  focusedBorder: const UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: AppColors.orange, width: 1.5),
-                                  )),
+                              type: TextInputType.visiblePassword,
+                              label: 'Passeword',
+                              hint: "***",
+                              suffixIcon: IconButton(
+                                onPressed: () {
+                                  controller.isShownCompany.value =
+                                      !controller.isShownCompany.value;
+                                },
+                                icon: Icon(
+                                  controller.isShownCompany.value
+                                      ? Icons.remove_red_eye
+                                      : CupertinoIcons.eye_slash_fill,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              prefIcon: Icons.key,
                             );
                           }),
                           const SizedBox(

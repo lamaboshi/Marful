@@ -8,7 +8,7 @@ class InfluencerRepository extends IInfluencerRepository {
   final _dio = Get.find<Dio>();
   @override
   Future<bool> regierterInfluencer(Infulonser object) async {
-    var data = await _dio.post('https://localhost:7192/api/Influencer',
+    var data = await _dio.post('https://localhost:7192/api/Infulonser',
         data: object.toJson());
     if (data.statusCode == 200) {
       return true;

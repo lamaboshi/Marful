@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signUp_page/controllers/signUp_controller.dart';
@@ -59,6 +60,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                         children: [
                           //Name
                           TextFieldWidget(
+                            obscureText: false,
                             onChanged: (value) {
                               controller.influencer.value.name = value;
                             },
@@ -69,6 +71,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           ),
                           //UserName
                           TextFieldWidget(
+                            obscureText: false,
                             onChanged: (value) {
                               controller.influencer.value.userName = value;
                             },
@@ -79,6 +82,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           ),
                           //Description
                           TextFieldWidget(
+                            obscureText: false,
                             onChanged: (value) {
                               controller.influencer.value.description = value;
                             },
@@ -89,6 +93,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           ),
                           //Phone
                           TextFieldWidget(
+                            obscureText: false,
                             onChanged: (value) {
                               controller.influencer.value.phone = value;
                             },
@@ -99,6 +104,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           ),
                           //address
                           TextFieldWidget(
+                            obscureText: false,
                             onChanged: (value) {
                               controller.influencer.value.address = value;
                             },
@@ -109,6 +115,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           ),
                           //PayBal
                           TextFieldWidget(
+                            obscureText: false,
                             onChanged: (value) {
                               controller.influencer.value.paypal = value;
                             },
@@ -119,6 +126,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           ),
                           //Email
                           TextFieldWidget(
+                            obscureText: false,
                             onChanged: (value) {
                               controller.influencer.value.email = value;
                             },
@@ -129,51 +137,27 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           ),
                           ////////Passeword
                           Obx(() {
-                            return TextField(
+                            return TextFieldWidget(
                               onChanged: (value) {
                                 controller.influencer.value.password = value;
                               },
                               obscureText: !controller.isShownInfluencer.value,
-                              keyboardType: TextInputType.visiblePassword,
-                              cursorColor: AppColors.blue,
-                              cursorHeight: 20,
-                              autofocus: false,
-                              decoration: InputDecoration(
-                                  labelStyle:
-                                      const TextStyle(color: Colors.black),
-                                  hintStyle: TextStyle(color: Colors.grey[350]),
-                                  labelText: 'Passeword',
-                                  hintText: "***",
-                                  suffixIcon: IconButton(
-                                    onPressed: () {
-                                      controller.isShownInfluencer.value =
-                                          !controller.isShownInfluencer.value;
-                                    },
-                                    icon: Icon(
-                                      controller.isShownInfluencer.value
-                                          ? Icons.remove_red_eye
-                                          : Icons.disabled_visible,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                  prefixIcon: const Icon(
-                                    Icons.key,
-                                    color: AppColors.orange,
-                                  ),
-                                  border: const UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: AppColors.orange, width: 1.5),
-                                  ),
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      vertical: 15, horizontal: 15),
-                                  enabledBorder: const UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: AppColors.orange, width: 1.5),
-                                  ),
-                                  focusedBorder: const UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: AppColors.orange, width: 1.5),
-                                  )),
+                              type: TextInputType.visiblePassword,
+                              label: 'Passeword',
+                              hint: "***",
+                              suffixIcon: IconButton(
+                                onPressed: () {
+                                  controller.isShownInfluencer.value =
+                                      !controller.isShownInfluencer.value;
+                                },
+                                icon: Icon(
+                                  controller.isShownInfluencer.value
+                                      ? Icons.remove_red_eye
+                                      : CupertinoIcons.eye_slash_fill,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              prefIcon: Icons.key,
                             );
                           }),
                           const SizedBox(
