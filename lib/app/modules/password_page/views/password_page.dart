@@ -91,6 +91,7 @@ class PasswordPageView  extends  GetView<PasswordController> {
                                   const Size.fromWidth(150))),
                           onPressed: () {
                           controller.getEmail();
+                           Get.rootDelegate.offNamed(Routes.ConfirmPassword);
                           },
                           child: const Text(
                             "Send",
