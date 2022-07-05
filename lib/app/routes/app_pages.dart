@@ -1,4 +1,4 @@
-+++import 'package:get/get.dart';
+import 'package:get/get.dart';
 
 import '../../sheard/auth_service.dart';
 import '../modules/chat_page/bindings/chat_page_binding.dart';
@@ -14,8 +14,6 @@ import '../modules/home/views/home_view.dart';
 import '../modules/homeMain_page/bindings/homeMain_binding.dart';
 import '../modules/homePost_page/bindings/homePost_binding.dart';
 import '../modules/homePost_page/views/homePost_view.dart';
-import '../modules/intro_page/bindings/intro_binding.dart';
-import '../modules/intro_page/view/intro_view.dart';
 import '../modules/menu/bindings/menu_binding.dart';
 import '../modules/password_page/bindings/password_binding.dart';
 import '../modules/password_page/views/confirm_password.dart';
