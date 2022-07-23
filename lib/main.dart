@@ -20,9 +20,6 @@ class MyApp extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.dark));
-    print('hi');
-
-    
     Get.put(Dio());
     QOverlay.navigationKey = Get.key;
     var storge = Get.put(StorageService());

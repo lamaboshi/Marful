@@ -7,7 +7,7 @@ class UserRepository extends IUserRepository {
   final _dio = Get.find<Dio>();
   @override
   Future<bool> regierterUser(UserModel object) async {
-    var data = await _dio.post('https://localhost:7192/api/User',
+    var data = await _dio.post('https://localhost:7192/api/User/AddUser',
         data: object.toJson());
     if (data.statusCode == 200) {
       return true;
