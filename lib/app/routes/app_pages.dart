@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:marful/app/modules/profile/views/edit_profile.dart';
 
 import '../../sheard/auth_service.dart';
 import '../modules/chat_page/bindings/chat_page_binding.dart';
@@ -44,6 +45,11 @@ class AppPages {
   //static const iNITIAL = Routes.websitecompany;
 
   static final routes = [
+     GetPage(
+      name: _Paths.SignIn,
+      page: () => SignInPage(),
+      binding: SignInBinding(),
+    ),
     GetPage(
       name: _Paths.FirstSplash,
       page: () => FiestSplashView(),
@@ -62,19 +68,17 @@ class AppPages {
       page: () => ProfilePage(),
       binding: ProfileBinding(),
     ),
+     GetPage(
+      name: _Paths.EditProfile,
+      page: () => EditProfilePage(),
+      binding: ProfileBinding(),
+    ),
 
     GetPage(
       name: _Paths.HOMEPOST,
       page: () => const HomePostView(),
       binding: HomePostBinding(),
     ),
-
-    GetPage(
-      name: _Paths.SignIn,
-      page: () => SignInPage(),
-      binding: SignInBinding(),
-    ),
-
     GetPage(
       name: _Paths.WebsiteCompany,
       page: () => WebsiteCompanyPage(),

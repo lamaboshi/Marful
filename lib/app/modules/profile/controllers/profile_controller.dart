@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:marful/app/data/model/company.dart';
 import 'package:marful/app/data/model/infulonser.dart';
 import 'package:marful/app/data/model/user_model.dart';
+import 'package:marful/app/modules/homeMain_page/data/model/Post.dart';
 
 import '../../../../sheard/auth_service.dart';
 import '../../../data/model/content.dart';
@@ -16,6 +17,7 @@ class ProfileController extends GetxController {
 final company=Company().obs;
 final user=UserModel().obs;
 final contents=<Content>[].obs;
+final posts=<Post>[].obs;
  @override
   void onInit() {
     super.onInit();
@@ -23,7 +25,6 @@ final contents=<Content>[].obs;
   }
   void getDataperson(){
           switch (auth.personType()) {
-            
         case 'user':
           typeAuth.value=Auth.user;
           user.value=auth.getDataFromStorage() as UserModel;
@@ -32,11 +33,13 @@ final contents=<Content>[].obs;
               typeAuth.value=Auth.comapny;
           company.value=auth.getDataFromStorage() as Company;
           getContentComapny(company.value.id!);
+          getPostCompany(company.value.id!);
           break;
         case 'infulonser':
              typeAuth.value=Auth.infulonser;
           infulencer.value=auth.getDataFromStorage() as Infulonser;
           getContentInful(infulencer.value.id!);
+          getPostInful(infulencer.value.id!);
           break;
       }
 
@@ -48,5 +51,13 @@ contents.assignAll(data);
 Future<void> getContentInful(int id) async {
 var data=await repo.GetInfulConent(id);
 contents.assignAll(data);
+}
+Future<void> getPostInful(int id) async {
+var data=await repo.GetInfulPost(id);
+posts.assignAll(data);
+}
+Future<void> getPostCompany(int id) async {
+var data=await repo.GetCompPost(id);
+posts.assignAll(data);
 }
 }
