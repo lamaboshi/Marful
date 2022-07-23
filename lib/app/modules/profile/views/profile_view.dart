@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/home/views/home_view.dart';
+import 'package:marful/app/modules/profile/views/edit_profile.dart';
 import 'package:marful/app/modules/websit_company/views/websit_company_page.dart';
 
 import '../../../core/values/app_colors.dart';
@@ -22,35 +23,35 @@ class ProfilePage extends GetResponsiveView<ProfileController> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             MainProfile(),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: screen.width / 4,
-                  ),
-                  Tooltip(
-                    message: 'Photo',
-                    child: IconButton(
-                      icon: Icon(Icons.photo, size: 30, color: Colors.black54),
-                      onPressed: () {},
-                    ),
-                  ),
-                  SizedBox(
-                    width: screen.width/ 4,
-                  ),
-                  Tooltip(
-                    message: 'Posts',
-                    child: IconButton(
-                      icon:
-                          Icon(Icons.post_add, size: 30, color: Colors.black54),
-                      onPressed: () {},
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: Row(
+            //     crossAxisAlignment: CrossAxisAlignment.center,
+            //     children: [
+            //       SizedBox(
+            //         width: screen.width / 4,
+            //       ),
+            //       Tooltip(
+            //         message: 'Photo',
+            //         child: IconButton(
+            //           icon: Icon(Icons.photo, size: 30, color: Colors.black54),
+            //           onPressed: () {},
+            //         ),
+            //       ),
+            //       SizedBox(
+            //         width: screen.width/ 4,
+            //       ),
+            //       Tooltip(
+            //         message: 'Posts',
+            //         child: IconButton(
+            //           icon:
+            //               Icon(Icons.post_add, size: 30, color: Colors.black54),
+            //           onPressed: () {},
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
             // Obx(() => Container(
             //     child: controller.kind.value
             //         ? 
