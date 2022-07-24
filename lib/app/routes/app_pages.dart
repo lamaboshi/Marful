@@ -45,6 +45,11 @@ class AppPages {
 
   static final routes = [
     GetPage(
+      name: _Paths.HOMEPOST,
+      page: () => const HomePostView(),
+      binding: HomePostBinding(),
+    ),
+    GetPage(
       name: _Paths.FirstSplash,
       page: () => FiestSplashView(),
       binding: FirstSplashBinding(),
@@ -61,12 +66,6 @@ class AppPages {
       name: _Paths.Profile,
       page: () => ProfilePage(),
       binding: ProfileBinding(),
-    ),
-
-    GetPage(
-      name: _Paths.HOMEPOST,
-      page: () => const HomePostView(),
-      binding: HomePostBinding(),
     ),
 
     GetPage(
