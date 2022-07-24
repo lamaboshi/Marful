@@ -18,8 +18,7 @@ class MainProfile extends GetView<ProfileController> {
       return  Column(
         children: [
           viewPart(controller.infulencer.value.name!,controller.infulencer.value.description!),
-          EditProfilePage()
-         // InfulonserProfilePage()
+          InfulonserProfilePage()
         ],
       );
         case Auth.comapny:

@@ -23,6 +23,11 @@ class ProfilePage extends GetResponsiveView<ProfileController> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             MainProfile(),
+            IconButton(onPressed: ()
+            {
+        Get.rootDelegate.toNamed(Routes.EditProfile);
+            }
+            , icon: Icon(Icons.abc,size: 300,))
             // Padding(
             //   padding: const EdgeInsets.all(8.0),
             //   child: Row(
