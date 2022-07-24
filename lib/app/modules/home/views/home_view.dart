@@ -53,7 +53,7 @@ class HomeView extends GetView<HomeController> {
           const HomePostView(),
           //   PasswordPageView(),
           ProfilePage(),
-          const HomeMenuView(),
+          HomeMenuView(),
         ]),
       ),
     );
