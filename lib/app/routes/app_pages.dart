@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:marful/app/modules/profile/views/edit_profile.dart';
 
 import '../../sheard/auth_service.dart';
 import '../modules/chat_page/bindings/chat_page_binding.dart';
@@ -14,8 +15,6 @@ import '../modules/home/views/home_view.dart';
 import '../modules/homeMain_page/bindings/homeMain_binding.dart';
 import '../modules/homePost_page/bindings/homePost_binding.dart';
 import '../modules/homePost_page/views/homePost_view.dart';
-import '../modules/intro_page/bindings/intro_binding.dart';
-import '../modules/intro_page/view/intro_view.dart';
 import '../modules/menu/bindings/menu_binding.dart';
 import '../modules/password_page/bindings/password_binding.dart';
 import '../modules/password_page/views/confirm_password.dart';
@@ -44,6 +43,11 @@ class AppPages {
   //static const iNITIAL = Routes.websitecompany;
 
   static final routes = [
+     GetPage(
+      name: _Paths.SignIn,
+      page: () => SignInPage(),
+      binding: SignInBinding(),
+    ),
     GetPage(
       name: _Paths.HOMEPOST,
       page: () => const HomePostView(),
@@ -67,13 +71,17 @@ class AppPages {
       page: () => ProfilePage(),
       binding: ProfileBinding(),
     ),
-
-    GetPage(
-      name: _Paths.SignIn,
-      page: () => SignInPage(),
-      binding: SignInBinding(),
+     GetPage(
+      name: _Paths.EditProfile,
+      page: () => EditProfilePage(),
+      binding: ProfileBinding(),
     ),
 
+    GetPage(
+      name: _Paths.HOMEPOST,
+      page: () => const HomePostView(),
+      binding: HomePostBinding(),
+    ),
     GetPage(
       name: _Paths.WebsiteCompany,
       page: () => WebsiteCompanyPage(),
@@ -81,25 +89,21 @@ class AppPages {
     ),
 
     GetPage(
-      name: _Paths.ConfirmPassword,
-      page: () => const Confirmpassword(),
-      binding: PasswordBinding(),
-    ),
-    GetPage(
-      name: _Paths.Password,
-      page: () => PasswordPageView(),
-      binding: PasswordBinding(),
-    ),
+        name: _Paths.Password,
+        page: () => PasswordPageView(),
+        binding: PasswordBinding(),
+        children: [
+          GetPage(
+            name: _Paths.ConfirmPassword,
+            page: () => const Confirmpassword(),
+          ),
+        ]),
     GetPage(
       name: _Paths.Setting,
       page: () => SettingPage(),
       binding: SettingBinding(),
     ),
-    GetPage(
-      name: _Paths.Intro,
-      page: () => IntroPage(),
-      binding: IntroBinding(),
-    ),
+
     GetPage(
       name: _Paths.SignUpUserPage,
       page: () => SignUpUserPage(),

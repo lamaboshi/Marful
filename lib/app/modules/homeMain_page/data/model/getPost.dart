@@ -10,7 +10,7 @@ String getPostToJson(List<GetPost> data) => json.encode(List<dynamic>.from(data.
 class GetPost {
   GetPost({this.interaction, this.noInteraction, this.post});
 
-  final bool? interaction;
+  late final bool? interaction;
   final bool? noInteraction;
   final Post? post;
 

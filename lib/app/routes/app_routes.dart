@@ -16,6 +16,7 @@ abstract class Routes {
   static const Setting = _Paths.Setting;
   static const Menu = _Paths.Menu;
   static const Profile = _Paths.Profile;
+  static const EditProfile = _Paths.EditProfile;
   static const Content = _Paths.Content;
   static const Report = _Paths.Report;
   static const Search = _Paths.Search;
@@ -39,6 +40,7 @@ abstract class _Paths {
   static const Setting = '/Setting ';
   static const Menu = '/Menu ';
   static const Profile = '/Profile ';
+  static const EditProfile = '/EditProfile ';
   static const AppPage = '/AppPage';
   static const Content = '/Content';
   static const Report = '/Report';

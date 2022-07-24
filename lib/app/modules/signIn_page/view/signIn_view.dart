@@ -99,7 +99,7 @@ class SignInPage extends GetView<SignInController> {
                         alignment: Alignment.topRight,
                         child: InkWell(
                           onTap: () {
-                            controller.logIn();
+                            Get.rootDelegate.toNamed(Routes.Password);
                           },
                           child: const Text(
                             'Forgot Your Passeword?',
@@ -130,7 +130,7 @@ class SignInPage extends GetView<SignInController> {
                       ),
                       TextButton(
                         onPressed: () {
-                          Get.rootDelegate.toNamed(Routes.Intro);
+                          Get.rootDelegate.toNamed(Routes.FirstSplash);
                         },
                         // ignore: sort_child_properties_last
                         child: const Text('Create Your Account?'),

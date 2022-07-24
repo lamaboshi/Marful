@@ -14,18 +14,18 @@ class HomeMenuView extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
-            buildCard('Edit profil', Icons.edit),
-            buildCard('Setting', Icons.settings),
-            buildCard('Report', AppIcons.trending_up),
-            buildCard('About', Icons.abc_outlined),
-            buildCard('Log out', Icons.logout),
+            buildCard('Edit profil', Icons.edit, Routes.EditProfile),
+            buildCard('Setting', Icons.settings, Routes.Setting),
+            buildCard('Report', AppIcons.trending_up, Routes.Report),
+            buildCard('About', Icons.abc_outlined, ''),
+            buildCard('Log out', Icons.logout, ''),
           ],
         ),
       ),
     );
   }
 
-  Widget buildCard(String title, IconData icon) {
+  Widget buildCard(String title, IconData icon, String namePage) {
     return InkWell(
       child: SizedBox(
         height: 80,
@@ -52,7 +52,9 @@ class HomeMenuView extends StatelessWidget {
         ),
       ),
       onTap: () {
-        Get.rootDelegate.toNamed(Routes.Report);
+        if (namePage.isNotEmpty) {
+          Get.rootDelegate.toNamed(namePage);
+        }
       },
     );
   }

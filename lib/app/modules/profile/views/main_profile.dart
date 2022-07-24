@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/profile/views/company_profile.dart';
+import 'package:marful/app/modules/profile/views/edit_profile.dart';
 import 'package:marful/app/modules/profile/views/inflounsor_profile.dart';
 import 'package:marful/app/modules/profile/views/user_profile.dart';
 import 'package:marful/sheard/auth_service.dart';
