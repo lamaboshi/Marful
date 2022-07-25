@@ -61,21 +61,26 @@ class ProfileController extends GetxController {
   }
 
   Future<void> getContentComapny(int id) async {
+    print('getContentComapny');
     var data = await repo.GetCompanyConent(id);
     contents.assignAll(data);
   }
 
   Future<void> getContentInful(int id) async {
+    print('getContentInful');
+    print(id);
     var data = await repo.GetInfulConent(id);
     contents.assignAll(data);
   }
 
   Future<void> getPostInful(int id) async {
+    print('getPostInful');
     var data = await repo.GetInfulPost(id);
     posts.assignAll(data);
   }
 
   Future<void> getPostCompany(int id) async {
+    print('getPostCompany');
     var data = await repo.GetCompPost(id);
     posts.assignAll(data);
   }

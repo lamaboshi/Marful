@@ -43,14 +43,14 @@ class HomeMainView extends StatelessWidget {
                         ),
                 )),
           ),
-          Obx(() {
-            return SliverList(
-              delegate: SliverChildBuilderDelegate(childCount: 30,
-                  (BuildContext context, int index) {
-                return buildpost(controller.post[index]);
-              }),
-            );
-          }),
+          // Obx(() {
+          //   return SliverList(
+          //     delegate: SliverChildBuilderDelegate(childCount: 30,
+          //         (BuildContext context, int index) {
+          //       return buildpost(controller.post[index]);
+          //     }),
+          //   );
+          // }),
         ],
       ),
     );
