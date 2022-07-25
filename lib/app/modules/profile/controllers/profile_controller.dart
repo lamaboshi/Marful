@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:marful/app/data/model/company.dart';
 import 'package:marful/app/data/model/infulonser.dart';
 import 'package:marful/app/data/model/user_model.dart';
@@ -17,11 +20,23 @@ class ProfileController extends GetxController {
   final company = Company().obs;
   final user = UserModel().obs;
   final contents = <Content>[].obs;
+  final imagefile = File('').obs;
   final posts = <Post>[].obs;
   @override
   void onInit() {
     super.onInit();
     getDataperson();
+  }
+
+  Future pickImage() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image == null) return;
+      final imageTemp = File(image.path);
+      imagefile.value = imageTemp;
+    } catch (e) {
+      print('Failed to pick image: $e');
+    }
   }
 
   Future<void> getDataperson() async {
