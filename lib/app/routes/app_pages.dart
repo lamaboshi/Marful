@@ -48,6 +48,11 @@ class AppPages {
       binding: SignInBinding(),
     ),
     GetPage(
+      name: _Paths.HOMEPOST,
+      page: () => const HomePostView(),
+      binding: HomePostBinding(),
+    ),
+    GetPage(
       name: _Paths.FirstSplash,
       page: () => FiestSplashView(),
       binding: FirstSplashBinding(),
