@@ -9,17 +9,20 @@ import 'package:marful/app/modules/homeMain_page/data/model/Post.dart';
 
 import '../../../../sheard/auth_service.dart';
 import '../../../data/model/content.dart';
+import '../../../data/repo/content_repo.dart';
 import '../data/profile_repository.dart';
 
 class ProfileController extends GetxController {
   final kind = true.obs;
   final typeAuth = Auth.user.obs;
+  final contentRepo = ContenteRpository();
   final repo = ProfailRepository();
   final auth = Get.find<AuthService>();
   final infulencer = Infulonser().obs;
   final company = Company().obs;
   final user = UserModel().obs;
   final contents = <Content>[].obs;
+  final allContents = <Content>[].obs;
   final imagefile = File('').obs;
   final posts = <Post>[].obs;
   @override
@@ -37,6 +40,11 @@ class ProfileController extends GetxController {
     } catch (e) {
       print('Failed to pick image: $e');
     }
+  }
+
+  Future<void> getContent() async {
+    var res = await contentRepo.getContent();
+    allContents.assignAll(res);
   }
 
   Future<void> getDataperson() async {
@@ -58,6 +66,7 @@ class ProfileController extends GetxController {
         await getPostInful(infulencer.value.id!);
         break;
     }
+    await getContent();
   }
 
   Future<void> getContentComapny(int id) async {

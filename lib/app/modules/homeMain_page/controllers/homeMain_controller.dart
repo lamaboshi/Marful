@@ -16,12 +16,12 @@ class HomeMainController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // getData();
+    getData();
   }
 
   Future<void> getData() async {
     await getContent();
-    await getAllPosts();
+    //  await getAllPosts();
   }
 
   Future<void> getContent() async {
