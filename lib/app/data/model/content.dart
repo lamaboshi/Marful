@@ -4,8 +4,9 @@ class Content {
   String? description;
 
   Content({
-    required this.id,
-    required this.description,
+     this.id,
+     this.description,
+     this.name,
   });
 
   Content.fromJson(Map<String, dynamic> json) {
