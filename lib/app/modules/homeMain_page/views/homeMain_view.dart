@@ -4,6 +4,7 @@ import 'package:marful/app/core/values/my_flutter_app_icons.dart';
 
 import '../../../core/values/app_colors.dart';
 import '../controllers/homeMain_controller.dart';
+import '../data/model/getPost.dart';
 
 class HomeMainView extends StatelessWidget {
   HomeMainView({Key? key}) : super(key: key);
@@ -11,7 +12,6 @@ class HomeMainView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -43,12 +43,14 @@ class HomeMainView extends StatelessWidget {
                         ),
                 )),
           ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(childCount: 30,
-                (BuildContext context, int index) {
-              return buildpost(index);
-            }),
-          ),
+          // Obx(() {
+          //   return SliverList(
+          //     delegate: SliverChildBuilderDelegate(childCount: 30,
+          //         (BuildContext context, int index) {
+          //       return buildpost(controller.post[index]);
+          //     }),
+          //   );
+          // }),
         ],
       ),
     );
@@ -79,7 +81,7 @@ class HomeMainView extends StatelessWidget {
           ),
         ],
       );
-  Widget buildpost(int index) => Padding(
+  Widget buildpost(GetPost post) => Padding(
         padding: const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
         child: Card(
           elevation: 2,
@@ -120,8 +122,8 @@ class HomeMainView extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                const Text(
-                  'Decstfgvmshgjhvgsfj nmgjhgvhv hj hj hjffggvhjgfcg gxdgfghjgjhgh fghfhgh ffcvbfd',
+                Text(
+                  post.post!.description!,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 15),
@@ -135,19 +137,31 @@ class HomeMainView extends StatelessWidget {
                           color: Colors.black,
                         ),
                       ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          AppIcons.thumbs_down,
-                          color: Colors.black,
-                        ),
-                      ),
-                      IconButton(
-                          onPressed: () {},
+                      Obx(() {
+                        return IconButton(
+                          onPressed: () {
+                            post.interaction = !post.interaction!;
+                          },
                           icon: Icon(
-                            AppIcons.favorite,
-                            color: Colors.black,
-                          )),
+                            AppIcons.thumbs_down,
+                            color: post.interaction == true
+                                ? Colors.black
+                                : AppColors.blue,
+                          ),
+                        );
+                      }),
+                      Obx(() {
+                        return IconButton(
+                            onPressed: () {
+                              post.interaction = !post.interaction!;
+                            },
+                            icon: Icon(
+                              AppIcons.favorite,
+                              color: post.interaction == true
+                                  ? Colors.red
+                                  : Colors.black,
+                            ));
+                      }),
                     ],
                   ),
                 ),

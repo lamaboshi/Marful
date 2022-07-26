@@ -1,89 +1,137 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:marful/app/core/component/textField.dart';
 
 import '../../../core/values/app_colors.dart';
+import '../controllers/homePost_controller.dart';
 
-class HomePostView extends StatelessWidget {
+class HomePostView extends GetView<HomePostController> {
   const HomePostView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
+    final hieght = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          width: width,
-          padding: const EdgeInsets.all(15),
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+      body: Padding(
+        padding: const EdgeInsets.all(15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 30,
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  const Text(
-                    "Add new post",
-                    style:
-                        TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const Text(
-                    "Type",
-                  ),
-TextFieldWidget(type:TextInputType.name ,  obscureText: false,),
-
- 
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  const Text(
-                    "Post",
-                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 21),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  SizedBox(
-                    height: 300,
-                    child: Card(
-                      elevation: 5,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child:  Padding(
-                        padding:const EdgeInsets.all(10),
-                        child: TextFieldWidget(type:TextInputType.name ,  obscureText: false ),
-
-                     
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: Text('Publish'),
-                      style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(AppColors.blue),
-                          foregroundColor:
-                              MaterialStateProperty.all(Colors.white)),
-                    ),
-                  ),
-                ],
+            const Text(
+              "Add new post",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            // const Text(
+            //   "Type",
+            // ),
+            SizedBox(
+              height: 30,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemCount: controller.type.length,
+                itemBuilder: (context, index) {
+                  return InkWell(
+                    onTap: () {
+                      controller.selectedType.value = index;
+                    },
+                    child: Obx(() {
+                      return Center(
+                        child: AnimatedContainer(
+                            duration: const Duration(milliseconds: 130),
+                            width: 75,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 6, vertical: 6),
+                            decoration: BoxDecoration(
+                                color: controller.selectedType.value == index
+                                    ? AppColors.orange
+                                    : AppColors.orange.withOpacity(0.1),
+                                borderRadius: BorderRadius.circular(25)),
+                            child: Center(
+                              child: Text(
+                                controller.type[index],
+                                style: TextStyle(
+                                  color: controller.selectedType.value == index
+                                      ? Colors.white
+                                      : AppColors.orange,
+                                  fontSize: 13,
+                                ),
+                              ),
+                            )),
+                      );
+                    }),
+                  );
+                },
+                separatorBuilder: (BuildContext context, int index) {
+                  return const SizedBox(
+                    width: 8,
+                  );
+                },
               ),
             ),
-          ),
+
+            const SizedBox(
+              height: 30,
+            ),
+
+            Expanded(
+              child: TextField(
+                maxLines: null,
+                cursorColor: AppColors.orange,
+                showCursor: true,
+                decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: "Write your post",
+                    hintStyle: TextStyle(color: Colors.black.withOpacity(0.2))),
+              ),
+            ),
+            // const SizedBox(
+            //   height: 50,
+            // ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.end,
+            //   children: [
+            //     IconButton(
+            //         padding: const EdgeInsets.all(0),
+            //         onPressed: () {},
+            //         icon: Icon(Icons.image,
+            //             size: 30, color: AppColors.orange.withOpacity(0.4))),
+            //   ],
+            // ),
+
+            Row(
+              //  mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                IconButton(
+                    padding: const EdgeInsets.all(0),
+                    onPressed: () {},
+                    icon: Icon(Icons.image,
+                        size: 30, color: AppColors.orange.withOpacity(0.4))),
+                IconButton(
+                    padding: const EdgeInsets.all(0),
+                    onPressed: () {},
+                    icon: Icon(Icons.image,
+                        size: 30, color: AppColors.orange.withOpacity(0.4))),
+                const Spacer(),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text('Publish'),
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(AppColors.orange),
+                      foregroundColor: MaterialStateProperty.all(Colors.white)),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+          ],
         ),
       ),
     );

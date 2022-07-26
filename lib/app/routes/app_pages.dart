@@ -20,7 +20,6 @@ import '../modules/password_page/bindings/password_binding.dart';
 import '../modules/password_page/views/confirm_password.dart';
 import '../modules/password_page/views/password_page.dart';
 import '../modules/profile/binding/profile_binding.dart';
-import '../modules/profile/views/profile_view.dart';
 import '../modules/report_page/bindings/report_binding.dart';
 import '../modules/report_page/views/report_view.dart';
 import '../modules/search_page/bindings/search_binding.dart';
@@ -43,10 +42,15 @@ class AppPages {
   //static const iNITIAL = Routes.websitecompany;
 
   static final routes = [
-     GetPage(
+    GetPage(
       name: _Paths.SignIn,
       page: () => SignInPage(),
       binding: SignInBinding(),
+    ),
+    GetPage(
+      name: _Paths.HOMEPOST,
+      page: () => const HomePostView(),
+      binding: HomePostBinding(),
     ),
     GetPage(
       name: _Paths.FirstSplash,
@@ -60,17 +64,12 @@ class AppPages {
       ProfileBinding()
     ], middlewares: [
       AuthMiddlware()
+    ], children: [
+      GetPage(
+        name: _Paths.EditProfile,
+        page: () => EditProfilePage(),
+      ),
     ]),
-    GetPage(
-      name: _Paths.Profile,
-      page: () => ProfilePage(),
-      binding: ProfileBinding(),
-    ),
-     GetPage(
-      name: _Paths.EditProfile,
-      page: () => EditProfilePage(),
-      binding: ProfileBinding(),
-    ),
 
     GetPage(
       name: _Paths.HOMEPOST,

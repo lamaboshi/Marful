@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 import '../../../data/model/content.dart';
 import '../../../data/repo/content_repo.dart';
 import '../data/homeMain_repo.dart';
@@ -14,10 +15,13 @@ class HomeMainController extends GetxController {
   final contentId = 0.obs;
   @override
   void onInit() {
-    getContent();
-    getAllPosts();
-    getPostsWithContent();
     super.onInit();
+    getData();
+  }
+
+  Future<void> getData() async {
+    await getContent();
+    //  await getAllPosts();
   }
 
   Future<void> getContent() async {
@@ -25,6 +29,7 @@ class HomeMainController extends GetxController {
     var res = await contentRepo.getContent();
     contents.assignAll(res);
     loading.value = false;
+    res.map((e) => print(e));
   }
 
   Future<void> getAllPosts() async {

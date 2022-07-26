@@ -14,25 +14,29 @@ class Post {
     this.brandId,
     this.jobId,
     this.image,
+    this.dateTime,
   });
 
   final int? id;
   final String? description;
+  final DateTime? dateTime;
   final int? brandId;
   final int? jobId;
   Uint8List? image;
 
   factory Post.fromJson(Map<String, dynamic> json) => Post(
-      id: json["Id"],
-      description: json["Description"],
-      brandId: json["BrandId"],
+      id: json["id"],
+      description: json["description"],
+      dateTime: DateTime.parse(json["dateTime"].toString()),
+      brandId: json["brandId"],
       jobId: json["jobId"],
       image: json['image'] == null ? null : json['image']);
 
   Map<String, dynamic> toJson() => {
-        "Id": id,
-        "Description": description,
-        "BrandId": brandId,
+        "id": id,
+        "description": description,
+        "dateTime": dateTime,
+        "brandId": brandId,
         "jobId": jobId,
         "image": image,
       };

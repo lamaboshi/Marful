@@ -7,26 +7,28 @@ import 'package:get/get.dart';
 import '../controllers/profile_controller.dart';
 
 class Buildcontent extends GetResponsiveView<ProfileController> {
+  Buildcontent({super.key});
+
   @override
   Widget builder() {
-     final random = Random();
-    final List grid = List.generate(1000, (index) => null);
-   return Wrap(
-        children: [
+    final random = Random();
+    return Wrap(
+      children: [
         Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Wrap(
+          padding: const EdgeInsets.all(8.0),
+          child: Obx(() => Wrap(
                 children: controller.contents
-                       .map(
-                            (e) => card(e.name!,screen.width,screen.height,random),
-                          )
-                          .toList(),
-              ),
-            ),
-               ],
-             );
-                   }
-   Widget card(String name, double width, double height, var random) {
+                    .map(
+                      (e) => card(e.name!, screen.width, screen.height, random),
+                    )
+                    .toList(),
+              )),
+        ),
+      ],
+    );
+  }
+
+  Widget card(String name, double width, double height, var random) {
     return Container(
       width: width / 5,
       child: Card(
@@ -54,5 +56,4 @@ class Buildcontent extends GetResponsiveView<ProfileController> {
       ),
     );
   }
-  
-  }
+}

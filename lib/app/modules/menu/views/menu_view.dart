@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marful/app/routes/app_pages.dart';
 
 import '../../../core/values/my_flutter_app_icons.dart';
+import '../../profile/views/edit_profile.dart';
 
 class HomeMenuView extends StatelessWidget {
   const HomeMenuView({Key? key}) : super(key: key);
@@ -14,18 +14,19 @@ class HomeMenuView extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
-            buildCard('Edit profil', Icons.edit),
-            buildCard('Setting', Icons.settings),
-            buildCard('Report', AppIcons.trending_up),
-            buildCard('About', Icons.abc_outlined),
-            buildCard('Log out', Icons.logout),
+            buildCard(
+                'Edit profil', Icons.edit, () => Get.to(EditProfilePage())),
+            buildCard('Setting', Icons.settings, () {}),
+            buildCard('Report', AppIcons.trending_up, () {}),
+            buildCard('About', Icons.abc_outlined, () {}),
+            buildCard('Log out', Icons.logout, () {}),
           ],
         ),
       ),
     );
   }
 
-  Widget buildCard(String title, IconData icon) {
+  Widget buildCard(String title, IconData icon, Function()? namePage) {
     return InkWell(
       child: SizedBox(
         height: 80,
@@ -51,9 +52,7 @@ class HomeMenuView extends StatelessWidget {
           ),
         ),
       ),
-      onTap: () {
-        Get.rootDelegate.toNamed(Routes.Report);
-      },
+      onTap: namePage,
     );
   }
 }
