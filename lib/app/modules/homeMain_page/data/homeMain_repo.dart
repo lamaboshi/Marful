@@ -13,19 +13,19 @@ class HomeMainRepositry extends IHomeMainRepository {
   @override
   Future<List<GetPost>> getAllPost() async {
     var user = auth.getDataFromStorage();
+    var list = <GetPost>[];
     if (user is UserModel) {
       String? email = user.email;
 
       var result = await _dio.get('https://localhost:7192/api/Main/Posts',
           queryParameters: {"email": email});
       print(result);
-      var list = <GetPost>[];
+
       for (var item in result.data) {
         list.add(GetPost.fromJson(item));
       }
-      return list;
     }
-    return [];
+    return list;
   }
 
   @override
