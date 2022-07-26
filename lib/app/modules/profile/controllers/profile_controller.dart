@@ -23,6 +23,7 @@ class ProfileController extends GetxController {
   final user = UserModel().obs;
   final contents = <Content>[].obs;
   final allContents = <Content>[].obs;
+  final allcontentnew=<Content>[].obs;
   final imagefile = File('').obs;
   final posts = <Post>[].obs;
   @override
