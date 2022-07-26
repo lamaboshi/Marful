@@ -11,7 +11,7 @@ import 'build_post.dart';
 
 class EditProfilePage extends GetResponsiveView<ProfileController> {
   EditProfilePage({super.key});
-
+ 
   @override
   Widget builder() {
     return Scaffold(
@@ -49,6 +49,8 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
   }
 
   Widget getType() {
+    controller.allcontentnew==controller.allContents;
+    //////////////////////infulonseer
     switch (controller.typeAuth.value) {
       case Auth.infulonser:
         return Column(
@@ -82,10 +84,15 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                                     .map(
                                       (element) => Padding(
                                           padding: EdgeInsets.all(6),
-                                          child: Text(
-                                            element.name!,
-                                            style: TextStyle(fontSize: 16),
-                                          )),
+                                          child: 
+                                          TextButton(
+                                           onPressed: () { 
+                                            controller.allcontentnew.add(element);
+                                            contentPart();
+                                            }, child: Text(  element.name!,
+                                            style: TextStyle(fontSize: 16,color: Colors.black),),
+                                          )
+                                          ),
                                     )
                                     .toList()),
                           )),
@@ -103,7 +110,8 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                         ),
                       ),
                       IconButton(
-                          onPressed: () {
+                          onPressed: (
+                          ) {
                             QPanel(
                               alignment: Alignment.bottomCenter,
                               child: Padding(
@@ -182,6 +190,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
             ),
           ],
         );
+        /////////////company
       case Auth.comapny:
         return Column(
           children: [
@@ -214,10 +223,17 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                                     .map(
                                       (element) => Padding(
                                           padding: EdgeInsets.all(6),
-                                          child: Text(
+                                          child:
+                                          TextButton(onPressed: () {
+                                            contentPart();
+                                          },
+                                            child: 
+                                            Text(
                                             element.name!,
                                             style: TextStyle(fontSize: 16),
-                                          )),
+                                          ) ,)
+                                        
+                                          ),
                                     )
                                     .toList()),
                           )),
@@ -314,6 +330,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
             ),
           ],
         );
+        ///////////////user
       case Auth.user:
         return Column(
           children: [
@@ -329,7 +346,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
     return Obx(() => ListView(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
-          children: controller.contents
+          children: controller.allcontentnew
               .toList()
               .map<Widget>((e) => Container(
                     height: 55,
@@ -350,7 +367,10 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                       ),
                       elevation: 2,
                       deleteIcon: Icon(Icons.close, size: 20),
-                      onDeleted: () {},
+                      onDeleted: () {
+                         controller.allcontentnew.remove(e);
+                        
+                      },
                     ),
                   ))
               .toList(),
