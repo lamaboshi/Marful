@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:marful/app/core/values/app_colors.dart';
+import 'package:marful/sheard/auth_service.dart';
 
 import '../controllers/chat_page_controller.dart';
 
@@ -8,97 +10,140 @@ class ChatPageView extends GetView<ChatPageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColors.orange,
-          title: Text('ConversationPageView'),
-          centerTitle: true,
-        ),
-        body: Stack(children: [
+      appBar: AppBar(
+        backgroundColor: AppColors.orange,
+        title: Text('ConversationPageView'),
+        centerTitle: true,
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.work))],
+      ),
+      body: Stack(
+        children: [
           //image
           Positioned.fill(
               child: Image.asset(
             fit: BoxFit.cover,
             'assets/images/backgroundChat.png',
           )),
-          Container(
-            color: Colors.white.withOpacity(0.4),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox.shrink(),
-                      Card(
-                        color: AppColors.blue.withOpacity(0.4),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                              'hi thanke you very match for this it was nice one',
-                              style: TextStyle(fontSize: 17)),
+
+          Column(
+            children: [
+              Expanded(
+                flex: 11,
+                child: SingleChildScrollView(
+                    child: Container(
+                  color: Colors.white.withOpacity(0.4),
+                  child: Obx(() => Column(
+                        children: controller.allMessage.map((element) {
+                          if (!element.messageStatus! &&
+                              controller.typeAuth.value == Auth.infulonser) {
+                            return messageSender(
+                                element.text!, element.sendTime!);
+                          } else {
+                            return messageRecover(
+                                element.text!, element.sendTime!);
+                          }
+                        }).toList(),
+                      )),
+                )),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Container(
+                    color: Colors.white,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          flex: 7,
+                          child: TextField(
+                            onChanged: (value) {
+                              controller.textMessage.value = value;
+                            },
+                            decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: AppColors.orange)),
+                                hintText: 'Hi',
+                                prefixIcon: const Icon(Icons.message,
+                                    color: AppColors.orange),
+                                prefixText: ' ',
+                                suffixStyle:
+                                    const TextStyle(color: AppColors.orange)),
+                          ),
                         ),
-                      ),
-                    ],
+                        Expanded(
+                          child: IconButton(
+                              onPressed: () async {
+                                await controller.addMessage();
+                              },
+                              icon: Icon(
+                                Icons.send,
+                                color: AppColors.orange,
+                              )),
+                        )
+                      ],
+                    ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Card(
-                        color: AppColors.orange.withOpacity(0.7),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                              'hi thanke you very match for this it was nice one',
-                              style: TextStyle(fontSize: 17)),
-                        ),
-                      ),
-                      SizedBox.shrink(),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox.shrink(),
-                      Card(
-                        color: AppColors.blue.withOpacity(0.4),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                              'hi thanke you very match for this it was nice one',
-                              style: TextStyle(fontSize: 17)),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Card(
-                        color: AppColors.orange.withOpacity(0.7),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                              'hi thanke you very match for this it was nice one',
-                              style: TextStyle(fontSize: 17)),
-                        ),
-                      ),
-                      SizedBox.shrink(),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          )
-        ]));
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
+
+  Widget messageSender(String text, DateTime date) => Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Card(
+              color: AppColors.orange.withOpacity(0.7),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(text, style: TextStyle(fontSize: 17)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(3),
+                    child: Text(formattedTime(date),
+                        style: TextStyle(fontSize: 12)),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox.shrink(),
+          ],
+        ),
+      );
+  Widget messageRecover(String text, DateTime date) => Padding(
+        padding: const EdgeInsets.all(3),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SizedBox.shrink(),
+            Card(
+              color: AppColors.blue.withOpacity(0.4),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(text, style: TextStyle(fontSize: 17)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(3),
+                    child: Text(formattedTime(date),
+                        style: TextStyle(fontSize: 12)),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+  String formattedTime(DateTime date) => DateFormat.Hm().format(date);
 }

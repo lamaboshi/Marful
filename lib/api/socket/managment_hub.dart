@@ -15,10 +15,14 @@ class ManagementHub {
             as Iterable);
   }
 
-  Future<List<MessageModel>> GA_Messages(int idConvo) async {
+  Future<void> SendMessage(String text,int idConv,bool iscCompa) async {
+    await connection.invoke('SendMessage', args: [text,idConv,iscCompa]);
+  }
+
+  Future<List<Message>> GA_Messages(int idConvo) async {
     var json = await connection.invoke('GA_Messages', args: [idConvo]);
-    return List<MessageModel>.from(
-        json.map((x) => MessageModel.fromJson(x as Map<String, dynamic>))
-            as Iterable);
+
+    return List<Message>.from(json
+        .map((x) => Message.fromJson(x as Map<String, dynamic>)) as Iterable);
   }
 }
