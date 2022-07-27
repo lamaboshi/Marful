@@ -1,3 +1,6 @@
+import 'package:marful/app/data/model/company.dart';
+import 'package:marful/app/data/model/infulonser.dart';
+import 'package:marful/app/data/model/user_model.dart';
 import 'package:marful/app/modules/homeMain_page/data/model/Post.dart';
 
 import '../../../../data/model/content.dart';
@@ -7,4 +10,9 @@ Future<List<Content>> GetInfulConent(int IdInful);
 Future<List<Content>> GetCompanyConent(int idCompany);
 Future<List<Post>>GetInfulPost(int idInful);
 Future<List<Post>>GetCompPost(int idCompany);
+Future<bool>Updateinfo(Infulonser infulonser ,int id);
+Future<bool>Updatecomp(Company company,int id);
+Future<bool>Updateuse(UserModel userModel,int id);
+
+
 }

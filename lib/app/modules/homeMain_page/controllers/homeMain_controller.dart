@@ -17,11 +17,14 @@ class HomeMainController extends GetxController {
   void onInit() {
     super.onInit();
     getData();
+    print('hhoiiiiii');
+    print('hhoiiiiii');
+    print(post.value);
   }
 
   Future<void> getData() async {
     await getContent();
-    //  await getAllPosts();
+    await getAllPosts();
   }
 
   Future<void> getContent() async {

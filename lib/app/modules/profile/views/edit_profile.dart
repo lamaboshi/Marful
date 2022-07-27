@@ -11,7 +11,7 @@ import 'build_post.dart';
 
 class EditProfilePage extends GetResponsiveView<ProfileController> {
   EditProfilePage({super.key});
-
+ 
   @override
   Widget builder() {
     return Scaffold(
@@ -22,8 +22,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
       body: SingleChildScrollView(
           child: Column(
         children: [
-          getType(),
-          const SizedBox(
+          getType() ,SizedBox(
             height: 20,
           ),
           Padding(
@@ -33,7 +32,9 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                   backgroundColor: MaterialStateProperty.all(AppColors.blue),
                   fixedSize:
                       MaterialStateProperty.all(const Size.fromWidth(150))),
-              onPressed: () async {},
+              onPressed: () async {
+                controller.UpdateDataforperson();
+              },
               child: const Text(
                 "Save ",
                 style: TextStyle(
@@ -49,12 +50,17 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
   }
 
   Widget getType() {
+    controller.allcontentnew==controller.allContents;
+    controller.info==controller.infulencer;
+    controller.comp==controller.company;
+    controller.use==controller.user;
+    //////////////////////infulonseer
     switch (controller.typeAuth.value) {
       case Auth.infulonser:
         return Column(
           children: [
             viewPart(controller.infulencer.value.name!,
-                controller.infulencer.value.description!),
+                controller.infulencer.value.description!,1),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -82,10 +88,15 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                                     .map(
                                       (element) => Padding(
                                           padding: EdgeInsets.all(6),
-                                          child: Text(
-                                            element.name!,
-                                            style: TextStyle(fontSize: 16),
-                                          )),
+                                          child: 
+                                          TextButton(
+                                           onPressed: () { 
+                                            controller.allcontentnew.add(element);
+                                            contentPart();
+                                            }, child: Text(  element.name!,
+                                            style: TextStyle(fontSize: 16,color: Colors.black),),
+                                          )
+                                          ),
                                     )
                                     .toList()),
                           )),
@@ -103,7 +114,8 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                         ),
                       ),
                       IconButton(
-                          onPressed: () {
+                          onPressed: (
+                          ) {
                             QPanel(
                               alignment: Alignment.bottomCenter,
                               child: Padding(
@@ -182,11 +194,12 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
             ),
           ],
         );
+        /////////////company
       case Auth.comapny:
         return Column(
           children: [
             viewPart(controller.company.value.name!,
-                controller.company.value.description!),
+                controller.company.value.description!,2),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -214,10 +227,17 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                                     .map(
                                       (element) => Padding(
                                           padding: EdgeInsets.all(6),
-                                          child: Text(
+                                          child:
+                                          TextButton(onPressed: () {
+                                            contentPart();
+                                          },
+                                            child: 
+                                            Text(
                                             element.name!,
                                             style: TextStyle(fontSize: 16),
-                                          )),
+                                          ) ,)
+                                        
+                                          ),
                                     )
                                     .toList()),
                           )),
@@ -314,10 +334,11 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
             ),
           ],
         );
+        ///////////////user
       case Auth.user:
         return Column(
           children: [
-            viewPart(controller.user.value.name!, ''),
+            viewPart(controller.user.value.name!, '',3),
           ],
         );
       default:
@@ -329,7 +350,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
     return Obx(() => ListView(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
-          children: controller.contents
+          children: controller.allcontentnew
               .toList()
               .map<Widget>((e) => Container(
                     height: 55,
@@ -350,14 +371,17 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                       ),
                       elevation: 2,
                       deleteIcon: Icon(Icons.close, size: 20),
-                      onDeleted: () {},
+                      onDeleted: () {
+                         controller.allcontentnew.remove(e);
+                        
+                      },
                     ),
                   ))
               .toList(),
         ));
   }
 
-  Widget viewPart(String name, String descraption) {
+  Widget viewPart(String name, String descraption,int type) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -394,7 +418,6 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                //   Text('Update Name From' + name + 'to'),
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -402,6 +425,20 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                     SizedBox(
                       width: screen.width - 50,
                       child: TextFieldWidget(
+                        onChanged: (txt) {
+                            if(txt!=null){
+                            switch (type) {
+                           case 1:
+                           controller.info.value.name==txt;
+                           break;
+                           case 2 :
+                           controller.comp.value.name==txt;
+                           break;
+                              default:
+                              controller.use.value.name=txt;
+                            }
+                         }
+                          },
                         type: TextInputType.multiline,
                         hint: 'Name',
                         obscureText: false,
@@ -413,6 +450,20 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                 SizedBox(
                   width: screen.width - 50,
                   child: TextFieldWidget(
+                       onChanged: (txt) {
+                            if(txt!=null){
+                            switch (type) {
+                           case 1:
+                           controller.info.value.phone==txt;
+                           break;
+                           case 2 :
+                           controller.comp.value.phone==txt;
+                           break;
+                              default:
+                              controller.use.value.phone=txt;
+                            }
+                         }
+                          },
                     type: TextInputType.multiline,
                     hint: 'Phone',
                     obscureText: false,
@@ -429,6 +480,18 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                         hint: 'Email',
                         obscureText: false,
                         prefIcon: Icons.email,
+                          onChanged: (txt) {
+                            if(txt!=null){
+                            switch (type) {
+                           case 1:
+                           controller.info.value.email==txt;
+                           break;
+                           case 2 :
+                           controller.comp.value.email==txt;
+                           break;
+                              default:
+                              controller.use.value.email=txt;
+                              }  }}
                       ),
                     ),
                   ],
@@ -441,6 +504,18 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                           SizedBox(
                             width: screen.width - 50,
                             child: TextFieldWidget(
+                                onChanged: (txt) {
+                            if(txt!=null){
+                            switch (type) {
+                           case 1:
+                           controller.info.value.paypal==txt;
+                           break;
+                           case 2 :
+                           //controller.comp.value.==txt;
+                           break;
+                              default:
+                              controller.use.value.paypal=txt;
+                            }}},
                               type: TextInputType.multiline,
                               hint: 'PayPal',
                               obscureText: false,
@@ -454,6 +529,18 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                     : SizedBox(
                         width: screen.width - 50,
                         child: TextFieldWidget(
+                           onChanged: (txt) {
+                            if(txt!=null){
+                            switch (type) {
+                           case 1:
+                           controller.info.value.address==txt;
+                           break;
+                           case 2 :
+                           controller.comp.value.address==txt;
+                           break;
+                              default:
+                            
+                              }  }},
                           type: TextInputType.multiline,
                           hint: 'Address',
                           obscureText: false,
@@ -468,6 +555,18 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                           SizedBox(
                             width: screen.width - 50,
                             child: TextFieldWidget(
+                               onChanged: (txt) {
+                            if(txt!=null){
+                            switch (type) {
+                           case 1:
+                           controller.info.value.userName==txt;
+                           break;
+                           case 2 :
+                        //   controller.comp.value.userName==txt;
+                           break;
+                              default:
+                              controller.use.value.userName=txt;
+                              }  }},
                               type: TextInputType.multiline,
                               hint: 'Username',
                               obscureText: false,
@@ -481,6 +580,18 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                     : SizedBox(
                         width: screen.width - 50,
                         child: TextFieldWidget(
+                            onChanged: (txt) {
+                            if(txt!=null){
+                            switch (type) {
+                           case 1:
+                        //   controller.info.value.==txt;
+                           break;
+                           case 2 :
+                          controller.comp.value.telePhone==txt;
+                           break;
+                              default:
+                             // controller.use.value.t=txt;
+                              }  }},
                           type: TextInputType.multiline,
                           hint: 'TelePhone',
                           obscureText: false,
@@ -492,6 +603,18 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                     : SizedBox(
                         width: screen.width - 50,
                         child: TextFieldWidget(
+                            onChanged: (txt) {
+                            if(txt!=null){
+                            switch (type) {
+                           case 1:
+                           controller.info.value.description==txt;
+                           break;
+                           case 2 :
+                           controller.comp.value.description==txt;
+                           break;
+                              default:
+                            //  controller.use.value.descraption=txt;
+                              }  }},
                           type: TextInputType.multiline,
                           hint: 'Description',
                           obscureText: false,
@@ -503,6 +626,18 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                     : SizedBox(
                         width: screen.width - 50,
                         child: TextFieldWidget(
+                          onChanged: (txt) {
+                            if(txt!=null){
+                            switch (type) {
+                           case 1:
+                       //    controller.info.value.==txt;
+                           break;
+                           case 2 :
+                         //  controller.comp.value.==txt;
+                           break;
+                              default:
+                             controller.use.value.age==txt;
+                              }  }},
                           type: TextInputType.multiline,
                           hint: 'Age',
                           obscureText: false,

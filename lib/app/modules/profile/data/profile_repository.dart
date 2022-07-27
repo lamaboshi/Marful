@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+import 'package:marful/app/data/model/company.dart';
 import 'package:marful/app/data/model/content.dart';
+import 'package:marful/app/data/model/infulonser.dart';
+import 'package:marful/app/data/model/user_model.dart';
 import 'package:marful/app/modules/homeMain_page/data/model/Post.dart';
 
 import 'adapter/profile_adapter.dart';
@@ -53,5 +56,23 @@ class ProfailRepository extends IProfailRepository {
       list.add(Post.fromJson(item));
     }
     return list;
+  }
+    @override
+  Future<bool> Updateinfo(Infulonser infulonser,int id) async {
+    var result = await _dio.put(  'https://localhost:7192/api/Infulonser/Put/{$id}',
+        queryParameters: {"Infulonser":infulonser });
+    return result.statusCode == 200;
+  }
+    @override
+  Future<bool> Updatecomp(Company company,int id) async {
+    var result = await _dio.put(  'https://localhost:7192/api/Company/Put/{$id}',
+        queryParameters: {"Company":company});
+    return result.statusCode == 200;
+  }
+    @override
+  Future<bool> Updateuse(UserModel userModel,int id) async {
+    var result = await _dio.put( 'https://localhost:7192/api/User/Put/{$id}',
+        queryParameters: {"UserModel" :userModel});
+    return result.statusCode == 200;
   }
 }

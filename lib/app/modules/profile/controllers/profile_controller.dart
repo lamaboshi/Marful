@@ -23,8 +23,14 @@ class ProfileController extends GetxController {
   final user = UserModel().obs;
   final contents = <Content>[].obs;
   final allContents = <Content>[].obs;
+  final allcontentnew=<Content>[].obs;
   final imagefile = File('').obs;
   final posts = <Post>[].obs;
+  //////////////////For Update
+  final numberperson=0.obs;
+  final info=Infulonser().obs;
+  final comp=Company().obs;
+  final use= UserModel().obs;
   @override
   void onInit() {
     super.onInit();
@@ -46,7 +52,7 @@ class ProfileController extends GetxController {
     var res = await contentRepo.getContent();
     allContents.assignAll(res);
   }
-
+     
   Future<void> getDataperson() async {
     switch (auth.personType()) {
       case 'user':
@@ -68,7 +74,26 @@ class ProfileController extends GetxController {
     }
     await getContent();
   }
-
+  /////////
+    Future<void> UpdateDataforperson() async {
+    switch (auth.personType()) {
+      case 'user':
+        typeAuth.value = Auth.user;
+        user.value = auth.getDataFromStorage() as UserModel;
+        Updateuser(user.value.id!);
+        break;
+      case 'comapny':
+        typeAuth.value = Auth.comapny;
+        company.value = auth.getDataFromStorage() as Company;
+        Updatecompany(company.value.id!);
+        break;
+      case 'infulonser':
+        typeAuth.value = Auth.infulonser;
+        infulencer.value = auth.getDataFromStorage() as Infulonser;
+        Updateinfolunser(infulencer.value.id!);
+        break;
+    }
+  }
   Future<void> getContentComapny(int id) async {
     print('getContentComapny');
     var data = await repo.GetCompanyConent(id);
@@ -92,5 +117,18 @@ class ProfileController extends GetxController {
     print('getPostCompany');
     var data = await repo.GetCompPost(id);
     posts.assignAll(data);
+  }
+    Future<void> Updateinfolunser(int id) async {
+    infulencer.value=info.value;
+     await repo.Updateinfo(infulencer.value,infulencer.value.id!);
+    
+  }
+    Future<void>  Updatecompany(int id) async {
+    company.value=comp.value;
+     await repo.Updatecomp(company.value,company.value.id!);
+  }
+      Future<void>  Updateuser(int id) async {
+        user.value=use.value;
+     await repo.Updateuse(user.value,user.value.id!);
   }
 }
