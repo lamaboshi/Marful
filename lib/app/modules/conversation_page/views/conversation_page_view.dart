@@ -30,8 +30,10 @@ class ConversationPageView extends GetView<ConversationPageController> {
                         padding: const EdgeInsets.all(8.0),
                         child: InkWell(
                             onTap: () {
-                              Get.rootDelegate.toNamed(Routes.CHAT_PAGE,
-                                  arguments: element.id);
+                              Get.rootDelegate.toNamed(
+                                Routes.CHAT_PAGE,
+                                arguments: element.id.toString(),
+                              );
                             },
                             child: SizedBox(
                                 height: 250,

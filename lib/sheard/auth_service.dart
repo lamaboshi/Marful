@@ -10,7 +10,7 @@ import 'package:marful/app/data/model/user_model.dart';
 
 import '../app/routes/app_pages.dart';
 
-enum Auth { user, comapny, infulonser }
+enum Auth { user, comapny, infulonser, none }
 
 class AuthService {
   final _dio = Get.find<Dio>();
@@ -19,6 +19,17 @@ class AuthService {
   bool isAuth() => stroge.containsKey('type');
 
   String personType() => jsonDecode(stroge.getData('type')!).toString();
+  Auth getTypeEnum() {
+    switch (personType()) {
+      case 'user':
+        return Auth.user;
+      case 'comapny':
+        return Auth.comapny;
+      case 'infulonser':
+        return Auth.infulonser;
+    }
+    return Auth.none;
+  }
 
   Object? getDataFromStorage() {
     if (stroge.containsKey('AuthData') && stroge.containsKey('type')) {
@@ -26,7 +37,7 @@ class AuthService {
       switch (personType()) {
         case 'user':
           return UserModel.fromJson(data as Map<String, dynamic>);
-        case 'comapny':                 
+        case 'comapny':
           return Company.fromJson(data as Map<String, dynamic>);
         case 'infulonser':
           return Infulonser.fromJson(data as Map<String, dynamic>);
