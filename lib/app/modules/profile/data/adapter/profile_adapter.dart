@@ -13,6 +13,8 @@ Future<List<Post>>GetCompPost(int idCompany);
 Future<bool>Updateinfo(Infulonser infulonser ,int id);
 Future<bool>Updatecomp(Company company,int id);
 Future<bool>Updateuse(UserModel userModel,int id);
-
-
+Future<bool>AddcontentInfulonser(int idInful,int idcontent);
+Future<bool>AddcontentCompany(int idCompany,int idcontent);
+Future<bool>DeletcontentInfulonser(int idInful,int idcontent);
+Future<bool>DeletcontentCompany(int idCompany,int idcontent);
 }
