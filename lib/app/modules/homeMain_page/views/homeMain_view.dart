@@ -18,7 +18,7 @@ class HomeMainView extends StatelessWidget {
           Get.bottomSheet(
             SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(20),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [

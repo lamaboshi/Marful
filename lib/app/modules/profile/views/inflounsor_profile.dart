@@ -28,7 +28,7 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
                     fixedSize:
                         MaterialStateProperty.all(const Size.fromWidth(150))),
                 onPressed: () {
-                  Get.rootDelegate.toNamed(Routes.EditProfile);
+                  Get.rootDelegate.toNamed(Routes.WebsiteCompany);
                 },
                 child: const Text(
                   "Follow",

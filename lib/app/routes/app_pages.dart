@@ -62,6 +62,7 @@ class AppPages {
     GetPage(name: _Paths.HOME, page: () => HomeView(), bindings: [
       HomeBinding(),
       HomeMainBinding(),
+      HomePostBinding(),
       MenuBinding(),
       ProfileBinding()
     ], middlewares: [
