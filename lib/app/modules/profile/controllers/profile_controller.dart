@@ -23,14 +23,14 @@ class ProfileController extends GetxController {
   final user = UserModel().obs;
   final contents = <Content>[].obs;
   final allContents = <Content>[].obs;
-  final allcontentnew=<Content>[].obs;
+  final allcontentnew = <Content>[].obs;
   final imagefile = File('').obs;
   final posts = <Post>[].obs;
   //////////////////For Update
-  final numberperson=0.obs;
-  final info=Infulonser().obs;
-  final comp=Company().obs;
-  final use= UserModel().obs;
+  final numberperson = 0.obs;
+  final info = Infulonser().obs;
+  final comp = Company().obs;
+  final use = UserModel().obs;
   @override
   void onInit() {
     super.onInit();
@@ -52,7 +52,7 @@ class ProfileController extends GetxController {
     var res = await contentRepo.getContent();
     allContents.assignAll(res);
   }
-     
+
   Future<void> getDataperson() async {
     switch (auth.personType()) {
       case 'user':
@@ -74,8 +74,9 @@ class ProfileController extends GetxController {
     }
     await getContent();
   }
+
   /////////
-    Future<void> UpdateDataforperson() async {
+  Future<void> UpdateDataforperson() async {
     switch (auth.personType()) {
       case 'user':
         typeAuth.value = Auth.user;
@@ -94,41 +95,40 @@ class ProfileController extends GetxController {
         break;
     }
   }
+
   Future<void> getContentComapny(int id) async {
-    print('getContentComapny');
     var data = await repo.GetCompanyConent(id);
     contents.assignAll(data);
   }
 
   Future<void> getContentInful(int id) async {
-    print('getContentInful');
     print(id);
     var data = await repo.GetInfulConent(id);
     contents.assignAll(data);
   }
 
   Future<void> getPostInful(int id) async {
-    print('getPostInful');
     var data = await repo.GetInfulPost(id);
     posts.assignAll(data);
   }
 
   Future<void> getPostCompany(int id) async {
-    print('getPostCompany');
     var data = await repo.GetCompPost(id);
     posts.assignAll(data);
   }
-    Future<void> Updateinfolunser(int id) async {
-    infulencer.value=info.value;
-     await repo.Updateinfo(infulencer.value,infulencer.value.id!);
-    
+
+  Future<void> Updateinfolunser(int id) async {
+    infulencer.value = info.value;
+    await repo.Updateinfo(infulencer.value, infulencer.value.id!);
   }
-    Future<void>  Updatecompany(int id) async {
-    company.value=comp.value;
-     await repo.Updatecomp(company.value,company.value.id!);
+
+  Future<void> Updatecompany(int id) async {
+    company.value = comp.value;
+    await repo.Updatecomp(company.value, company.value.id!);
   }
-      Future<void>  Updateuser(int id) async {
-        user.value=use.value;
-     await repo.Updateuse(user.value,user.value.id!);
+
+  Future<void> Updateuser(int id) async {
+    user.value = use.value;
+    await repo.Updateuse(user.value, user.value.id!);
   }
 }

@@ -17,11 +17,11 @@ class Post {
     this.dateTime,
   });
 
-  final int? id;
-  final String? description;
-  final DateTime? dateTime;
-  final int? brandId;
-  final int? jobId;
+  int? id;
+  String? description;
+  DateTime? dateTime;
+  int? brandId;
+  int? jobId;
   Uint8List? image;
 
   factory Post.fromJson(Map<String, dynamic> json) => Post(
