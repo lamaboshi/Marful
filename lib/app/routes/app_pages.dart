@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
-import 'package:marful/app/modules/profile/views/edit_profile.dart';
 
 import '../../sheard/auth_service.dart';
+import '../modules/brand_page/bindings/brand_page_binding.dart';
+import '../modules/brand_page/views/brand_page_view.dart';
 import '../modules/chat_page/bindings/chat_page_binding.dart';
 import '../modules/chat_page/views/chat_page_view.dart';
 import '../modules/content_page/bindings/content_binding.dart';
@@ -10,20 +11,26 @@ import '../modules/conversation_page/bindings/conversation_page_binding.dart';
 import '../modules/conversation_page/views/conversation_page_view.dart';
 import '../modules/firstsplash_page/bindings/firstSplash_binding.dart';
 import '../modules/firstsplash_page/views/firstSplash_view.dart';
+import '../modules/haya/bindings/haya_binding.dart';
+import '../modules/haya/views/haya_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/homeMain_page/bindings/homeMain_binding.dart';
 import '../modules/homePost_page/bindings/homePost_binding.dart';
 import '../modules/homePost_page/views/homePost_view.dart';
 import '../modules/menu/bindings/menu_binding.dart';
+import '../modules/menu/views/menu_view.dart';
 import '../modules/password_page/bindings/password_binding.dart';
 import '../modules/password_page/views/confirm_password.dart';
 import '../modules/password_page/views/password_page.dart';
 import '../modules/profile/binding/profile_binding.dart';
+import '../modules/profile/views/edit_profile.dart';
 import '../modules/report_page/bindings/report_binding.dart';
 import '../modules/report_page/views/report_view.dart';
 import '../modules/search_page/bindings/search_binding.dart';
 import '../modules/search_page/views/search_view.dart';
+import '../modules/setting_page/bindings/setting_page_binding.dart';
+import '../modules/setting_page/views/setting_page_view.dart';
 import '../modules/settings/bindings/setting_binding.dart';
 import '../modules/settings/views/setting_view.dart';
 import '../modules/signIn_page/bindings/signIn_binding.dart';
@@ -43,19 +50,14 @@ class AppPages {
 
   static final routes = [
     GetPage(
-      name: _Paths.SignIn,
-      page: () => SignInPage(),
-      binding: SignInBinding(),
+      name: _Paths.HAYA,
+      page: () => const HayaView(),
+      bindings: [HayaBinding(), MenuBinding(), HomePostBinding()],
     ),
     GetPage(
-      name: _Paths.HOMEPOST,
-      page: () => const HomePostView(),
-      binding: HomePostBinding(),
-    ),
-    GetPage(
-      name: _Paths.FirstSplash,
-      page: () => FiestSplashView(),
-      binding: FirstSplashBinding(),
+      name: _Paths.Content,
+      page: () => ContentView(),
+      binding: ContentBinding(),
     ),
     GetPage(name: _Paths.HOME, page: () => HomeView(), bindings: [
       HomeBinding(),
@@ -70,6 +72,22 @@ class AppPages {
         page: () => EditProfilePage(),
       ),
     ]),
+
+    GetPage(
+      name: _Paths.SignIn,
+      page: () => SignInPage(),
+      binding: SignInBinding(),
+    ),
+    GetPage(
+      name: _Paths.HOMEPOST,
+      page: () => const HomePostView(),
+      binding: HomePostBinding(),
+    ),
+    GetPage(
+      name: _Paths.FirstSplash,
+      page: () => FiestSplashView(),
+      binding: FirstSplashBinding(),
+    ),
 
     GetPage(
       name: _Paths.HOMEPOST,
@@ -103,11 +121,7 @@ class AppPages {
       page: () => SignUpUserPage(),
       binding: SignUpBinding(),
     ),
-    GetPage(
-      name: _Paths.Content,
-      page: () => ContentView(),
-      binding: ContentBinding(),
-    ),
+
     GetPage(
       name: _Paths.SignUpInfluencer,
       page: () => SignUpInfluencer(),
@@ -124,6 +138,11 @@ class AppPages {
     //   binding: ProfileBinding(),
     // ),
 
+    GetPage(
+      name: _Paths.Menu,
+      page: () => const HomeMenuView(),
+      bindings:[ MenuBinding(),SettingBinding(),ContentBinding()]
+    ),
     GetPage(
       name: _Paths.Report,
       page: () => const ReportView(),
@@ -143,6 +162,16 @@ class AppPages {
       name: _Paths.CONVERSATION_PAGE,
       page: () => ConversationPageView(),
       binding: ConversationPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.BRAND_PAGE,
+      page: () => const BrandPageView(),
+      binding: BrandPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.SETTING_PAGE,
+      page: () => const SettingPageView(),
+      binding: SettingPageBinding(),
     ),
   ];
 }

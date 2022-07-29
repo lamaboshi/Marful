@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marful/app/core/component/textField.dart';
 
 import '../../../core/values/app_colors.dart';
 import '../controllers/homePost_controller.dart';
@@ -10,16 +9,12 @@ class HomePostView extends GetView<HomePostController> {
 
   @override
   Widget build(BuildContext context) {
-    final hieght = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(
-              height: 30,
-            ),
             const Text(
               "Add new post",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
@@ -120,11 +115,11 @@ class HomePostView extends GetView<HomePostController> {
                 const Spacer(),
                 ElevatedButton(
                   onPressed: () {},
-                  child: Text('Publish'),
                   style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all(AppColors.orange),
                       foregroundColor: MaterialStateProperty.all(Colors.white)),
+                  child: const Text('Publish'),
                 ),
               ],
             ),

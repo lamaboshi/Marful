@@ -81,7 +81,7 @@ PageViewModel interPage(context) {
         )),
 
     ///text
-    bodyWidget: SizedBox(
+    bodyWidget:const SizedBox(
       height: 0,
     ),
     footer: Row(
@@ -383,7 +383,7 @@ PageViewModel interUserPage(context) {
               width: 3,
             ),
             InkWell(
-              child: Text(
+              child:const Text(
                 'sign in',
                 style: TextStyle(
                   color: Colors.grey,

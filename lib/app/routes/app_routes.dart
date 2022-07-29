@@ -23,6 +23,9 @@ abstract class Routes {
   static const CHAT_PAGE = _Paths.CHAT_PAGE;
   static const CONVERSATION_PAGE = _Paths.CONVERSATION_PAGE;
   static const HOMEPOST = _Paths.HOMEPOST;
+  static const BRAND_PAGE = _Paths.BRAND_PAGE;
+  static const HAYA = _Paths.HAYA;
+  static const SETTING_PAGE = _Paths.SETTING_PAGE;
 }
 
 abstract class _Paths {
@@ -48,4 +51,7 @@ abstract class _Paths {
   static const CHAT_PAGE = '/chat-page';
   static const CONVERSATION_PAGE = '/conversation-page';
   static const HOMEPOST = '/homePost';
+  static const BRAND_PAGE = '/brand-page';
+  static const HAYA = '/haya';
+  static const SETTING_PAGE = '/setting-page';
 }

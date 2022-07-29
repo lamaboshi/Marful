@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marful/app/core/values/my_flutter_app_icons.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:marful/app/modules/haya/controllers/haya_controller.dart';
 
 import '../../../core/values/app_colors.dart';
-import '../controllers/homeMain_controller.dart';
-import '../data/model/getPost.dart';
+import '../../../core/values/my_flutter_app_icons.dart';
 
-class HomeMainView extends StatelessWidget {
-  HomeMainView({Key? key}) : super(key: key);
-  final controller = Get.find<HomeMainController>();
+class HayaMain extends GetView<HayaController> {
+  const HayaMain({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -18,7 +18,7 @@ class HomeMainView extends StatelessWidget {
           Get.bottomSheet(
             SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.all(10),
+                padding:const EdgeInsets.all(20),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -136,44 +136,36 @@ class HomeMainView extends StatelessWidget {
           children: const [Icon(Icons.add), Text('Add post')],
         ),
       ),
+  
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
             child: SizedBox(
-                height: height * 1 / 6,
-                child: Obx(
-                  () => controller.loading.value
-                      ? const Center(child: CircularProgressIndicator())
-                      : ListView.separated(
-                          itemCount: controller.contents.length,
-                          scrollDirection: Axis.horizontal,
-                          padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
-                          separatorBuilder: (BuildContext context, int index) {
-                            return const SizedBox(
-                              width: 12,
-                            );
-                          },
-                          itemBuilder: (BuildContext context, int index) {
-                            return InkWell(
-                              onTap: () {
-                                controller.contentId.value =
-                                    controller.contents[index].id!;
-                              },
-                              child:
-                                  buildCircul(controller.contents[index].name!),
-                            );
-                          },
-                        ),
-                )),
+              height: height * 1 / 6,
+              child: ListView.separated(
+                itemCount: 3,
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
+                separatorBuilder: (BuildContext context, int index) {
+                  return const SizedBox(
+                    width: 12,
+                  );
+                },
+                itemBuilder: (BuildContext context, int index) {
+                  return InkWell(
+                    onTap: () {},
+                    child: buildCircul("comidy"),
+                  );
+                },
+              ),
+            ),
           ),
-          // Obx(() {
-          //   return SliverList(
-          //     delegate: SliverChildBuilderDelegate(childCount: 30,
-          //         (BuildContext context, int index) {
-          //       return buildpost(controller.post.value[index]);
-          //     }),
-          //   );
-          // }),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(childCount: 30,
+                (BuildContext context, int index) {
+              return buildpost("hiiiiiiiii decription");
+            }),
+          ),
         ],
       ),
     );
@@ -204,7 +196,7 @@ class HomeMainView extends StatelessWidget {
           ),
         ],
       );
-  Widget buildpost(GetPost post) => Padding(
+  Widget buildpost(String descr) => Padding(
         padding: const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
         child: Card(
           elevation: 2,
@@ -246,7 +238,7 @@ class HomeMainView extends StatelessWidget {
                   height: 20,
                 ),
                 Text(
-                  post.post!.description!,
+                  descr,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 15),
@@ -260,31 +252,19 @@ class HomeMainView extends StatelessWidget {
                           color: Colors.black,
                         ),
                       ),
-                      Obx(() {
-                        return IconButton(
-                          onPressed: () {
-                            post.interaction = !post.interaction!;
-                          },
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          AppIcons.thumbs_down,
+                          color: Colors.black,
+                        ),
+                      ),
+                      IconButton(
+                          onPressed: () {},
                           icon: Icon(
-                            AppIcons.thumbs_down,
-                            color: post.interaction == true
-                                ? Colors.black
-                                : AppColors.blue,
-                          ),
-                        );
-                      }),
-                      Obx(() {
-                        return IconButton(
-                            onPressed: () {
-                              post.interaction = !post.interaction!;
-                            },
-                            icon: Icon(
-                              AppIcons.favorite,
-                              color: post.interaction == true
-                                  ? Colors.red
-                                  : Colors.black,
-                            ));
-                      }),
+                            AppIcons.favorite,
+                            color: Colors.red,
+                          ))
                     ],
                   ),
                 ),
