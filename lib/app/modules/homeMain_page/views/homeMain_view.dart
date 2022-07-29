@@ -170,46 +170,6 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
           children: const [Icon(Icons.add), Text('Add post')],
         ),
       ),
-      body: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: SizedBox(
-                height: height * 1 / 6,
-                child: Obx(
-                  () => controller.loading.value
-                      ? const Center(child: CircularProgressIndicator())
-                      : ListView.separated(
-                          itemCount: controller.contents.length,
-                          scrollDirection: Axis.horizontal,
-                          padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
-                          separatorBuilder: (BuildContext context, int index) {
-                            return const SizedBox(
-                              width: 12,
-                            );
-                          },
-                          itemBuilder: (BuildContext context, int index) {
-                            return InkWell(
-                              onTap: () {
-                                controller.contentId.value =
-                                    controller.contents[index].id!;
-                              },
-                              child:
-                                  buildCircul(controller.contents[index].name!),
-                            );
-                          },
-                        ),
-                )),
-          ),
-          // Obx(() {
-          //   return SliverList(
-          //     delegate: SliverChildBuilderDelegate(childCount: 30,
-          //         (BuildContext context, int index) {
-          //       return buildpost(controller.post.value[index]);
-          //     }),
-          //   );
-          // }),
-        ],
-      ),
     );
   }
 
