@@ -75,4 +75,28 @@ class ProfailRepository extends IProfailRepository {
         queryParameters: {"UserModel" :userModel});
     return result.statusCode == 200;
   }
+    @override
+  Future<bool> AddcontentInfulonser(int idInful,int idcontent) async {
+    var result = await _dio.post(   'https://localhost:7192/api/InfulonserContent/{$idcontent}',
+        queryParameters: {"id" :idInful});
+    return result.statusCode == 200;
+  }
+    @override
+  Future<bool> AddcontentCompany(int idCompany,int idcontent) async {
+    var result = await _dio.post(  'https://localhost:7192/api/CompanyContent',
+        queryParameters: {"id" :idCompany});
+    return result.statusCode == 200;
+  }
+     @override
+  Future<bool>DeletcontentInfulonser(int idInful,int idcontent) async {
+    var result = await _dio.delete(    'https://localhost:7192/api/InfulonserContent/{$idcontent}',
+        queryParameters: {"id" :idInful});
+    return result.statusCode == 200;
+  }
+     @override
+  Future<bool> DeletcontentCompany(int idCompany,int idcontent) async {
+    var result = await _dio.delete(  'https://localhost:7192/api/CompanyContent/{$idcontent}',
+        queryParameters: {"id" :idCompany});
+    return result.statusCode == 200;
+  }
 }

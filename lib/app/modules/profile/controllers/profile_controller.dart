@@ -86,11 +86,13 @@ class ProfileController extends GetxController {
       case 'comapny':
         typeAuth.value = Auth.comapny;
         company.value = auth.getDataFromStorage() as Company;
+        
         Updatecompany(company.value.id!);
         break;
       case 'infulonser':
         typeAuth.value = Auth.infulonser;
         infulencer.value = auth.getDataFromStorage() as Infulonser;
+        UpdateContentinfluonser (infulencer.value.id!);
         Updateinfolunser(infulencer.value.id!);
         break;
     }
@@ -130,5 +132,16 @@ class ProfileController extends GetxController {
   Future<void> Updateuser(int id) async {
     user.value = use.value;
     await repo.Updateuse(user.value, user.value.id!);
+  }
+       Future<void> Deletcontentinfo(int idInful,int idcontent) async {
+     await repo.DeletcontentInfulonser(idInful,idcontent);
+  }
+       Future<void>Deletcontentcomp  (int idcompany,int idcontent) async {
+     await repo.DeletcontentCompany(idcompany,idcontent);
+  }
+       Future<void>UpdateContentinfluonser (int id) async {
+       var  allcontentnew=contents;
+       getContent();
+       
   }
 }

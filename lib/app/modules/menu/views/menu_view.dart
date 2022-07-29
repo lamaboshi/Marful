@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:marful/app/modules/report_page/views/report_view.dart';
+import 'package:marful/app/modules/setting_page/views/setting_page_view.dart';
 import '../../../core/values/my_flutter_app_icons.dart';
 import '../../profile/views/edit_profile.dart';
 
@@ -9,15 +10,15 @@ class HomeMenuView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
             buildCard(
                 'Edit profil', Icons.edit, () => Get.to(EditProfilePage())),
-            buildCard('Setting', Icons.settings, () {}),
-            buildCard('Report', AppIcons.trending_up, () {}),
+            buildCard('Setting', Icons.settings, () =>Get.to(() =>const SettingPageView())),
+            buildCard('Report', AppIcons.trending_up, ()=> Get.to(() =>const ReportView())),
             buildCard('About', Icons.abc_outlined, () {}),
             buildCard('Log out', Icons.logout, () {}),
           ],
@@ -28,6 +29,7 @@ class HomeMenuView extends StatelessWidget {
 
   Widget buildCard(String title, IconData icon, Function()? namePage) {
     return InkWell(
+      onTap: namePage,
       child: SizedBox(
         height: 80,
         child: Card(
@@ -52,7 +54,6 @@ class HomeMenuView extends StatelessWidget {
           ),
         ),
       ),
-      onTap: namePage,
     );
   }
 }

@@ -17,6 +17,15 @@ class HomeMainController extends GetxController {
   final post = <GetPost>[].obs;
   final loading = false.obs;
   final contentId = 0.obs;
+  List<String> brand = [
+    'huda beuty',
+    'narins',
+    'karen wazen',
+    'huda beuty',
+    'narins',
+    'karen wazen'
+  ];
+  final selectedBrand = 0.obs;
   @override
   void onInit() {
     super.onInit();

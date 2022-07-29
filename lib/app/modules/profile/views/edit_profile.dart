@@ -50,7 +50,6 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
   }
 
   Widget getType() {
-    controller.allcontentnew==controller.allContents;
     controller.info==controller.infulencer;
     controller.comp==controller.company;
     controller.use==controller.user;
@@ -91,7 +90,9 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                                           child: 
                                           TextButton(
                                            onPressed: () { 
-                                            controller.allcontentnew.add(element);
+                                            if(!controller.contents.contains(element)){
+                                              controller.contents.add(element);
+                                            }
                                             contentPart();
                                             }, child: Text(  element.name!,
                                             style: TextStyle(fontSize: 16,color: Colors.black),),
@@ -229,6 +230,9 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                                           padding: EdgeInsets.all(6),
                                           child:
                                           TextButton(onPressed: () {
+                                             if(!controller.contents.contains(element)){
+                                              controller.contents.add(element);
+                                            }
                                             contentPart();
                                           },
                                             child: 
@@ -350,7 +354,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
     return Obx(() => ListView(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
-          children: controller.allcontentnew
+          children: controller.contents
               .toList()
               .map<Widget>((e) => Container(
                     height: 55,
@@ -372,7 +376,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                       elevation: 2,
                       deleteIcon: Icon(Icons.close, size: 20),
                       onDeleted: () {
-                         controller.allcontentnew.remove(e);
+                         controller.contents.remove(e);
                         
                       },
                     ),
