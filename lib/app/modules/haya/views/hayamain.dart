@@ -26,7 +26,7 @@ class HayaMain extends GetView<HayaController> {
                       "Add new post",
                       textAlign: TextAlign.center,
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
                     ),
                     const SizedBox(
                       height: 30,

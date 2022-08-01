@@ -15,16 +15,13 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.orange,
           bottom: const TabBar(indicatorColor: Colors.white, tabs: [
             Tab(
               icon: Icon(Icons.home),
-            ),
-            Tab(
-              icon: Icon(Icons.post_add),
             ),
             Tab(
               icon: Icon(Icons.person),
@@ -47,13 +44,10 @@ class HomeView extends GetView<HomeController> {
                 icon: const Icon(Icons.message))
           ],
         ),
-        // drawer: MenuPage(),
         body: TabBarView(children: [
           HomeMainView(),
-          const HomePostView(),
-          //   PasswordPageView(),
           ProfilePage(),
-          HomeMenuView(),
+          const HomeMenuView(),
         ]),
       ),
     );
