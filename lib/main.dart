@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
       title: "MarFul",
       key: key,
       debugShowCheckedModeBanner: false,
+      
       defaultTransition: Transition.cupertino,
       getPages: AppPages.routes,
       enableLog: true,

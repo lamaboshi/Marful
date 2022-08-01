@@ -96,113 +96,20 @@ class ContentView extends GetView<ContentController> {
           label: Row(
             children: const [Icon(Icons.add), Text('Add')],
           )),
-      body: Padding(
-        padding: const EdgeInsets.all(15),
-        child: ListView.separated(
-            itemBuilder: ((context, index) => ListTile(
-                  title: Text(content[index]),
-                  trailing: IconButton(
-                      padding: const EdgeInsets.all(0),
-                      onPressed: () {},
-                      icon: const Icon(Icons.close)),
-                )),
-            separatorBuilder: ((context, index) => const Divider(
-                  endIndent: 8,
-                  indent: 8,
-                  thickness: 1,
-                )),
-            itemCount: content.length),
-
-        // Expanded(
-        //   child: GridView.count(
-        //     mainAxisSpacing: 10,
-        //     crossAxisSpacing: 10,
-        //     childAspectRatio: 2.5,
-        //     crossAxisCount: 4,
-        //     children: List.generate(controller.type.length, (index) {
-        //       return AnimatedContainer(
-        //           duration: const Duration(milliseconds: 130),
-        //           padding: const EdgeInsets.symmetric(
-        //               horizontal: 6, vertical: 6),
-        //           decoration: BoxDecoration(
-        //               color: AppColors.orange,
-        //               borderRadius: BorderRadius.circular(25)),
-        //           child: Center(
-        //             child: Text(
-        //               controller.type[index],
-        //               style: TextStyle(
-        //                 color: Colors.white,
-        //                 fontSize: 13,
-        //               ),
-        //             ),
-        //           ));
-        //     }),
-        //   ),
-        // ),
-        // const SizedBox(height: 20),
-        // ExpansionTile(
-        //   title: const Text('All content'),
-        //   leading: const Icon(Icons.menu),
-        //   tilePadding: const EdgeInsets.all(0),
-        //   expandedAlignment: Alignment.topLeft,
-        //   childrenPadding: const EdgeInsets.only(bottom: 20),
-        //   children: [
-        //     for (var item in content)
-        //       Padding(
-        //         padding: const EdgeInsets.only(left: 5),
-        //         child: Row(
-        //           children: [
-        //             Text(item),
-        //             const Spacer(),
-        // IconButton(
-        //     padding: const EdgeInsets.all(0),
-        //     onPressed: () {},
-        //     icon: const Icon(Icons.close)),
-        //             const SizedBox(
-        //               height: 10,
-        //             ),
-        //           ],
-        //         ),
-        //       ),
-        //   ],
-        // ),
-        // const SizedBox(
-        //   height: 20,
-        // ),
-        // Column(
-        //   children: [
-        // const Align(
-        //     alignment: Alignment.topLeft,
-        //     child: Text(
-        //       'Add new content',
-        //       textAlign: TextAlign.start,
-        //       style: TextStyle(fontSize: 16),
-        //     )),
-        //     const SizedBox(
-        //       height: 10,
-        //     ),
-        //     TextFieldWidget(
-        //       type: TextInputType.name,
-        //       obscureText: false,
-        //     ),
-        //     const SizedBox(
-        //       height: 10,
-        //     ),
-        // Align(
-        //   alignment: Alignment.topRight,
-        //   child: ElevatedButton(
-        //     onPressed: () {},
-        //     style: ButtonStyle(
-        //         backgroundColor:
-        //             MaterialStateProperty.all(AppColors.orange),
-        //         foregroundColor:
-        //             MaterialStateProperty.all(Colors.white)),
-        //     child: const Text('Add'),
-        //   ),
-        //     ),
-        //   ],
-        // ),
-      ),
+      body: ListView.separated( padding: const EdgeInsets.all(15),physics:const BouncingScrollPhysics(),
+          itemBuilder: ((context, index) => ListTile(
+                title: Text(content[index]),
+                trailing: IconButton(
+                    padding: const EdgeInsets.all(0),
+                    onPressed: () {},
+                    icon: const Icon(Icons.close)),
+              )),
+          separatorBuilder: ((context, index) => const Divider(
+                endIndent: 8,
+                indent: 8,
+                thickness: 1,
+              )),
+          itemCount: content.length),
     );
   }
 }

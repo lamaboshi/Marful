@@ -48,7 +48,11 @@ class AppPages {
   AppPages._();
   //static const iNITIAL = Routes.websitecompany;
 
-  static final routes = [
+  static final routes = [GetPage(
+      name: _Paths.FirstSplash,
+      page: () => FiestSplashView(),
+      binding: FirstSplashBinding(),
+    ),
     GetPage(
       name: _Paths.HAYA,
       page: () => const HayaView(),
@@ -84,11 +88,7 @@ class AppPages {
       page: () => const HomePostView(),
       binding: HomePostBinding(),
     ),
-    GetPage(
-      name: _Paths.FirstSplash,
-      page: () => FiestSplashView(),
-      binding: FirstSplashBinding(),
-    ),
+    
 
     GetPage(
       name: _Paths.HOMEPOST,
