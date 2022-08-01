@@ -38,6 +38,6 @@ class Post {
         "dateTime": dateTime,
         "brandId": brandId,
         "jobId": jobId,
-        "image": image,
+        "image": image == null ? null : image,
       };
 }

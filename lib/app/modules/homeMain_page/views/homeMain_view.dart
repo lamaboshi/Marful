@@ -134,7 +134,9 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                       children: [
                         IconButton(
                             padding: const EdgeInsets.all(0),
-                            onPressed: () {},
+                            onPressed: () async {
+                              await controller.pickImage();
+                            },
                             icon: Icon(Icons.image,
                                 size: 30,
                                 color: AppColors.orange.withOpacity(0.4))),

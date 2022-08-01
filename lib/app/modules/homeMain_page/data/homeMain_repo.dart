@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/homeMain_page/data/adapter/homeMain_adapter.dart';
+import 'package:marful/app/modules/homeMain_page/data/model/Post.dart';
 import 'package:marful/app/modules/homeMain_page/data/model/getPost.dart';
 
 import '../../../../sheard/auth_service.dart';
@@ -46,5 +47,13 @@ class HomeMainRepositry extends IHomeMainRepository {
     var result = await _dio.get('https://localhost:7192/api/Main/GetLikes',
         queryParameters: {"id": postId, "Type": type});
     return double.parse(result.data.toString());
+  }
+
+  @override
+  Future<void> addPost(Post post) async {
+    var result = await _dio.post(
+      'https://localhost:7192/api/Post',
+      data: post.toJson(),
+    );
   }
 }
