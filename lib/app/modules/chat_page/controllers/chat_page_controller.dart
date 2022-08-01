@@ -16,6 +16,7 @@ class ChatPageController extends GetxController {
   final typeAuth = Auth.user.obs;
   final auth = Get.find<AuthService>();
   final allMessage = <Message>[].obs;
+  final selectMessage = <Message>[].obs;
   final textMessage = ''.obs;
   final convId = 0.obs;
   @override

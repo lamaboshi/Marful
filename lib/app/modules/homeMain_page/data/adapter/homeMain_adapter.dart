@@ -1,5 +1,7 @@
+import 'package:marful/app/data/model/brand.dart';
 import 'package:marful/app/modules/homeMain_page/data/model/getPost.dart';
 
+import '../../../../data/model/content.dart';
 import '../model/Post.dart';
 
 abstract class IHomeMainRepository {
@@ -9,4 +11,6 @@ abstract class IHomeMainRepository {
   Future<double> getDisLikesCount(int postId, String type);
   Future<double> getLikesCount(int postId, String type);
   Future<void> addPost(Post post);
+  Future<List<Content>> getCompanyConent(int idCompany);
+  Future<List<Brand>> getCompanyBrand(int idCompanyConent);
 }
