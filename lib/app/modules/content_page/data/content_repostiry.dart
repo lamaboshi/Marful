@@ -17,14 +17,14 @@ class ContentRepository extends IContentRepository {
     }
     return list;
   }
-   Future<bool> DelContent(Content content) async {
+   Future<bool> DelContent(int id) async {
     var result = await _dio.delete(  'https://localhost:7192/api/Content',
-        data: {"content " : content});
+        data: {"id " : id});
     return result.statusCode == 200;
   }
     Future<bool> AddContent(Content content) async {
     var result = await _dio.post(  'https://localhost:7192/api/Content',
-        data: {"content " : content});
+         data:  content.toJson());
     return result.statusCode == 200;
   }
 
