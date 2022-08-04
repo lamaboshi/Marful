@@ -32,50 +32,52 @@ class ChatPageView extends GetView<ChatPageController> {
                 child: SingleChildScrollView(
                     child: Container(
                   color: Colors.white.withOpacity(0.4),
-                  child: Obx(() => Column(
-                        children: controller.allMessage.map((element) {
-                          if (!element.messageStatus! &&
-                              controller.typeAuth.value == Auth.infulonser) {
-                            return InkWell(
-                              onTap: () {
-                                if (controller.selectMessage
-                                    .contains(element)) {
-                                  controller.selectMessage.remove(element);
-                                } else {
-                                  controller.selectMessage.add(element);
-                                }
-                              },
-                              child: Container(
-                                color:
-                                    controller.selectMessage.contains(element)
-                                        ? Colors.grey.withOpacity(0.8)
-                                        : Colors.transparent,
-                                child: messageSender(
-                                    element.text!, element.sendTime!),
-                              ),
-                            );
-                          } else {
-                            return InkWell(
-                              onTap: () {
-                                if (controller.selectMessage
-                                    .contains(element)) {
-                                  controller.selectMessage.remove(element);
-                                } else {
-                                  controller.selectMessage.add(element);
-                                }
-                              },
-                              child: Container(
-                                color:
-                                    controller.selectMessage.contains(element)
-                                        ? Colors.grey.withOpacity(0.8)
-                                        : Colors.transparent,
-                                child: messageRecover(
-                                    element.text!, element.sendTime!),
-                              ),
-                            );
-                          }
-                        }).toList(),
-                      )),
+                  child: Obx(() => controller.isLoading.value
+                      ? const Center(child: CircularProgressIndicator())
+                      : Column(
+                          children: controller.allMessage.map((element) {
+                            if (!element.messageStatus! &&
+                                controller.typeAuth.value == Auth.infulonser) {
+                              return InkWell(
+                                onTap: () {
+                                  if (controller.selectMessage
+                                      .contains(element)) {
+                                    controller.selectMessage.remove(element);
+                                  } else {
+                                    controller.selectMessage.add(element);
+                                  }
+                                },
+                                child: Container(
+                                  color:
+                                      controller.selectMessage.contains(element)
+                                          ? Colors.grey.withOpacity(0.8)
+                                          : Colors.transparent,
+                                  child: messageSender(
+                                      element.text!, element.sendTime!),
+                                ),
+                              );
+                            } else {
+                              return InkWell(
+                                onTap: () {
+                                  if (controller.selectMessage
+                                      .contains(element)) {
+                                    controller.selectMessage.remove(element);
+                                  } else {
+                                    controller.selectMessage.add(element);
+                                  }
+                                },
+                                child: Container(
+                                  color:
+                                      controller.selectMessage.contains(element)
+                                          ? Colors.grey.withOpacity(0.8)
+                                          : Colors.transparent,
+                                  child: messageRecover(
+                                      element.text!, element.sendTime!),
+                                ),
+                              );
+                            }
+                          }).toList(),
+                        )),
                 )),
               ),
               Expanded(
@@ -131,7 +133,7 @@ class ChatPageView extends GetView<ChatPageController> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Card(
-              color: AppColors.orange.withOpacity(0.7),
+              color: AppColors.orange,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
