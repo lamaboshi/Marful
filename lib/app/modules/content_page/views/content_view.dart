@@ -102,6 +102,7 @@ class ContentView extends GetView<ContentController> {
           label: Row(
             children: const [Icon(Icons.add), Text('Add')],
           )),
+<<<<<<< HEAD
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: ListView.separated(
@@ -211,6 +212,22 @@ class ContentView extends GetView<ContentController> {
         //   ],
         // ),
       ),
+=======
+      body: ListView.separated( padding: const EdgeInsets.all(15),physics:const BouncingScrollPhysics(),
+          itemBuilder: ((context, index) => ListTile(
+                title: Text(content[index]),
+                trailing: IconButton(
+                    padding: const EdgeInsets.all(0),
+                    onPressed: () {},
+                    icon: const Icon(Icons.close)),
+              )),
+          separatorBuilder: ((context, index) => const Divider(
+                endIndent: 8,
+                indent: 8,
+                thickness: 1,
+              )),
+          itemCount: content.length),
+>>>>>>> b7ce7c37fe646778cb97984ce972878ad8496866
     );
   }
 }

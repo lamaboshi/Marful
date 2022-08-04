@@ -27,7 +27,10 @@ class ProfileController extends GetxController {
   final infulonserContent=InfulonserContent().obs;
   final contents = <Content>[].obs;
   final allContents = <Content>[].obs;
+<<<<<<< HEAD
   final allcontentnew=<Content>[].obs;
+=======
+>>>>>>> b7ce7c37fe646778cb97984ce972878ad8496866
   final imagefile = File('').obs;
   final posts = <Post>[].obs;
   //////////////////For Update
@@ -52,9 +55,9 @@ class ProfileController extends GetxController {
     }
   }
 
-  Future<void> getContent() async {
+  Future<List<Content>> getContent() async {
     var res = await contentRepo.getContent();
-    allContents.assignAll(res);
+    return res;
   }
      
   Future<void> getDataperson() async {
@@ -76,9 +79,11 @@ class ProfileController extends GetxController {
         await getPostInful(infulencer.value.id!);
         break;
     }
-    await getContent();
+    var data = await getContent();
+    allContents.assignAll(data);
   }
   /////////
+<<<<<<< HEAD
     Future<void> UpdateDataforperson() async {
     switch (auth.personType()) {
       case 'user':
@@ -91,12 +96,21 @@ class ProfileController extends GetxController {
         company.value = auth.getDataFromStorage() as Company;
         Updatecompany(company.value.id!);
         UpdateContentCompany(company.value.id!);
+=======
+  Future<void> UpdateDataforperson() async {
+    switch (typeAuth.value) {
+      case Auth.user:
+        await Updateuser();
         break;
-      case 'infulonser':
-        typeAuth.value = Auth.infulonser;
-        infulencer.value = auth.getDataFromStorage() as Infulonser;
-        UpdateContentinfluonser (infulencer.value.id!);
-        Updateinfolunser(infulencer.value.id!);
+      case Auth.comapny:
+        await Updatecompany();
+
+>>>>>>> b7ce7c37fe646778cb97984ce972878ad8496866
+        break;
+      case Auth.infulonser:
+        // TODO: Handle this case.
+        break;
+      case Auth.none:
         break;
     }
   }
@@ -107,8 +121,11 @@ class ProfileController extends GetxController {
   }
 
   Future<void> getContentInful(int id) async {
+<<<<<<< HEAD
     print('getContentInful');
     print(id);
+=======
+>>>>>>> b7ce7c37fe646778cb97984ce972878ad8496866
     var data = await repo.GetInfulConent(id);
     contents.assignAll(data);
   }
@@ -129,6 +146,7 @@ class ProfileController extends GetxController {
      await repo.Updateinfo(infulencer.value,infulencer.value.id!);
     
   }
+<<<<<<< HEAD
     Future<void>  Updatecompany(int id) async {
     company.value=comp.value;
      await repo.Updatecomp(company.value,company.value.id!);
@@ -182,5 +200,54 @@ class ProfileController extends GetxController {
            }
         }
        }
+=======
+
+  Future<void> Updatecompany() async {
+    company.value = comp.value;
+    await repo.Updatecomp(company.value, company.value.id!);
+  }
+
+  Future<void> Updateuser() async {
+    user.value = use.value;
+    await repo.Updateuse(user.value, user.value.id!);
+  }
+
+  Future<void> addcontentinfo(int id) async {
+    await repo.AddcontentInfulonser(info.value.id!, id);
+  }
+
+  Future<void> addcontentcomp(int id) async {
+    await repo.AddcontentCompany(company.value.id!, id);
+  }
+
+  Future<void> Deletcontentinfo(int id) async {
+    await repo.DeletcontentInfulonser(id);
+  }
+
+  Future<void> Deletcontentcomp(int id) async {
+    await repo.DeletcontentCompany(id);
+  }
+
+  Future<void> updateContent() async {
+    var data = await getContent();
+    for (var item in data) {
+      if (!contents.contains(item)) {
+        if (typeAuth.value == Auth.comapny) {
+          Deletcontentcomp(item.id!);
+        } else if (typeAuth.value == Auth.infulonser) {
+          Deletcontentinfo(item.id!);
+        }
+      }
+    }
+    for (var item in contents) {
+      if (!data.contains(item)) {
+        if (typeAuth.value == Auth.comapny) {
+          addcontentcomp(item.id!);
+        } else if (typeAuth.value == Auth.infulonser) {
+          addcontentinfo(item.id!);
+        }
+      }
+    }
+>>>>>>> b7ce7c37fe646778cb97984ce972878ad8496866
   }
 }

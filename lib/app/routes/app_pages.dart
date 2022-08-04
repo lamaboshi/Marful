@@ -50,6 +50,16 @@ class AppPages {
 
   static final routes = [
     GetPage(
+      name: _Paths.SignIn,
+      page: () => SignInPage(),
+      binding: SignInBinding(),
+    ),
+    GetPage(
+      name: _Paths.FirstSplash,
+      page: () => FiestSplashView(),
+      binding: FirstSplashBinding(),
+    ),
+    GetPage(
       name: _Paths.HAYA,
       page: () => const HayaView(),
       bindings: [HayaBinding(), MenuBinding(), HomePostBinding()],
@@ -75,19 +85,9 @@ class AppPages {
     ]),
 
     GetPage(
-      name: _Paths.SignIn,
-      page: () => SignInPage(),
-      binding: SignInBinding(),
-    ),
-    GetPage(
       name: _Paths.HOMEPOST,
       page: () => const HomePostView(),
       binding: HomePostBinding(),
-    ),
-    GetPage(
-      name: _Paths.FirstSplash,
-      page: () => FiestSplashView(),
-      binding: FirstSplashBinding(),
     ),
 
     GetPage(
@@ -140,10 +140,9 @@ class AppPages {
     // ),
 
     GetPage(
-      name: _Paths.Menu,
-      page: () => const HomeMenuView(),
-      bindings:[ MenuBinding(),SettingBinding(),ContentBinding()]
-    ),
+        name: _Paths.Menu,
+        page: () => const HomeMenuView(),
+        bindings: [MenuBinding(), SettingBinding(), ContentBinding()]),
     GetPage(
       name: _Paths.Report,
       page: () => const ReportView(),

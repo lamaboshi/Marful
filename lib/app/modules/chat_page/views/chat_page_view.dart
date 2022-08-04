@@ -36,11 +36,43 @@ class ChatPageView extends GetView<ChatPageController> {
                         children: controller.allMessage.map((element) {
                           if (!element.messageStatus! &&
                               controller.typeAuth.value == Auth.infulonser) {
-                            return messageSender(
-                                element.text!, element.sendTime!);
+                            return InkWell(
+                              onTap: () {
+                                if (controller.selectMessage
+                                    .contains(element)) {
+                                  controller.selectMessage.remove(element);
+                                } else {
+                                  controller.selectMessage.add(element);
+                                }
+                              },
+                              child: Container(
+                                color:
+                                    controller.selectMessage.contains(element)
+                                        ? Colors.grey.withOpacity(0.8)
+                                        : Colors.transparent,
+                                child: messageSender(
+                                    element.text!, element.sendTime!),
+                              ),
+                            );
                           } else {
-                            return messageRecover(
-                                element.text!, element.sendTime!);
+                            return InkWell(
+                              onTap: () {
+                                if (controller.selectMessage
+                                    .contains(element)) {
+                                  controller.selectMessage.remove(element);
+                                } else {
+                                  controller.selectMessage.add(element);
+                                }
+                              },
+                              child: Container(
+                                color:
+                                    controller.selectMessage.contains(element)
+                                        ? Colors.grey.withOpacity(0.8)
+                                        : Colors.transparent,
+                                child: messageRecover(
+                                    element.text!, element.sendTime!),
+                              ),
+                            );
                           }
                         }).toList(),
                       )),

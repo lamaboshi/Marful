@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:marful/app/core/component/dialog.dart';
 import 'package:marful/app/modules/haya/views/hayamain.dart';
 
 import '../../../core/values/app_colors.dart';
@@ -14,7 +15,7 @@ class HayaView extends GetView<HayaController> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.orange,
@@ -22,9 +23,7 @@ class HayaView extends GetView<HayaController> {
             Tab(
               icon: Icon(Icons.home),
             ),
-            Tab(
-              icon: Icon(Icons.post_add),
-            ),
+           
             Tab(
               icon: Icon(Icons.person),
             ),
@@ -41,7 +40,8 @@ class HayaView extends GetView<HayaController> {
                 icon: const Icon(Icons.search)),
             IconButton(
                 onPressed: () {
-                  Get.rootDelegate.toNamed(Routes.CONVERSATION_PAGE);
+                  Get.dialog(DialogWidget(),barrierDismissible: false);
+               //   Get.rootDelegate.toNamed(Routes.CONVERSATION_PAGE);
                 },
                 icon: const Icon(Icons.message))
           ],
@@ -49,7 +49,7 @@ class HayaView extends GetView<HayaController> {
         // drawer: MenuPage(),
         body: TabBarView(children: [
           //HomeMainView(),
-          HayaMain(), const HomePostView(), HomeMenuView(),
+          HayaMain(),  HomeMenuView(),
           //   PasswordPageView(),
           //ProfilePage(),
           HomeMenuView(),
