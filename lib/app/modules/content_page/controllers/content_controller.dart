@@ -1,37 +1,42 @@
 import 'package:get/get.dart';
+import 'package:marful/app/data/model/content.dart';
 
 class ContentController extends GetxController {
-  final count = 0.obs;
-  final type = [
-    'comidy',
-    'fashon',
-    'hfgbv',
-    'hfgh',
-    'comidy',
-    'fashon',
-    'hfgbv',
-    'hfgh',
-    'comidy',
-    'fashon',
-    'hfgbv',
-    'hfgh',
-    'comidy',
-    'fashon',
-    'hfgbv',
-    'hfgh',
-  ].obs;
+  final contents=<Content>[].obs;
+  final addcontent= Content().obs;
+  final contRepo=ContentRepository();
+  // final type = [
+  //   'comidy',
+  //   'fashon',
+  //   'hfgbv',
+  //   'hfgh',
+  //   'comidy',
+  //   'fashon',
+  //   'hfgbv',
+  //   'hfgh',
+  //   'comidy',
+  //   'fashon',
+  //   'hfgbv',
+  //   'hfgh',
+  //   'comidy',
+  //   'fashon',
+  //   'hfgbv',
+  //   'hfgh',
+  // ].obs;
 
   @override
   void onInit() {
     super.onInit();
+    getAllContent();
   }
-
-  @override
-  void onReady() {
-    super.onReady();
+    Future<void> getAllContent() async {
+    var data = await contRepo.getdata();
+    contents.assignAll(data);
   }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
+    Future<void> delcontentelement(Content content) async {
+    await contRepo.DelContent();
+  }
+    Future<void> addcontentelement(Content content) async {
+    await contRepo.DelContent();
+  }
 }
