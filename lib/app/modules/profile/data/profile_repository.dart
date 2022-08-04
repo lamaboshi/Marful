@@ -86,31 +86,6 @@ class ProfailRepository extends IProfailRepository {
     );
     return result.statusCode == 200;
   }
-<<<<<<< HEAD
-    @override
-  Future<bool> AddcontentInfulonser(InfulonserContent infulonserContent,int idcontent) async {
-    var result = await _dio.post(   'https://localhost:7192/api/InfulonserContent/{$idcontent}',
-        queryParameters: {"infulonserContent" :infulonserContent});
-    return result.statusCode == 200;
-  }
-    @override
-  Future<bool> AddcontentCompany(CompanyContent companyContent) async {
-    var result = await _dio.post(  'https://localhost:7192/api/CompanyContent',
-        queryParameters: {"companyContent" :companyContent});
-    return result.statusCode == 200;
-  }
-     @override
-  Future<bool>DeletcontentInfulonser(InfulonserContent infulonserContent,int idcontent) async {
-    var result = await _dio.delete(    'https://localhost:7192/api/InfulonserContent/{$idcontent}',
-        queryParameters: {"infulonserContent" :infulonserContent});
-    return result.statusCode == 200;
-  }
-     @override
-  Future<bool> DeletcontentCompany(CompanyContent companyContent,int idcontent) async {
-    var result = await _dio.delete(  'https://localhost:7192/api/CompanyContent/{$idcontent}',
-        queryParameters: {" companyContent" : companyContent});
-=======
-
   @override
   Future<bool> AddcontentInfulonser(int idInful, int idcontent) async {
     var result = await _dio.post(
@@ -141,7 +116,6 @@ class ProfailRepository extends IProfailRepository {
   Future<bool> DeletcontentCompany(int idcontentComp) async {
     var result = await _dio.delete('https://localhost:7192/api/CompanyContent',
         queryParameters: {"id": idcontentComp});
->>>>>>> b7ce7c37fe646778cb97984ce972878ad8496866
     return result.statusCode == 200;
   }
 }

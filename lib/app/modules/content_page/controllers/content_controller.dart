@@ -1,6 +1,9 @@
 import 'package:get/get.dart';
 import 'package:marful/app/data/model/content.dart';
 
+import '../data/adapter/content_adapter.dart';
+import '../data/content_repostiry.dart';
+
 class ContentController extends GetxController {
   final contents=<Content>[].obs;
   final addcontent= Content().obs;
@@ -27,16 +30,16 @@ class ContentController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    getAllContent();
+   // getAllContent();
   }
-    Future<void> getAllContent() async {
-    var data = await contRepo.getdata();
-    contents.assignAll(data);
-  }
-    Future<void> delcontentelement(Content content) async {
-    await contRepo.DelContent();
-  }
-    Future<void> addcontentelement(Content content) async {
-    await contRepo.DelContent();
-  }
+  //   Future<void> getAllContent() async {
+  //   var data = await contRepo.getdata();
+  //   contents.assignAll(data);
+  // }
+  //   Future<void> delcontentelement(Content content) async {
+  //   await contRepo.DelContent();
+  // }
+  //   Future<void> addcontentelement(Content content) async {
+  //   await contRepo.DelContent();
+  // }
 }

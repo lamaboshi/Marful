@@ -20,8 +20,8 @@ class SettingPageView extends GetView<SettingPageController> {
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
-            buildCard(
-                'Content', Icons.edit, () => Get.to(() => const ContentView())),
+            // buildCard(
+            // 'Content', Icons.edit, () => Get.to(() => const ContentView())),
             buildCard('Brand', Icons.settings, ()=> Get.to(() => const BrandPageView())),
             buildCard('Edit', AppIcons.trending_up, () {}),
          

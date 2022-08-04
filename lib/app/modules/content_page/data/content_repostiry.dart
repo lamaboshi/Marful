@@ -1,4 +1,10 @@
 
+import 'package:dio/dio.dart';
+import 'package:get/get.dart';
+
+import '../../../data/model/content.dart';
+import 'adapter/content_adapter.dart';
+
 class ContentRepository extends IContentRepository {
   final _dio = Get.find<Dio>();
   @override
@@ -10,6 +16,16 @@ class ContentRepository extends IContentRepository {
       list.add(Content.fromJson(item));
     }
     return list;
+  }
+   Future<bool> DelContent(Content content) async {
+    var result = await _dio.delete(  'https://localhost:7192/api/Content',
+        data: {"content " : content});
+    return result.statusCode == 200;
+  }
+    Future<bool> AddContent(Content content) async {
+    var result = await _dio.post(  'https://localhost:7192/api/Content',
+        data: {"content " : content});
+    return result.statusCode == 200;
   }
 
 }

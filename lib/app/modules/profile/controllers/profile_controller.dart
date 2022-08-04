@@ -27,10 +27,6 @@ class ProfileController extends GetxController {
   final infulonserContent=InfulonserContent().obs;
   final contents = <Content>[].obs;
   final allContents = <Content>[].obs;
-<<<<<<< HEAD
-  final allcontentnew=<Content>[].obs;
-=======
->>>>>>> b7ce7c37fe646778cb97984ce972878ad8496866
   final imagefile = File('').obs;
   final posts = <Post>[].obs;
   //////////////////For Update
@@ -83,20 +79,6 @@ class ProfileController extends GetxController {
     allContents.assignAll(data);
   }
   /////////
-<<<<<<< HEAD
-    Future<void> UpdateDataforperson() async {
-    switch (auth.personType()) {
-      case 'user':
-        typeAuth.value = Auth.user;
-        user.value = auth.getDataFromStorage() as UserModel;
-        Updateuser(user.value.id!);
-        break;
-      case 'comapny':
-        typeAuth.value = Auth.comapny;
-        company.value = auth.getDataFromStorage() as Company;
-        Updatecompany(company.value.id!);
-        UpdateContentCompany(company.value.id!);
-=======
   Future<void> UpdateDataforperson() async {
     switch (typeAuth.value) {
       case Auth.user:
@@ -105,7 +87,6 @@ class ProfileController extends GetxController {
       case Auth.comapny:
         await Updatecompany();
 
->>>>>>> b7ce7c37fe646778cb97984ce972878ad8496866
         break;
       case Auth.infulonser:
         // TODO: Handle this case.
@@ -121,11 +102,6 @@ class ProfileController extends GetxController {
   }
 
   Future<void> getContentInful(int id) async {
-<<<<<<< HEAD
-    print('getContentInful');
-    print(id);
-=======
->>>>>>> b7ce7c37fe646778cb97984ce972878ad8496866
     var data = await repo.GetInfulConent(id);
     contents.assignAll(data);
   }
@@ -146,62 +122,6 @@ class ProfileController extends GetxController {
      await repo.Updateinfo(infulencer.value,infulencer.value.id!);
     
   }
-<<<<<<< HEAD
-    Future<void>  Updatecompany(int id) async {
-    company.value=comp.value;
-     await repo.Updatecomp(company.value,company.value.id!);
-  }
-      Future<void>  Updateuser(int id) async {
-        user.value=use.value;
-     await repo.Updateuse(user.value,user.value.id!);
-  }
-       Future<void>UpdateContentinfluonser (int id) async {
-       var  allcontentnew=contents;
-       getContent();
-       for( var content in contents){
-        for(var newcontent in allcontentnew){
-          if(contents.length<allcontentnew.length){
-           if(newcontent!=content){
-            infulonserContent.value.InfulonserId=id;
-            infulonserContent.value.content!.id=newcontent.id;
-               await repo.AddcontentInfulonser(infulonserContent.value,newcontent.id!);
-            
-           }
-          }
-           else if(contents.length>allcontentnew.length) {
-           if(content!=newcontent){
-               infulonserContent.value.InfulonserId=id;
-            infulonserContent.value.content!.id=content.id;
-                 await repo.DeletcontentInfulonser(infulonserContent.value,content.id!);
-           }
-           }
-        }
-       }
-  }
-         Future<void>UpdateContentCompany (int id,) async {
-       var  allcontentnew=contents;
-       getContent();
-       for( var content in contents){
-        for(var newcontent in allcontentnew){
-          if(contents.length<allcontentnew.length){
-           if(newcontent!=content){
-             companycontent.value.companyId=id;
-             companycontent.value.content!.id=newcontent.id;
-               await repo.AddcontentCompany(companycontent.value);
-            
-           }
-          }
-           else if(contents.length>allcontentnew.length) {
-           if(content!=newcontent){
-            companycontent.value.companyId=id;
-            companycontent.value.content!.id=content.id;
-                 await repo.DeletcontentCompany(companycontent.value,content.id!);
-           }
-           }
-        }
-       }
-=======
-
   Future<void> Updatecompany() async {
     company.value = comp.value;
     await repo.Updatecomp(company.value, company.value.id!);
@@ -248,6 +168,5 @@ class ProfileController extends GetxController {
         }
       }
     }
->>>>>>> b7ce7c37fe646778cb97984ce972878ad8496866
   }
 }
