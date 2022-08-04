@@ -9,15 +9,15 @@ class ContentView extends GetView<ContentController> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> content = [
-      'Comidy',
-      'Fashion',
-      'Drama',
-      'Comidy',
-      'Fashion',
-      'Drama',
-      'Comidy',
-    ];
+    // List<String> content = [
+    //   'Comidy',
+    //   'Fashion',
+    //   'Drama',
+    //   'Comidy',
+    //   'Fashion',
+    //   'Drama',
+    //   'Comidy',
+    // ];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.orange,
@@ -53,6 +53,10 @@ class ContentView extends GetView<ContentController> {
                         height: 20,
                       ),
                       TextFieldWidget(
+                        onChanged: ((String txt) {
+                          controller.addcontent=txt;
+                          
+                        }),
                         type: TextInputType.name,
                         obscureText: false,
                         prefIcon: Icons.input,
@@ -63,7 +67,9 @@ class ContentView extends GetView<ContentController> {
                       Align(
                         alignment: Alignment.center,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            controller.addcontentelement(controller.addcontent);
+                          },
                           style: ButtonStyle(
                               backgroundColor:
                                   MaterialStateProperty.all(AppColors.orange),
@@ -100,10 +106,12 @@ class ContentView extends GetView<ContentController> {
         padding: const EdgeInsets.all(15),
         child: ListView.separated(
             itemBuilder: ((context, index) => ListTile(
-                  title: Text(content[index]),
+                  title: Text(controller.content[index]),
                   trailing: IconButton(
                       padding: const EdgeInsets.all(0),
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.delcontentelement(content[index]);
+                      },
                       icon: const Icon(Icons.close)),
                 )),
             separatorBuilder: ((context, index) => const Divider(
@@ -111,7 +119,7 @@ class ContentView extends GetView<ContentController> {
                   indent: 8,
                   thickness: 1,
                 )),
-            itemCount: content.length),
+            itemCount: controller.contents.length),
 
         // Expanded(
         //   child: GridView.count(

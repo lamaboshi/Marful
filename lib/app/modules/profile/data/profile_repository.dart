@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 import 'package:marful/app/data/model/company.dart';
 import 'package:marful/app/data/model/content.dart';
 import 'package:marful/app/data/model/infulonser.dart';
+import 'package:marful/app/data/model/infulonsercontent.dart';
 import 'package:marful/app/data/model/user_model.dart';
 import 'package:marful/app/modules/homeMain_page/data/model/Post.dart';
+import 'package:marful/app/modules/websit_company/data/model/companycontent.dart';
 
 import 'adapter/profile_adapter.dart';
 
@@ -76,27 +78,27 @@ class ProfailRepository extends IProfailRepository {
     return result.statusCode == 200;
   }
     @override
-  Future<bool> AddcontentInfulonser(int idInful,int idcontent) async {
+  Future<bool> AddcontentInfulonser(InfulonserContent infulonserContent,int idcontent) async {
     var result = await _dio.post(   'https://localhost:7192/api/InfulonserContent/{$idcontent}',
-        queryParameters: {"id" :idInful});
+        queryParameters: {"infulonserContent" :infulonserContent});
     return result.statusCode == 200;
   }
     @override
-  Future<bool> AddcontentCompany(int idCompany,int idcontent) async {
+  Future<bool> AddcontentCompany(CompanyContent companyContent) async {
     var result = await _dio.post(  'https://localhost:7192/api/CompanyContent',
-        queryParameters: {"id" :idCompany});
+        queryParameters: {"companyContent" :companyContent});
     return result.statusCode == 200;
   }
      @override
-  Future<bool>DeletcontentInfulonser(int idInful,int idcontent) async {
+  Future<bool>DeletcontentInfulonser(InfulonserContent infulonserContent,int idcontent) async {
     var result = await _dio.delete(    'https://localhost:7192/api/InfulonserContent/{$idcontent}',
-        queryParameters: {"id" :idInful});
+        queryParameters: {"infulonserContent" :infulonserContent});
     return result.statusCode == 200;
   }
      @override
-  Future<bool> DeletcontentCompany(int idCompany,int idcontent) async {
+  Future<bool> DeletcontentCompany(CompanyContent companyContent,int idcontent) async {
     var result = await _dio.delete(  'https://localhost:7192/api/CompanyContent/{$idcontent}',
-        queryParameters: {"id" :idCompany});
+        queryParameters: {" companyContent" : companyContent});
     return result.statusCode == 200;
   }
 }
