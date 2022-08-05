@@ -8,20 +8,6 @@ import '../../../../data/model/content.dart';
 import '../../../../data/model/infulonsercontent.dart';
 
 abstract class IProfailRepository {
-<<<<<<< HEAD
-Future<List<Content>> GetInfulConent(int IdInful);
-Future<List<Content>> GetCompanyConent(int idCompany);
-Future<List<Post>>GetInfulPost(int idInful);
-Future<List<Post>>GetCompPost(int idCompany);
-Future<bool>Updateinfo(Infulonser infulonser ,int id);
-Future<bool>Updatecomp(Company company,int id);
-Future<bool>Updateuse(UserModel userModel,int id);
-Future<bool>AddcontentInfulonser(InfulonserContent infulonserContent,int idcontent);
-Future<bool>AddcontentCompany(CompanyContent companyContent);
-Future<bool>DeletcontentInfulonser(InfulonserContent infulonserContent,int idcontent);
-Future<bool>DeletcontentCompany(CompanyContent companyContent,int idcontent);
-}
-=======
   Future<List<Content>> GetInfulConent(int IdInful);
   Future<List<Content>> GetCompanyConent(int idCompany);
   Future<List<Post>> GetInfulPost(int idInful);
@@ -34,4 +20,3 @@ Future<bool>DeletcontentCompany(CompanyContent companyContent,int idcontent);
   Future<bool> DeletcontentInfulonser(int idcontentInfo);
   Future<bool> DeletcontentCompany(int idcontentComp);
 }
->>>>>>> b7ce7c37fe646778cb97984ce972878ad8496866
