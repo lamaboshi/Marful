@@ -31,7 +31,11 @@ class SearchView extends GetView<SearchController> {
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.grey[200]),
                   child: TextField(
-                      onChanged: (Value) => controller.filter(Value),
+                      onChanged: (Value){
+                      controller.filter(Value);
+                      controller.inputvalue.value=Value;
+                      },
+                     // onChanged: (Value) => controller.filter(Value),
                       decoration: InputDecoration(
                         fillColor: Colors.grey,
                         prefixIcon: Icon(Icons.search),
