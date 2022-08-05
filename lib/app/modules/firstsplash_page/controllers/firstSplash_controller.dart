@@ -12,8 +12,8 @@ class FirstSplashController extends GetxController {
     await Future.delayed(const Duration(seconds: 1));
     opacity.value = 0.9;
     await Future.delayed(const Duration(seconds: 3), () {
-      Get.rootDelegate.offNamed(Routes.Intro);
-     //  Get.to(IntroPage());
+    //  Get.rootDelegate.offNamed(Routes.Intro);
+   Get.to(IntroPage());
     
     });
   }

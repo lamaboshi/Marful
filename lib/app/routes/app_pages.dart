@@ -23,6 +23,8 @@ import '../modules/menu/views/menu_view.dart';
 import '../modules/password_page/bindings/password_binding.dart';
 import '../modules/password_page/views/confirm_password.dart';
 import '../modules/password_page/views/password_page.dart';
+import '../modules/product_page/bindings/product_page_binding.dart';
+import '../modules/product_page/views/product_page_view.dart';
 import '../modules/profile/binding/profile_binding.dart';
 import '../modules/profile/views/edit_profile.dart';
 import '../modules/report_page/bindings/report_binding.dart';
@@ -48,7 +50,8 @@ class AppPages {
   AppPages._();
   //static const iNITIAL = Routes.websitecompany;
 
-  static final routes = [GetPage(
+  static final routes = [
+    GetPage(
       name: _Paths.FirstSplash,
       page: () => FiestSplashView(),
       binding: FirstSplashBinding(),
@@ -88,7 +91,6 @@ class AppPages {
       page: () => const HomePostView(),
       binding: HomePostBinding(),
     ),
-    
 
     GetPage(
       name: _Paths.HOMEPOST,
@@ -140,10 +142,9 @@ class AppPages {
     // ),
 
     GetPage(
-      name: _Paths.Menu,
-      page: () => const HomeMenuView(),
-      bindings:[ MenuBinding(),SettingBinding(),ContentBinding()]
-    ),
+        name: _Paths.Menu,
+        page: () => const HomeMenuView(),
+        bindings: [MenuBinding(), SettingBinding(), ContentBinding()]),
     GetPage(
       name: _Paths.Report,
       page: () => const ReportView(),
@@ -173,6 +174,11 @@ class AppPages {
       name: _Paths.SETTING_PAGE,
       page: () => const SettingPageView(),
       binding: SettingPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUCT_PAGE,
+      page: () => const ProductPageView(),
+      binding: ProductPageBinding(),
     ),
   ];
 }

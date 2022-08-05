@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:marful/app/modules/product_page/views/product_page_view.dart';
 
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
@@ -36,6 +37,7 @@ class BrandPageView extends GetView<BrandPageController> {
         title: const Text('Brand'),
       ),
       floatingActionButton: FloatingActionButton.extended(
+          heroTag: 'uniqueTag',
           backgroundColor: AppColors.orange,
           onPressed: () {
             Get.bottomSheet(
@@ -151,9 +153,13 @@ class BrandPageView extends GetView<BrandPageController> {
           label: Row(
             children: const [Icon(Icons.add), Text('Add')],
           )),
-      body: ListView.separated(physics: BouncingScrollPhysics(),
+      body: ListView.separated(
+          physics: BouncingScrollPhysics(),
           padding: const EdgeInsets.all(15),
           itemBuilder: ((context, index) => ListTile(
+                onTap: () {
+                  Get.to(ProductPageView());
+                },
                 title: Text(brand[index]),
                 subtitle: Padding(
                   padding: const EdgeInsets.only(top: 10),

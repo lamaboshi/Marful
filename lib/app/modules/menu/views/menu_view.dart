@@ -10,16 +10,20 @@ class HomeMenuView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Colors.white,
+    return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
             buildCard(
                 'Edit profil', Icons.edit, () => Get.to(EditProfilePage())),
-            buildCard('Setting', Icons.settings, () =>Get.to(() =>const SettingPageView())),
-            buildCard('Report', AppIcons.trending_up, ()=> Get.to(() =>const ReportView())),
+            buildCard('Setting', Icons.settings,
+                () => Get.to(() => const SettingPageView())),
+            buildCard('Report', AppIcons.trending_up,
+                () => Get.to(() => const ReportView())),
             buildCard('About', Icons.abc_outlined, () {}),
+            buildCard('Log out', Icons.delete, () {}),
             buildCard('Log out', Icons.logout, () {}),
           ],
         ),

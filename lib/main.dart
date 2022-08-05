@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:marful/sheard/auth_service.dart';
 import 'package:q_overlay/q_overlay.dart';
-
 import 'api/storge/storge_service.dart';
 import 'app/routes/app_pages.dart';
 
@@ -32,7 +31,6 @@ class MyApp extends StatelessWidget {
       title: "MarFul",
       key: key,
       debugShowCheckedModeBanner: false,
-      
       defaultTransition: Transition.cupertino,
       getPages: AppPages.routes,
       enableLog: true,
