@@ -1,7 +1,23 @@
 import 'package:get/get.dart';
+import 'package:marful/app/data/model/company.dart';
+import 'package:marful/app/data/model/content.dart';
+import 'package:marful/app/data/model/infulonser.dart';
+import 'package:marful/app/modules/search_page/data/search_repositry.dart';
+import 'package:marful/app/modules/websit_company/data/model/Product.dart';
+
+import '../../../../sheard/auth_service.dart';
+import '../../../data/model/brand.dart';
 
 class SearchController extends GetxController {
-  final List<Map<String, String>> all = [
+    final authService = Get.find<AuthService>();
+    final Repo=SearchRepository();
+    final inputvalue=''.obs;
+    final infulonser=Infulonser().obs;
+    final company=Company().obs;
+    final brand=Brand().obs;
+    final product=Product().obs;
+    final content=Content().obs;
+    final List<Map<String, String>> all = [
     {"name": "Ghaith Marwan", "sort": "influencer"},
     {"name": "Narin", "sort": "influencer"},
     {"name": "Nour Stars", "sort": "influencer"},
@@ -19,13 +35,29 @@ class SearchController extends GetxController {
     find.value = all;
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  Future<void> getcompany(String value) async {
+    var data = await Repo.getCompanySearch(value);
+    company.value=data;
+  }
+ Future<void> getInfulonser(String value) async {
+    var data = await Repo.getInfulonserSearch(value);
+    infulonser.value=data;
+  }
+ Future<void> getcontent(String value) async {
+    var data = await Repo.getContentSearch(value);
+    content.value=data;
+  }
+ Future<void> getBrand(String value) async {
+    var data = await Repo.getBrandSearch(value);
+    brand.value=data;
+  }
+ Future<void> getproduct(String value) async {
+    var data = await Repo.getProductSearch(value);
+    product.value=data;
   }
 
+
   @override
-  void onClose() {}
   void filter(String name) {
     List<Map<String, String>> results = [];
     if (name.isEmpty) {

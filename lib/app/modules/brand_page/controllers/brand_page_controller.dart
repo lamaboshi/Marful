@@ -17,32 +17,15 @@ class BrandPageController extends GetxController {
   void onInit() {
     super.onInit();
   }
-    //  Future<void> Dataforperson() async {
-    // switch (auth.personType()) {
-    //   case 'user':
-    //     typeAuth.value = Auth.user;
-    //     user.value = auth.getDataFromStorage() as UserModel;
-      
-    //     break;
-    //   case 'comapny':
-    //     typeAuth.value = Auth.comapny;
-    //     company.value = auth.getDataFromStorage() as Company;
-      
-        
-    //     break;
-    //   case 'infulonser':
-    //     typeAuth.value = Auth.infulonser;
-    //     infulencer.value = auth.getDataFromStorage() as Infulonser;
-       
-      
-    //     break;
-    // }
        Future<void> getAllBrand() async {
     var data = await braRepo.GetBrand();
     allBrands.assignAll(data);
   }
-    Future<void> DelBrand(Content content) async {
-   // await braRepo.DelBrand();
+    Future<void> DelBrands(int id) async {
+   await braRepo.DelBrand(id);
+  }
+    Future<void> addbrand(Brand brand) async {
+     await braRepo.AddBrand(brand);
   }
   }
-//}
+

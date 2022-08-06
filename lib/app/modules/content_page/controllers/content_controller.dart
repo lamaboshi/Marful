@@ -11,7 +11,7 @@ class ContentController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-   //getAllContent();
+   getAllContent();
   }
     Future<void> getAllContent() async {
     var data = await contRepo.GetContent();

@@ -108,14 +108,14 @@ class ProfailRepository extends IProfailRepository {
   Future<bool> DeletcontentInfulonser(int idcontentInfo) async {
     var result = await _dio.delete(
         'https://localhost:7192/api/InfulonserContent',
-        queryParameters: {"id": idcontentInfo});
+        data: {"id": idcontentInfo});
     return result.statusCode == 200;
   }
 
   @override
   Future<bool> DeletcontentCompany(int idcontentComp) async {
     var result = await _dio.delete('https://localhost:7192/api/CompanyContent',
-        queryParameters: {"id": idcontentComp});
+       data: {"id": idcontentComp});
     return result.statusCode == 200;
   }
 }

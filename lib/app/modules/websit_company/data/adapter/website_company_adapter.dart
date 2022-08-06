@@ -6,6 +6,6 @@ import '../model/Product.dart';
 abstract class IWebsiteCompanyRepository {
   Future<List<Product>> getdata();
    Future<Company> getdatacompany(int id);
-      Future<List<CompanyContent>> getdatacompcontent();
+   Future<List<CompanyContent>> getdatacompcontent(); 
 
 }
