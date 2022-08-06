@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marful/app/modules/report_page/views/report_view.dart';
 import 'package:marful/app/modules/setting_page/views/setting_page_view.dart';
-import '../../../core/values/my_flutter_app_icons.dart';
-import '../../profile/views/edit_profile.dart';
+import 'package:marful/app/routes/app_pages.dart';
 
-class HomeMenuView extends StatelessWidget {
+import '../../profile/views/edit_profile.dart';
+import '../controllers/menu_controller.dart';
+
+class HomeMenuView extends GetView<MenuController> {
   const HomeMenuView({Key? key}) : super(key: key);
 
   @override
@@ -20,11 +21,20 @@ class HomeMenuView extends StatelessWidget {
                 'Edit profil', Icons.edit, () => Get.to(EditProfilePage())),
             buildCard('Setting', Icons.settings,
                 () => Get.to(() => const SettingPageView())),
+<<<<<<< HEAD
             buildCard('Report', AppIcons.trending_up,
                 () => Get.to(() => const ReportView())),
             buildCard('About', Icons.abc_outlined, () {}),
             buildCard('Log out', Icons.delete, () {}),
             buildCard('Log out', Icons.logout, () {}),
+=======
+            //buildCard('Report', AppIcons.trending_up, ()=> Get.to(() =>const ReportView())),
+            //buildCard('About', Icons.abc_outlined, () {}),
+            buildCard('Log out', Icons.logout, () {
+              controller.auth.stroge.deleteAllKeys();
+              Get.offAndToNamed(Routes.SignIn);
+            }),
+>>>>>>> 70e5b71ee6244c1163c61b743d8e9d255b930c46
           ],
         ),
       ),

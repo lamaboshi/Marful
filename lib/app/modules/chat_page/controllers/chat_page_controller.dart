@@ -6,6 +6,7 @@ import 'package:signalr_core/signalr_core.dart';
 import '../../../../api/socket/hub_listen.dart';
 import '../../../../api/socket/managment_hub.dart';
 import '../../../../sheard/auth_service.dart';
+import '../data/model/job.dart';
 
 class ChatPageController extends GetxController {
   //////
@@ -16,8 +17,11 @@ class ChatPageController extends GetxController {
   final typeAuth = Auth.user.obs;
   final auth = Get.find<AuthService>();
   final allMessage = <Message>[].obs;
+  final selectMessage = <Message>[].obs;
   final textMessage = ''.obs;
   final convId = 0.obs;
+  final newJob = Job().obs;
+  final isLoading = false.obs;
   @override
   void onInit() {
     conactionhub();
@@ -29,10 +33,12 @@ class ChatPageController extends GetxController {
         allMessage.addOrRepLace(data);
       },
     );
+    isLoading.value = false;
     super.onInit();
   }
 
   Future<void> conactionhub() async {
+    isLoading.value = true;
     final hubConnection = HubConnectionBuilder()
         .withUrl(
           'https://localhost:7192/management-hub',

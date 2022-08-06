@@ -1,23 +1,48 @@
 import 'package:get/get.dart';
 
-class BrandPageController extends GetxController {
-  //TODO: Implement BrandPageController
+import '../../../../sheard/auth_service.dart';
+import '../../../data/model/brand.dart';
+import '../../../data/model/company.dart';
+import '../../../data/model/infulonser.dart';
+import '../../../data/model/user_model.dart';
+import '../data/brand.repostitry.dart';
+import 'package:get/get.dart';
+import 'package:marful/app/data/model/content.dart';
 
-  final count = 0.obs;
+class BrandPageController extends GetxController {
+  final allBrands=<Brand>[].obs;
+  final brand= Brand().obs;
+  final braRepo=BrandRepository();
   @override
   void onInit() {
     super.onInit();
   }
-
-  @override
-  void onReady() {
-    super.onReady();
+    //  Future<void> Dataforperson() async {
+    // switch (auth.personType()) {
+    //   case 'user':
+    //     typeAuth.value = Auth.user;
+    //     user.value = auth.getDataFromStorage() as UserModel;
+      
+    //     break;
+    //   case 'comapny':
+    //     typeAuth.value = Auth.comapny;
+    //     company.value = auth.getDataFromStorage() as Company;
+      
+        
+    //     break;
+    //   case 'infulonser':
+    //     typeAuth.value = Auth.infulonser;
+    //     infulencer.value = auth.getDataFromStorage() as Infulonser;
+       
+      
+    //     break;
+    // }
+       Future<void> getAllBrand() async {
+    var data = await braRepo.GetBrand();
+    allBrands.assignAll(data);
   }
-
-  @override
-  void onClose() {
-    super.onClose();
+    Future<void> DelBrand(Content content) async {
+   // await braRepo.DelBrand();
   }
-
-  void increment() => count.value++;
-}
+  }
+//}

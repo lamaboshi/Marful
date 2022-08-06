@@ -1,37 +1,26 @@
 import 'package:get/get.dart';
+import 'package:marful/app/data/model/content.dart';
+
+import '../data/adapter/content_adapter.dart';
+import '../data/content_repostiry.dart';
 
 class ContentController extends GetxController {
-  final count = 0.obs;
-  final type = [
-    'comidy',
-    'fashon',
-    'hfgbv',
-    'hfgh',
-    'comidy',
-    'fashon',
-    'hfgbv',
-    'hfgh',
-    'comidy',
-    'fashon',
-    'hfgbv',
-    'hfgh',
-    'comidy',
-    'fashon',
-    'hfgbv',
-    'hfgh',
-  ].obs;
-
+  final contents=<Content>[].obs;
+  final addcontent= Content().obs;
+  final contRepo=ContentRepository();
   @override
   void onInit() {
     super.onInit();
+   //getAllContent();
   }
-
-  @override
-  void onReady() {
-    super.onReady();
+    Future<void> getAllContent() async {
+    var data = await contRepo.GetContent();
+    contents.assignAll(data);
   }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
+    Future<void> delcontentelement(Content content) async {
+    await contRepo.DelContent(content.id!);
+  }
+    Future<void> addcontentelement(Content content) async {
+     await contRepo.AddContent(content);
+  }
 }
