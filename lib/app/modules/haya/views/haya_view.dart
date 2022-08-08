@@ -40,7 +40,7 @@ class HayaView extends GetView<HayaController> {
                 icon: const Icon(Icons.search)),
             IconButton(
                 onPressed: () {
-                  Get.dialog(DialogWidget(),barrierDismissible: false);
+                  Get.dialog(const DialogWidget(),barrierDismissible: false);
                //   Get.rootDelegate.toNamed(Routes.CONVERSATION_PAGE);
                 },
                 icon: const Icon(Icons.message))

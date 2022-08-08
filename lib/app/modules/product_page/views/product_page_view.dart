@@ -56,7 +56,6 @@ class ProductPageView extends GetView<ProductPageController> {
                         ),
                         InkWell(
                             onTap: () {}, child: const Text('Add an image..')),
-
                         const SizedBox(
                           height: 20,
                         ),
@@ -78,33 +77,23 @@ class ProductPageView extends GetView<ProductPageController> {
                         const SizedBox(
                           height: 20,
                         ),
-                        // ExpansionTile(
-                        //   title: const Text('Choose content'),
-                        //   leading: const Icon(Icons.menu),
-                        //   tilePadding: const EdgeInsets.all(0),
-                        //   childrenPadding: const EdgeInsets.all(0),
-                        //   children: [
-                        //     for (var item in brand)
-                        //       Padding(
-                        //         padding: const EdgeInsets.fromLTRB(3, 10, 0, 0),
-                        //         child: InkWell(
-                        //           onTap: () {},
-                        //           child: Column(
-                        //             crossAxisAlignment:
-                        //                 CrossAxisAlignment.start,
-                        //             children: [
-                        //               Text(item),
-                        //               const SizedBox(
-                        //                 height: 5,
-                        //               ),
-                        //               const Divider(),
-                        //             ],
-                        //           ),
-                        //         ),
-                        //       ),
-                        //   ],
-                        // ),
-
+                        TextFieldWidget(
+                          type: TextInputType.number,
+                          obscureText: false,
+                          prefIcon: Icons.input,
+                          label: 'Price',
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ), TextFieldWidget(
+                          type: TextInputType.name,
+                          obscureText: false,
+                          prefIcon: Icons.input,
+                          label: 'Code',
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
                         Align(
                           alignment: Alignment.center,
                           child: ElevatedButton(
@@ -120,20 +109,6 @@ class ProductPageView extends GetView<ProductPageController> {
                         const SizedBox(
                           height: 30,
                         ),
-                        // Align(
-                        //   alignment: Alignment.topRight,
-                        //   child: FloatingActionButton.extended(
-                        //   //  heroTag: 'uniqueTag',
-                        //     backgroundColor: AppColors.orange,
-                        //     label: Row(
-                        //       children: const [Icon(Icons.close), Text('close')],
-                        //     ),
-                        //     //      const Icon(Icons.close),
-                        //     onPressed: () {
-                        //       Get.back();
-                        //     },
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),
@@ -146,7 +121,7 @@ class ProductPageView extends GetView<ProductPageController> {
         padding: const EdgeInsets.all(10),
         child: GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              childAspectRatio: 0.8,
+              childAspectRatio: 0.7,
               crossAxisCount: 2,
               crossAxisSpacing: 5,
               mainAxisSpacing: 5,
@@ -156,97 +131,89 @@ class ProductPageView extends GetView<ProductPageController> {
               return Card(
                 shadowColor: Colors.black45,
                 elevation: 10,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const Align(
-                      alignment: Alignment.topRight,
-                      child: Icon(
-                        Icons.close,
-                        color: AppColors.blue,
-                        size: 20,
+                child: Padding(
+                  padding: const EdgeInsets.all(0),
+                  child: Stack(
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Image.asset(
+                            'assets/images/1.jpg',
+                            height: 140,
+                            fit: BoxFit.fill,
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  //product
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                  const Text(
+                                    "Shampoo",
+                                    style: TextStyle(
+                                        height: 1,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  const SizedBox(
+                                    height: 7,
+                                  ),
+                                  //description
+                                  const Text(
+                                    "important for every persone",
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
+                                  const Spacer(),
+
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: const [
+                                      Icon(
+                                        Icons.price_change,
+                                        color: AppColors.blue,
+                                        size: 20,
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      //price
+                                      Text(
+                                        '150',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18,
+                                            color: AppColors.blue),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
                       ),
-                    ),
-                    Expanded(
-                      child: Image.asset(
-                        'assets/images/3.jpg',
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            //product
-                            const Text(
-                              "Shampoo",
-                              style: TextStyle(
-                                  height: 2,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 1, 0, 5),
+                        child: Align(
+                          alignment: Alignment.topRight,
+                          child: InkWell(
+                            onTap: () {},
+                            child: const Icon(
+                              Icons.close,
+                              color: Colors.grey,
+                              size: 24,
                             ),
-                            //description
-                            const Text(
-                              "important for every persone",
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                            const Spacer(),
-                            Row(
-                              children: const [
-                                Icon(
-                                  Icons.price_change,
-                                  color: AppColors.blue,
-                                  size: 20,
-                                ), const Spacer(),
-                                //price
-                                Text(
-                                  '150',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
-                                      color: AppColors.blue),
-                                ), const Spacer(),
-                                // Expanded(
-                                //   child: SizedBox(),
-                                //   flex: 60,
-                                // ),
-                                // ButtonBar(
-                                //   children: [
-                                //     CircleAvatar(
-                                //       radius: 18,
-                                //       backgroundColor:AppColors.blue,
-                                //       child: IconButton(
-                                //         icon: Icon(
-                                //           Icons.call,
-                                //           color: Colors.white,
-                                //           size: 18,
-                                //         ),
-                                //         onPressed: () {},
-                                //       ),
-                                //     ),
-                                //     CircleAvatar(
-                                //       radius: 18,
-                                //       backgroundColor: AppColors.blue,
-                                //       child: IconButton(
-                                //         icon: Icon(
-                                //           Icons.settings,
-                                //           color: Colors.white,
-                                //           size: 18,
-                                //         ),
-                                //         onPressed: () {},
-                                //       ),
-                                //     ),
-                                //   ],
-                                // ),
-                              ],
-                            ),
-                          ],
+                          ),
                         ),
                       ),
-                    )
-                  ],
+                    ],
+                  ),
                 ),
               );
             }),

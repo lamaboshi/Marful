@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:marful/app/modules/product_page/views/product_page_view.dart';
 
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
-import '../controllers/brand_page_controller.dart';
 
-class BrandPageView extends GetView<BrandPageController> {
-  const BrandPageView({Key? key}) : super(key: key);
+class HayaBrand extends StatelessWidget {
+  const HayaBrand({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     List<String> brand = [
@@ -67,10 +66,6 @@ class BrandPageView extends GetView<BrandPageController> {
                         height: 20,
                       ),
                       TextFieldWidget(
-                          onChanged: ((String txt) {
-                          controller.brand.value.name=txt;
-                          
-                        }),
                         type: TextInputType.name,
                         obscureText: false,
                         prefIcon: Icons.input,
@@ -81,9 +76,7 @@ class BrandPageView extends GetView<BrandPageController> {
                       Align(
                         alignment: Alignment.center,
                         child: ElevatedButton(
-                          onPressed: () {
-                            controller.addbrand(controller.brand.value);
-                          },
+                          onPressed: () {Get.to(ProductPageView());},
                           style: ButtonStyle(
                               backgroundColor:
                                   MaterialStateProperty.all(AppColors.orange),
@@ -120,14 +113,14 @@ class BrandPageView extends GetView<BrandPageController> {
         padding: const EdgeInsets.all(15),
         child: ListView.separated(
             itemBuilder: ((context, index) => ListTile(
-                  title: Text(controller.allBrands[index].name!),
-                  subtitle: Text(controller.allBrands[index].description!),
+              onTap: (){Get.to(ProductPageView());},
+                  title: Text(brand[index]),
+                  subtitle: Text(description[index]),
                   leading: Image.asset(
                     'assets/images/3.jpg',
                   ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
-                      
                         topLeft: Radius.circular(30),
                         topRight: Radius.circular(30),
                         bottomLeft: Radius.circular(30),
@@ -137,20 +130,42 @@ class BrandPageView extends GetView<BrandPageController> {
                   ),
                   trailing: IconButton(
                       padding: const EdgeInsets.all(0),
-                      onPressed: () {
-                        controller.DelBrands(controller.allBrands[index].id!);
-                      },
+                      onPressed: () {},
                       icon: const Icon(Icons.close)),
                 )),
-            separatorBuilder: ((context, index) => 
-                const Divider(
-                      endIndent: 8,
-                      indent: 8,
-                      thickness: 1,
-                    )
-                ),
+            separatorBuilder: ((context, index) => const Divider(
+                  endIndent: 8,
+                  indent: 8,
+                  thickness: 1,
+                )),
             itemCount: brand.length),
       ),
     );
   }
 }
+  // ExpansionTile(
+                        //   title: const Text('Choose content'),
+                        //   leading: const Icon(Icons.menu),
+                        //   tilePadding: const EdgeInsets.all(0),
+                        //   childrenPadding: const EdgeInsets.all(0),
+                        //   children: [
+                        //     for (var item in brand)
+                        //       Padding(
+                        //         padding: const EdgeInsets.fromLTRB(3, 10, 0, 0),
+                        //         child: InkWell(
+                        //           onTap: () {},
+                        //           child: Column(
+                        //             crossAxisAlignment:
+                        //                 CrossAxisAlignment.start,
+                        //             children: [
+                        //               Text(item),
+                        //               const SizedBox(
+                        //                 height: 5,
+                        //               ),
+                        //               const Divider(),
+                        //             ],
+                        //           ),
+                        //         ),
+                        //       ),
+                        //   ],
+                        // ),

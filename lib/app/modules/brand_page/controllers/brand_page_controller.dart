@@ -1,13 +1,6 @@
 import 'package:get/get.dart';
-
-import '../../../../sheard/auth_service.dart';
 import '../../../data/model/brand.dart';
-import '../../../data/model/company.dart';
-import '../../../data/model/infulonser.dart';
-import '../../../data/model/user_model.dart';
 import '../data/brand.repostitry.dart';
-import 'package:get/get.dart';
-import 'package:marful/app/data/model/content.dart';
 
 class BrandPageController extends GetxController {
   final allBrands=<Brand>[].obs;
