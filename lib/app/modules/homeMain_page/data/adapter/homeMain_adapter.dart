@@ -8,7 +8,6 @@ import '../model/user_post.dart';
 
 abstract class IHomeMainRepository {
   Future<List<GetPost>> getAllPost(String type, String email);
-  Future<List<Post>> getAllPostCompany(String type, String email);
   Future<List<GetPost>> getPostWithContent(
       int contentId, String type, String email);
   Future<double> getDisLikesCount(int postId, String type);

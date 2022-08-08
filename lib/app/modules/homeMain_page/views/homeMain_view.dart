@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marful/app/modules/profile/views/build_post.dart';
 import 'package:marful/sheard/auth_service.dart';
 import 'package:marful/sheard/date_extation.dart';
 import 'package:marful/sheard/util.dart';
@@ -45,22 +44,12 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
               ? const Center(child: CircularProgressIndicator())
               : SizedBox(
                   height: screen.height - 100,
-                  child: controller.auth.getTypeEnum() == Auth.comapny
-                      ? ListView.builder(
-                          itemCount: controller.postCompany.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return BuildPost(
-                              infoname: 'NorrStars',
-                              post: controller.postCompany[index],
-                            );
-                          },
-                        )
-                      : ListView.builder(
-                          itemCount: controller.post.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return buildpost(index);
-                          },
-                        ),
+                  child: ListView.builder(
+                    itemCount: controller.post.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return buildpost(index);
+                    },
+                  ),
                 )),
         ]),
       ),

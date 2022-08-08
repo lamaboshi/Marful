@@ -21,7 +21,6 @@ class HomeMainController extends GetxController {
   final auth = Get.find<AuthService>();
   final homeMainRepo = HomeMainRepositry();
   final post = <GetPost>[].obs;
-  final postCompany = <Post>[].obs;
   final mainUserpost = <PostUser>[].obs;
   final mainInfupost = <PostInfulonser>[].obs;
   final companyContent = <Content>[].obs;
@@ -126,17 +125,9 @@ class HomeMainController extends GetxController {
   Future<void> getAllPosts() async {
     post.clear();
     loading.value = true;
-    if (auth.getTypeEnum() == Auth.comapny) {
-      var res =
-          await homeMainRepo.getAllPostCompany(auth.personType(), getEmail());
-      if (res.isNotEmpty) {
-        postCompany.assignAll(res);
-      }
-    } else {
-      var res = await homeMainRepo.getAllPost(auth.personType(), getEmail());
-      if (res.isNotEmpty) {
-        post.assignAll(res);
-      }
+    var res = await homeMainRepo.getAllPost(auth.personType(), getEmail());
+    if (res.isNotEmpty) {
+      post.assignAll(res);
     }
 
     loading.value = false;

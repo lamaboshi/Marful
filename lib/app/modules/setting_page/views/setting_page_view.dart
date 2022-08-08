@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/routes/app_pages.dart';
 
+import '../../../../sheard/auth_service.dart';
 import '../../../core/values/app_colors.dart';
-import '../../../core/values/my_flutter_app_icons.dart';
 import '../controllers/setting_page_controller.dart';
 
 class SettingPageView extends GetView<SettingPageController> {
@@ -20,12 +20,16 @@ class SettingPageView extends GetView<SettingPageController> {
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
-            // buildCard(
-            // 'Content', Icons.edit, () => Get.to(() => const ContentView())),
-            buildCard('Brand', Icons.settings,
-                () => Get.rootDelegate.toNamed(Routes.BRAND_PAGE)),
-            buildCard('Edit', AppIcons.trending_up, () {}),
-
+            controller.auth.getTypeEnum() == Auth.comapny
+                ? buildCard('Brand', Icons.settings,
+                    () => Get.rootDelegate.toNamed(Routes.BRAND_PAGE))
+                : SizedBox.shrink(),
+            controller.auth.getTypeEnum() != Auth.user
+                ? buildCard('Content', Icons.edit,
+                    () => Get.rootDelegate.toNamed(Routes.Content))
+                : SizedBox.shrink(),
+            buildCard('About', Icons.abc_outlined, () {}),
+            buildCard('Delete My Account', Icons.delete, () {}),
             Expanded(
               flex: 5,
               child: Image.asset(

@@ -19,47 +19,51 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: [
-              SizedBox(width: screen.width / 6),
-              ElevatedButton(
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(AppColors.blue),
-                    fixedSize:
-                        MaterialStateProperty.all(const Size.fromWidth(150))),
-                onPressed: () {
-                  Get.rootDelegate.toNamed(Routes.WebsiteCompany);
-                },
-                child: const Text(
-                  "Follow",
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                  ),
+        isSearch
+            ? Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    SizedBox(width: screen.width / 6),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(AppColors.blue),
+                          fixedSize: MaterialStateProperty.all(
+                              const Size.fromWidth(150))),
+                      onPressed: () {
+                        Get.rootDelegate.toNamed(Routes.WebsiteCompany);
+                      },
+                      child: const Text(
+                        "Follow",
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 18,
+                    ),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.white),
+                          fixedSize: MaterialStateProperty.all(
+                              const Size.fromWidth(150))),
+                      onPressed: () {},
+                      child: const Text(
+                        "Message",
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              SizedBox(
-                width: 18,
-              ),
-              ElevatedButton(
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.white),
-                    fixedSize:
-                        MaterialStateProperty.all(const Size.fromWidth(150))),
-                onPressed: () {},
-                child: const Text(
-                  "Message",
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+              )
+            : SizedBox.shrink(),
         SizedBox(
           height: 15,
         ),

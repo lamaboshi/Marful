@@ -4,9 +4,9 @@ class Content {
   String? description;
 
   Content({
-     this.id,
-     this.description,
-     this.name,
+    this.id,
+    this.description,
+    this.name,
   });
 
   Content.fromJson(Map<String, dynamic> json) {
@@ -17,7 +17,7 @@ class Content {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> json = new Map<String, dynamic>();
-    json['id'] = id;
+    json['id'] = id == null ? 0 : id;
     json['name'] = name;
     json['description'] = description;
     return json;

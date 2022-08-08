@@ -3,28 +3,29 @@ import 'package:marful/app/modules/websit_company/data/model/company.dart';
 
 import 'Content.dart';
 
-
 class CompanyContent {
   int? id;
-  Company?company;
+  Company? company;
   int? companyId;
-  int?  ContentId;
-  Content?content;
+  int? contentId;
+  Content? content;
 
- CompanyContent({
+  CompanyContent({
     this.id,
     this.company,
     this.companyId,
-    this.ContentId,
+    this.contentId,
     this.content,
   });
 
- CompanyContent.fromJson(Map<String, dynamic> json) {
+  CompanyContent.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-  company = json['company'];
+    company = json['company'] == null
+        ? null
+        : Company.fromJson(json['company'] as Map<String, dynamic>);
     companyId = json['companyId'];
-  ContentId = json['ContentId'];
- content= json['Content'];
+    contentId = json['contentId'];
+    content = Content.fromJson(json['content'] as Map<String, dynamic>);
   }
 
   Map<String, dynamic> toJson() {
@@ -32,8 +33,8 @@ class CompanyContent {
     data['id'] = this.id;
     data['company'] = this.company;
     data['companyId'] = this.companyId;
-    data['ContentId'] = this.ContentId;
-     data['Content'] = this.content;
+    data['ContentId'] = this.contentId;
+    data['Content'] = this.content;
     return data;
   }
 }

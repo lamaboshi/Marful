@@ -167,7 +167,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.BRAND_PAGE,
-      page: () => const BrandPageView(),
+      page: () => BrandPageView(),
       binding: BrandPageBinding(),
     ),
     GetPage(

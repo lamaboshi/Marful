@@ -13,8 +13,8 @@ class ProfailRepository extends IProfailRepository {
   final _dio = Get.find<Dio>();
   @override
   Future<List<Content>> GetCompanyConent(int idCompany) async {
-    var result = await _dio
-        .get('https://localhost:7192/api/CompanyContent/{$idCompany}');
+    var result =
+        await _dio.get('https://localhost:7192/api/CompanyContent/$idCompany');
     print(result);
     var list = <Content>[];
     for (var item in result.data) {

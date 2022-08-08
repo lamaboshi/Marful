@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
+import 'package:marful/sheard/auth_service.dart';
 
 class SettingPageController extends GetxController {
-  //TODO: Implement SettingPageController
+  final auth = Get.find<AuthService>();
 
   final count = 0.obs;
   @override

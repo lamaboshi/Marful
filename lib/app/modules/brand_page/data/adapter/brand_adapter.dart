@@ -1,11 +1,7 @@
-
-import '../../../../data/model/Content.dart';
 import '../../../../data/model/brand.dart';
 
 abstract class IBrandRepository {
- Future<List<Brand>> GetBrand();
+  Future<List<Brand>> getAllBrand(int idComp);
   Future<bool> DelBrand(int id);
-   Future<bool>AddBrand(Brand brand);
-
-
+  Future<bool> AddBrand(Brand brand);
 }

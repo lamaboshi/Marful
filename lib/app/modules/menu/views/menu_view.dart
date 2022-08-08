@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marful/app/modules/setting_page/views/setting_page_view.dart';
 import 'package:marful/app/routes/app_pages.dart';
 
 import '../../profile/views/edit_profile.dart';
@@ -20,9 +19,7 @@ class HomeMenuView extends GetView<MenuController> {
             buildCard(
                 'Edit profil', Icons.edit, () => Get.to(EditProfilePage())),
             buildCard('Setting', Icons.settings,
-                () => Get.to(() => const SettingPageView())),
-            buildCard('About', Icons.abc_outlined, () {}),
-            buildCard('Log out', Icons.delete, () {}),
+                () => Get.rootDelegate.toNamed(Routes.SETTING_PAGE)),
             buildCard('Log out', Icons.logout, () {
               controller.auth.stroge.deleteAllKeys();
               Get.rootDelegate.toNamed(Routes.SignIn);

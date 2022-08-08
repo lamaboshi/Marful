@@ -27,18 +27,6 @@ class HomeMainRepositry extends IHomeMainRepository {
   }
 
   @override
-  Future<List<Post>> getAllPostCompany(String type, String email) async {
-    var list = <Post>[];
-    var result = await _dio.get('https://localhost:7192/api/Main/Posts',
-        queryParameters: {"Type": type, "email": email});
-    if (result.statusCode == 404) return [];
-    for (var item in result.data) {
-      list.add(Post.fromJson(item));
-    }
-    return list;
-  }
-
-  @override
   Future<List<GetPost>> getPostWithContent(
       int contentId, String type, String email) async {
     var result = await _dio.get('https://localhost:7192/api/Main/PostsContent',
