@@ -21,8 +21,13 @@ class HomeMenuView extends GetView<MenuController> {
                 'Edit profil', Icons.edit, () => Get.to(EditProfilePage())),
             buildCard('Setting', Icons.settings,
                 () => Get.to(() => const SettingPageView())),
+<<<<<<< HEAD
             //buildCard('Report', AppIcons.trending_up, ()=> Get.to(() =>const ReportView())),
             //buildCard('About', Icons.abc_outlined, () {}),
+=======
+            buildCard('About', Icons.abc_outlined, () {}),
+            buildCard('Log out', Icons.delete, () {}),
+>>>>>>> e429171531a7f3e0f0a78bb54385ea2d1c6a3925
             buildCard('Log out', Icons.logout, () {
               controller.auth.stroge.deleteAllKeys();
               Get.rootDelegate.toNamed(Routes.SignIn);

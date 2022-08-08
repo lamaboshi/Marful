@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marful/app/modules/brand_page/views/brand_page_view.dart';
-import 'package:marful/app/modules/content_page/views/content_view.dart';
+import 'package:marful/app/routes/app_pages.dart';
+
 import '../../../core/values/app_colors.dart';
 import '../../../core/values/my_flutter_app_icons.dart';
 import '../controllers/setting_page_controller.dart';
@@ -22,9 +22,10 @@ class SettingPageView extends GetView<SettingPageController> {
           children: [
             // buildCard(
             // 'Content', Icons.edit, () => Get.to(() => const ContentView())),
-            buildCard('Brand', Icons.settings, ()=> Get.to(() => const BrandPageView())),
+            buildCard('Brand', Icons.settings,
+                () => Get.rootDelegate.toNamed(Routes.BRAND_PAGE)),
             buildCard('Edit', AppIcons.trending_up, () {}),
-         
+
             Expanded(
               flex: 5,
               child: Image.asset(
