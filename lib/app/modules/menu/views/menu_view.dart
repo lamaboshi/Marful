@@ -21,20 +21,12 @@ class HomeMenuView extends GetView<MenuController> {
                 'Edit profil', Icons.edit, () => Get.to(EditProfilePage())),
             buildCard('Setting', Icons.settings,
                 () => Get.to(() => const SettingPageView())),
-<<<<<<< HEAD
-            buildCard('Report', AppIcons.trending_up,
-                () => Get.to(() => const ReportView())),
             buildCard('About', Icons.abc_outlined, () {}),
             buildCard('Log out', Icons.delete, () {}),
-            buildCard('Log out', Icons.logout, () {}),
-=======
-            //buildCard('Report', AppIcons.trending_up, ()=> Get.to(() =>const ReportView())),
-            //buildCard('About', Icons.abc_outlined, () {}),
             buildCard('Log out', Icons.logout, () {
               controller.auth.stroge.deleteAllKeys();
               Get.rootDelegate.toNamed(Routes.SignIn);
             }),
->>>>>>> 70e5b71ee6244c1163c61b743d8e9d255b930c46
           ],
         ),
       ),

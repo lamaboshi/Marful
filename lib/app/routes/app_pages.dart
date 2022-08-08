@@ -52,14 +52,11 @@ class AppPages {
 
   static final routes = [
     GetPage(
-<<<<<<< HEAD
-=======
       name: _Paths.SignIn,
       page: () => SignInPage(),
       binding: SignInBinding(),
     ),
     GetPage(
->>>>>>> 70e5b71ee6244c1163c61b743d8e9d255b930c46
       name: _Paths.FirstSplash,
       page: () => FiestSplashView(),
       binding: FirstSplashBinding(),
