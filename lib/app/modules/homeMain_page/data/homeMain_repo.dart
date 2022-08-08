@@ -4,6 +4,8 @@ import 'package:marful/app/data/model/brand.dart';
 import 'package:marful/app/modules/homeMain_page/data/adapter/homeMain_adapter.dart';
 import 'package:marful/app/modules/homeMain_page/data/model/Post.dart';
 import 'package:marful/app/modules/homeMain_page/data/model/getPost.dart';
+import 'package:marful/app/modules/homeMain_page/data/model/post_infulonser.dart';
+import 'package:marful/app/modules/homeMain_page/data/model/user_post.dart';
 
 import '../../../../sheard/auth_service.dart';
 import '../../../data/model/content.dart';
@@ -17,10 +19,21 @@ class HomeMainRepositry extends IHomeMainRepository {
     var list = <GetPost>[];
     var result = await _dio.get('https://localhost:7192/api/Main/Posts',
         queryParameters: {"Type": type, "email": email});
-    print(result.data);
     if (result.statusCode == 404) return [];
     for (var item in result.data) {
       list.add(GetPost.fromJson(item));
+    }
+    return list;
+  }
+
+  @override
+  Future<List<Post>> getAllPostCompany(String type, String email) async {
+    var list = <Post>[];
+    var result = await _dio.get('https://localhost:7192/api/Main/Posts',
+        queryParameters: {"Type": type, "email": email});
+    if (result.statusCode == 404) return [];
+    for (var item in result.data) {
+      list.add(Post.fromJson(item));
     }
     return list;
   }
@@ -55,10 +68,14 @@ class HomeMainRepositry extends IHomeMainRepository {
   @override
   Future<void> addPost(Post post) async {
     print(post.toJson().toString());
-    var result = await _dio.post(
-      'https://localhost:7192/api/Post',
-      data: post.toJson(),
-    );
+    try {
+      var result = await _dio.post(
+        'https://localhost:7192/api/Post',
+        data: post.toJson(),
+      );
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
@@ -83,5 +100,70 @@ class HomeMainRepositry extends IHomeMainRepository {
       list.add(Brand.fromJson(item));
     }
     return list;
+  }
+
+  @override
+  Future<void> addInterActionInf(PostInfulonser infulonser) async {
+    var result = await _dio.post(
+        'https://localhost:7192/api/PostInfulonser/AddPostInfulonser',
+        data: infulonser.toJson());
+  }
+
+  @override
+  Future<void> addInterActionUser(PostUser postUser) async {
+    var result = await _dio.post(
+        'https://localhost:7192/api/UserPost/AddUserPost',
+        data: postUser.toJson());
+  }
+
+  @override
+  Future<List<PostUser>> getByUserId(int userId) async {
+    var result =
+        await _dio.get('https://localhost:7192/api/UserPost/GetByUser/$userId');
+    print(result);
+    var list = <PostUser>[];
+    for (var item in result.data) {
+      list.add(PostUser.fromJson(item));
+    }
+    return list;
+  }
+
+  @override
+  Future<List<PostInfulonser>> getByInfoId(int infoId) async {
+    var result = await _dio
+        .get('https://localhost:7192/api/PostInfulonser/GetByInfu/$infoId');
+    print(result);
+    var list = <PostInfulonser>[];
+    for (var item in result.data) {
+      list.add(PostInfulonser.fromJson(item));
+    }
+    return list;
+  }
+
+  @override
+  Future<void> deleteInterActionInf(int idinfulonser) async {
+    var result = await _dio.delete(
+        'https://localhost:7192/api/PostInfulonser/Delete/$idinfulonser');
+  }
+
+  @override
+  Future<void> deleteInterActionUser(int idpostUser) async {
+    var result = await _dio
+        .delete('https://localhost:7192/api/UserPost/Delete/$idpostUser');
+  }
+
+  @override
+  Future<void> updateInterActionInf(
+      int idinfulonser, PostInfulonser infulonser) async {
+    var result = await _dio.put(
+        'https://localhost:7192/api/PostInfulonser/Put/$idinfulonser',
+        data: infulonser.toJson());
+  }
+
+  @override
+  Future<void> updateInterActionUser(int idpostUser, PostUser postUser) async {
+    var result = await _dio.put(
+        'https://localhost:7192/api/UserPost/Put/$idpostUser',
+        data: postUser.toJson());
   }
 }

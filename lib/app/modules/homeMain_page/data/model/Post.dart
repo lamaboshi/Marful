@@ -31,7 +31,10 @@ class Post {
       brandId: json["brandId"],
       infulonserId: json["infulonserId"],
       jobId: json["jobId"],
-      image: json['image'] == null ? null : json['image']);
+      image: json['image'] == null
+          ? null
+          : Uint8List.fromList(
+              List<int>.from(json['image']! as List<dynamic>)));
 
   Map<String, dynamic> toJson() => {
         "id": id == null ? 0 : id,
@@ -40,6 +43,6 @@ class Post {
         "brandId": brandId == null ? null : brandId,
         "jobId": jobId == null ? null : jobId,
         "infulonserId": infulonserId == null ? null : infulonserId,
-        "image": image == null ? null : image,
+        "image": image == null ? null : Uint8List.fromList(image!),
       };
 }

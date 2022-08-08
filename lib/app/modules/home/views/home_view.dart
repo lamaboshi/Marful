@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marful/app/modules/homePost_page/views/homePost_view.dart';
 import 'package:marful/app/modules/menu/views/menu_view.dart';
+import 'package:marful/sheard/auth_service.dart';
 
 import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
@@ -15,21 +15,30 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: controller.auth.getTypeEnum() == Auth.user ? 2 : 3,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.orange,
-          bottom: const TabBar(indicatorColor: Colors.white, tabs: [
-            Tab(
-              icon: Icon(Icons.home),
-            ),
-            Tab(
-              icon: Icon(Icons.person),
-            ),
-            Tab(
-              icon: Icon(Icons.menu),
-            )
-          ]),
+          bottom: controller.auth.getTypeEnum() == Auth.user
+              ? TabBar(indicatorColor: Colors.white, tabs: [
+                  Tab(
+                    icon: Icon(Icons.home),
+                  ),
+                  Tab(
+                    icon: Icon(Icons.menu),
+                  )
+                ])
+              : TabBar(indicatorColor: Colors.white, tabs: [
+                  Tab(
+                    icon: Icon(Icons.home),
+                  ),
+                  Tab(
+                    icon: Icon(Icons.person),
+                  ),
+                  Tab(
+                    icon: Icon(Icons.menu),
+                  )
+                ]),
           title: const Text('MarFlu'),
           actions: [
             IconButton(
@@ -44,11 +53,16 @@ class HomeView extends GetView<HomeController> {
                 icon: const Icon(Icons.message))
           ],
         ),
-        body: TabBarView(children: [
-          HomeMainView(),
-          ProfilePage(),
-          const HomeMenuView(),
-        ]),
+        body: controller.auth.getTypeEnum() == Auth.user
+            ? TabBarView(children: [
+                HomeMainView(),
+                const HomeMenuView(),
+              ])
+            : TabBarView(children: [
+                HomeMainView(),
+                ProfilePage(false),
+                const HomeMenuView(),
+              ]),
       ),
     );
   }

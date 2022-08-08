@@ -32,7 +32,9 @@ class Company {
     password = json['password'];
     telePhone = json['telePhone'];
     description = json['description'];
-    image = json['image'];
+    image = json['image'] == null
+        ? null
+        : Uint8List.fromList(List<int>.from(json['image']!));
   }
 
   Map<String, dynamic> toJson() {
@@ -45,7 +47,7 @@ class Company {
     json['password'] = password;
     json['telePhone'] = telePhone;
     json['description'] = description;
-    json['image'] = image;
+    json['image'] = image == null ? null : Uint8List.fromList(image!);
     return json;
   }
 }

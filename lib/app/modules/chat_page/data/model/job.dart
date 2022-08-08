@@ -26,14 +26,13 @@ class Job {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
+    data['id'] = this.id == null ? 0 : this.id;
     data['salary'] = this.salary;
     data['code'] = this.code;
     data['brandId'] = this.brandId;
     data['infulonserId'] = this.infulonserId;
-    data["messages"] = messages == null
-        ? []
-        : List<Message>.from(messages!.map((x) => x.toJson()));
+    data["messages"] =
+        messages == null ? [] : List.from(messages!.map((x) => x.toJson()));
     return data;
   }
 }

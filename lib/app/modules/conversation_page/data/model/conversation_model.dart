@@ -1,6 +1,6 @@
 import 'package:marful/app/data/model/company.dart';
 
-import '../../../../data/model/infulonser.dart';
+import 'infu_model.dart';
 
 class ConversationModel {
   int? id;
@@ -8,7 +8,7 @@ class ConversationModel {
   int? companyId;
   int? infulonserId;
   Company? company;
-  Infulonser? infulonser;
+  InfuModel? infulonser;
   ConversationModel({
     this.id,
     this.start,
@@ -22,7 +22,7 @@ class ConversationModel {
     companyId = json['companyId'];
     infulonserId = json['infulonserId'];
     company = Company.fromJson(json['company']);
-    infulonser = Infulonser.fromJson(json['infulonser']);
+    infulonser = InfuModel.fromJson(json['infulonser']);
   }
 
   Map<String, dynamic> toJson() {

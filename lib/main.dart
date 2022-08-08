@@ -7,9 +7,11 @@ import 'package:q_overlay/q_overlay.dart';
 
 import 'api/storge/storge_service.dart';
 import 'app/routes/app_pages.dart';
+
 void main() {
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -27,7 +29,6 @@ class MyApp extends StatelessWidget {
       title: "MarFul",
       key: key,
       debugShowCheckedModeBanner: false,
-      
       defaultTransition: Transition.cupertino,
       getPages: AppPages.routes,
       enableLog: true,

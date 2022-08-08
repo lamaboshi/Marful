@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
 import '../../../core/component/textField.dart';
@@ -65,9 +64,8 @@ class BrandPageView extends GetView<BrandPageController> {
                         height: 20,
                       ),
                       TextFieldWidget(
-                          onChanged: ((String txt) {
-                          controller.brand.value.name=txt;
-                          
+                        onChanged: ((String txt) {
+                          controller.brand.value.name = txt;
                         }),
                         type: TextInputType.name,
                         obscureText: false,
@@ -80,7 +78,7 @@ class BrandPageView extends GetView<BrandPageController> {
                         alignment: Alignment.center,
                         child: ElevatedButton(
                           onPressed: () {
-                            controller.addbrand(controller.brand.value);
+                            //  controller.addbrand(controller.brand.value);
                           },
                           style: ButtonStyle(
                               backgroundColor:
@@ -125,7 +123,6 @@ class BrandPageView extends GetView<BrandPageController> {
                   ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
-                      
                         topLeft: Radius.circular(30),
                         topRight: Radius.circular(30),
                         bottomLeft: Radius.circular(30),
@@ -136,17 +133,15 @@ class BrandPageView extends GetView<BrandPageController> {
                   trailing: IconButton(
                       padding: const EdgeInsets.all(0),
                       onPressed: () {
-                        controller.DelBrands(controller.allBrands[index].id!);
+                        // controller.DelBrands(controller.allBrands[index].id!);
                       },
                       icon: const Icon(Icons.close)),
                 )),
-            separatorBuilder: ((context, index) => 
-                const Divider(
-                      endIndent: 8,
-                      indent: 8,
-                      thickness: 1,
-                    )
-                ),
+            separatorBuilder: ((context, index) => const Divider(
+                  endIndent: 8,
+                  indent: 8,
+                  thickness: 1,
+                )),
             itemCount: brand.length),
       ),
     );

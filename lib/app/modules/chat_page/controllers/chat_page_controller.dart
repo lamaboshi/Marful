@@ -6,6 +6,8 @@ import 'package:signalr_core/signalr_core.dart';
 import '../../../../api/socket/hub_listen.dart';
 import '../../../../api/socket/managment_hub.dart';
 import '../../../../sheard/auth_service.dart';
+import '../../conversation_page/data/model/conversation_model.dart';
+import '../data/model/chat_page_repository.dart';
 import '../data/model/job.dart';
 
 class ChatPageController extends GetxController {
@@ -18,10 +20,12 @@ class ChatPageController extends GetxController {
   final auth = Get.find<AuthService>();
   final allMessage = <Message>[].obs;
   final selectMessage = <Message>[].obs;
+  final allConversations = ConversationModel().obs;
   final textMessage = ''.obs;
   final convId = 0.obs;
   final newJob = Job().obs;
   final isLoading = false.obs;
+  final repo = ChatPageRepository();
   @override
   void onInit() {
     conactionhub();
@@ -35,6 +39,13 @@ class ChatPageController extends GetxController {
     );
     isLoading.value = false;
     super.onInit();
+  }
+
+  Future<void> addJob() async {
+    newJob.value.infulonserId = allConversations.value.infulonserId;
+    newJob.value.brandId = 1;
+    newJob.value.messages = selectMessage.toList();
+    await repo.addJob(newJob.value);
   }
 
   Future<void> conactionhub() async {
@@ -64,6 +75,7 @@ class ChatPageController extends GetxController {
     hub = Get.put<ManagementHub>(ManagementHub(connection: hubConnection));
     listener = HubListenController(hub);
     getAllMessage();
+    getAllConversations();
   }
 
   Future<void> addMessage() async {
@@ -77,5 +89,11 @@ class ChatPageController extends GetxController {
     var result = await hub.GA_Messages(id);
     allMessage.assignAll(result);
     convId.value = allMessage.first.conversationId!;
+  }
+
+  Future<void> getAllConversations() async {
+    var result = await hub.GA_Conversations();
+    allConversations.value =
+        result.where((element) => element.id == convId.value).first;
   }
 }

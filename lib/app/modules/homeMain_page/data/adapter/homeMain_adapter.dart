@@ -3,9 +3,12 @@ import 'package:marful/app/modules/homeMain_page/data/model/getPost.dart';
 
 import '../../../../data/model/content.dart';
 import '../model/Post.dart';
+import '../model/post_infulonser.dart';
+import '../model/user_post.dart';
 
 abstract class IHomeMainRepository {
   Future<List<GetPost>> getAllPost(String type, String email);
+  Future<List<Post>> getAllPostCompany(String type, String email);
   Future<List<GetPost>> getPostWithContent(
       int contentId, String type, String email);
   Future<double> getDisLikesCount(int postId, String type);
@@ -13,4 +16,13 @@ abstract class IHomeMainRepository {
   Future<void> addPost(Post post);
   Future<List<Content>> getCompanyConent(int idCompany);
   Future<List<Brand>> getCompanyBrand(int idCompanyConent);
+  Future<List<PostUser>> getByUserId(int userId);
+  Future<List<PostInfulonser>> getByInfoId(int infoId);
+  Future<void> addInterActionUser(PostUser postUser);
+  Future<void> addInterActionInf(PostInfulonser infulonser);
+  Future<void> deleteInterActionUser(int idpostUser);
+  Future<void> deleteInterActionInf(int idinfulonser);
+  Future<void> updateInterActionUser(int idpostUser, PostUser postUser);
+  Future<void> updateInterActionInf(
+      int idinfulonser, PostInfulonser infulonser);
 }

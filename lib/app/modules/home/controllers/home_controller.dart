@@ -2,10 +2,11 @@ import 'dart:io';
 
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:marful/sheard/auth_service.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
-
+  final auth = Get.find<AuthService>();
   final count = 0.obs;
   final imagefile = File('').obs;
 
