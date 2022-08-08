@@ -117,7 +117,7 @@ class BrandPageView extends GetView<BrandPageController> {
         body: Padding(
           padding: const EdgeInsets.all(15),
           child: ListView.separated(
-            itemCount: brand.length,
+          itemCount: controller.allBrands.length, 
             itemBuilder: ((context, index) => ListTile(
                   title: Text(brand[index]),
                   subtitle: Text(description[index]),
@@ -133,31 +133,30 @@ class BrandPageView extends GetView<BrandPageController> {
                         //   Radius.circular(50),
                         ),
                   ),
-                  onTap: () => Get.rootDelegate.toNamed(Routes.PRODUCT_PAGE),
+                  onTap: (() {
+                    Get.rootDelegate.toNamed(Routes.PRODUCT_PAGE,
+                           arguments: controller.allBrands[index].id!
+                    );
+                    
+                  }),
+                  // onTap: () => 
+                  // Get.rootDelegate.toNamed(Routes.PRODUCT_PAGE),
                   trailing: IconButton(
                       padding: const EdgeInsets.all(0),
                       onPressed: () {
-                        // controller.DelBrands(controller.allBrands[index].id!);
+                         controller.DelBrands(controller.allBrands[index].id!);
                       },
                       icon: const Icon(Icons.close)),
                 )),
-<<<<<<< HEAD
+
             separatorBuilder: ((context, index) => 
                 const Divider(
                       endIndent: 8,
                       indent: 8,
                       thickness: 1,
-                    )), itemCount: controller.allBrands.length, 
+                    )), 
+                  
       ),
     ));
-=======
-            separatorBuilder: ((context, index) => const Divider(
-                  endIndent: 8,
-                  indent: 8,
-                  thickness: 1,
-                )),
-          ),
-        ));
->>>>>>> e429171531a7f3e0f0a78bb54385ea2d1c6a3925
   }
 }

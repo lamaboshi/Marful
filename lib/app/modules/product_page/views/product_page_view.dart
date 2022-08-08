@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../../../../sheard/util.dart';
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
 import '../controllers/product_page_controller.dart';
@@ -10,16 +11,16 @@ class ProductPageView extends GetView<ProductPageController> {
   const ProductPageView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    List<String> brand = [
-      'Huda Beuty',
-      'Narin Fashion',
-      'Huda Beuty',
-      'Narin Fashion',
-      'Huda Beuty',
-      'Narin Fashion',
-      'Huda Beuty',
-      'Narin Fashion',
-    ];
+    // List<String> brand = [
+    //   'Huda Beuty',
+    //   'Narin Fashion',
+    //   'Huda Beuty',
+    //   'Narin Fashion',
+    //   'Huda Beuty',
+    //   'Narin Fashion',
+    //   'Huda Beuty',
+    //   'Narin Fashion',
+    // ];
     return Scaffold(
       appBar: AppBar(
         title: const Text('Product'),
@@ -48,19 +49,24 @@ class ProductPageView extends GetView<ProductPageController> {
                       children: [
                         const CircleAvatar(
                           radius: 50,
-                          backgroundImage:
-                              AssetImage('assets/images/person.png'),
+                           backgroundImage:
+                               AssetImage('assets/images/person.png'),
                         ),
                         const SizedBox(
                           height: 5,
                         ),
                         InkWell(
-                            onTap: () {}, child: const Text('Add an image..')),
+                            onTap: () async {
+                          await controller.pickImage();
+                            }, child: const Text('Add an image..')),
 
                         const SizedBox(
                           height: 20,
                         ),
                         TextFieldWidget(
+                          onChanged: ((p0) {
+                            controller.product.value.name=p0;
+                          }),
                           type: TextInputType.name,
                           obscureText: false,
                           prefIcon: Icons.input,
@@ -70,6 +76,9 @@ class ProductPageView extends GetView<ProductPageController> {
                           height: 20,
                         ),
                         TextFieldWidget(
+                             onChanged: ((p0) {
+                            controller.product.value.description=p0;
+                          }),
                           type: TextInputType.name,
                           obscureText: false,
                           prefIcon: Icons.input,
@@ -108,7 +117,9 @@ class ProductPageView extends GetView<ProductPageController> {
                         Align(
                           alignment: Alignment.center,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                          controller.addproduct(controller.product.value)    ;
+                            },
                             style: ButtonStyle(
                                 backgroundColor:
                                     MaterialStateProperty.all(AppColors.orange),
@@ -151,7 +162,7 @@ class ProductPageView extends GetView<ProductPageController> {
               crossAxisSpacing: 5,
               mainAxisSpacing: 5,
             ),
-            itemCount: 10,
+            itemCount: controller.allproducts.length,
             itemBuilder: (BuildContext context, int index) {
               return Card(
                 shadowColor: Colors.black45,
@@ -159,12 +170,16 @@ class ProductPageView extends GetView<ProductPageController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    const Align(
+                     Align(
                       alignment: Alignment.topRight,
-                      child: Icon(
-                        Icons.close,
-                        color: AppColors.blue,
-                        size: 20,
+                      child: 
+                  InkWell  (
+                  onTap:(() => controller.Delproduct(controller.allproducts[index].id!)) ,
+                        child: Icon(
+                          Icons.close,
+                          color: AppColors.blue,
+                          size: 20,
+                        ),
                       ),
                     ),
                     Expanded(
@@ -180,34 +195,34 @@ class ProductPageView extends GetView<ProductPageController> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             //product
-                            const Text(
-                              "Shampoo",
+                             Text(
+                              controller.allproducts[index].name!,
                               style: TextStyle(
                                   height: 2,
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold),
                             ),
                             //description
-                            const Text(
-                              "important for every persone",
+                             Text(
+                              controller.allproducts[index].description!,
                               style: TextStyle(color: Colors.grey),
                             ),
                             const Spacer(),
                             Row(
-                              children: const [
+                              children:  [
                                 Icon(
                                   Icons.price_change,
                                   color: AppColors.blue,
                                   size: 20,
-                                ), const Spacer(),
+                                ),  Spacer(),
                                 //price
                                 Text(
-                                  '150',
-                                  style: TextStyle(
+                              controller.allproducts[index].price.toString()
+                                ,  style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 18,
                                       color: AppColors.blue),
-                                ), const Spacer(),
+                                ),  Spacer(),
                                 // Expanded(
                                 //   child: SizedBox(),
                                 //   flex: 60,
