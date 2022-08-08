@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:q_overlay/q_overlay.dart';
 
 import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
@@ -9,7 +10,8 @@ import 'build_content.dart';
 import 'build_post.dart';
 
 class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
-  InfulonserProfilePage({super.key});
+  final bool isSearch;
+  InfulonserProfilePage(this.isSearch);
 
   @override
   Widget builder() {
@@ -61,18 +63,83 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
         SizedBox(
           height: 15,
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(8, 12, 8, 8),
-          child: IntrinsicHeight(
-            child: Center(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: screen.width / 3.4,
+        IntrinsicHeight(
+          child: Center(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                OutlinedButton(
+                  onPressed: () async {
+                    QPanel(
+                            width: screen.width / 2,
+                            alignment: Alignment.centerLeft,
+                            child: Column(
+                                children: controller.follower
+                                    .map((element) => ListTile(
+                                          leading: Icon(Icons.person,
+                                              color: AppColors.orange),
+                                          title: Text(element.name!),
+                                          subtitle: Text(element.email!),
+                                        ))
+                                    .toList()))
+                        .show();
+                  },
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                        side: BorderSide(color: AppColors.orange),
+                        borderRadius: BorderRadius.circular(10))),
                   ),
-                  Padding(
+                  child: Padding(
                     padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Obx(() => Text(
+                              controller.followerCount.value.toString(),
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.orange),
+                            )),
+                        Text(
+                          'Followors ',
+                          style:
+                              TextStyle(fontSize: 18, color: AppColors.orange),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                VerticalDivider(
+                  color: Colors.grey,
+                  thickness: 2,
+                ),
+                OutlinedButton(
+                  onPressed: () async {
+                    await controller
+                        .getPostInful(controller.infulencer.value.id!);
+                    QPanel(
+                        width: screen.width / 1.2,
+                        alignment: Alignment.centerRight,
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: controller.posts
+                                .map((e) => BuildPost(
+                                      infoname:
+                                          controller.infulencer.value.name!,
+                                      post: e,
+                                    ))
+                                .toList(),
+                          ),
+                        )).show();
+                  },
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                        side: BorderSide(color: AppColors.blue),
+                        borderRadius: BorderRadius.circular(10))),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(5),
                     child: Column(
                       children: [
                         Obx(() => Text(
@@ -87,28 +154,8 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
                       ],
                     ),
                   ),
-                  VerticalDivider(
-                    color: Colors.grey,
-                    thickness: 2,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Text(
-                          '6,200 ',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'Followors ',
-                          style: TextStyle(fontSize: 18),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
@@ -145,16 +192,17 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: controller.posts
-                .map((e) => BuildPost(
-                      infoname: controller.infulencer.value.name!,
-                      description: e.description!,
-                    ))
-                .toList(),
-          ),
-        )
+            padding: const EdgeInsets.all(8.0),
+            child: Obx(
+              () => Column(
+                children: controller.posts
+                    .map((e) => BuildPost(
+                          infoname: controller.infulencer.value.name!,
+                          post: e,
+                        ))
+                    .toList(),
+              ),
+            ))
       ],
     );
   }

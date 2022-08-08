@@ -11,19 +11,34 @@ String getPostToJson(List<GetPost> data) =>
 
 class GetPost {
   GetPost(
-      {this.interaction, this.noInteraction, this.post, this.image, this.name});
+      {this.interaction,
+      this.noInteraction,
+      this.post,
+      this.image,
+      this.name,
+      this.numberLike,
+      this.numDislike});
 
   bool? interaction;
   bool? noInteraction;
   Post? post;
   String? name;
+  double? numberLike;
+  double? numDislike;
   Uint8List? image;
   factory GetPost.fromJson(Map<String, dynamic> json) => GetPost(
         interaction: json["interaction"],
         noInteraction: json["noInteraction"],
+        numberLike: json["numberLike"],
+        numDislike: json["numDislike"],
         name: json["name"],
-        image: json["image"] == null ? null : json["image"],
-        post: Post.fromJson(json["post"] as Map<String, dynamic>),
+        image: json['image'] == null
+            ? null
+            : Uint8List.fromList(
+                List<int>.from(json['image']! as List<dynamic>)),
+        post: json['post'] == null
+            ? null
+            : Post.fromJson(json['post'] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toJson() => {

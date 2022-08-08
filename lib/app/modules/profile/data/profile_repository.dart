@@ -3,12 +3,11 @@ import 'package:get/get.dart';
 import 'package:marful/app/data/model/company.dart';
 import 'package:marful/app/data/model/content.dart';
 import 'package:marful/app/data/model/infulonser.dart';
-import 'package:marful/app/data/model/infulonsercontent.dart';
 import 'package:marful/app/data/model/user_model.dart';
 import 'package:marful/app/modules/homeMain_page/data/model/Post.dart';
-import 'package:marful/app/modules/websit_company/data/model/companycontent.dart';
 
 import 'adapter/profile_adapter.dart';
+import 'model_data.dart';
 
 class ProfailRepository extends IProfailRepository {
   final _dio = Get.find<Dio>();
@@ -40,7 +39,6 @@ class ProfailRepository extends IProfailRepository {
   Future<List<Post>> GetInfulPost(int idInful) async {
     var result = await _dio
         .get('https://localhost:7192/api/Infulonser/GetAllPosts/$idInful');
-    print(result);
     var list = <Post>[];
     for (var item in result.data) {
       list.add(Post.fromJson(item));
@@ -62,11 +60,12 @@ class ProfailRepository extends IProfailRepository {
 
   @override
   Future<bool> Updateinfo(Infulonser infulonser, int id) async {
+    print(infulonser.toJson());
     var result = await _dio.put(
       'https://localhost:7192/api/Infulonser/Put/$id',
       data: infulonser.toJson(),
     );
-    return result.statusCode == 200;
+    return result.statusCode == 405;
   }
 
   @override
@@ -86,14 +85,6 @@ class ProfailRepository extends IProfailRepository {
     );
     return result.statusCode == 200;
   }
-  @override
-  Future<bool> AddcontentInfulonser(int idInful, int idcontent) async {
-    var result = await _dio.post(
-      'https://localhost:7192/api/InfulonserContent',
-      data: {"id": 0, "infulonserId": idInful, "contentId": idcontent},
-    );
-    return result.statusCode == 200;
-  }
 
   @override
   Future<bool> AddcontentCompany(int idCompany, int idcontent) async {
@@ -105,17 +96,60 @@ class ProfailRepository extends IProfailRepository {
   }
 
   @override
-  Future<bool> DeletcontentInfulonser(int idcontentInfo) async {
-    var result = await _dio.delete(
-        'https://localhost:7192/api/InfulonserContent',
-        data: {"id": idcontentInfo});
+  Future<bool> AddcontentInfulonser(int idInful, int idcontent) async {
+    var result = await _dio.post(
+      'https://localhost:7192/api/InfulonserContent',
+      data: {"id": 0, "infulonserId": idInful, "contentId": idcontent},
+    );
     return result.statusCode == 200;
   }
 
   @override
-  Future<bool> DeletcontentCompany(int idcontentComp) async {
-    var result = await _dio.delete('https://localhost:7192/api/CompanyContent',
-       data: {"id": idcontentComp});
+  Future<bool> DeletcontentCompany(int idcontentComp, int idCom) async {
+    var result = await _dio.delete(
+        'https://localhost:7192/api/CompanyContent/$idcontentComp/$idCom');
+    return result.statusCode == 200;
+  }
+
+  @override
+  Future<bool> DeletcontentInfulonser(int idcontentInfo, int idInu) async {
+    var result = await _dio.delete(
+        'https://localhost:7192/api/InfulonserContent/$idcontentInfo/$idInu');
+    return result.statusCode == 200;
+  }
+
+  @override
+  Future<List<ModelData>> getAllFollow(String email) async {
+    var result = await _dio.get(
+        'https://localhost:7192/api/Infulonser/GetFollowers',
+        queryParameters: {'email': email});
+    var list = <ModelData>[];
+    for (var item in result.data) {
+      list.add(ModelData.fromJson(item));
+    }
+    return list;
+  }
+
+  @override
+  Future<int> getCountFollow(String email) async {
+    var result = await _dio.get(
+        'https://localhost:7192/api/Infulonser/GetFollowersCount',
+        queryParameters: {'email': email});
+    return result.data;
+  }
+
+  @override
+  Future<bool> DeletPost(int idPost) async {
+    var result = await _dio.delete(
+      'https://localhost:7192/api/Post/$idPost',
+    );
+    return result.statusCode == 200;
+  }
+
+  @override
+  Future<bool> UpdatePost(int idPost, Post post) async {
+    var result = await _dio.put('https://localhost:7192/api/Post/$idPost',
+        data: post.toJson());
     return result.statusCode == 200;
   }
 }

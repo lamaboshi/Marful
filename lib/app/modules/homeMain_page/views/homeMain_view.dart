@@ -1,11 +1,15 @@
+//import 'dart:html' as html;
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marful/app/modules/profile/views/build_post.dart';
 import 'package:marful/sheard/auth_service.dart';
+import 'package:marful/sheard/date_extation.dart';
+import 'package:marful/sheard/util.dart';
 
 import '../../../core/values/app_colors.dart';
 import '../../../core/values/my_flutter_app_icons.dart';
 import '../controllers/homeMain_controller.dart';
-import '../data/model/getPost.dart';
 
 class HomeMainView extends GetResponsiveView<HomeMainController> {
   @override
@@ -37,17 +41,30 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                   },
                 ),
               )),
-          Obx(
-            () => controller.loading.value
-                ? const Center(child: CircularProgressIndicator())
-                : Column(
-                    children: controller.post.map((element) {
-                      return buildpost(element);
-                    }).toList(),
-                  ),
-          ),
+          Obx(() => controller.loading.value
+              ? const Center(child: CircularProgressIndicator())
+              : SizedBox(
+                  height: screen.height - 100,
+                  child: controller.auth.getTypeEnum() == Auth.comapny
+                      ? ListView.builder(
+                          itemCount: controller.postCompany.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return BuildPost(
+                              infoname: 'NorrStars',
+                              post: controller.postCompany[index],
+                            );
+                          },
+                        )
+                      : ListView.builder(
+                          itemCount: controller.post.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return buildpost(index);
+                          },
+                        ),
+                )),
         ]),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
           await controller.getContentComapny();
@@ -209,12 +226,22 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                     const SizedBox(
                       height: 30,
                     ),
+                    Obx(() => controller.stringPickImage.value.isEmpty
+                        ? Image.asset(
+                            'assets/images/ghaith.jpg',
+                            width: screen.width,
+                            height: screen.height / 3,
+                          )
+                        : Utility.imageFromBase64String(
+                            controller.stringPickImage.value,
+                            screen.width / 1,
+                            screen.height / 6)),
                     Row(
                       children: [
                         IconButton(
                             padding: const EdgeInsets.all(0),
                             onPressed: () async {
-                              // await controller.pickImage();
+                              await controller.pickImageFun();
                             },
                             icon: Icon(Icons.image,
                                 size: 30,
@@ -278,7 +305,7 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
           ),
         ],
       );
-  Widget buildpost(GetPost post) => Padding(
+  Widget buildpost(int index) => Padding(
         padding: const EdgeInsets.all(5),
         child: SizedBox(
           height: screen.height / 2.2,
@@ -294,20 +321,45 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(40),
-                        child: Image.asset(
-                          'assets/images/ghaith.jpg',
-                          height: 60,
-                          width: 60,
-                          fit: BoxFit.cover,
-                        ),
+                        child: controller.post[index].image == null
+                            ? Image.asset(
+                                'assets/images/ghaith.jpg',
+                                height: 60,
+                                width: 60,
+                                fit: BoxFit.cover,
+                              )
+                            : Utility.imageFromBase64String(
+                                Utility.base64String(
+                                    controller.post[index].image!),
+                                60,
+                                60),
                       ),
                       const SizedBox(
                         width: 20,
                       ),
-                      Text(
-                        post.name == null ? '' : post.name!,
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w500),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            controller.post[index].name == null
+                                ? ''
+                                : controller.post[index].name!,
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w500),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(3),
+                            child: Text(
+                              controller.post[index].post!.dateTime == null
+                                  ? ''
+                                  : getFormattedDate(
+                                      controller.post[index].post!.dateTime!),
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.grey.withOpacity(0.6)),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -318,9 +370,10 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                 Padding(
                   padding: const EdgeInsets.all(3),
                   child: Text(
-                    post.post!.description == null
+                    controller.post[index].post!.description == null
                         ? ''
-                        : post.post!.description!,
+                        : controller.post[index].post!.description!,
+                    style: TextStyle(fontSize: 18),
                   ),
                 ),
                 const SizedBox(
@@ -328,43 +381,88 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Image.asset(
-                    width: screen.width / 1,
-                    height: screen.height / 3.9,
-                    'assets/images/angryimg.png',
-                    fit: BoxFit.fill,
-                  ),
+                  child: controller.post[index].post!.image == null
+                      ? Image.asset(
+                          width: screen.width / 1,
+                          height: screen.height / 3.9,
+                          'assets/images/angryimg.png',
+                          fit: BoxFit.fill,
+                        )
+                      : Utility.imageFromBase64String(
+                          Utility.base64String(
+                              controller.post[index].post!.image!),
+                          screen.width / 1,
+                          screen.height / 3.9),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        // html.window.open(
+                        //   '${html.window.location.protocol}/#/WebsiteCompany',
+                        //   'WebsiteCompany',
+                        // );
+                      },
                       icon: const Icon(
                         AppIcons.basket,
                         color: Colors.black,
                       ),
                     ),
-                    Text('3'),
+                    Text(controller.post[index].numDislike.toString()),
                     IconButton(
                       onPressed: () {
-                        post.interaction = !post.interaction!;
+                        if (controller
+                            .getifHaveUserPost(controller.post[index])) {
+                          if (!controller.post[index].interaction!) {
+                            controller.deletenterAction(
+                                controller.post[index].post!.id!);
+                          } else {
+                            controller.updatenterAction(
+                                controller.post[index].post!.id!, false);
+                          }
+                        } else {
+                          controller.addInterAction(
+                              controller.post[index].post!.id!, false);
+                        }
                       },
-                      icon: Icon(
-                        AppIcons.thumbs_down,
-                        color: !post.noInteraction!
-                            ? Colors.black
-                            : AppColors.blue,
+                      icon: Obx(
+                        () => Icon(AppIcons.thumbs_down,
+                            color: controller
+                                    .getifHaveUserPost(controller.post[index])
+                                ? controller.post[index].interaction!
+                                    ? Colors.black
+                                    : AppColors.blue
+                                : Colors.black),
                       ),
                     ),
-                    Text('20'),
+                    Text(controller.post[index].numberLike.toString()),
                     IconButton(
                         onPressed: () {
-                          post.interaction = !post.interaction!;
+                          if (controller
+                              .getifHaveUserPost(controller.post[index])) {
+                            if (controller.post[index].interaction!) {
+                              controller.deletenterAction(
+                                  controller.post[index].post!.id!);
+                            } else {
+                              controller.updatenterAction(
+                                  controller.post[index].post!.id!, true);
+                            }
+                          } else {
+                            controller.addInterAction(
+                                controller.post[index].post!.id!, true);
+                          }
                         },
-                        icon: Icon(
-                          AppIcons.favorite,
-                          color: !post.interaction! ? Colors.red : Colors.black,
+                        icon: Obx(
+                          () => Icon(
+                            AppIcons.favorite,
+                            color: controller
+                                    .getifHaveUserPost(controller.post[index])
+                                ? controller.post[index].interaction!
+                                    ? Colors.red
+                                    : Colors.black
+                                : Colors.black,
+                          ),
                         ))
                   ],
                 )

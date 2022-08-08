@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:q_overlay/q_overlay.dart';
 
 import '../../../../sheard/auth_service.dart';
+import '../../../../sheard/util.dart';
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
 import '../controllers/profile_controller.dart';
@@ -14,39 +15,27 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
 
   @override
   Widget builder() {
+    controller.info.value = controller.infulencer.value;
+    controller.comp.value = controller.company.value;
+    controller.use.value = controller.user.value;
     return Scaffold(
+      floatingActionButton: FloatingActionButton.extended(
+          backgroundColor: AppColors.orange,
+          onPressed: () async {
+            await controller.UpdateDataforperson();
+          },
+          label: Text(
+            "Save ",
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.white,
+            ),
+          )),
       appBar: AppBar(
         backgroundColor: AppColors.orange,
         title: Text('Edit Profile'),
       ),
-      body: SingleChildScrollView(
-          child: Column(
-        children: [
-          getType(),
-          SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(15),
-            child: ElevatedButton(
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(AppColors.blue),
-                  fixedSize:
-                      MaterialStateProperty.all(const Size.fromWidth(150))),
-              onPressed: () async {
-                controller.UpdateDataforperson();
-              },
-              child: const Text(
-                "Save ",
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ),
-        ],
-      )),
+      body: SingleChildScrollView(child: getType()),
     );
   }
 
@@ -87,12 +76,17 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                                           padding: EdgeInsets.all(6),
                                           child: TextButton(
                                             onPressed: () {
-                                              if (!controller.contents
-                                                  .contains(element)) {
-                                                controller.contents
-                                                    .add(element);
+                                              if (controller.auth
+                                                      .getTypeEnum() ==
+                                                  Auth.infulonser) {
+                                                controller.addcontentinfo(
+                                                    element.id!);
+                                              } else if (controller.auth
+                                                      .getTypeEnum() ==
+                                                  Auth.comapny) {
+                                                controller.addcontentcomp(
+                                                    element.id!);
                                               }
-                                              contentPart();
                                             },
                                             child: Text(
                                               element.name!,
@@ -117,80 +111,18 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                           color: AppColors.orange,
                         ),
                       ),
-                      IconButton(
-                          onPressed: () {
-                            QPanel(
-                              alignment: Alignment.bottomCenter,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text(
-                                      'Add Post',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        color: AppColors.orange,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: screen.width - 50,
-                                      child: TextFieldWidget(
-                                        type: TextInputType.multiline,
-                                        hint: 'Description',
-                                        obscureText: false,
-                                        prefIcon: Icons.description,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: screen.width - 34,
-                                      height: screen.height / 3.74,
-                                      child: InkWell(
-                                          onTap: () {},
-                                          child: Icon(
-                                            Icons.add_a_photo,
-                                            color: AppColors.blue,
-                                          )),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(6),
-                                      child: ElevatedButton(
-                                        style: ButtonStyle(
-                                            backgroundColor:
-                                                MaterialStateProperty.all(
-                                                    AppColors.blue),
-                                            fixedSize:
-                                                MaterialStateProperty.all(
-                                                    const Size.fromWidth(150))),
-                                        onPressed: () async {},
-                                        child: const Text(
-                                          "Save ",
-                                          style: TextStyle(
-                                            fontSize: 18,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ).show();
-                          },
-                          icon: Icon(
-                            Icons.add,
-                            color: AppColors.orange,
-                          )),
                     ],
                   ),
-                  Column(
-                    children: controller.posts
-                        .map((e) => BuildPost(
-                              infoname: controller.infulencer.value.name!,
-                              description: e.description!,
-                              isEdit: true,
-                            ))
-                        .toList(),
+                  Obx(
+                    () => Column(
+                      children: controller.posts
+                          .map((e) => BuildPost(
+                                infoname: controller.infulencer.value.name!,
+                                post: e,
+                                isEdit: true,
+                              ))
+                          .toList(),
+                    ),
                   ),
                 ],
               ),
@@ -260,77 +192,13 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                           color: AppColors.orange,
                         ),
                       ),
-                      IconButton(
-                          onPressed: () {
-                            QPanel(
-                              alignment: Alignment.bottomCenter,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text(
-                                      'Add Post',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        color: AppColors.orange,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: screen.width - 50,
-                                      child: TextFieldWidget(
-                                        type: TextInputType.multiline,
-                                        hint: 'Description',
-                                        obscureText: false,
-                                        prefIcon: Icons.description,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: screen.width - 34,
-                                      height: screen.height / 3.74,
-                                      child: InkWell(
-                                          onTap: () {},
-                                          child: Icon(
-                                            Icons.add_a_photo,
-                                            color: AppColors.blue,
-                                          )),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(6),
-                                      child: ElevatedButton(
-                                        style: ButtonStyle(
-                                            backgroundColor:
-                                                MaterialStateProperty.all(
-                                                    AppColors.blue),
-                                            fixedSize:
-                                                MaterialStateProperty.all(
-                                                    const Size.fromWidth(150))),
-                                        onPressed: () async {},
-                                        child: const Text(
-                                          "Save ",
-                                          style: TextStyle(
-                                            fontSize: 18,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ).show();
-                          },
-                          icon: Icon(
-                            Icons.add,
-                            color: AppColors.orange,
-                          )),
                     ],
                   ),
                   Column(
                     children: controller.posts
                         .map((e) => BuildPost(
                               infoname: controller.infulencer.value.name!,
-                              description: e.description!,
+                              post: e,
                               isEdit: true,
                             ))
                         .toList(),
@@ -378,7 +246,12 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                       elevation: 2,
                       deleteIcon: Icon(Icons.close, size: 20),
                       onDeleted: () {
-                        controller.contents.remove(e);
+                        if (controller.auth.getTypeEnum() == Auth.infulonser) {
+                          controller.Deletcontentinfo(e.id!);
+                        } else if (controller.auth.getTypeEnum() ==
+                            Auth.comapny) {
+                          controller.Deletcontentcomp(e.id!);
+                        }
                       },
                     ),
                   ))
@@ -386,7 +259,11 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
         ));
   }
 
-  Widget viewPart(String name, String descraption, int type) {
+  Widget viewPart(
+    String name,
+    String descraption,
+    int type,
+  ) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -395,18 +272,22 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
             child: Stack(
               alignment: Alignment.center,
               children: [
-                Obx(() => Container(
-                      height: 200,
-                      width: 200,
-                      child: controller.imagefile.value.path.isNotEmpty
-                          ? CircleAvatar(
-                              backgroundImage:
-                                  FileImage(controller.imagefile.value),
-                            )
-                          : CircleAvatar(
-                              backgroundImage:
-                                  AssetImage("assets/images/8.jpg"),
-                            ),
+                Obx(() => ClipRRect(
+                      borderRadius: BorderRadius.circular(100),
+                      child: controller.stringPickImage.value.isNotEmpty
+                          ? Utility.imageFromBase64String(
+                              controller.stringPickImage.value, 200, 200)
+                          : controller.infulencer.value.image == null
+                              ? Image.asset(
+                                  'assets/images/8.jpg',
+                                  width: 200,
+                                  height: 200,
+                                )
+                              : Utility.imageFromBase64String(
+                                  Utility.base64String(
+                                      controller.infulencer.value.image!),
+                                  200,
+                                  200),
                     )),
                 Positioned(
                     right: -10,
@@ -430,14 +311,19 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                     SizedBox(
                       width: screen.width - 50,
                       child: TextFieldWidget(
+                        dufaltText: type == 1
+                            ? controller.infulencer.value.name
+                            : type == 2
+                                ? controller.company.value.name
+                                : controller.user.value.name,
                         onChanged: (txt) {
                           if (txt != null) {
                             switch (type) {
                               case 1:
-                                controller.info.value.name == txt;
+                                controller.info.value.name = txt;
                                 break;
                               case 2:
-                                controller.comp.value.name == txt;
+                                controller.comp.value.name = txt;
                                 break;
                               default:
                                 controller.use.value.name = txt;
@@ -455,14 +341,19 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                 SizedBox(
                   width: screen.width - 50,
                   child: TextFieldWidget(
+                    dufaltText: type == 1
+                        ? controller.infulencer.value.phone
+                        : type == 2
+                            ? controller.company.value.phone
+                            : controller.user.value.phone,
                     onChanged: (txt) {
                       if (txt != null) {
                         switch (type) {
                           case 1:
-                            controller.info.value.phone == txt;
+                            controller.info.value.phone = txt;
                             break;
                           case 2:
-                            controller.comp.value.phone == txt;
+                            controller.comp.value.phone = txt;
                             break;
                           default:
                             controller.use.value.phone = txt;
@@ -481,6 +372,11 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                     SizedBox(
                       width: screen.width - 50,
                       child: TextFieldWidget(
+                          dufaltText: type == 1
+                              ? controller.infulencer.value.email
+                              : type == 2
+                                  ? controller.company.value.email
+                                  : controller.user.value.email,
                           type: TextInputType.multiline,
                           hint: 'Email',
                           obscureText: false,
@@ -489,10 +385,10 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                             if (txt != null) {
                               switch (type) {
                                 case 1:
-                                  controller.info.value.email == txt;
+                                  controller.info.value.email = txt;
                                   break;
                                 case 2:
-                                  controller.comp.value.email == txt;
+                                  controller.comp.value.email = txt;
                                   break;
                                 default:
                                   controller.use.value.email = txt;
@@ -510,11 +406,14 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                           SizedBox(
                             width: screen.width - 50,
                             child: TextFieldWidget(
+                              dufaltText: type == 1
+                                  ? controller.infulencer.value.paypal
+                                  : controller.user.value.paypal,
                               onChanged: (txt) {
                                 if (txt != null) {
                                   switch (type) {
                                     case 1:
-                                      controller.info.value.paypal == txt;
+                                      controller.info.value.paypal = txt;
                                       break;
                                     case 2:
                                       //controller.comp.value.==txt;
@@ -537,14 +436,19 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                     : SizedBox(
                         width: screen.width - 50,
                         child: TextFieldWidget(
+                          dufaltText: type == 1
+                              ? controller.infulencer.value.address
+                              : type == 2
+                                  ? controller.company.value.address
+                                  : '',
                           onChanged: (txt) {
                             if (txt != null) {
                               switch (type) {
                                 case 1:
-                                  controller.info.value.address == txt;
+                                  controller.info.value.address = txt;
                                   break;
                                 case 2:
-                                  controller.comp.value.address == txt;
+                                  controller.comp.value.address = txt;
                                   break;
                                 default:
                               }
@@ -564,11 +468,14 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                           SizedBox(
                             width: screen.width - 50,
                             child: TextFieldWidget(
+                              dufaltText: type == 1
+                                  ? controller.infulencer.value.userName
+                                  : controller.user.value.userName,
                               onChanged: (txt) {
                                 if (txt != null) {
                                   switch (type) {
                                     case 1:
-                                      controller.info.value.userName == txt;
+                                      controller.info.value.userName = txt;
                                       break;
                                     case 2:
                                       //   controller.comp.value.userName==txt;
@@ -591,6 +498,9 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                     : SizedBox(
                         width: screen.width - 50,
                         child: TextFieldWidget(
+                          dufaltText: type == 2
+                              ? controller.company.value.telePhone
+                              : '',
                           onChanged: (txt) {
                             if (txt != null) {
                               switch (type) {
@@ -598,7 +508,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                                   //   controller.info.value.==txt;
                                   break;
                                 case 2:
-                                  controller.comp.value.telePhone == txt;
+                                  controller.comp.value.telePhone = txt;
                                   break;
                                 default:
                                 // controller.use.value.t=txt;
@@ -616,14 +526,19 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                     : SizedBox(
                         width: screen.width - 50,
                         child: TextFieldWidget(
+                          dufaltText: type == 1
+                              ? controller.infulencer.value.description
+                              : type == 2
+                                  ? controller.company.value.description
+                                  : '',
                           onChanged: (txt) {
                             if (txt != null) {
                               switch (type) {
                                 case 1:
-                                  controller.info.value.description == txt;
+                                  controller.info.value.description = txt;
                                   break;
                                 case 2:
-                                  controller.comp.value.description == txt;
+                                  controller.comp.value.description = txt;
                                   break;
                                 default:
                                 //  controller.use.value.descraption=txt;
@@ -641,6 +556,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                     : SizedBox(
                         width: screen.width - 50,
                         child: TextFieldWidget(
+                          dufaltText: controller.user.value.age.toString(),
                           onChanged: (txt) {
                             if (txt != null) {
                               switch (type) {
@@ -651,7 +567,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                                   //  controller.comp.value.==txt;
                                   break;
                                 default:
-                                  controller.use.value.age == txt;
+                                  controller.use.value.age = int.parse(txt);
                               }
                             }
                           },

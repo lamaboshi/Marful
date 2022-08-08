@@ -25,10 +25,36 @@ class HomeMenuView extends GetView<MenuController> {
             buildCard('About', Icons.abc_outlined, () {}),
             buildCard('Log out', Icons.logout, () {
               controller.auth.stroge.deleteAllKeys();
-              Get.offAndToNamed(Routes.SignIn);
+              Get.rootDelegate.toNamed(Routes.SignIn);
             }),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget viewPart(String name, String descraption) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Center(
+            child: Obx(() => ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: Image.asset(
+                    'assets/images/8.jpg',
+                    width: 200,
+                    height: 200,
+                  ),
+                )),
+          ),
+          Center(
+              child: Text(
+            name == null ? '' : name,
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          )),
+        ],
       ),
     );
   }

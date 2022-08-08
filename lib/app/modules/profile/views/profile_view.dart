@@ -1,33 +1,23 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marful/app/modules/home/views/home_view.dart';
-import 'package:marful/app/modules/profile/views/edit_profile.dart';
-import 'package:marful/app/modules/websit_company/views/websit_company_page.dart';
 
-import '../../../core/values/app_colors.dart';
-import '../../../core/values/my_flutter_app_icons.dart';
-import '../../../routes/app_pages.dart';
 import '../controllers/profile_controller.dart';
 import 'main_profile.dart';
 
 class ProfilePage extends GetResponsiveView<ProfileController> {
+  final bool isSearch;
+  ProfilePage(this.isSearch);
   @override
   Widget builder() {
     bool kind = false;
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            MainProfile(),
-        ]  ),
-     ) );
+        body: SingleChildScrollView(
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        MainProfile(isSearch),
+      ]),
+    ));
   }
-
- 
 
   Widget photo(String url, double width, double height) {
     return Padding(

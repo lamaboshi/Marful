@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
+import 'package:marful/app/core/component/textField.dart';
 import 'package:marful/app/core/values/app_colors.dart';
 import 'package:marful/sheard/auth_service.dart';
+import 'package:marful/sheard/date_extation.dart';
+import 'package:q_overlay/q_overlay.dart';
 
 import '../controllers/chat_page_controller.dart';
 
@@ -14,7 +16,53 @@ class ChatPageView extends GetView<ChatPageController> {
         backgroundColor: AppColors.orange,
         title: Text('ConversationPageView'),
         centerTitle: true,
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.work))],
+        actions: [
+          IconButton(
+              onPressed: () {
+                QPanel(
+                    alignment: Alignment.center,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text('New Job Agreement',
+                            style: TextStyle(fontSize: 20)),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextFieldWidget(
+                              onChanged: (txt) {
+                                controller.newJob.value.salary =
+                                    double.parse(txt);
+                              },
+                              type: TextInputType.multiline,
+                              hint: 'salary',
+                              obscureText: false,
+                              prefIcon: Icons.money,
+                            ),
+                            TextFieldWidget(
+                              onChanged: (txt) {
+                                controller.newJob.value.code = txt;
+                              },
+                              type: TextInputType.multiline,
+                              hint: 'code',
+                              obscureText: false,
+                              prefIcon: Icons.money,
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: FloatingActionButton.extended(
+                              onPressed: () {
+                                controller.addJob();
+                              },
+                              label: Text('Save')),
+                        )
+                      ],
+                    )).show();
+              },
+              icon: Icon(Icons.work))
+        ],
       ),
       body: Stack(
         children: [
@@ -52,8 +100,8 @@ class ChatPageView extends GetView<ChatPageController> {
                                       controller.selectMessage.contains(element)
                                           ? Colors.grey.withOpacity(0.8)
                                           : Colors.transparent,
-                                  child: messageSender(
-                                      element.text!, element.sendTime!),
+                                  child: messageSender(element.text!,
+                                      element.sendTime!, element.jobId != null),
                                 ),
                               );
                             } else {
@@ -71,8 +119,8 @@ class ChatPageView extends GetView<ChatPageController> {
                                       controller.selectMessage.contains(element)
                                           ? Colors.grey.withOpacity(0.8)
                                           : Colors.transparent,
-                                  child: messageRecover(
-                                      element.text!, element.sendTime!),
+                                  child: messageRecover(element.text!,
+                                      element.sendTime!, element.jobId != null),
                                 ),
                               );
                             }
@@ -127,7 +175,7 @@ class ChatPageView extends GetView<ChatPageController> {
     );
   }
 
-  Widget messageSender(String text, DateTime date) => Padding(
+  Widget messageSender(String text, DateTime date, bool hasjiob) => Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -141,10 +189,16 @@ class ChatPageView extends GetView<ChatPageController> {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(text, style: TextStyle(fontSize: 17)),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(3),
-                    child: Text(formattedTime(date),
-                        style: TextStyle(fontSize: 12)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(3),
+                        child: Text(getFormattedDate(date),
+                            style: TextStyle(fontSize: 12)),
+                      ),
+                      hasjiob ? Icon(Icons.star) : SizedBox.shrink()
+                    ],
                   ),
                 ],
               ),
@@ -153,7 +207,7 @@ class ChatPageView extends GetView<ChatPageController> {
           ],
         ),
       );
-  Widget messageRecover(String text, DateTime date) => Padding(
+  Widget messageRecover(String text, DateTime date, bool hasjiob) => Padding(
         padding: const EdgeInsets.all(3),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -168,10 +222,16 @@ class ChatPageView extends GetView<ChatPageController> {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(text, style: TextStyle(fontSize: 17)),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(3),
-                    child: Text(formattedTime(date),
-                        style: TextStyle(fontSize: 12)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(3),
+                        child: Text(getFormattedDate(date),
+                            style: TextStyle(fontSize: 12)),
+                      ),
+                      hasjiob ? Icon(Icons.star) : SizedBox.shrink()
+                    ],
                   ),
                 ],
               ),
@@ -179,5 +239,4 @@ class ChatPageView extends GetView<ChatPageController> {
           ],
         ),
       );
-  String formattedTime(DateTime date) => DateFormat.Hm().format(date);
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marful/sheard/date_extation.dart';
 
 import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
@@ -88,7 +89,8 @@ class ConversationPageView extends GetView<ConversationPageController> {
                                                 fontSize: 18),
                                           ),
                                           Text(
-                                            element.start!,
+                                            getFormattedDate(
+                                                DateTime.parse(element.start!)),
                                             style: const TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 14),

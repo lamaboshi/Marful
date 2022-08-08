@@ -58,16 +58,6 @@ class AppPages {
 
   static final routes = [
     GetPage(
-      name: _Paths.HAYA,
-      page: () => const HayaView(),
-      bindings: [HayaBinding(), MenuBinding(), HomePostBinding()],
-    ),
-    GetPage(
-      name: _Paths.BRAND_PAGE,
-      page: () => const BrandPageView(),
-      binding: BrandPageBinding(),
-    ),
-    GetPage(
       name: _Paths.SignIn,
       page: () => SignInPage(),
       binding: SignInBinding(),

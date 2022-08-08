@@ -6,7 +6,6 @@ import 'package:marful/app/modules/signIn_page/controllers/signIn_controller.dar
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
-
 class SignInPage extends GetView<SignInController> {
   const SignInPage({Key? key}) : super(key: key);
 

@@ -27,7 +27,7 @@ class Message {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['text'] = this.text;
-    data['sendTime'] = this.sendTime.toString();
+    data['sendTime'] = this.sendTime!.toIso8601String();
     data['messageStatus'] = this.messageStatus;
     data['jobId'] = this.jobId;
     data['conversationId'] = this.conversationId;

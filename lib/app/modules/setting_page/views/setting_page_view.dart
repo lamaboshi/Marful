@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marful/app/modules/brand_page/views/brand_page_view.dart';
-import 'package:marful/app/modules/content_page/views/content_view.dart';
+import 'package:marful/app/routes/app_pages.dart';
+
 import '../../../core/values/app_colors.dart';
 import '../../../core/values/my_flutter_app_icons.dart';
 import '../../haya/views/haya_brand.dart';
@@ -22,8 +22,8 @@ class SettingPageView extends GetView<SettingPageController> {
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
-            buildCard(
-                'Content', Icons.edit, () => Get.to(() => const ContentView())),
+            // buildCard(
+            //     'Content', Icons.edit, () => Get.to(() =>  ContentView())),
             buildCard('Brand', Icons.settings,
                 () => Get.to(() =>  HayaBrand())),
             buildCard('Edit', AppIcons.trending_up, () {Get.to(PermissionPageView());}),

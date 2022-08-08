@@ -6,7 +6,6 @@ import '../controllers/content_controller.dart';
 
 class ContentView extends GetView<ContentController> {
   const ContentView({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     // List<String> content = [
@@ -54,8 +53,7 @@ class ContentView extends GetView<ContentController> {
                       ),
                       TextFieldWidget(
                         onChanged: ((String txt) {
-                          controller.addcontent.value.name=txt;
-                          
+                          controller.addcontent.value.name = txt;
                         }),
                         type: TextInputType.name,
                         obscureText: false,
@@ -68,7 +66,8 @@ class ContentView extends GetView<ContentController> {
                         alignment: Alignment.center,
                         child: ElevatedButton(
                           onPressed: () {
-                            controller.addcontentelement(controller.addcontent.value);
+                            controller
+                                .addcontentelement(controller.addcontent.value);
                           },
                           style: ButtonStyle(
                               backgroundColor:
@@ -102,7 +101,9 @@ class ContentView extends GetView<ContentController> {
           label: Row(
             children: const [Icon(Icons.add), Text('Add')],
           )),
-      body: ListView.separated( padding: const EdgeInsets.all(15),physics:const BouncingScrollPhysics(),
+      body: ListView.separated(
+          padding: const EdgeInsets.all(15),
+          physics: const BouncingScrollPhysics(),
           itemBuilder: ((context, index) => ListTile(
                 title: Text(controller.contents[index].name!),
                 trailing: IconButton(
