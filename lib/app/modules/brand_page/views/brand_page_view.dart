@@ -144,9 +144,8 @@ class BrandPageView extends GetView<BrandPageController> {
                       endIndent: 8,
                       indent: 8,
                       thickness: 1,
-                    )
-            itemCount: brand.length),
+                    )), itemCount: controller.allBrands.length, 
       ),
-    );
+    ));
   }
 }
