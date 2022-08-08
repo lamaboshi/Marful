@@ -23,6 +23,8 @@ import '../modules/menu/views/menu_view.dart';
 import '../modules/password_page/bindings/password_binding.dart';
 import '../modules/password_page/views/confirm_password.dart';
 import '../modules/password_page/views/password_page.dart';
+import '../modules/product_page/bindings/product_page_binding.dart';
+import '../modules/product_page/views/product_page_view.dart';
 import '../modules/profile/binding/profile_binding.dart';
 import '../modules/profile/views/edit_profile.dart';
 import '../modules/report_page/bindings/report_binding.dart';
@@ -50,11 +52,14 @@ class AppPages {
 
   static final routes = [
     GetPage(
+<<<<<<< HEAD
+=======
       name: _Paths.SignIn,
       page: () => SignInPage(),
       binding: SignInBinding(),
     ),
     GetPage(
+>>>>>>> 70e5b71ee6244c1163c61b743d8e9d255b930c46
       name: _Paths.FirstSplash,
       page: () => FiestSplashView(),
       binding: FirstSplashBinding(),
@@ -172,6 +177,11 @@ class AppPages {
       name: _Paths.SETTING_PAGE,
       page: () => const SettingPageView(),
       binding: SettingPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUCT_PAGE,
+      page: () => const ProductPageView(),
+      binding: ProductPageBinding(),
     ),
   ];
 }

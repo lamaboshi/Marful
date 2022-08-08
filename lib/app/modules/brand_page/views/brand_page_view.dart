@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marful/app/modules/product_page/views/product_page_view.dart';
 
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
@@ -35,6 +36,7 @@ class BrandPageView extends GetView<BrandPageController> {
         title: const Text('Brand'),
       ),
       floatingActionButton: FloatingActionButton.extended(
+          heroTag: 'uniqueTag',
           backgroundColor: AppColors.orange,
           onPressed: () {
             Get.bottomSheet(
@@ -137,11 +139,12 @@ class BrandPageView extends GetView<BrandPageController> {
                       },
                       icon: const Icon(Icons.close)),
                 )),
-            separatorBuilder: ((context, index) => const Divider(
-                  endIndent: 8,
-                  indent: 8,
-                  thickness: 1,
-                )),
+            separatorBuilder: ((context, index) => 
+                const Divider(
+                      endIndent: 8,
+                      indent: 8,
+                      thickness: 1,
+                    )
             itemCount: brand.length),
       ),
     );

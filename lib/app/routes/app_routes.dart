@@ -26,6 +26,7 @@ abstract class Routes {
   static const BRAND_PAGE = _Paths.BRAND_PAGE;
   static const HAYA = _Paths.HAYA;
   static const SETTING_PAGE = _Paths.SETTING_PAGE;
+  static const PRODUCT_PAGE = _Paths.PRODUCT_PAGE;
 }
 
 abstract class _Paths {
@@ -54,4 +55,5 @@ abstract class _Paths {
   static const BRAND_PAGE = '/brand-page';
   static const HAYA = '/haya';
   static const SETTING_PAGE = '/setting-page';
+  static const PRODUCT_PAGE = '/product-page';
 }
