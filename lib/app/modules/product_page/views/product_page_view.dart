@@ -9,16 +9,6 @@ class ProductPageView extends GetView<ProductPageController> {
   const ProductPageView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    // List<String> brand = [
-    //   'Huda Beuty',
-    //   'Narin Fashion',
-    //   'Huda Beuty',
-    //   'Narin Fashion',
-    //   'Huda Beuty',
-    //   'Narin Fashion',
-    //   'Huda Beuty',
-    //   'Narin Fashion',
-    // ];
     return Scaffold(
       appBar: AppBar(
         title: const Text('Product'),
@@ -58,7 +48,6 @@ class ProductPageView extends GetView<ProductPageController> {
                               await controller.pickImage();
                             },
                             child: const Text('Add an image..')),
-
                         const SizedBox(
                           height: 20,
                         ),
@@ -86,33 +75,24 @@ class ProductPageView extends GetView<ProductPageController> {
                         const SizedBox(
                           height: 20,
                         ),
-                        // ExpansionTile(
-                        //   title: const Text('Choose content'),
-                        //   leading: const Icon(Icons.menu),
-                        //   tilePadding: const EdgeInsets.all(0),
-                        //   childrenPadding: const EdgeInsets.all(0),
-                        //   children: [
-                        //     for (var item in brand)
-                        //       Padding(
-                        //         padding: const EdgeInsets.fromLTRB(3, 10, 0, 0),
-                        //         child: InkWell(
-                        //           onTap: () {},
-                        //           child: Column(
-                        //             crossAxisAlignment:
-                        //                 CrossAxisAlignment.start,
-                        //             children: [
-                        //               Text(item),
-                        //               const SizedBox(
-                        //                 height: 5,
-                        //               ),
-                        //               const Divider(),
-                        //             ],
-                        //           ),
-                        //         ),
-                        //       ),
-                        //   ],
-                        // ),
-
+                        TextFieldWidget(
+                          type: TextInputType.number,
+                          obscureText: false,
+                          prefIcon: Icons.input,
+                          label: 'Price',
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        TextFieldWidget(
+                          type: TextInputType.name,
+                          obscureText: false,
+                          prefIcon: Icons.input,
+                          label: 'Code',
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
                         Align(
                           alignment: Alignment.center,
                           child: ElevatedButton(
@@ -130,20 +110,6 @@ class ProductPageView extends GetView<ProductPageController> {
                         const SizedBox(
                           height: 30,
                         ),
-                        // Align(
-                        //   alignment: Alignment.topRight,
-                        //   child: FloatingActionButton.extended(
-                        //   //  heroTag: 'uniqueTag',
-                        //     backgroundColor: AppColors.orange,
-                        //     label: Row(
-                        //       children: const [Icon(Icons.close), Text('close')],
-                        //     ),
-                        //     //      const Icon(Icons.close),
-                        //     onPressed: () {
-                        //       Get.back();
-                        //     },
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),
@@ -152,250 +118,109 @@ class ProductPageView extends GetView<ProductPageController> {
           label: Row(
             children: const [Icon(Icons.add), Text('Add')],
           )),
-      body: Obx(
-        () => Padding(
-          padding: const EdgeInsets.all(10),
-          child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: 0.8,
-                crossAxisCount: 2,
-                crossAxisSpacing: 5,
-                mainAxisSpacing: 5,
-              ),
-              itemCount: controller.allproducts.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Stack(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(35),
-                      child: Stack(
+      body: Padding(
+        padding: const EdgeInsets.all(10),
+        child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              childAspectRatio: 0.7,
+              crossAxisCount: 2,
+              crossAxisSpacing: 5,
+              mainAxisSpacing: 5,
+            ),
+            itemCount: controller.allproducts.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Card(
+                shadowColor: Colors.black45,
+                elevation: 10,
+                child: Padding(
+                  padding: const EdgeInsets.all(0),
+                  child: Stack(
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(35),
-                            child: Image.asset(
-                              'assets/images/3.jpg',
-                              fit: BoxFit.cover,
-                            ),
+                          Image.asset(
+                            'assets/images/1.jpg',
+                            height: 140,
+                            fit: BoxFit.fill,
                           ),
-                          Container(color: Colors.white.withOpacity(0.3))
-                        ],
-                      ),
-                    ),
-                    Positioned(
-                      right: -8,
-                      top: 170,
-                      child: Card(
-                        elevation: 8,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Padding(
-                            padding: const EdgeInsets.all(5),
+                          Expanded(
+                            flex: 2,
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 7, vertical: 5),
+                              padding: const EdgeInsets.all(10),
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Align(
-                                    alignment: Alignment.topRight,
-                                    child: InkWell(
-                                      onTap: (() => controller.Delproduct(
-                                          controller.allproducts[index].id!)),
-                                      child: Icon(
-                                        Icons.close,
-                                        color: AppColors.orange,
-                                        size: 20,
-                                      ),
-                                    ),
-                                  ),
                                   //product
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        controller.allproducts[index].name!,
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      //description
-                                      Text(
-                                        controller
-                                            .allproducts[index].description!,
-                                        style: TextStyle(color: Colors.grey),
-                                      ),
-                                    ],
+                                  const SizedBox(
+                                    height: 5,
                                   ),
+                                  Text(
+                                    controller.allproducts[index].name!,
+                                    style: TextStyle(
+                                        height: 1,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  const SizedBox(
+                                    height: 7,
+                                  ),
+                                  //description
+                                  Text(
+                                    controller.allproducts[index].description!,
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
+                                  const Spacer(),
 
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
+                                    children: const [
                                       Icon(
                                         Icons.price_change,
                                         color: AppColors.blue,
                                         size: 20,
                                       ),
                                       SizedBox(
-                                        width: 4,
+                                        width: 10,
                                       ),
                                       //price
                                       Text(
-                                        controller.allproducts[index].price
-                                            .toString(),
+                                        'k1',
+                                        //    controller.allproducts[index].price.toString(),
+
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 17,
+                                            fontSize: 18,
                                             color: AppColors.blue),
                                       ),
-                                      // Expanded(
-                                      //   child: SizedBox(),
-                                      //   flex: 60,
-                                      // ),
-                                      // ButtonBar(
-                                      //   children: [
-                                      //     CircleAvatar(
-                                      //       radius: 18,
-                                      //       backgroundColor:AppColors.blue,
-                                      //       child: IconButton(
-                                      //         icon: Icon(
-                                      //           Icons.call,
-                                      //           color: Colors.white,
-                                      //           size: 18,
-                                      //         ),
-                                      //         onPressed: () {},
-                                      //       ),
-                                      //     ),
-                                      //     CircleAvatar(
-                                      //       radius: 18,
-                                      //       backgroundColor: AppColors.blue,
-                                      //       child: IconButton(
-                                      //         icon: Icon(
-                                      //           Icons.settings,
-                                      //           color: Colors.white,
-                                      //           size: 18,
-                                      //         ),
-                                      //         onPressed: () {},
-                                      //       ),
-                                      //     ),
-                                      //   ],
-                                      // ),
                                     ],
                                   ),
                                 ],
                               ),
-                            )),
+                            ),
+                          )
+                        ],
                       ),
-                    )
-                  ],
-                );
-
-                // Card(
-                //   shadowColor: Colors.black45,
-                //   elevation: 10,
-                //   child: Column(
-                //     crossAxisAlignment: CrossAxisAlignment.stretch,
-                //     children: [
-                //       Align(
-                //         alignment: Alignment.topRight,
-                //         child: InkWell(
-                //           onTap: (() => controller.Delproduct(
-                //               controller.allproducts[index].id!)),
-                //           child: Icon(
-                //             Icons.close,
-                //             color: AppColors.blue,
-                //             size: 20,
-                //           ),
-                //         ),
-                //       ),
-                //       Expanded(
-                //         flex: 2,
-                //         child: Image.asset(
-                //           'assets/images/3.jpg',
-                //           fit: BoxFit.fill,
-                //         ),
-                //       ),
-                //       Expanded(
-                //         child: Padding(
-                //           padding: const EdgeInsets.symmetric(
-                //               horizontal: 7, vertical: 5),
-                //           child: Column(
-                //             crossAxisAlignment: CrossAxisAlignment.start,
-                //             children: [
-                //               //product
-                //               Text(
-                //                 controller.allproducts[index].name!,
-                //                 style: TextStyle(
-                //                     fontSize: 18, fontWeight: FontWeight.bold),
-                //               ),
-                //               //description
-                //               Text(
-                //                 controller.allproducts[index].description!,
-                //                 style: TextStyle(color: Colors.grey),
-                //               ),
-                //               Row(
-                //                 mainAxisAlignment: MainAxisAlignment.end,
-                //                 children: [
-                //                   Icon(
-                //                     Icons.price_change,
-                //                     color: AppColors.blue,
-                //                     size: 20,
-                //                   ),
-                //                   SizedBox(
-                //                     width: 4,
-                //                   ),
-                //                   //price
-                //                   Text(
-                //                     controller.allproducts[index].price
-                //                         .toString(),
-                //                     style: TextStyle(
-                //                         fontWeight: FontWeight.bold,
-                //                         fontSize: 17,
-                //                         color: AppColors.blue),
-                //                   ),
-                //                   // Expanded(
-                //                   //   child: SizedBox(),
-                //                   //   flex: 60,
-                //                   // ),
-                //                   // ButtonBar(
-                //                   //   children: [
-                //                   //     CircleAvatar(
-                //                   //       radius: 18,
-                //                   //       backgroundColor:AppColors.blue,
-                //                   //       child: IconButton(
-                //                   //         icon: Icon(
-                //                   //           Icons.call,
-                //                   //           color: Colors.white,
-                //                   //           size: 18,
-                //                   //         ),
-                //                   //         onPressed: () {},
-                //                   //       ),
-                //                   //     ),
-                //                   //     CircleAvatar(
-                //                   //       radius: 18,
-                //                   //       backgroundColor: AppColors.blue,
-                //                   //       child: IconButton(
-                //                   //         icon: Icon(
-                //                   //           Icons.settings,
-                //                   //           color: Colors.white,
-                //                   //           size: 18,
-                //                   //         ),
-                //                   //         onPressed: () {},
-                //                   //       ),
-                //                   //     ),
-                //                   //   ],
-                //                   // ),
-                //                 ],
-                //               ),
-                //             ],
-                //           ),
-                //         ),
-                //       )
-                //     ],
-                //   ),
-                // );
-              }),
-        ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 1, 0, 5),
+                        child: Align(
+                          alignment: Alignment.topRight,
+                          child: InkWell(
+                            onTap: (() => controller.Delproduct(
+                                controller.allproducts[index].id!)),
+                            child: const Icon(
+                              Icons.close,
+                              color: Colors.grey,
+                              size: 24,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            }),
       ),
     );
   }

@@ -27,6 +27,9 @@ abstract class Routes {
   static const HAYA = _Paths.HAYA;
   static const SETTING_PAGE = _Paths.SETTING_PAGE;
   static const PRODUCT_PAGE = _Paths.PRODUCT_PAGE;
+  static const PERMISSION_PAGE = _Paths.PERMISSION_PAGE;
+  static const EMPLOYEE_PER_PAGE = _Paths.EMPLOYEE_PER_PAGE;
+  static const ADD_EMPLOYEE_PAGE = _Paths.ADD_EMPLOYEE_PAGE;
 }
 
 abstract class _Paths {
@@ -56,4 +59,7 @@ abstract class _Paths {
   static const HAYA = '/haya';
   static const SETTING_PAGE = '/setting-page';
   static const PRODUCT_PAGE = '/product-page';
+  static const PERMISSION_PAGE = '/permission-page';
+  static const EMPLOYEE_PER_PAGE = '/employee-per-page';
+  static const ADD_EMPLOYEE_PAGE = '/add-employee-page';
 }

@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 
 import '../../sheard/auth_service.dart';
+import '../modules/addEmployee_page/bindings/add_employee_page_binding.dart';
+import '../modules/addEmployee_page/views/add_employee_page_view.dart';
 import '../modules/brand_page/bindings/brand_page_binding.dart';
 import '../modules/brand_page/views/brand_page_view.dart';
 import '../modules/chat_page/bindings/chat_page_binding.dart';
@@ -9,6 +11,8 @@ import '../modules/content_page/bindings/content_binding.dart';
 import '../modules/content_page/views/content_view.dart';
 import '../modules/conversation_page/bindings/conversation_page_binding.dart';
 import '../modules/conversation_page/views/conversation_page_view.dart';
+import '../modules/employeePer_page/bindings/employee_per_page_binding.dart';
+import '../modules/employeePer_page/views/employee_per_page_view.dart';
 import '../modules/firstsplash_page/bindings/firstSplash_binding.dart';
 import '../modules/firstsplash_page/views/firstSplash_view.dart';
 import '../modules/haya/bindings/haya_binding.dart';
@@ -23,6 +27,8 @@ import '../modules/menu/views/menu_view.dart';
 import '../modules/password_page/bindings/password_binding.dart';
 import '../modules/password_page/views/confirm_password.dart';
 import '../modules/password_page/views/password_page.dart';
+import '../modules/permission_page/bindings/permission_page_binding.dart';
+import '../modules/permission_page/views/permission_page_view.dart';
 import '../modules/product_page/bindings/product_page_binding.dart';
 import '../modules/product_page/views/product_page_view.dart';
 import '../modules/profile/binding/profile_binding.dart';
@@ -179,6 +185,21 @@ class AppPages {
       name: _Paths.PRODUCT_PAGE,
       page: () => const ProductPageView(),
       binding: ProductPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.PERMISSION_PAGE,
+      page: () => const PermissionPageView(),
+      binding: PermissionPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.EMPLOYEE_PER_PAGE,
+      page: () => const EmployeePerPageView(),
+      binding: EmployeePerPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADD_EMPLOYEE_PAGE,
+      page: () => const AddEmployeePageView(),
+      binding: AddEmployeePageBinding(),
     ),
   ];
 }

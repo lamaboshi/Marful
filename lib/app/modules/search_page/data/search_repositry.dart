@@ -8,7 +8,9 @@ import 'package:marful/app/modules/websit_company/data/model/Product.dart';
 
 import '../../../data/model/company.dart';
 import 'adapter/search_adapter.dart';
-class SearchRepository extends ISearchRepository {
+class SearchRepository 
+//extends ISearchRepository
+ {
   final _dio = Get.find<Dio>();
   
   @override
