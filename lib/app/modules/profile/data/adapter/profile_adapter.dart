@@ -5,14 +5,17 @@ import 'package:marful/app/modules/homeMain_page/data/model/Post.dart';
 import 'package:marful/app/modules/profile/data/model_data.dart';
 
 import '../../../../data/model/content.dart';
+import '../../../websit_company/data/model/companycontent.dart';
 
 abstract class IProfailRepository {
   Future<List<Content>> GetInfulConent(int IdInful);
-  Future<List<Content>> GetCompanyConent(int idCompany);
+  Future<List<CompanyContent>> getCompanyConent(int idCompany);
   Future<List<Post>> GetInfulPost(int idInful);
   Future<List<Post>> GetCompPost(int idCompany);
-  Future<int> getCountFollow(String email);
-  Future<List<ModelData>> getAllFollow(String email);
+  Future<int> getCountFollowInfu(String email);
+  Future<List<ModelData>> getAllFollowInfu(String email);
+    Future<int> getCountFollowCompany(String email);
+  Future<List<ModelData>> getAllFollowCompany(String email);
   Future<bool> Updateinfo(Infulonser infulonser, int id);
   Future<bool> Updatecomp(Company company, int id);
   Future<bool> Updateuse(UserModel userModel, int id);

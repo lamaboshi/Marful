@@ -59,6 +59,8 @@ class ProfileController extends GetxController {
   }
 
   Future<void> getDataperson() async {
+    var data = await getContent();
+    allContents.assignAll(data);
     switch (auth.personType()) {
       case 'user':
         typeAuth.value = Auth.user;
@@ -69,6 +71,9 @@ class ProfileController extends GetxController {
         company.value = auth.getDataFromStorage() as Company;
         await getContentComapny(company.value.id!);
         await getPostCompany(company.value.id!);
+        await getfllowerCompany();
+        await getfllowerCompanyCount();
+
         break;
       case 'infulonser':
         typeAuth.value = Auth.infulonser;
@@ -79,8 +84,6 @@ class ProfileController extends GetxController {
         await getfllowerInfulCount();
         break;
     }
-    var data = await getContent();
-    allContents.assignAll(data);
   }
 
   Future<void> UpdateDataforperson() async {
@@ -113,14 +116,18 @@ class ProfileController extends GetxController {
     if (data) {
       QOverlay.dismissLast();
       stringPickImage.value = '';
-      await getPostInful(infulencer.value.id!);
+      auth.getTypeEnum() == Auth.infulonser
+          ? await getPostInful(infulencer.value.id!)
+          : await getPostCompany(company.value.id!);
     }
   }
 
   Future<void> getContentComapny(int id) async {
     contents.clear();
-    var data = await repo.GetCompanyConent(id);
-    contents.assignAll(data);
+    var data = await repo.getCompanyConent(id);
+    for (var item in data) {
+      contents.add(item.content!);
+    }
   }
 
   Future<void> getContentInful(int id) async {
@@ -131,13 +138,25 @@ class ProfileController extends GetxController {
 
   Future<void> getfllowerInful() async {
     var data = await repo
-        .getAllFollow((auth.getDataFromStorage() as Infulonser).email!);
+        .getAllFollowInfu((auth.getDataFromStorage() as Infulonser).email!);
     follower.assignAll(data);
   }
 
   Future<void> getfllowerInfulCount() async {
     var data = await repo
-        .getCountFollow((auth.getDataFromStorage() as Infulonser).email!);
+        .getCountFollowInfu((auth.getDataFromStorage() as Infulonser).email!);
+    followerCount.value = data;
+  }
+
+  Future<void> getfllowerCompany() async {
+    var data = await repo
+        .getAllFollowCompany((auth.getDataFromStorage() as Company).email!);
+    follower.assignAll(data);
+  }
+
+  Future<void> getfllowerCompanyCount() async {
+    var data = await repo
+        .getCountFollowCompany((auth.getDataFromStorage() as Company).email!);
     followerCount.value = data;
   }
 
@@ -162,8 +181,10 @@ class ProfileController extends GetxController {
   }
 
   Future<void> Updatecompany() async {
-    company.value = comp.value;
-    await repo.Updatecomp(company.value, company.value.id!);
+    comp.value.image = Utility.dataFromBase64String(stringPickImage.value);
+    await repo.Updatecomp(comp.value, company.value.id!);
+    auth.stroge.deleteAllKeys();
+    auth.logIn(company.value.email!, company.value.password!);
   }
 
   Future<void> Updateuser() async {
@@ -180,7 +201,10 @@ class ProfileController extends GetxController {
   }
 
   Future<void> addcontentcomp(int id) async {
-    await repo.AddcontentCompany(company.value.id!, id);
+    var data = await repo.AddcontentCompany(company.value.id!, id);
+    if (data) {
+      await getContentComapny(company.value.id!);
+    }
   }
 
   Future<void> Deletcontentinfo(int id) async {

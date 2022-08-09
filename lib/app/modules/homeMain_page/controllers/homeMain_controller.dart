@@ -5,6 +5,7 @@ import 'package:marful/app/data/model/company.dart';
 import 'package:marful/app/data/model/infulonser.dart';
 import 'package:marful/app/data/model/user_model.dart';
 import 'package:marful/app/modules/homeMain_page/data/model/post_infulonser.dart';
+import 'package:marful/app/modules/websit_company/data/model/companycontent.dart';
 import 'package:marful/sheard/util.dart';
 
 import '../../../../sheard/auth_service.dart';
@@ -23,7 +24,7 @@ class HomeMainController extends GetxController {
   final post = <GetPost>[].obs;
   final mainUserpost = <PostUser>[].obs;
   final mainInfupost = <PostInfulonser>[].obs;
-  final companyContent = <Content>[].obs;
+  final companyContent = <CompanyContent>[].obs;
   final newPost = Post().obs;
   final loading = false.obs;
   final contentId = 0.obs;

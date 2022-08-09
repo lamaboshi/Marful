@@ -6,19 +6,19 @@ import 'package:marful/app/data/model/infulonser.dart';
 import 'package:marful/app/data/model/user_model.dart';
 import 'package:marful/app/modules/homeMain_page/data/model/Post.dart';
 
+import '../../websit_company/data/model/companycontent.dart';
 import 'adapter/profile_adapter.dart';
 import 'model_data.dart';
 
 class ProfailRepository extends IProfailRepository {
   final _dio = Get.find<Dio>();
-  @override
-  Future<List<Content>> GetCompanyConent(int idCompany) async {
+  Future<List<CompanyContent>> getCompanyConent(int idCompany) async {
     var result =
         await _dio.get('https://localhost:7192/api/CompanyContent/$idCompany');
     print(result);
-    var list = <Content>[];
+    var list = <CompanyContent>[];
     for (var item in result.data) {
-      list.add(Content.fromJson(item));
+      list.add(CompanyContent.fromJson(item));
     }
     return list;
   }
@@ -50,11 +50,13 @@ class ProfailRepository extends IProfailRepository {
   Future<List<Post>> GetCompPost(int idCompany) async {
     var result = await _dio
         .get('https://localhost:7192/api/Company/GetAllPosts/$idCompany');
-    print(result);
+
     var list = <Post>[];
     for (var item in result.data) {
       list.add(Post.fromJson(item));
     }
+    print(
+        '--------------------------------------------------------Get Post Company Done-------------------------------');
     return list;
   }
 
@@ -119,7 +121,7 @@ class ProfailRepository extends IProfailRepository {
   }
 
   @override
-  Future<List<ModelData>> getAllFollow(String email) async {
+  Future<List<ModelData>> getAllFollowInfu(String email) async {
     var result = await _dio.get(
         'https://localhost:7192/api/Infulonser/GetFollowers',
         queryParameters: {'email': email});
@@ -127,14 +129,42 @@ class ProfailRepository extends IProfailRepository {
     for (var item in result.data) {
       list.add(ModelData.fromJson(item));
     }
+    print(
+        '--------------------------------------------------------Get getAllFollowInfu Done-------------------------------');
     return list;
   }
 
   @override
-  Future<int> getCountFollow(String email) async {
+  Future<List<ModelData>> getAllFollowCompany(String email) async {
+    var result = await _dio.get(
+        'https://localhost:7192/api/Company/GetFollowers',
+        queryParameters: {'email': email});
+    var list = <ModelData>[];
+    for (var item in result.data) {
+      list.add(ModelData.fromJson(item));
+    }
+    print(
+        '--------------------------------------------------------Get getAllFollowCompany Done-------------------------------');
+    return list;
+  }
+
+  @override
+  Future<int> getCountFollowInfu(String email) async {
     var result = await _dio.get(
         'https://localhost:7192/api/Infulonser/GetFollowersCount',
         queryParameters: {'email': email});
+    print(
+        '--------------------------------------------------------Get getCountFollowInfu Done-------------------------------');
+    return result.data;
+  }
+
+  @override
+  Future<int> getCountFollowCompany(String email) async {
+    var result = await _dio.get(
+        'https://localhost:7192/api/Company/GetFollowersCount',
+        queryParameters: {'email': email});
+    print(
+        '--------------------------------------------------------Get getCountFollowCompany Done-------------------------------');
     return result.data;
   }
 
