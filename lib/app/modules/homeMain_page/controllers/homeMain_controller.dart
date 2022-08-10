@@ -5,6 +5,7 @@ import 'package:marful/app/data/model/company.dart';
 import 'package:marful/app/data/model/infulonser.dart';
 import 'package:marful/app/data/model/user_model.dart';
 import 'package:marful/app/modules/homeMain_page/data/model/post_infulonser.dart';
+import 'package:marful/app/modules/websit_company/data/model/companycontent.dart';
 import 'package:marful/sheard/util.dart';
 
 import '../../../../sheard/auth_service.dart';
@@ -21,10 +22,9 @@ class HomeMainController extends GetxController {
   final auth = Get.find<AuthService>();
   final homeMainRepo = HomeMainRepositry();
   final post = <GetPost>[].obs;
-  final postCompany = <Post>[].obs;
   final mainUserpost = <PostUser>[].obs;
   final mainInfupost = <PostInfulonser>[].obs;
-  final companyContent = <Content>[].obs;
+  final companyContent = <CompanyContent>[].obs;
   final newPost = Post().obs;
   final loading = false.obs;
   final contentId = 0.obs;
@@ -126,17 +126,9 @@ class HomeMainController extends GetxController {
   Future<void> getAllPosts() async {
     post.clear();
     loading.value = true;
-    if (auth.getTypeEnum() == Auth.comapny) {
-      var res =
-          await homeMainRepo.getAllPostCompany(auth.personType(), getEmail());
-      if (res.isNotEmpty) {
-        postCompany.assignAll(res);
-      }
-    } else {
-      var res = await homeMainRepo.getAllPost(auth.personType(), getEmail());
-      if (res.isNotEmpty) {
-        post.assignAll(res);
-      }
+    var res = await homeMainRepo.getAllPost(auth.personType(), getEmail());
+    if (res.isNotEmpty) {
+      post.assignAll(res);
     }
 
     loading.value = false;

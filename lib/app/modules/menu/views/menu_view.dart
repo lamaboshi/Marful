@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marful/app/modules/setting_page/views/setting_page_view.dart';
 import 'package:marful/app/routes/app_pages.dart';
 
 import '../../../core/values/h.dart';
@@ -24,6 +23,7 @@ class HomeMenuView extends GetView<MenuController> {
             buildCard(
                 'Edit profil', Icons.edit, () => Get.to(EditProfilePage())),
             buildCard('Setting', Icons.settings,
+<<<<<<< HEAD
                 () => Get.to(() => const SettingPageView())),
             //   buildCard('Report', AppIcons.trending_up, ()=> Get.to(() =>const ReportView())),
             buildCard('Help',  AppIcons.help_outline, () {
@@ -33,6 +33,9 @@ class HomeMenuView extends GetView<MenuController> {
               controller.auth.stroge.deleteAllKeys();
               Get.rootDelegate.toNamed(Routes.SignIn);
             }),
+=======
+                () => Get.rootDelegate.toNamed(Routes.SETTING_PAGE)),
+>>>>>>> 38d6e4b0e2195d4bf5505e88344264f435041b7b
             buildCard('Log out', Icons.logout, () {
               controller.auth.stroge.deleteAllKeys();
               Get.rootDelegate.toNamed(Routes.SignIn);

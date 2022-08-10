@@ -1,11 +1,11 @@
-import 'dart:io';
+import 'dart:typed_data';
 
 class Product {
   int? id;
   String? name;
   int? price;
   String? description;
-  File? image;
+  Uint8List? image;
   String? code;
   int? brandId;
 
@@ -24,18 +24,20 @@ class Product {
     name = json['name'];
     price = json['price'];
     description = json['description'];
-    image = json['image'];
+    image = json['image'] == null
+        ? null
+        : Uint8List.fromList(List<int>.from(json['image']!));
     code = json['code'];
     brandId = json['brandId'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
+    data['id'] = this.id == null ? 0 : this.id;
     data['name'] = this.name;
     data['price'] = this.price;
     data['description'] = this.description;
-    data['image'] = this.image;
+    data['image'] = image == null ? null : Uint8List.fromList(image!);
     data['code'] = this.code;
     data['brandId'] = this.brandId;
     return data;

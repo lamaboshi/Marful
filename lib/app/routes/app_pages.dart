@@ -186,7 +186,11 @@ class AppPages {
       page: () => ConversationPageView(),
       binding: ConversationPageBinding(),
     ),
-
+    GetPage(
+      name: _Paths.BRAND_PAGE,
+      page: () => BrandPageView(),
+      binding: BrandPageBinding(),
+    ),
     GetPage(
       name: _Paths.SETTING_PAGE,
       page: () => const SettingPageView(),
