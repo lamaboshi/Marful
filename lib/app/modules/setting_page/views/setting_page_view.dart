@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marful/app/routes/app_pages.dart';
-
 import '../../../core/values/app_colors.dart';
+import '../../../core/values/h.dart';
 import '../../../core/values/my_flutter_app_icons.dart';
+import '../../content_page/views/content_view.dart';
 import '../../haya/views/haya_brand.dart';
 import '../../permission_page/views/permission_page_view.dart';
 import '../controllers/setting_page_controller.dart';
@@ -22,11 +22,13 @@ class SettingPageView extends GetView<SettingPageController> {
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
-            // buildCard(
-            //     'Content', Icons.edit, () => Get.to(() =>  ContentView())),
-            buildCard('Brand', Icons.settings,
-                () => Get.to(() =>  HayaBrand())),
-            buildCard('Edit', AppIcons.trending_up, () {Get.to(PermissionPageView());}),
+            buildCard(
+                'Content', Icons.edit, () => Get.to(() => const ContentView())),
+            buildCard(
+                'Brand', Icons.edit, () => Get.to(() => const HayaBrand())),
+            buildCard('Permissions', Icons.edit, () {
+              Get.to(const PermissionPageView());
+            }),
             Expanded(
               flex: 5,
               child: Image.asset(
@@ -46,6 +48,7 @@ Widget buildCard(String title, IconData icon, Function()? namePage) {
     child: SizedBox(
       height: 80,
       child: Card(
+        clipBehavior: Clip.antiAlias,
         elevation: 5,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),

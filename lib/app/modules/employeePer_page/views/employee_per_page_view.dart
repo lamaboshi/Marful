@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:marful/app/core/values/app_colors.dart';
 
 import '../../../core/component/textField.dart';
+import '../../addEmployee_page/views/add_employee_page_view.dart';
 import '../controllers/employee_per_page_controller.dart';
 
 class EmployeePerPageView extends GetView<EmployeePerPageController> {
@@ -39,54 +40,56 @@ class EmployeePerPageView extends GetView<EmployeePerPageController> {
                 backgroundColor: Colors.white,
                 Padding(
                   padding: const EdgeInsets.all(20),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      const Text(
-                        'Add new employee',
-                        style: TextStyle(fontSize: 17),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      TextFieldWidget(
-                        type: TextInputType.name,
-                        obscureText: false,
-                        prefIcon: Icons.input,
-                        label: 'Name',
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      TextFieldWidget(
-                        type: TextInputType.name,
-                        obscureText: false,
-                        prefIcon: Icons.input,
-                        label: 'Passeword',
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Align(
-                        alignment: Alignment.center,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(AppColors.orange),
-                              foregroundColor:
-                                  MaterialStateProperty.all(Colors.white)),
-                          child: const Center(child: Text('Add')),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(
+                          height: 20,
                         ),
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                    ],
+                        const Text(
+                          'Add new employee',
+                          style: TextStyle(fontSize: 17),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        TextFieldWidget(
+                          type: TextInputType.name,
+                          obscureText: false,
+                          prefIcon: Icons.input,
+                          label: 'Name',
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        TextFieldWidget(
+                          type: TextInputType.name,
+                          obscureText: false,
+                          prefIcon: Icons.input,
+                          label: 'Passeword',
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all(AppColors.orange),
+                                foregroundColor:
+                                    MaterialStateProperty.all(Colors.white)),
+                            child: const Center(child: Text('Add')),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                      ],
+                    ),
                   ),
                 ));
           },
@@ -95,101 +98,106 @@ class EmployeePerPageView extends GetView<EmployeePerPageController> {
           )),
       body: ListView.separated(
           padding: const EdgeInsets.all(15),
-          itemBuilder: ((context, index) => ListTile(
-                onTap: () {
-             
-                  // Get.dialog(
-                  //     barrierDismissible: false,
-                  //     AlertDialog( scrollable : true,
-                  //       actionsPadding: const EdgeInsets.all(13),
-                  //       actions: [
-                  //         SingleChildScrollView(
-                  //           child: Column(
-                  //             children: [
-                  //               Text(employee[index]),
-                  //               ExpansionTile(
-                  //                 title: const Text('Employee permissions'),
-                  //                 leading: const Icon(Icons.menu),
-                  //                 tilePadding: const EdgeInsets.all(0),
-                  //                 childrenPadding: const EdgeInsets.all(0),
-                  //                 children: [
-                  //                   for (var item in employee)
-                  //                     Padding(
-                  //                       padding: const EdgeInsets.fromLTRB(
-                  //                           3, 10, 0, 0),
-                  //                       child: InkWell(
-                  //                         onTap: () {},
-                  //                         child: Column(
-                  //                           crossAxisAlignment:
-                  //                               CrossAxisAlignment.start,
-                  //                           children: [
-                  //                             Row(
-                  //                               children: [
-                  //                                 Text(item),
-                  //                                 const Spacer(),
-                  //                                 IconButton(
-                  //                                   onPressed: () {},
-                  //                                   icon:
-                  //                                       const Icon(Icons.close),
-                  //                                   padding:
-                  //                                       const EdgeInsets.all(0),
-                  //                                   alignment:
-                  //                                       Alignment.topRight,
-                  //                                 ),
-                  //                               ],
-                  //                             ),
-                  //                             const SizedBox(
-                  //                               height: 5,
-                  //                             ),
-                  //                             const Divider(),
-                  //                           ],
-                  //                         ),
-                  //                       ),
-                  //                     ),
-                  //                 ],
-                  //               ),
-                  //               TextFieldWidget(
-                  //                 obscureText: false,
-                  //                 prefIcon: Icons.border_color,
-                  //                 type: TextInputType.name,
-                  //               ),
-                  //               ElevatedButton(
-                  //                 onPressed: () {
-                  //                   Get.back();
-                  //                 },
-                  //                 style: ButtonStyle(
-                  //                     backgroundColor:
-                  //                         MaterialStateProperty.all(
-                  //                             AppColors.orange),
-                  //                     foregroundColor:
-                  //                         MaterialStateProperty.all(
-                  //                             Colors.white)),
-                  //                 child: const Center(child: Text('Add')),
-                  //               ),
-                  //             ],
-                  //           ),
-                  //         ),
-                  //       ],
-                  //     ));
-             
-                },
-               
-                title: Text(employee[index]),
-                //   subtitle: Text(description[index]),
-                // leading: Image.asset(
-                //   'assets/images/3.jpg',
-                // ),
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(30))),
-                trailing: IconButton(
-                    padding: const EdgeInsets.all(0),
-                    onPressed: () {},
-                    icon: const Icon(Icons.close)),
+          itemBuilder: ((context, index) => Card(
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Center(
+                  child: ListTile(
+                    onTap: () {
+                      Get.to(const AddEmployeePageView());
+                      // Get.dialog(
+                      //     barrierDismissible: false,
+                      //     AlertDialog( scrollable : true,
+                      //       actionsPadding: const EdgeInsets.all(13),
+                      //       actions: [
+                      //         SingleChildScrollView(
+                      //           child: Column(
+                      //             children: [
+                      //               Text(employee[index]),
+                      //               ExpansionTile(
+                      //                 title: const Text('Employee permissions'),
+                      //                 leading: const Icon(Icons.menu),
+                      //                 tilePadding: const EdgeInsets.all(0),
+                      //                 childrenPadding: const EdgeInsets.all(0),
+                      //                 children: [
+                      //                   for (var item in employee)
+                      //                     Padding(
+                      //                       padding: const EdgeInsets.fromLTRB(
+                      //                           3, 10, 0, 0),
+                      //                       child: InkWell(
+                      //                         onTap: () {},
+                      //                         child: Column(
+                      //                           crossAxisAlignment:
+                      //                               CrossAxisAlignment.start,
+                      //                           children: [
+                      //                             Row(
+                      //                               children: [
+                      //                                 Text(item),
+                      //                                 const Spacer(),
+                      //                                 IconButton(
+                      //                                   onPressed: () {},
+                      //                                   icon:
+                      //                                       const Icon(Icons.close),
+                      //                                   padding:
+                      //                                       const EdgeInsets.all(0),
+                      //                                   alignment:
+                      //                                       Alignment.topRight,
+                      //                                 ),
+                      //                               ],
+                      //                             ),
+                      //                             const SizedBox(
+                      //                               height: 5,
+                      //                             ),
+                      //                             const Divider(),
+                      //                           ],
+                      //                         ),
+                      //                       ),
+                      //                     ),
+                      //                 ],
+                      //               ),
+                      //               TextFieldWidget(
+                      //                 obscureText: false,
+                      //                 prefIcon: Icons.border_color,
+                      //                 type: TextInputType.name,
+                      //               ),
+                      //               ElevatedButton(
+                      //                 onPressed: () {
+                      //                   Get.back();
+                      //                 },
+                      //                 style: ButtonStyle(
+                      //                     backgroundColor:
+                      //                         MaterialStateProperty.all(
+                      //                             AppColors.orange),
+                      //                     foregroundColor:
+                      //                         MaterialStateProperty.all(
+                      //                             Colors.white)),
+                      //                 child: const Center(child: Text('Add')),
+                      //               ),
+                      //             ],
+                      //           ),
+                      //         ),
+                      //       ],
+                      //     ));
+                    },
+
+                    title: Text(employee[index]),
+                    //   subtitle: Text(description[index]),
+                    // leading: Image.asset(
+                    //   'assets/images/3.jpg',
+                    // ),
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(30))),
+                    trailing: IconButton(
+                        padding: const EdgeInsets.all(0),
+                        onPressed: () {},
+                        icon: const Icon(Icons.close)),
+                  ),
+                ),
               )),
-          separatorBuilder: ((context, index) => const Divider(
-                endIndent: 8,
-                indent: 8,
-                thickness: 1,
+          separatorBuilder: ((context, index) => const SizedBox(
+                height: 5,
               )),
           itemCount: employee.length),
     );

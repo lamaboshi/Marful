@@ -76,7 +76,7 @@ PageViewModel interPage(context) {
     titleWidget: const Align(
         alignment: Alignment.topLeft,
         child: Text(
-          'You Can Choose Acount To SignUp',
+          'You can choose acount to signUp',
           style: TextStyle(fontSize: 15),
         )),
 
@@ -182,7 +182,7 @@ PageViewModel interInfluncerPage(context) {
     ),
     //text
     bodyWidget: const Text(
-        'Here you can write the description of the page, to explain someting...'),
+        'Influencer can add posts and make a conversation with company and create a special brand'),
     footer: Column(
       children: [
         ///btn Sign Up As Influencer
@@ -216,7 +216,7 @@ PageViewModel interInfluncerPage(context) {
               width: 3,
             ),
             InkWell(
-              child: Text(
+              child:const Text(
                 'sign in',
                 style: TextStyle(
                   color: Colors.grey,
@@ -266,7 +266,7 @@ PageViewModel interCompanyPage(context) {
 
     ///text
     bodyWidget: const Text(
-        'Here you can write the description of the page, to explain someting...'),
+        'Company can add posts and have employee with permissions'),
     footer: Column(
       children: [
         ///btn Sign Up As Company
@@ -299,7 +299,7 @@ PageViewModel interCompanyPage(context) {
               width: 3,
             ),
             InkWell(
-              child: Text(
+              child:const Text(
                 'sign in',
                 style: TextStyle(
                   color: Colors.grey,
@@ -350,7 +350,7 @@ PageViewModel interUserPage(context) {
 
     ///text
     bodyWidget: const Text(
-        'Here you can write the description of the page, to explain someting...'),
+        'User can shopping and interact posts '),
     footer: Column(
       children: [
         ///btn Sign Up As User

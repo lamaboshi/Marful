@@ -10,7 +10,7 @@ class PasswordPageView extends GetView<PasswordController> {
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-    return Scaffold(
+    return Scaffold(backgroundColor: Colors.white,
       body: Center(
         child: SingleChildScrollView(
           child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
@@ -39,7 +39,7 @@ class PasswordPageView extends GetView<PasswordController> {
               ),
             ),
             Card(
-                elevation: 10,
+                elevation: 0,
                 child: Container(
                     width: width / 2,
                     height: height / 2.3,
@@ -66,7 +66,7 @@ class PasswordPageView extends GetView<PasswordController> {
               height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.fromLTRB(25,16,25,15),
               child: TextField(
                 onChanged: (newText) {
                   controller.email.value = newText;

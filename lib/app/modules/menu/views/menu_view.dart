@@ -1,8 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/setting_page/views/setting_page_view.dart';
 import 'package:marful/app/routes/app_pages.dart';
 
+import '../../../core/values/h.dart';
+import '../../../core/values/my_flutter_app_icons.dart';
+import '../../help_pagee/views/help_pagee_view.dart';
 import '../../profile/views/edit_profile.dart';
 import '../controllers/menu_controller.dart';
 
@@ -21,8 +25,14 @@ class HomeMenuView extends GetView<MenuController> {
                 'Edit profil', Icons.edit, () => Get.to(EditProfilePage())),
             buildCard('Setting', Icons.settings,
                 () => Get.to(() => const SettingPageView())),
-         //   buildCard('Report', AppIcons.trending_up, ()=> Get.to(() =>const ReportView())),
-            buildCard('About', Icons.abc_outlined, () {}),
+            //   buildCard('Report', AppIcons.trending_up, ()=> Get.to(() =>const ReportView())),
+            buildCard('Help',  AppIcons.help_outline, () {
+              Get.to(HelpPageeView());
+            }),
+            buildCard('About', Icons.abc_outlined, () {}),  buildCard('Delete account', Icons.delete, () {
+              controller.auth.stroge.deleteAllKeys();
+              Get.rootDelegate.toNamed(Routes.SignIn);
+            }),
             buildCard('Log out', Icons.logout, () {
               controller.auth.stroge.deleteAllKeys();
               Get.rootDelegate.toNamed(Routes.SignIn);

@@ -4,6 +4,7 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:marful/app/modules/haya/controllers/haya_controller.dart';
 
 import '../../../core/values/app_colors.dart';
+import '../../../core/values/h.dart';
 import '../../../core/values/my_flutter_app_icons.dart';
 
 class HayaMain extends GetView<HayaController> {
@@ -18,7 +19,7 @@ class HayaMain extends GetView<HayaController> {
           Get.bottomSheet(
             SingleChildScrollView(
               child: Padding(
-                padding:const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -97,6 +98,7 @@ class HayaMain extends GetView<HayaController> {
                       height: 30,
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         IconButton(
                             padding: const EdgeInsets.all(0),
@@ -136,7 +138,6 @@ class HayaMain extends GetView<HayaController> {
           children: const [Icon(Icons.add), Text('Add post')],
         ),
       ),
-  
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(

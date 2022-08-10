@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:marful/app/modules/haya/views/hayaIntro.dart';
 
 import '../../sheard/auth_service.dart';
 import '../modules/addEmployee_page/bindings/add_employee_page_binding.dart';
@@ -17,6 +18,8 @@ import '../modules/firstsplash_page/bindings/firstSplash_binding.dart';
 import '../modules/firstsplash_page/views/firstSplash_view.dart';
 import '../modules/haya/bindings/haya_binding.dart';
 import '../modules/haya/views/haya_view.dart';
+import '../modules/help_pagee/bindings/help_pagee_binding.dart';
+import '../modules/help_pagee/views/help_pagee_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/homeMain_page/bindings/homeMain_binding.dart';
@@ -56,7 +59,29 @@ class AppPages {
   AppPages._();
   //static const iNITIAL = Routes.websitecompany;
 
-  static final routes = [
+  static final routes = [ GetPage(
+      name: _Paths.Intro,
+      page: () => const IntroPage(),
+    ),
+    GetPage(
+      name: _Paths.ConfirmPassword,
+      page: () => const Confirmpassword(),
+    ),
+    GetPage(
+        name: _Paths.Password,
+        page: () => PasswordPageView(),
+        binding: PasswordBinding(),
+        children: [
+          GetPage(
+            name: _Paths.ConfirmPassword,
+            page: () => const Confirmpassword(),
+          ),
+        ]),
+    GetPage(
+      name: _Paths.HAYA,
+      page: () => const HayaView(),
+      bindings: [HayaBinding(), MenuBinding(), HomePostBinding()],
+    ),
     GetPage(
       name: _Paths.SignIn,
       page: () => SignInPage(),
@@ -109,16 +134,6 @@ class AppPages {
       binding: WebsitcompanyBinding(),
     ),
 
-    GetPage(
-        name: _Paths.Password,
-        page: () => PasswordPageView(),
-        binding: PasswordBinding(),
-        children: [
-          GetPage(
-            name: _Paths.ConfirmPassword,
-            page: () => const Confirmpassword(),
-          ),
-        ]),
     GetPage(
       name: _Paths.Setting,
       page: () => SettingPage(),
@@ -196,6 +211,12 @@ class AppPages {
       name: _Paths.ADD_EMPLOYEE_PAGE,
       page: () => const AddEmployeePageView(),
       binding: AddEmployeePageBinding(),
+    ),
+   
+    GetPage(
+      name: _Paths.HELP_PAGEE,
+      page: () => const HelpPageeView(),
+      binding: HelpPageeBinding(),
     ),
   ];
 }

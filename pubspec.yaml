@@ -33,5 +33,6 @@ flutter:
    - family: MyFlutterApp
      fonts:
        - asset: assets/fonts/MyFlutterApp.ttf 
+       - asset: assets/fonts/Uchen-Regular.ttf 
    
    

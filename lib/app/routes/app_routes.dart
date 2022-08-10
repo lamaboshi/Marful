@@ -30,6 +30,8 @@ abstract class Routes {
   static const PERMISSION_PAGE = _Paths.PERMISSION_PAGE;
   static const EMPLOYEE_PER_PAGE = _Paths.EMPLOYEE_PER_PAGE;
   static const ADD_EMPLOYEE_PAGE = _Paths.ADD_EMPLOYEE_PAGE;
+  static const HELP_PAGE = _Paths.HELP_PAGE;
+  static const HELP_PAGEE = _Paths.HELP_PAGEE;
 }
 
 abstract class _Paths {
@@ -62,4 +64,6 @@ abstract class _Paths {
   static const PERMISSION_PAGE = '/permission-page';
   static const EMPLOYEE_PER_PAGE = '/employee-per-page';
   static const ADD_EMPLOYEE_PAGE = '/add-employee-page';
+  static const HELP_PAGE = '/help-page';
+  static const HELP_PAGEE = '/help-pagee';
 }

@@ -16,6 +16,18 @@ class PermissionPageView extends GetView<PermissionPageController> {
       'markting',
       'edit',
       'markting',
+      'edit',
+      'markting',
+      'edit',
+      'markting',
+      'edit',
+      'markting',
+      'edit',
+      'markting',
+      'edit',
+      'markting',
+      'edit',
+      'markting',
     ];
     return Scaffold(
         appBar: AppBar(
@@ -38,110 +50,162 @@ class PermissionPageView extends GetView<PermissionPageController> {
                   backgroundColor: Colors.white,
                   Padding(
                     padding: const EdgeInsets.all(20),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        const Text(
-                          'Add new Permission',
-                          style: TextStyle(fontSize: 17),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        TextFieldWidget(
-                          type: TextInputType.name,
-                          obscureText: false,
-                          prefIcon: Icons.input,
-                          label: "Name",
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        TextFieldWidget(
-                          type: TextInputType.name,
-                          obscureText: false,
-                          prefIcon: Icons.input,
-                          label: "Employee name",
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        TextFieldWidget(
-                          type: TextInputType.name,
-                          obscureText: false,
-                          prefIcon: Icons.input,
-                          label: "Passeword",
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Align(
-                          alignment: Alignment.center,
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all(AppColors.orange),
-                                foregroundColor:
-                                    MaterialStateProperty.all(Colors.white)),
-                            child: const Center(child: Text('Add')),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(
+                            height: 20,
                           ),
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                      ],
+                          const Text(
+                            'Add new Permission',
+                            style: TextStyle(fontSize: 17),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          TextFieldWidget(
+                            type: TextInputType.name,
+                            obscureText: false,
+                            prefIcon: Icons.input,
+                            label: "Name",
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          TextFieldWidget(
+                            type: TextInputType.name,
+                            obscureText: false,
+                            prefIcon: Icons.input,
+                            label: "Employee name",
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          TextFieldWidget(
+                            type: TextInputType.name,
+                            obscureText: false,
+                            prefIcon: Icons.input,
+                            label: "Passeword",
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Align(
+                            alignment: Alignment.center,
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                      AppColors.orange),
+                                  foregroundColor:
+                                      MaterialStateProperty.all(Colors.white)),
+                              child: const Center(child: Text('Add')),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                        ],
+                      ),
                     ),
                   ));
             },
             label: Row(
               children: const [Icon(Icons.add), Text('Add')],
             )),
-        body: ListView.separated(
-          padding: const EdgeInsets.all(10),
-          itemBuilder: (BuildContext context, int index) {
-            return InkWell(
-              onTap: () {
-                Get.to(const EmployeePerPageView());
-              },
-              child: SizedBox(
-                height: 70,
+        body: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              childAspectRatio: 3,
+              crossAxisCount: 2,
+              crossAxisSpacing: 5,
+              mainAxisSpacing: 5,
+            ),
+            itemCount: p.length,
+            padding: const EdgeInsets.all(10),
+            itemBuilder: (BuildContext context, int index) {
+              return InkWell(
+                onTap: () {
+                  Get.to(const EmployeePerPageView());
+                },
                 child: Card(
-                  elevation: 5,
+                  clipBehavior: Clip.antiAlias,
+                  
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(11),
                   ),
+                  shadowColor: Colors.black45,
+                  elevation: 10,
                   child: Padding(
-                    padding: const EdgeInsets.all(15),
+                    padding: const EdgeInsets.all(10),
                     child: Row(
                       children: [
+                        const SizedBox(
+                          width: 5,
+                        ),
                         Text(
                           p[index],
-                          style: const TextStyle(fontSize: 17),
+                          style:const TextStyle(
+                              height: 1,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w400),
                         ),
                         const Spacer(),
                         IconButton(
-                            alignment: Alignment.topRight,
-                            padding: const EdgeInsets.all(0),
-                            onPressed: () {},
-                            icon: const Icon(Icons.close)),
+                          onPressed: () {},
+                          icon:const Icon(Icons.close),
+                          padding: const EdgeInsets.all(0),
+                          alignment: Alignment.centerRight,
+                        )
                       ],
                     ),
                   ),
                 ),
-              ),
-            );
-          },
-          separatorBuilder: (BuildContext context, int index) {
-            return const SizedBox(
-              height: 5,
-            );
-          },
-          itemCount: p.length,
-        ));
+              );
+            }));
+
+    // ListView.separated(
+    //   padding: const EdgeInsets.all(10),
+    //   itemBuilder: (BuildContext context, int index) {
+    //     return InkWell(
+    //       onTap: () {
+    //         Get.to(const EmployeePerPageView());
+    //       },
+    //       child: SizedBox(
+    //         height: 70,
+    //         child: Card(
+    //           elevation: 5,
+    //           shape: RoundedRectangleBorder(
+    //             borderRadius: BorderRadius.circular(20),
+    //           ),
+    //           child: Padding(
+    //             padding: const EdgeInsets.all(15),
+    //             child: Row(
+    //               children: [
+    //                 Text(
+    //                   p[index],
+    //                   style: const TextStyle(fontSize: 17),
+    //                 ),
+    //                 const Spacer(),
+    //                 IconButton(
+    //                     alignment: Alignment.topRight,
+    //                     padding: const EdgeInsets.all(0),
+    //                     onPressed: () {},
+    //                     icon: const Icon(Icons.close)),
+    //               ],
+    //             ),
+    //           ),
+    //         ),
+    //       ),
+    //     );
+    //   },
+    //   separatorBuilder: (BuildContext context, int index) {
+    //     return const SizedBox(
+    //       height: 5,
+    //     );
+    //   },
+    //   itemCount: p.length,
+    // ));
   }
 }

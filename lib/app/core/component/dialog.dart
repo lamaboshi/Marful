@@ -11,12 +11,27 @@ class DialogWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       actionsPadding: const EdgeInsets.all(13),
-      title: const Text("Enter code"),
-      content: TextFieldWidget(
-        obscureText: false,prefIcon: Icons.border_color,
-        type: TextInputType.name,
-      ),
+
+      // content: TextFieldWidget(
+      //   obscureText: false,prefIcon: Icons.border_color,
+      //   type: TextInputType.name,
+      // ),
       actions: [
+        TextFieldWidget(
+          obscureText: false,
+          prefIcon: Icons.border_color,
+          type: TextInputType.name,
+          label: 'name',
+        ),
+        TextFieldWidget(
+          obscureText: false,
+          prefIcon: Icons.border_color,
+          type: TextInputType.name,
+          label: 'passeword',
+        ),
+        const SizedBox(
+          height: 15,
+        ),
         ElevatedButton(
           onPressed: () {
             Get.back();
