@@ -22,6 +22,16 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.1"
+<<<<<<< HEAD
+=======
+  charcode:
+    dependency: transitive
+    description:
+      name: charcode
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.3.1"
+>>>>>>> 493fe85a13b8dff599fc3b330d4be50dce8133c6
   clock:
     dependency: transitive
     description:
@@ -414,7 +424,11 @@ packages:
       name: source_span
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "1.9.1"
+=======
+    version: "1.9.0"
+>>>>>>> 493fe85a13b8dff599fc3b330d4be50dce8133c6
   sse_client:
     dependency: transitive
     description:

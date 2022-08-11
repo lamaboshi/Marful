@@ -3,10 +3,12 @@ import 'package:get/get.dart';
 import 'package:marful/app/routes/app_pages.dart';
 import '../../../../sheard/auth_service.dart';
 import '../../../core/values/app_colors.dart';
-import '../../../core/values/h.dart';
 import '../../../core/values/my_flutter_app_icons.dart';
+<<<<<<< HEAD
 import '../../content_page/views/content_view.dart';
 import '../../haya/views/haya_brand.dart';
+=======
+>>>>>>> 493fe85a13b8dff599fc3b330d4be50dce8133c6
 import '../../permission_page/views/permission_page_view.dart';
 import '../controllers/setting_page_controller.dart';
 
@@ -24,6 +26,7 @@ class SettingPageView extends GetView<SettingPageController> {
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
+<<<<<<< HEAD
             // buildCard(
             //     'Content', Icons.edit, () => Get.to(() => const ContentView())),
             // buildCard(
@@ -31,6 +34,8 @@ class SettingPageView extends GetView<SettingPageController> {
             // buildCard('Permissions', Icons.edit, () {
             //   Get.to(const PermissionPageView());
 
+=======
+>>>>>>> 493fe85a13b8dff599fc3b330d4be50dce8133c6
             controller.auth.getTypeEnum() == Auth.comapny
                 ? buildCard('Brand', Icons.settings,
                     () => Get.rootDelegate.toNamed(Routes.BRAND_PAGE))
