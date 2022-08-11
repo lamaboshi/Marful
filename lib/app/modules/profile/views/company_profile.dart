@@ -4,11 +4,8 @@ import 'package:get/get.dart';
 import 'package:q_overlay/q_overlay.dart';
 
 import '../../../core/values/app_colors.dart';
-<<<<<<< HEAD
 import '../../../core/values/h.dart';
 import '../../../core/values/my_flutter_app_icons.dart';
-=======
->>>>>>> 38d6e4b0e2195d4bf5505e88344264f435041b7b
 import '../controllers/profile_controller.dart';
 import 'build_content.dart';
 import 'build_post.dart';
