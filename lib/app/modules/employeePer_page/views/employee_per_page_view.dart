@@ -194,7 +194,7 @@ class EmployeePerPageView extends GetView<EmployeePerPageController> {
                     IconButton(
                         padding: const EdgeInsets.all(0),
                         onPressed: () {
-                          Get.dialog(DeleteDialogWidget());
+                          Get.dialog(DeleteDialogWidget(delFunction: (){},));
                         },
                         icon: const Icon(
                           Icons.delete,

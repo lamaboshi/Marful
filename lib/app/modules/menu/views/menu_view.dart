@@ -23,11 +23,7 @@ class HomeMenuView extends GetView<MenuController> {
           children: [
             buildCard(
                 'Edit profil', Icons.edit, () => Get.to(EditProfilePage())),
-<<<<<<< HEAD
-          buildCard('Setting', Icons.settings,
-=======
             buildCard('Setting', Icons.settings,
->>>>>>> 9d82cc27bbf6ef371054f7ccf773f110f502fc8a
                 () => Get.to(() => const SettingPageView())),
             //   buildCard('Report', AppIcons.trending_up, ()=> Get.to(() =>const ReportView())),
             buildCard('Help', AppIcons.help_outline, () {

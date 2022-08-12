@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import '../values/app_colors.dart';
 
 class DeleteDialogWidget extends StatelessWidget {
-  const DeleteDialogWidget({Key? key}) : super(key: key);
-
+   DeleteDialogWidget({Key? key,required Function()? delFunction,}) : super(key: key);
+Function()? delFunction;
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -25,14 +25,12 @@ class DeleteDialogWidget extends StatelessWidget {
       actions: [
         Row(children: [
           ElevatedButton(
-            onPressed: () {
-              Get.back();
+            onPressed: () {delFunction;
             },
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(AppColors.blue),
                 foregroundColor: MaterialStateProperty.all(Colors.white)),
             child: Text('Delete'),
-            
           ),
           const Spacer(),
           ElevatedButton(
@@ -43,9 +41,7 @@ class DeleteDialogWidget extends StatelessWidget {
                 backgroundColor: MaterialStateProperty.all(AppColors.blue),
                 foregroundColor: MaterialStateProperty.all(Colors.white)),
             child: Text('Cancel'),
-           
-            ),
-         
+          ),
         ]),
       ],
     );
