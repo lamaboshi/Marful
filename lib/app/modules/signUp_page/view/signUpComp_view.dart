@@ -51,7 +51,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                       height: 5,
                     ),
                     InkWell(
-                        onTap: () {}, child: const Text('Add Your Photo..')),
+                        onTap: () {}, child:  Text('SignUpCmpPH'.tr)),
                     const SizedBox(
                       height: 20,
                     ),
@@ -67,7 +67,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                               controller.company.value.name = value;
                             },
                             type: TextInputType.name,
-                            label: 'Company Name',
+                            label: 'SignUpCmpName'.tr,
                             hint: "narin",
                             prefIcon: Icons.person,
                           ),
@@ -79,7 +79,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                               controller.company.value.phone = value;
                             },
                             type: TextInputType.number,
-                            label: 'PhoneNumber',
+                            label: 'SignUpCmpMob'.tr,
                             hint: "099717424666",
                             prefIcon: Icons.phone,
                           ),
@@ -91,7 +91,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                               controller.company.value.telePhone = value;
                             },
                             type: TextInputType.number,
-                            label: 'TelePhone',
+                            label: 'SignUpCmpTele'.tr,
                             hint: "5225356",
                             prefIcon: Icons.phone,
                           ),
@@ -104,7 +104,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                               controller.company.value.description = value;
                             },
                             type: TextInputType.name,
-                            label: 'Description',
+                            label: 'SignUpCmpDes'.tr,
                             hint: "i am gdfsdfj,gh",
                             prefIcon: Icons.description,
                           ),
@@ -116,7 +116,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                               controller.company.value.address = value;
                             },
                             type: TextInputType.none,
-                            label: 'location',
+                            label: 'SignUpCmplocation'.tr,
                             hint: "aleppo",
                             prefIcon: Icons.location_on,
                           ),
@@ -128,7 +128,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                               controller.company.value.email = value;
                             },
                             type: TextInputType.emailAddress,
-                            label: 'Email',
+                            label: 'SignUpCmpEmail'.tr,
                             hint: "hy@gmail.com",
                             prefIcon: Icons.email,
                           ),
@@ -141,7 +141,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                               },
                               obscureText: !controller.isShownCompany.value,
                               type: TextInputType.visiblePassword,
-                              label: 'Passeword',
+                              label: 'SignUpCmpPassword'.tr,
                               hint: "***",
                               suffixIcon: IconButton(
                                 onPressed: () {
@@ -170,8 +170,8 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                             onPressed: () async {
                               controller.signUpCompany();
                             },
-                            child: const Text(
-                              "Sign Up",
+                            child:  Text(
+                              "SignUpCmp".tr,
                               style: TextStyle(
                                 fontSize: 18,
                                 color: Colors.white,

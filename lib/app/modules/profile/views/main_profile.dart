@@ -33,7 +33,7 @@ class MainProfile extends GetView<ProfileController> {
         );
 
       default:
-        return Text('no Value');
+        return Text('editProfilerNoValue'.tr);
     }
   }
 

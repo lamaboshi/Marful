@@ -24,7 +24,7 @@ return Scaffold(
                    ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('Settings',style: TextStyle(fontSize: 30),),
+            child: Text('Setting'.tr,style: TextStyle(fontSize: 30),),
           ),
           ],),
           Padding(
@@ -40,7 +40,7 @@ return Scaffold(
                      SizedBox(width: 10,),
                      Padding(
                        padding: const EdgeInsets.fromLTRB(8, 15, 8, 4),
-                       child: Text('Edit Profile',style: TextStyle(fontSize:18 ,color: color1),),
+                       child: Text('buildPostEditProfile'.tr,style: TextStyle(fontSize:18 ,color: color1),),
                      ),
                         SizedBox(width: 250,),
                        Padding(

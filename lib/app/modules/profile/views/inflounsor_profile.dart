@@ -34,8 +34,8 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
                       onPressed: () {
                         Get.rootDelegate.toNamed(Routes.WebsiteCompany);
                       },
-                      child: const Text(
-                        "Follow",
+                      child:  Text(
+                        "CmpProfileFollow".tr,
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.white,
@@ -52,8 +52,8 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
                           fixedSize: MaterialStateProperty.all(
                               const Size.fromWidth(150))),
                       onPressed: () {},
-                      child: const Text(
-                        "Message",
+                      child:  Text(
+                        "CmpProfileMessage".tr,
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.black,
@@ -106,7 +106,7 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
                                   color: AppColors.orange),
                             )),
                         Text(
-                          'Followors ',
+                          'CmpProfileFollowors'.tr,
                           style:
                               TextStyle(fontSize: 18, color: AppColors.orange),
                         ),
@@ -152,7 +152,7 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
                                   fontSize: 18, fontWeight: FontWeight.bold),
                             )),
                         Text(
-                          'Posts',
+                          'CmpProfilePosts'.tr,
                           style: TextStyle(fontSize: 18),
                         ),
                       ],
@@ -166,7 +166,7 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
         Padding(
           padding: const EdgeInsets.all(9.0),
           child: Text(
-            ' About Me',
+            'CmpProfileAboutMe'.tr,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
         ),
@@ -180,7 +180,7 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
         Padding(
           padding: const EdgeInsets.all(9.0),
           child: Text(
-            ' Contents',
+            'CmpProfileContent'.tr,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
           ),
         ),
@@ -191,7 +191,7 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
         Padding(
           padding: const EdgeInsets.all(9.0),
           child: Text(
-            ' Posts',
+            'CmpProfilePosts'.tr,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
           ),
         ),

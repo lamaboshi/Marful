@@ -9,11 +9,11 @@ class SearchView extends GetView<SearchController> {
   @override
   Widget build(BuildContext context) {
     List<String> filter = [
-      'Brands',
-      'Influencers',
-      'Company',
-      'Users',
-      'products'
+      'Brand'.tr,
+      'Influencer'.tr,
+      'Company'.tr,
+      'Content'.tr,
+      'Product'.tr
     ];
     return Scaffold(
       appBar: AppBar(
@@ -45,7 +45,7 @@ class SearchView extends GetView<SearchController> {
                           },
                           icon: Icon(Icons.clear),
                         ),
-                        hintText: "Search",
+                        hintText: "SearchPage".tr,
                         hintStyle: TextStyle(fontSize: 15),
                       )),
                 ),

@@ -31,7 +31,7 @@ class PasswordPageView extends GetView<PasswordController> {
                   const Padding(
                     padding: EdgeInsets.fromLTRB(12, 0, 0, 0),
                     child: Text(
-                      'Forgot  Your  Passwod',
+                      'ForgotYourPasswod'.tr,
                       style: TextStyle(fontSize: 22, color: Colors.black),
                     ),
                   ),
@@ -47,19 +47,19 @@ class PasswordPageView extends GetView<PasswordController> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                'Enter the registerd email address',
+                'Entertheregisterdemailaddress'.tr,
                 style: TextStyle(fontSize: 20, color: Colors.black54),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                'we will email you a link to reset  ',
+                'wewillemailyoualinktoreset'.tr,
                 style: TextStyle(fontSize: 18, color: Colors.black45),
               ),
             ),
             Text(
-              ' your password',
+              'yourpassword'.tr,
               style: TextStyle(fontSize: 18, color: Colors.black45),
             ),
             SizedBox(
@@ -77,7 +77,7 @@ class PasswordPageView extends GetView<PasswordController> {
                 autofocus: false,
                 decoration: InputDecoration(
                     labelStyle: TextStyle(color: Colors.grey),
-                    labelText: 'Email',
+                    labelText: 'Email'.tr,
                     hintText: "hy@gmail.com",
                     prefixIcon: Icon(
                       Icons.email,
@@ -110,8 +110,8 @@ class PasswordPageView extends GetView<PasswordController> {
               onPressed: () {
                 controller.getEmail();
               },
-              child: const Text(
-                "Send",
+              child: Text(
+                "Send".tr,
                 style: TextStyle(
                   fontSize: 18,
                   color: Colors.white,

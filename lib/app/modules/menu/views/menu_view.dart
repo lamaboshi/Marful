@@ -17,10 +17,10 @@ class HomeMenuView extends GetView<MenuController> {
         child: Column(
           children: [
             buildCard(
-                'Edit profil', Icons.edit, () => Get.to(EditProfilePage())),
-            buildCard('Setting', Icons.settings,
+                'Editprofil'.tr, Icons.edit, () => Get.to(EditProfilePage())),
+            buildCard('Setting'.tr, Icons.settings,
                 () => Get.rootDelegate.toNamed(Routes.SETTING_PAGE)),
-            buildCard('Log out', Icons.logout, () {
+            buildCard('Logout'.tr, Icons.logout, () {
               controller.auth.stroge.deleteAllKeys();
               Get.rootDelegate.toNamed(Routes.SignIn);
             }),

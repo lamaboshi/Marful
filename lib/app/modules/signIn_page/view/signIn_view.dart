@@ -42,10 +42,10 @@ class SignInPage extends GetView<SignInController> {
                   child: Column(
                     children: [
                       //Sign In to your account
-                      const Align(
+                      Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          'Sign In to your account',
+                          'SignIntoyouraccount'.tr,
                           textAlign: TextAlign.start,
                           style: TextStyle(
                               fontSize: 23, fontWeight: FontWeight.w500),
@@ -59,7 +59,7 @@ class SignInPage extends GetView<SignInController> {
                       TextFieldWidget(
                         obscureText: false,
                         type: TextInputType.emailAddress,
-                        label: 'Email',
+                        label: 'Email'.tr,
                         hint: "hy@gmail.com",
                         prefIcon: Icons.email,
                         onChanged: (value) {
@@ -70,7 +70,7 @@ class SignInPage extends GetView<SignInController> {
                       Obx(() {
                         return TextFieldWidget(
                           type: TextInputType.visiblePassword,
-                          label: 'Passeword',
+                          label: 'Passeword'.tr,
                           hint: '***',
                           obscureText: !controller.isShown.value,
                           onChanged: (value) {
@@ -101,8 +101,8 @@ class SignInPage extends GetView<SignInController> {
                           onTap: () {
                             Get.rootDelegate.toNamed(Routes.Password);
                           },
-                          child: const Text(
-                            'Forgot Your Passeword?',
+                          child:  Text(
+                            'ForgotYourPasswod'.tr,
                             style: TextStyle(fontSize: 15, color: Colors.grey),
                           ),
                         ),
@@ -120,8 +120,8 @@ class SignInPage extends GetView<SignInController> {
                         onPressed: () {
                           controller.logIn();
                         },
-                        child: const Text(
-                          "Sign In",
+                        child: Text(
+                          "signin".tr,
                           style: TextStyle(
                             fontSize: 18,
                             color: Colors.white,
@@ -133,7 +133,7 @@ class SignInPage extends GetView<SignInController> {
                           Get.rootDelegate.toNamed(Routes.FirstSplash);
                         },
                         // ignore: sort_child_properties_last
-                        child: const Text('Create Your Account?'),
+                        child:  Text('CreateYourAccount?'.tr),
                         style: ButtonStyle(
                           foregroundColor:
                               MaterialStateProperty.all(Colors.black),

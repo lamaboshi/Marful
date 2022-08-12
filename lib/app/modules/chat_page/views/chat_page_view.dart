@@ -14,7 +14,7 @@ class ChatPageView extends GetView<ChatPageController> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.orange,
-        title: Text('ConversationPageView'),
+        title: Text('ConversationPage'.tr),
         centerTitle: true,
         actions: [
           IconButton(
@@ -24,7 +24,7 @@ class ChatPageView extends GetView<ChatPageController> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text('New Job Agreement',
+                        Text('NewJobAgreement'.tr,
                             style: TextStyle(fontSize: 20)),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,7 +35,7 @@ class ChatPageView extends GetView<ChatPageController> {
                                     double.parse(txt);
                               },
                               type: TextInputType.multiline,
-                              hint: 'salary',
+                              hint: 'salary'.tr,
                               obscureText: false,
                               prefIcon: Icons.money,
                             ),
@@ -44,7 +44,7 @@ class ChatPageView extends GetView<ChatPageController> {
                                 controller.newJob.value.code = txt;
                               },
                               type: TextInputType.multiline,
-                              hint: 'code',
+                              hint: 'code'.tr,
                               obscureText: false,
                               prefIcon: Icons.money,
                             ),
@@ -56,7 +56,7 @@ class ChatPageView extends GetView<ChatPageController> {
                               onPressed: () {
                                 controller.addJob();
                               },
-                              label: Text('Save')),
+                              label: Text('buildPostSave'.tr)),
                         )
                       ],
                     )).show();

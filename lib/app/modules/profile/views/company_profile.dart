@@ -27,8 +27,8 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                           fixedSize: MaterialStateProperty.all(
                               const Size.fromWidth(150))),
                       onPressed: () {},
-                      child: const Text(
-                        "Follow",
+                      child: Text(
+                        "CmpProfileFollow".tr,
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.white,
@@ -45,8 +45,8 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                           fixedSize: MaterialStateProperty.all(
                               const Size.fromWidth(150))),
                       onPressed: () {},
-                      child: const Text(
-                        "Message",
+                      child: Text(
+                        "CmpProfileMessage".tr,
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.black,
@@ -80,7 +80,7 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          'Posts',
+                          'CmpProfilePosts'.tr,
                           style: TextStyle(fontSize: 18),
                         ),
                       ],
@@ -100,7 +100,7 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          'Followors ',
+                          'CmpProfileFollowors'.tr,
                           style: TextStyle(fontSize: 18),
                         ),
                       ],
@@ -114,21 +114,21 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
         Padding(
           padding: const EdgeInsets.all(9.0),
           child: Text(
-            ' About Me',
+            'CmpProfileAboutMe'.tr,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            ' i belevie that no one should choose between acareer we love and prove our livers .',
+            ' ibeleviethatnooneshouldchoosebetweenacareerweloveandproveourlivers.',
             style: TextStyle(fontSize: 16, color: Colors.black54),
           ),
         ),
         Padding(
           padding: const EdgeInsets.all(9.0),
           child: Text(
-            ' Contents',
+            'CmpProfileContent'.tr,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
         ),

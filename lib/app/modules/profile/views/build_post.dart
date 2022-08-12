@@ -112,7 +112,7 @@ class BuildPost extends GetResponsiveView<ProfileController> {
                                         padding: const EdgeInsets.all(3),
                                         child: TextButton(
                                           child: Text(
-                                            'Edit',
+                                            'buildPostEdit'.tr,
                                             style:
                                                 TextStyle(color: Colors.black),
                                           ),
@@ -129,7 +129,7 @@ class BuildPost extends GetResponsiveView<ProfileController> {
                                                       MainAxisSize.min,
                                                   children: [
                                                     Text(
-                                                      'Edit Profile',
+                                                      'buildPostEditProfile'.tr,
                                                       style: TextStyle(
                                                         fontSize: 20,
                                                         color: AppColors.orange,
@@ -148,7 +148,7 @@ class BuildPost extends GetResponsiveView<ProfileController> {
                                                         },
                                                         type: TextInputType
                                                             .multiline,
-                                                        hint: 'Description',
+                                                        hint: 'buildPostDes'.tr,
                                                         obscureText: false,
                                                         prefIcon:
                                                             Icons.description,
@@ -219,8 +219,8 @@ class BuildPost extends GetResponsiveView<ProfileController> {
                                                           controller.updatePost(
                                                               post!.id!, post!);
                                                         },
-                                                        child: const Text(
-                                                          "Save ",
+                                                        child:  Text(
+                                                          "buildPostSave".tr,
                                                           style: TextStyle(
                                                             fontSize: 18,
                                                             color: Colors.white,
@@ -239,7 +239,7 @@ class BuildPost extends GetResponsiveView<ProfileController> {
                                           padding: const EdgeInsets.all(0),
                                           child: TextButton(
                                             child: Text(
-                                              'Delete',
+                                              'buildPostDelete'.tr,
                                               style: TextStyle(
                                                   color: Colors.black),
                                             ),

@@ -24,13 +24,13 @@ class IntroPage extends GetView<IntroController> {
         showNextButton: true,
         showBackButton: true,
         showSkipButton: false,
-        back: const Text("Back",
+        back: Text("Back".tr,
             style:
                 TextStyle(color: AppColors.blue, fontWeight: FontWeight.w600)),
-        next: const Text("Next",
+        next:  Text("Next".tr,
             style:
                 TextStyle(color: AppColors.blue, fontWeight: FontWeight.w600)),
-        done: const Text("Done",
+        done:  Text("Done".tr,
             style:
                 TextStyle(fontWeight: FontWeight.w600, color: AppColors.blue)),
         globalBackgroundColor: Colors.white,
@@ -73,10 +73,10 @@ PageViewModel interPage(context) {
     ),
 
     ///image
-    titleWidget: const Align(
+    titleWidget:  Align(
         alignment: Alignment.topLeft,
         child: Text(
-          'You Can Choose Acount To SignUp',
+          'YouCanChooseAcountToSignUp'.tr,
           style: TextStyle(fontSize: 15),
         )),
 
@@ -99,8 +99,8 @@ PageViewModel interPage(context) {
               onPressed: () {
                 Get.rootDelegate.offNamed(Routes.SignUpInfluencer);
               },
-              child: const Text(
-                " Influencer",
+              child:  Text(
+                "Influencer".tr,
                 style: TextStyle(fontSize: 18),
               ),
             ),
@@ -119,8 +119,8 @@ PageViewModel interPage(context) {
               onPressed: () {
                 Get.rootDelegate.offNamed(Routes.SignUpCompany);
               },
-              child: const Text(
-                " Company",
+              child:  Text(
+                "Company".tr,
                 style: TextStyle(fontSize: 18),
               ),
             ),
@@ -139,8 +139,8 @@ PageViewModel interPage(context) {
               onPressed: () {
                 Get.rootDelegate.offNamed(Routes.SignUpUserPage);
               },
-              child: const Text(
-                " User",
+              child:  Text(
+                "User".tr,
                 style: TextStyle(fontSize: 18),
               ),
             ),
@@ -167,7 +167,7 @@ PageViewModel interInfluncerPage(context) {
       bodyAlignment: Alignment.center,
       bodyPadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
     ),
-    image: const Text('Be Influencer',
+    image:  Text('BeInfluencer'.tr,
         textAlign: TextAlign.start,
         style: TextStyle(
             color: AppColors.orange,
@@ -181,8 +181,8 @@ PageViewModel interInfluncerPage(context) {
       ),
     ),
     //text
-    bodyWidget: const Text(
-        'Here you can write the description of the page, to explain someting...'),
+    bodyWidget:  Text(
+        'AContentCreatorissomeonewhosharesinformationandussuallytargetsspecificusers.acontentcreatorcancreatediffrenttypesofcontent'.tr),
     footer: Column(
       children: [
         ///btn Sign Up As Influencer
@@ -197,8 +197,8 @@ PageViewModel interInfluncerPage(context) {
               // Get.to(() => SignUpInfluencer());
               Get.rootDelegate.offNamed(Routes.SignUpInfluencer);
             },
-            child: const Text(
-              "Sign Up As Influencer",
+            child: Text(
+              "SignUpAsInfluencer".tr,
               style: TextStyle(fontSize: 18),
             ),
           ),
@@ -208,7 +208,7 @@ PageViewModel interInfluncerPage(context) {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('you Have Account?',
+            Text('youHaveAccount?'.tr,
                 style: TextStyle(
                   color: Colors.grey,
                 )),
@@ -217,7 +217,7 @@ PageViewModel interInfluncerPage(context) {
             ),
             InkWell(
               child: Text(
-                'sign in',
+                'signin'.tr,
                 style: TextStyle(
                   color: Colors.grey,
                   decoration: TextDecoration.underline,
@@ -250,7 +250,7 @@ PageViewModel interCompanyPage(context) {
       bodyAlignment: Alignment.center,
       bodyPadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
     ),
-    image: const Text('Be Company',
+    image:  Text('BeCompany'.tr,
         textAlign: TextAlign.start,
         style: TextStyle(
             color: AppColors.orange,
@@ -265,8 +265,8 @@ PageViewModel interCompanyPage(context) {
     ),
 
     ///text
-    bodyWidget: const Text(
-        'Here you can write the description of the page, to explain someting...'),
+    bodyWidget: Text(
+        'thecompanyconsistsofmorethanonepersonanditisabrandthatpromotesitisproduct'.tr),
     footer: Column(
       children: [
         ///btn Sign Up As Company
@@ -280,8 +280,8 @@ PageViewModel interCompanyPage(context) {
             onPressed: () {
               Get.rootDelegate.offNamed(Routes.SignUpCompany);
             },
-            child: const Text(
-              "Sign Up As Company",
+            child: Text(
+              "SignUpAsCompany".tr,
               style: TextStyle(fontSize: 18),
             ),
           ),
@@ -291,7 +291,7 @@ PageViewModel interCompanyPage(context) {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('you Have Account?',
+             Text('youHaveAccount?'.tr,
                 style: TextStyle(
                   color: Colors.grey,
                 )),
@@ -300,7 +300,7 @@ PageViewModel interCompanyPage(context) {
             ),
             InkWell(
               child: Text(
-                'sign in',
+                'signin'.tr,
                 style: TextStyle(
                   color: Colors.grey,
                   decoration: TextDecoration.underline,
@@ -333,7 +333,7 @@ PageViewModel interUserPage(context) {
       bodyAlignment: Alignment.center,
       bodyPadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
     ),
-    image: const Text('Be User',
+    image: Text('BeUser'.tr,
         textAlign: TextAlign.start,
         style: TextStyle(
             color: AppColors.orange,
@@ -349,8 +349,8 @@ PageViewModel interUserPage(context) {
     ),
 
     ///text
-    bodyWidget: const Text(
-        'Here you can write the description of the page, to explain someting...'),
+    bodyWidget: Text(
+        'theuserfollowscopaniesandcontentmakers'.tr),
     footer: Column(
       children: [
         ///btn Sign Up As User
@@ -364,8 +364,8 @@ PageViewModel interUserPage(context) {
             onPressed: () {
               Get.rootDelegate.offNamed(Routes.SignUpUserPage);
             },
-            child: const Text(
-              "Sign Up As User",
+            child: Text(
+              "SignUpAsUser".tr,
               style: TextStyle(fontSize: 18),
             ),
           ),
@@ -375,7 +375,7 @@ PageViewModel interUserPage(context) {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('you Have Account?',
+            Text('youHaveAccount?'.tr,
                 style: TextStyle(
                   color: Colors.grey,
                 )),
@@ -383,8 +383,8 @@ PageViewModel interUserPage(context) {
               width: 3,
             ),
             InkWell(
-              child:const Text(
-                'sign in',
+              child: Text(
+                'signin'.tr,
                 style: TextStyle(
                   color: Colors.grey,
                   decoration: TextDecoration.underline,

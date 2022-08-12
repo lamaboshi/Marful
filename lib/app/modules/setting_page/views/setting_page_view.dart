@@ -16,7 +16,7 @@ class SettingPageView extends GetView<SettingPageController> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Setting'),
+        title:  Text('Setting'.tr),
         backgroundColor: AppColors.orange,
       ),
       body: Padding(
@@ -24,16 +24,16 @@ class SettingPageView extends GetView<SettingPageController> {
         child: Column(
           children: [
             controller.auth.getTypeEnum() == Auth.comapny
-                ? buildCard('Brand', Icons.settings,
+                ? buildCard('Brand'.tr, Icons.settings,
                     () => Get.rootDelegate.toNamed(Routes.BRAND_PAGE))
                 : SizedBox.shrink(),
             controller.auth.getTypeEnum() != Auth.user
-                ? buildCard('Content', Icons.edit,
+                ? buildCard('Content'.tr, Icons.edit,
                     () => Get.rootDelegate.toNamed(Routes.Content))
                 : SizedBox.shrink(),
-            buildCard('About', Icons.abc_outlined, () {}),
-            buildCard('Delete My Account', Icons.delete, () {}),
-            buildCard('Edit', AppIcons.trending_up, () {
+            buildCard('About'.tr, Icons.abc_outlined, () {}),
+            buildCard('DeleteMyAccount'.tr, Icons.delete, () {}),
+            buildCard('buildPostEdit'.tr, AppIcons.trending_up, () {
               Get.to(PermissionPageView());
             }),
             Expanded(

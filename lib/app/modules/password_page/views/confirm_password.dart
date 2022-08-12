@@ -30,7 +30,7 @@ class Confirmpassword extends GetView<PasswordController> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
                 child: Text(
-                  'Reset  Your Password',
+                  'ResetYourPassword'.tr,
                   style: TextStyle(fontSize: 22, color: AppColors.blue),
                 ),
               ),
@@ -45,7 +45,7 @@ class Confirmpassword extends GetView<PasswordController> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              'Enter your new password below',
+              'Enteryournewpasswordbelow'.tr,
               style: TextStyle(fontSize: 20, color: Colors.black54),
             ),
           ),
@@ -62,8 +62,8 @@ class Confirmpassword extends GetView<PasswordController> {
             autofocus: false,
             decoration: InputDecoration(
                 labelStyle: TextStyle(color: Colors.grey),
-                labelText: ' Password',
-                hintText: "New password",
+                labelText: 'Password'.tr,
+                hintText: "Newpassword".tr,
                 prefixIcon: Icon(
                   Icons.lock_open_outlined,
                   color: AppColors.orange,
@@ -93,8 +93,8 @@ class Confirmpassword extends GetView<PasswordController> {
             autofocus: false,
             decoration: InputDecoration(
                 labelStyle: TextStyle(color: Colors.grey),
-                labelText: 'Confirm',
-                hintText: "Comfirmpassword",
+                labelText: 'Confirm'.tr,
+                hintText: "Comfirmpassword".tr,
                 prefixIcon: Icon(
                   Icons.lock,
                   color: AppColors.orange,
@@ -130,14 +130,14 @@ class Confirmpassword extends GetView<PasswordController> {
                     height: 40,
                     child: Container(
                       child: Text(
-                        'Comfirm from the enter value',
+                        'Comfirmfromtheentervalue'.tr,
                         style: TextStyle(color: Colors.red),
                       ),
                     )).show();
               }
             },
-            child: const Text(
-              "SUBMIT",
+            child:  Text(
+              "SUBMIT".tr,
               style: TextStyle(
                 fontSize: 18,
                 color: Colors.white,

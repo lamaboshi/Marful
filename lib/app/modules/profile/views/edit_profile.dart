@@ -25,7 +25,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
             await controller.UpdateDataforperson();
           },
           label: Text(
-            "Save ",
+            "buildPostSave".tr,
             style: TextStyle(
               fontSize: 18,
               color: Colors.white,
@@ -33,7 +33,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
           )),
       appBar: AppBar(
         backgroundColor: AppColors.orange,
-        title: Text('Edit Profile'),
+        title: Text('buildPostEditProfile'.tr),
       ),
       body: SingleChildScrollView(child: getType()),
     );
@@ -55,7 +55,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                   Row(
                     children: [
                       Text(
-                        'Content',
+                        'editProfilerContent'.tr,
                         style: TextStyle(
                           fontSize: 20,
                           color: AppColors.orange,
@@ -105,7 +105,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                   Row(
                     children: [
                       Text(
-                        'Post',
+                        'editProfilerPost'.tr,
                         style: TextStyle(
                           fontSize: 20,
                           color: AppColors.orange,
@@ -143,7 +143,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                   Row(
                     children: [
                       Text(
-                        'Content',
+                        'editProfilerContent'.tr,
                         style: TextStyle(
                           fontSize: 20,
                           color: AppColors.orange,
@@ -186,7 +186,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                   Row(
                     children: [
                       Text(
-                        'Post',
+                        'editProfilerPost'.tr,
                         style: TextStyle(
                           fontSize: 20,
                           color: AppColors.orange,
@@ -216,7 +216,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
           ],
         );
       default:
-        return Text('no Value');
+        return Text('editProfilerNoValue'.tr);
     }
   }
 
@@ -331,7 +331,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                           }
                         },
                         type: TextInputType.multiline,
-                        hint: 'Name',
+                        hint: 'SignUpInfName'.tr,
                         obscureText: false,
                         prefIcon: Icons.person,
                       ),
@@ -361,7 +361,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                       }
                     },
                     type: TextInputType.multiline,
-                    hint: 'Phone',
+                    hint: 'SignUpCmpMob'.tr,
                     obscureText: false,
                     prefIcon: Icons.phone,
                   ),
@@ -378,7 +378,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                                   ? controller.company.value.email
                                   : controller.user.value.email,
                           type: TextInputType.multiline,
-                          hint: 'Email',
+                          hint: 'SignUpCmpEmail'.tr,
                           obscureText: false,
                           prefIcon: Icons.email,
                           onChanged: (txt) {
@@ -424,7 +424,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                                 }
                               },
                               type: TextInputType.multiline,
-                              hint: 'PayPal',
+                              hint: 'SignUpInfPaybal'.tr,
                               obscureText: false,
                               prefIcon: Icons.paypal,
                             ),
@@ -455,7 +455,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                             }
                           },
                           type: TextInputType.multiline,
-                          hint: 'Address',
+                          hint: 'SignCmpUplocation'.tr,
                           obscureText: false,
                           prefIcon: Icons.location_on,
                         ),
@@ -486,7 +486,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                                 }
                               },
                               type: TextInputType.multiline,
-                              hint: 'Username',
+                              hint: 'SignUpInfUserName'.tr,
                               obscureText: false,
                               prefIcon: Icons.person,
                             ),
@@ -516,7 +516,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                             }
                           },
                           type: TextInputType.multiline,
-                          hint: 'TelePhone',
+                          hint: 'SignUpCmpTele'.tr,
                           obscureText: false,
                           prefIcon: Icons.phone,
                         ),
@@ -546,7 +546,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                             }
                           },
                           type: TextInputType.multiline,
-                          hint: 'Description',
+                          hint: 'buildPostDes'.tr,
                           obscureText: false,
                           prefIcon: Icons.description,
                         ),
@@ -572,7 +572,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                             }
                           },
                           type: TextInputType.multiline,
-                          hint: 'Age',
+                          hint: 'SignUpUserAge'.tr,
                           obscureText: false,
                           prefIcon: Icons.description,
                         ),

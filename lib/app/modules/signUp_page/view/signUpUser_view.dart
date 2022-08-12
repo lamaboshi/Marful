@@ -50,7 +50,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                       height: 5,
                     ),
                     InkWell(
-                        onTap: () {}, child: const Text('Add Your Photo..')),
+                        onTap: () {}, child:  Text('SignUpCmpPH'.tr)),
                     const SizedBox(
                       height: 20,
                     ),
@@ -66,7 +66,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                               controller.user.value.name = value;
                             },
                             type: TextInputType.name,
-                            label: ' Name',
+                            label: 'SignUpInfName'.tr,
                             hint: "Haya Eid",
                             prefIcon: Icons.person,
                           ),
@@ -77,7 +77,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                               controller.user.value.userName = value;
                             },
                             type: TextInputType.name,
-                            label: 'User Name',
+                            label: 'SignUpInfUserName'.tr,
                             hint: "Haya ",
                             prefIcon: Icons.person,
                           ),
@@ -88,7 +88,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                               controller.user.value.age = int.parse(value);
                             },
                             type: TextInputType.number,
-                            label: 'Age',
+                            label: 'SignUpUserAge'.tr,
                             hint: "21 ",
                             prefIcon: Icons.description,
                           ),
@@ -99,7 +99,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                               controller.user.value.phone = value;
                             },
                             type: TextInputType.number,
-                            label: 'PhoneNumber',
+                            label: 'SignUpCmpMob'.tr,
                             hint: "099717424666 ",
                             prefIcon: Icons.phone,
                           ),
@@ -110,7 +110,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                               //        controller.user.value.l= value;
                             },
                             type: TextInputType.number,
-                            label: 'location',
+                            label: 'SignCmpUplocation'.tr,
                             hint: "aleppo ",
                             prefIcon: Icons.location_on,
                           ),
@@ -121,7 +121,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                               controller.user.value.paypal = value;
                             },
                             type: TextInputType.number,
-                            label: 'PayBal',
+                            label: 'SignUpInfPaybal'.tr,
                             hint: "hsd235dfgdf ",
                             prefIcon: Icons.paypal,
                           ),
@@ -133,7 +133,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                               controller.user.value.email = value;
                             },
                             type: TextInputType.emailAddress,
-                            label: 'Email',
+                            label: 'SignUpCmpEmail'.tr,
                             hint: "hy@gmail.com ",
                             prefIcon: Icons.email,
                           ),
@@ -145,7 +145,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                               },
                               type: TextInputType.visiblePassword,
                               obscureText: !controller.isShownUser.value,
-                              label: 'Passeword',
+                              label: 'SignUpCmpPassword'.tr,
                               hint: "***",
                               suffixIcon: IconButton(
                                 onPressed: () {
@@ -174,8 +174,8 @@ class SignUpUserPage extends GetView<SignUpController> {
                             onPressed: () async {
                               controller.signUpUser();
                             },
-                            child: const Text(
-                              "Sign Up",
+                            child:  Text(
+                              "SignUpCmp".tr,
                               style: TextStyle(
                                 fontSize: 18,
                                 color: Colors.white,
