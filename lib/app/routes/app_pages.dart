@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:marful/app/modules/haya/views/hayaIntro.dart';
 
 import '../../sheard/auth_service.dart';
 import '../modules/addEmployee_page/bindings/add_employee_page_binding.dart';
@@ -17,6 +16,7 @@ import '../modules/employeePer_page/views/employee_per_page_view.dart';
 import '../modules/firstsplash_page/bindings/firstSplash_binding.dart';
 import '../modules/firstsplash_page/views/firstSplash_view.dart';
 import '../modules/haya/bindings/haya_binding.dart';
+import '../modules/haya/views/hayaIntro.dart';
 import '../modules/haya/views/haya_view.dart';
 import '../modules/help_pagee/bindings/help_pagee_binding.dart';
 import '../modules/help_pagee/views/help_pagee_view.dart';
@@ -32,6 +32,8 @@ import '../modules/password_page/views/confirm_password.dart';
 import '../modules/password_page/views/password_page.dart';
 import '../modules/permission_page/bindings/permission_page_binding.dart';
 import '../modules/permission_page/views/permission_page_view.dart';
+import '../modules/permissions_page/bindings/permissions_page_binding.dart';
+import '../modules/permissions_page/views/permissions_page_view.dart';
 import '../modules/product_page/bindings/product_page_binding.dart';
 import '../modules/product_page/views/product_page_view.dart';
 import '../modules/profile/binding/profile_binding.dart';
@@ -59,7 +61,8 @@ class AppPages {
   AppPages._();
   //static const iNITIAL = Routes.websitecompany;
 
-  static final routes = [ GetPage(
+  static final routes = [
+    GetPage(
       name: _Paths.Intro,
       page: () => const IntroPage(),
     ),
@@ -216,11 +219,16 @@ class AppPages {
       page: () => const AddEmployeePageView(),
       binding: AddEmployeePageBinding(),
     ),
-   
+
     GetPage(
       name: _Paths.HELP_PAGEE,
       page: () => const HelpPageeView(),
       binding: HelpPageeBinding(),
+    ),
+    GetPage(
+      name: _Paths.PERMISSIONS_PAGE,
+      page: () => const PermissionsPageView(),
+      binding: PermissionsPageBinding(),
     ),
   ];
 }
