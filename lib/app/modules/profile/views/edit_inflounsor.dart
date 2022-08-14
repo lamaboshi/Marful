@@ -19,7 +19,7 @@ class EditInflounsorPage extends GetResponsiveView<ProfileController> {
             controller.infulencer.value.name!,
             controller.infulencer.value.description!,
             1,
-            controller.infulencer.value.image!),
+            controller.infulencer.value.image),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(

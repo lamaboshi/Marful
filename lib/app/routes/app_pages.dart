@@ -59,7 +59,8 @@ class AppPages {
   AppPages._();
   //static const iNITIAL = Routes.websitecompany;
 
-  static final routes = [ GetPage(
+  static final routes = [
+    GetPage(
       name: _Paths.Intro,
       page: () => const IntroPage(),
     ),
@@ -107,6 +108,7 @@ class AppPages {
       HomeMainBinding(),
       HomePostBinding(),
       MenuBinding(),
+      SettingBinding(),
       ProfileBinding()
     ], middlewares: [
       AuthMiddlware()
@@ -115,6 +117,7 @@ class AppPages {
         name: _Paths.EditProfile,
         page: () => EditProfilePage(),
       ),
+      GetPage(name: _Paths.Setting, page: () => SettingPage()),
     ]),
 
     GetPage(
@@ -132,12 +135,6 @@ class AppPages {
       name: _Paths.WebsiteCompany,
       page: () => WebsiteCompanyPage(),
       binding: WebsitcompanyBinding(),
-    ),
-
-    GetPage(
-      name: _Paths.Setting,
-      page: () => SettingPage(),
-      binding: SettingBinding(),
     ),
 
     GetPage(
@@ -216,7 +213,7 @@ class AppPages {
       page: () => const AddEmployeePageView(),
       binding: AddEmployeePageBinding(),
     ),
-   
+
     GetPage(
       name: _Paths.HELP_PAGEE,
       page: () => const HelpPageeView(),

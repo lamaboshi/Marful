@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:marful/app/data/model/company.dart';
@@ -5,6 +6,7 @@ import 'package:marful/app/data/model/infulonser.dart';
 import 'package:marful/app/data/model/infulonsercontent.dart';
 import 'package:marful/app/data/model/user_model.dart';
 import 'package:marful/app/modules/homeMain_page/data/model/Post.dart';
+import 'package:marful/app/modules/profile/data/user_infu.dart';
 import 'package:marful/app/modules/websit_company/data/model/companycontent.dart';
 import 'package:marful/sheard/util.dart';
 import 'package:q_overlay/q_overlay.dart';
@@ -12,11 +14,15 @@ import 'package:q_overlay/q_overlay.dart';
 import '../../../../sheard/auth_service.dart';
 import '../../../data/model/content.dart';
 import '../../../data/repo/content_repo.dart';
+import '../data/Infu_follow.dart';
+import '../data/company_ifu.dart';
+import '../data/company_user.dart';
 import '../data/model_data.dart';
 import '../data/profile_repository.dart';
 
 class ProfileController extends GetxController {
   final kind = true.obs;
+  final _dio = Get.find<Dio>();
   final typeAuth = Auth.user.obs;
   final contentRepo = ContenteRpository();
   final repo = ProfailRepository();
@@ -37,10 +43,79 @@ class ProfileController extends GetxController {
   final info = Infulonser().obs;
   final comp = Company().obs;
   final use = UserModel().obs;
+  final loading = false.obs;
+  final infoSearch = Infulonser().obs;
+  final companySearch = Company().obs;
+  final userCompany = UserCompany().obs;
+  final infuUser = InfulonserUser().obs;
+  final infoFinfo = InfulonserFollowInfulonser().obs;
+  final companyInfu = CompanyInfulonser().obs;
+  final hasFollowed = false.obs;
   @override
   void onInit() {
     super.onInit();
     getDataperson();
+  }
+
+  Future<void> getFollowed(Auth type, int id) async {
+    hasFollowed.value = false;
+    if (auth.getTypeEnum() == type && type == Auth.infulonser) {
+      infoFinfo.value = await repo
+          .getInfuFollowedInfu((auth.getDataFromStorage() as Infulonser).id!);
+      hasFollowed.value = infoFinfo.value.followedId == id;
+    } else if (auth.getTypeEnum() == Auth.user && type == Auth.comapny) {
+      userCompany.value = await repo
+          .getuserCompany((auth.getDataFromStorage() as UserModel).id!);
+      hasFollowed.value = follower.any((element) =>
+          element.email == (auth.getDataFromStorage() as UserModel).email!);
+    } else if (auth.getTypeEnum() == Auth.user && type == Auth.infulonser) {
+      infuUser.value =
+          await repo.getuserInfo((auth.getDataFromStorage() as UserModel).id!);
+      hasFollowed.value = follower.any((element) =>
+          element.email == (auth.getDataFromStorage() as UserModel).email!);
+    } else if (auth.getTypeEnum() == Auth.comapny && type == Auth.infulonser) {
+      companyInfu.value = await repo.getCompanyInfulonser(
+          (auth.getDataFromStorage() as Company).id!, 0);
+      hasFollowed.value = companyInfu.value.infulonserId == id;
+    } else if (auth.getTypeEnum() == Auth.infulonser && type == Auth.comapny) {
+      companyInfu.value = await repo.getCompanyInfulonser(
+          0, (auth.getDataFromStorage() as Infulonser).id!);
+      hasFollowed.value = companyInfu.value.companyId == id;
+    }
+  }
+
+  Future<void> addFollow(Auth type) async {
+    if (auth.getTypeEnum() == type && type == Auth.infulonser) {
+      var infuFol = InfulonserFollowInfulonser(
+          followId: infoSearch.value.id!,
+          followedId: (auth.getDataFromStorage() as Infulonser).id!);
+      hasFollowed.value = await repo.addInfuFollowedInfu(infuFol);
+    } else if (auth.getTypeEnum() == Auth.user && type == Auth.comapny) {
+      var data = UserCompany(
+          companyId: companySearch.value.id!,
+          userId: (auth.getDataFromStorage() as UserModel).id!);
+      hasFollowed.value = await repo.adduserCompany(data);
+      getcompanyType(companySearch.value.id!);
+    } else if (auth.getTypeEnum() == Auth.user && type == Auth.infulonser) {
+      var data = InfulonserUser(
+          infulonserId: infoSearch.value.id!,
+          userId: (auth.getDataFromStorage() as UserModel).id!);
+      hasFollowed.value = await repo.adduserInfo(data);
+      getInfoType(infoSearch.value.id!);
+    } else if (auth.getTypeEnum() == Auth.comapny && type == Auth.infulonser) {
+      var data = CompanyInfulonser(
+          infulonserId: infoSearch.value.id!,
+          followed: 'company',
+          companyId: (auth.getDataFromStorage() as Company).id!);
+      hasFollowed.value = await repo.addCompanyInfulonser(data);
+    } else if (auth.getTypeEnum() == Auth.infulonser && type == Auth.comapny) {
+      var data = CompanyInfulonser(
+          infulonserId: infoSearch.value.id!,
+          followed: 'infulonser',
+          companyId: (auth.getDataFromStorage() as Company).id!);
+      hasFollowed.value = await repo.addCompanyInfulonser(data);
+    }
+    //  getFollowed(type);
   }
 
   Future pickImage() async {
@@ -53,12 +128,44 @@ class ProfileController extends GetxController {
     }
   }
 
+  Future<void> getInfoType(int id) async {
+    infoSearch.value = Infulonser();
+    companySearch.value = Company();
+    loading.value = true;
+    var result =
+        await _dio.get('https://localhost:7192/api/Infulonser/Get/$id');
+    infoSearch.value = Infulonser.fromJson(result.data as Map<String, dynamic>);
+    await getContentInful(infoSearch.value.id!);
+    await getPostInful(infoSearch.value.id!);
+    await getfllowerInful(infoSearch.value.email!);
+    await getfllowerInfulCount(infoSearch.value.email!);
+    await getFollowed(typeAuth.value, id);
+    loading.value = false;
+  }
+
+  Future<void> getcompanyType(int id) async {
+    hasFollowed.value = false;
+    infoSearch.value = Infulonser();
+    companySearch.value = Company();
+    loading.value = true;
+    var result =
+        await _dio.get('https://localhost:7192/api/Company/GetCompany/$id');
+    companySearch.value = Company.fromJson(result.data as Map<String, dynamic>);
+    await getContentComapny(companySearch.value.id!);
+    await getPostCompany(companySearch.value.id!);
+    await getfllowerCompany(companySearch.value.email!);
+    await getfllowerCompanyCount(companySearch.value.email!);
+    await getFollowed(typeAuth.value, id);
+    loading.value = false;
+  }
+
   Future<List<Content>> getContent() async {
     var res = await contentRepo.getContent();
     return res;
   }
 
   Future<void> getDataperson() async {
+    loading.value = true;
     var data = await getContent();
     allContents.assignAll(data);
     switch (auth.personType()) {
@@ -71,8 +178,9 @@ class ProfileController extends GetxController {
         company.value = auth.getDataFromStorage() as Company;
         await getContentComapny(company.value.id!);
         await getPostCompany(company.value.id!);
-        await getfllowerCompany();
-        await getfllowerCompanyCount();
+        await getfllowerCompany((auth.getDataFromStorage() as Company).email!);
+        await getfllowerCompanyCount(
+            (auth.getDataFromStorage() as Company).email!);
 
         break;
       case 'infulonser':
@@ -80,10 +188,12 @@ class ProfileController extends GetxController {
         infulencer.value = auth.getDataFromStorage() as Infulonser;
         await getContentInful(infulencer.value.id!);
         await getPostInful(infulencer.value.id!);
-        await getfllowerInful();
-        await getfllowerInfulCount();
+        await getfllowerInful((auth.getDataFromStorage() as Infulonser).email!);
+        await getfllowerInfulCount(
+            (auth.getDataFromStorage() as Infulonser).email!);
         break;
     }
+    loading.value = false;
   }
 
   Future<void> UpdateDataforperson() async {
@@ -136,27 +246,23 @@ class ProfileController extends GetxController {
     contents.assignAll(data);
   }
 
-  Future<void> getfllowerInful() async {
-    var data = await repo
-        .getAllFollowInfu((auth.getDataFromStorage() as Infulonser).email!);
+  Future<void> getfllowerInful(String email) async {
+    var data = await repo.getAllFollowInfu(email);
     follower.assignAll(data);
   }
 
-  Future<void> getfllowerInfulCount() async {
-    var data = await repo
-        .getCountFollowInfu((auth.getDataFromStorage() as Infulonser).email!);
+  Future<void> getfllowerInfulCount(String email) async {
+    var data = await repo.getCountFollowInfu(email);
     followerCount.value = data;
   }
 
-  Future<void> getfllowerCompany() async {
-    var data = await repo
-        .getAllFollowCompany((auth.getDataFromStorage() as Company).email!);
+  Future<void> getfllowerCompany(String email) async {
+    var data = await repo.getAllFollowCompany(email);
     follower.assignAll(data);
   }
 
-  Future<void> getfllowerCompanyCount() async {
-    var data = await repo
-        .getCountFollowCompany((auth.getDataFromStorage() as Company).email!);
+  Future<void> getfllowerCompanyCount(String email) async {
+    var data = await repo.getCountFollowCompany(email);
     followerCount.value = data;
   }
 

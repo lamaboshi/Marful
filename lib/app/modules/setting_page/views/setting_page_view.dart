@@ -31,8 +31,8 @@ class SettingPageView extends GetView<SettingPageController> {
                     () => Get.rootDelegate.toNamed(Routes.Content))
                 : SizedBox.shrink(),
             buildCard('About', Icons.abc_outlined, () {}),
-            buildCard('Delete My Account', Icons.delete, () {
-              controller.deleteAccount();
+            buildCard('Delete My Account', Icons.delete, () async {
+              await controller.deleteAccount();
             }),
             buildCard('Permission', AppIcons.trending_up, () {
               Get.to(PermissionPageView());

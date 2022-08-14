@@ -5,6 +5,10 @@ import 'package:marful/app/data/model/content.dart';
 import 'package:marful/app/data/model/infulonser.dart';
 import 'package:marful/app/data/model/user_model.dart';
 import 'package:marful/app/modules/homeMain_page/data/model/Post.dart';
+import 'package:marful/app/modules/profile/data/Infu_follow.dart';
+import 'package:marful/app/modules/profile/data/company_ifu.dart';
+import 'package:marful/app/modules/profile/data/company_user.dart';
+import 'package:marful/app/modules/profile/data/user_infu.dart';
 
 import '../../websit_company/data/model/companycontent.dart';
 import 'adapter/profile_adapter.dart';
@@ -181,5 +185,84 @@ class ProfailRepository extends IProfailRepository {
     var result = await _dio.put('https://localhost:7192/api/Post/$idPost',
         data: post.toJson());
     return result.statusCode == 200;
+  }
+
+  @override
+  Future<bool> addInfuFollowedInfu(
+      InfulonserFollowInfulonser followInfulonser) async {
+    var result = await _dio.post(
+      'https://localhost:7192/api/InfulonserFollowInfulonser',
+      data: followInfulonser.toJson(),
+    );
+    return result.statusCode == 200;
+  }
+
+  @override
+  Future<bool> adduserCompany(UserCompany userCompany) async {
+    var result = await _dio.post(
+      'https://localhost:7192/api/UserCompany/AddUserCompany',
+      data: userCompany.toJson(),
+    );
+    return result.statusCode == 200;
+  }
+
+  @override
+  Future<bool> adduserInfo(InfulonserUser infulonserUser) async {
+    var result = await _dio.post(
+      'https://localhost:7192/api/InfulonserUser/AddInfulonserUser',
+      data: infulonserUser.toJson(),
+    );
+    return result.statusCode == 200;
+  }
+
+  @override
+  Future<InfulonserFollowInfulonser> getInfuFollowedInfu(int idfllow) async {
+    var result = await _dio
+        .get('https://localhost:7192/api/InfulonserFollowInfulonser/$idfllow');
+    if (result.data != null) {
+      return InfulonserFollowInfulonser.fromJson(
+          result.data as Map<String, dynamic>);
+    } else {
+      return InfulonserFollowInfulonser();
+    }
+  }
+
+  @override
+  Future<UserCompany> getuserCompany(int userId) async {
+    var result = await _dio
+        .get('https://localhost:7192/api/UserCompany/GetUserCompany/$userId');
+    print(
+        '-------------------------------- getuserCompany ------------------------------');
+    return UserCompany.fromJson(result.data as Map<String, dynamic>);
+  }
+
+  @override
+  Future<InfulonserUser> getuserInfo(int userId) async {
+    var result = await _dio.get(
+        'https://localhost:7192/api/InfulonserUser/GetInfilonserUser/$userId');
+    print(
+        '-------------------------------- getuserInfo ------------------------------');
+    return InfulonserUser.fromJson(result.data as Map<String, dynamic>);
+  }
+
+  @override
+  Future<bool> addCompanyInfulonser(CompanyInfulonser companyInfulonser) async {
+    var result = await _dio.post(
+      'https://localhost:7192/api/CompanyInfulonser',
+      data: companyInfulonser.toJson(),
+    );
+    return result.statusCode == 200;
+  }
+
+  @override
+  Future<CompanyInfulonser> getCompanyInfulonser(
+      int idCompany, int idInfu) async {
+    var result = await _dio
+        .get('https://localhost:7192/api/CompanyInfulonser/$idCompany/$idInfu');
+    if (result.data != null) {
+      return CompanyInfulonser.fromJson(result.data as Map<String, dynamic>);
+    } else {
+      return CompanyInfulonser();
+    }
   }
 }

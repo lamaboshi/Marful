@@ -23,21 +23,24 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                 child: Row(
                   children: [
                     SizedBox(width: screen.width / 6),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(AppColors.blue),
-                          fixedSize: MaterialStateProperty.all(
-                              const Size.fromWidth(150))),
-                      onPressed: () {},
-                      child: const Text(
-                        "Follow",
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
+                    Obx(() => ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor: !controller.hasFollowed.value
+                                  ? MaterialStateProperty.all(AppColors.blue)
+                                  : MaterialStateProperty.all(AppColors.orange),
+                              fixedSize: MaterialStateProperty.all(
+                                  const Size.fromWidth(150))),
+                          onPressed: () {
+                            controller.addFollow(controller.typeAuth.value);
+                          },
+                          child: const Text(
+                            "Follow",
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                            ),
+                          ),
+                        )),
                     SizedBox(
                       width: 18,
                     ),
@@ -116,8 +119,11 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                 ),
                 OutlinedButton(
                   onPressed: () async {
-                    await controller
-                        .getPostCompany(controller.company.value.id!);
+                    isSearch
+                        ? await controller
+                            .getPostCompany(controller.companySearch.value.id!)
+                        : await controller
+                            .getPostCompany(controller.company.value.id!);
                     QPanel(
                         width: screen.width / 1.2,
                         alignment: Alignment.centerRight,
@@ -125,7 +131,9 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                           child: Column(
                             children: controller.posts
                                 .map((e) => BuildPost(
-                                      infoname: controller.company.value.name!,
+                                      infoname: isSearch
+                                          ? controller.companySearch.value.name!
+                                          : controller.company.value.name!,
                                       post: e,
                                     ))
                                 .toList(),
@@ -168,7 +176,9 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            controller.company.value.description!,
+            isSearch
+                ? controller.companySearch.value.description!
+                : controller.company.value.description!,
             style: TextStyle(fontSize: 16, color: Colors.black54),
           ),
         ),
@@ -196,7 +206,9 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
               () => Column(
                 children: controller.posts
                     .map((e) => BuildPost(
-                          infoname: controller.company.value.name!,
+                          infoname: isSearch
+                              ? controller.companySearch.value.name!
+                              : controller.company.value.name!,
                           post: e,
                         ))
                     .toList(),

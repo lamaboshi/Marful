@@ -1,4 +1,5 @@
 import 'package:marful/app/data/model/brand.dart';
+import 'package:marful/app/modules/chat_page/data/model/job.dart';
 import 'package:marful/app/modules/homeMain_page/data/model/getPost.dart';
 
 import '../../../websit_company/data/model/companycontent.dart';
@@ -21,6 +22,8 @@ abstract class IHomeMainRepository {
   Future<void> addInterActionInf(PostInfulonser infulonser);
   Future<void> deleteInterActionUser(int idpostUser);
   Future<void> deleteInterActionInf(int idinfulonser);
+  Future<List<Job>> getCompanyJob(int idbrand);
+  Future<List<Job>> getInfoJob(int idInfo);
   Future<void> updateInterActionUser(int idpostUser, PostUser postUser);
   Future<void> updateInterActionInf(
       int idinfulonser, PostInfulonser infulonser);
