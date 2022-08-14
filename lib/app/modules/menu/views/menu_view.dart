@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marful/app/modules/employeePer_page/views/employee_per_page_view.dart';
 import 'package:marful/app/routes/app_pages.dart';
 
 import '../../../core/values/my_flutter_app_icons.dart';
@@ -32,7 +33,10 @@ class HomeMenuView extends GetView<MenuController> {
               controller.auth.stroge.deleteAllKeys();
               Get.rootDelegate.toNamed(Routes.SignIn);
             }),
-          ],
+              buildCard('Log out', Icons.logout, () {
+             Get.to(EmployeePerPageView());
+            }),
+        ],
         ),
       ),
     );

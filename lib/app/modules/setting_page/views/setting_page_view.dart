@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marful/app/modules/permissions_page/views/permissions_page_view.dart';
 import 'package:marful/app/routes/app_pages.dart';
-
 import '../../../../sheard/auth_service.dart';
 import '../../../core/values/app_colors.dart';
 import '../../../core/values/my_flutter_app_icons.dart';
-import '../../permission_page/views/permission_page_view.dart';
 import '../controllers/setting_page_controller.dart';
 
 class SettingPageView extends GetView<SettingPageController> {
@@ -35,7 +34,7 @@ class SettingPageView extends GetView<SettingPageController> {
               await controller.deleteAccount();
             }),
             buildCard('Permission', AppIcons.trending_up, () {
-              Get.to(PermissionPageView());
+              Get.to(PermissionsPageView());
             }),
             Expanded(
               flex: 5,

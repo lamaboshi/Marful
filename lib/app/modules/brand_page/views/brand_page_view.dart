@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marful/app/core/component/deleteDialog.dart';
 import 'package:marful/app/routes/app_pages.dart';
 import 'package:marful/sheard/util.dart';
 
@@ -251,10 +252,13 @@ class BrandPageView extends GetResponsiveView<BrandPageController> {
                             trailing: IconButton(
                                 padding: const EdgeInsets.all(0),
                                 onPressed: () {
-                                  controller.DelBrands(
-                                      controller.allBrands[index].id!);
+                                  Get.dialog(
+                                      DeleteDialogWidget(delFunction: () {
+                                    controller.DelBrands(
+                                        controller.allBrands[index].id!);
+                                  }));
                                 },
-                                icon: const Icon(Icons.close)),
+                                icon: const Icon(Icons.delete)),
                           )),
                       separatorBuilder: ((context, index) => const Divider(
                             endIndent: 8,
