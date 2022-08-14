@@ -20,8 +20,10 @@ class Job {
     code = json["code"];
     brandId = json['brandId'];
     infulonserId = json['infulonserId'];
-    messages = List<Message>.from((json["messages"] as Iterable)
-        .map((x) => Message.fromJson(x as Map<String, dynamic>)));
+    messages = json["messages"] == null
+        ? null
+        : List<Message>.from((json["messages"] as Iterable)
+            .map((x) => Message.fromJson(x as Map<String, dynamic>)));
   }
 
   Map<String, dynamic> toJson() {

@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/data/model/brand.dart';
+import 'package:marful/app/modules/chat_page/data/model/job.dart';
 import 'package:marful/app/modules/homeMain_page/data/adapter/homeMain_adapter.dart';
 import 'package:marful/app/modules/homeMain_page/data/model/Post.dart';
 import 'package:marful/app/modules/homeMain_page/data/model/getPost.dart';
@@ -153,5 +154,30 @@ class HomeMainRepositry extends IHomeMainRepository {
     var result = await _dio.put(
         'https://localhost:7192/api/UserPost/Put/$idpostUser',
         data: postUser.toJson());
+  }
+
+  @override
+  Future<List<Job>> getCompanyJob(int idbrand) async {
+    var result = await _dio
+        .get('https://localhost:7192/api/Job/GetJobsCompany/$idbrand');
+    print(result);
+    var list = <Job>[];
+    for (var item in result.data) {
+      list.add(Job.fromJson(item));
+    }
+    return list;
+  }
+
+  @override
+  Future<List<Job>> getInfoJob(int idInfo) async {
+    var result = await _dio.get('https://localhost:7192/api/Job/Get/$idInfo');
+    print(result);
+    var list = <Job>[];
+    for (var item in result.data) {
+      list.add(Job.fromJson(item));
+    }
+    print(
+        '--------------------------------------get all Job----------------------------------------------');
+    return list;
   }
 }

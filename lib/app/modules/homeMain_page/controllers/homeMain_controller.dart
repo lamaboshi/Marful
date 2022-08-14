@@ -4,6 +4,7 @@ import 'package:marful/app/data/model/brand.dart';
 import 'package:marful/app/data/model/company.dart';
 import 'package:marful/app/data/model/infulonser.dart';
 import 'package:marful/app/data/model/user_model.dart';
+import 'package:marful/app/modules/chat_page/data/model/job.dart';
 import 'package:marful/app/modules/homeMain_page/data/model/post_infulonser.dart';
 import 'package:marful/app/modules/websit_company/data/model/companycontent.dart';
 import 'package:marful/sheard/util.dart';
@@ -19,6 +20,7 @@ import '../data/model/user_post.dart';
 class HomeMainController extends GetxController {
   final contentRepo = ContenteRpository();
   final contents = <Content>[].obs;
+  final jobs = <Job>[].obs;
   final auth = Get.find<AuthService>();
   final homeMainRepo = HomeMainRepositry();
   final post = <GetPost>[].obs;
@@ -37,6 +39,14 @@ class HomeMainController extends GetxController {
     getContent();
     getAllPosts();
     getuserPost();
+  }
+
+  Future<void> getAllJob() async {
+    if (auth.getTypeEnum() == Auth.infulonser) {
+      var id = (auth.getDataFromStorage() as Infulonser).id!;
+      var data = await homeMainRepo.getInfoJob(id);
+      jobs.assignAll(data);
+    }
   }
 
   Future<void> getContentComapny() async {

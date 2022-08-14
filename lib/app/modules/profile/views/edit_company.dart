@@ -19,7 +19,7 @@ class EditCompanyPage extends GetResponsiveView<ProfileController> {
             controller.company.value.name!,
             controller.company.value.description!,
             2,
-            controller.company.value.image!),
+            controller.company.value.image),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(

@@ -12,14 +12,14 @@ class HelpPageeController extends GetxController {
     'Permission'
   ];
   List<String> description = [
-    'Posts',
-    ' ',
-    'Search ',
-    'Conversation ',
-    'Edit profil',
-    'Content',
-    'Brand',
-    'Permission'
+    'View posts and interact with them',
+    'View profile and number of followers',
+    'Search with filter ',
+    'Conversation between a company and an influencer ',
+    'Edit or delete posts',
+    'Add or delete content',
+    'Add or delete brand',
+    'Add, delete or modify permission'
   ];
   List<String> help = [
     'The user can see the posts, interact with them, and go to the site in order to purchase the products in the post The influencer and the company can also see the posts and add a post by using the add button and writing the post information',

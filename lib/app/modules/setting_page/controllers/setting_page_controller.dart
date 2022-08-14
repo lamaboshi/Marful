@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:marful/app/data/model/company.dart';
 import 'package:marful/app/data/model/infulonser.dart';
+import 'package:marful/app/data/model/user_model.dart';
 import 'package:marful/sheard/auth_service.dart';
 
 import '../../../routes/app_pages.dart';
@@ -23,9 +24,9 @@ class SettingPageController extends GetxController {
     } else if (auth.getTypeEnum() == Auth.infulonser) {
       var id = (auth.getDataFromStorage() as Infulonser).id!;
       res = await repo.deleteInfluserAccount(id);
-    } else if (auth.getTypeEnum() == Auth.infulonser) {
-      var id = (auth.getDataFromStorage() as Infulonser).id!;
-      res = await repo.deleteInfluserAccount(id);
+    } else if (auth.getTypeEnum() == Auth.user) {
+      var id = (auth.getDataFromStorage() as UserModel).id!;
+      res = await repo.deleteUserAccount(id);
     }
     if (res) {
       auth.stroge.deleteAllKeys();
