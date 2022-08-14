@@ -5,17 +5,18 @@ import '../values/app_colors.dart';
 
 // ignore: must_be_immutable
 class TextFieldWidget extends StatefulWidget {
-  TextFieldWidget({
-    Key? key,
-    required this.type,
-    this.label,
-    this.hint,
-    this.prefIcon,
-    this.onChanged,
-    this.dufaltText,
-    this.suffixIcon,
-    required this.obscureText,
-  }) : super(key: key);
+  TextFieldWidget( 
+      {Key? key,
+      required this.type,
+      this.label,
+      this.hint,
+      this.prefIcon,
+      this.onChanged,
+      this.dufaltText,
+      this.suffixIcon,
+      required this.obscureText,
+      this.validator})
+      : super(key: key);
 
   final TextInputType type;
   final String? label;
@@ -25,6 +26,7 @@ class TextFieldWidget extends StatefulWidget {
   final IconButton? suffixIcon;
   final Function(String)? onChanged;
   bool obscureText = false;
+  final String? Function(String?)? validator;
 
   @override
   _TextFieldWidgetState createState() => _TextFieldWidgetState();
@@ -53,7 +55,8 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
         );
       }
     });
-    return TextField(
+    return TextFormField(
+      validator: widget.validator,
       maxLines: 1,
       obscureText: widget.obscureText,
       controller: _controller,

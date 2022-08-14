@@ -35,6 +35,7 @@ class SettingPageView extends GetView<SettingPageController> {
             }),
             buildCard('Permission', AppIcons.trending_up, () {
               Get.to(PermissionsPageView());
+              
             }),
             Expanded(
               flex: 5,
