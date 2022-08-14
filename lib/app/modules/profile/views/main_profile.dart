@@ -11,39 +11,61 @@ import '../controllers/profile_controller.dart';
 
 class MainProfile extends GetView<ProfileController> {
   final bool isSearch;
-  MainProfile(this.isSearch);
+  final Auth? type;
+  final int? id;
+  MainProfile(this.isSearch, this.type, this.id);
   @override
   Widget build(BuildContext context) {
+    if (type != null) {
+      controller.typeAuth.value = type!;
+      if (controller.typeAuth.value == Auth.infulonser) {
+        controller.getInfoType(id!);
+      } else if (controller.typeAuth.value == Auth.comapny) {
+        controller.getcompanyType(id!);
+      }
+    }
     switch (controller.typeAuth.value) {
       case Auth.infulonser:
-        return SingleChildScrollView(
-          child: Column(
-            children: [
-              Obx(() => viewPart(
-                  controller.infulencer.value.name!,
-                  controller.infulencer.value.description!,
-                  controller.infulencer.value.image!)),
-              InfulonserProfilePage(isSearch)
-            ],
-          ),
-        );
+        return Obx(() => controller.loading.value
+            ? const Center(child: CircularProgressIndicator())
+            : SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Obx(() => type == null
+                        ? viewPart(controller.infulencer.value.name!,
+                            controller.infulencer.value.image)
+                        : viewPart(controller.infoSearch.value.name!,
+                            controller.infoSearch.value.image)),
+                    type == null
+                        ? InfulonserProfilePage(false)
+                        : InfulonserProfilePage(true)
+                  ],
+                ),
+              ));
       case Auth.comapny:
-        return Column(
-          children: [
-            Obx(() => viewPart(
-                controller.company.value.name!,
-                controller.company.value.description!,
-                controller.company.value.image!)),
-            CompanyProfilePage(isSearch)
-          ],
-        );
+        return Obx(() => controller.loading.value
+            ? const Center(child: CircularProgressIndicator())
+            : SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Obx(() => type == null
+                        ? viewPart(controller.company.value.name!,
+                            controller.company.value.image)
+                        : viewPart(controller.companySearch.value.name!,
+                            controller.companySearch.value.image)),
+                    type == null
+                        ? CompanyProfilePage(false)
+                        : CompanyProfilePage(true)
+                  ],
+                ),
+              ));
 
       default:
         return Text('no Value');
     }
   }
 
-  Widget viewPart(String name, String descraption, Uint8List? image) {
+  Widget viewPart(String name, Uint8List? image) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(

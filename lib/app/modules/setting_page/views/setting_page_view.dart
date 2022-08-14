@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marful/app/modules/permissions_page/views/permissions_page_view.dart';
 import 'package:marful/app/routes/app_pages.dart';
 import '../../../../sheard/auth_service.dart';
 import '../../../core/values/app_colors.dart';
@@ -32,11 +33,11 @@ class SettingPageView extends GetView<SettingPageController> {
                     () => Get.rootDelegate.toNamed(Routes.Content))
                 : SizedBox.shrink(),
             buildCard('About', Icons.abc_outlined, () {}),
-            buildCard('Delete My Account', Icons.delete, () {
-              controller.deleteAccount();
+            buildCard('Delete My Account', Icons.delete, () async {
+              await controller.deleteAccount();
             }),
             buildCard('Permission', AppIcons.trending_up, () {
-              Get.to(PermissionPageView());
+              Get.to(PermissionsPageView());
             }),
             Expanded(
               flex: 5,

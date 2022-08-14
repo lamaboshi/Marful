@@ -1,5 +1,6 @@
 import 'package:marful/app/data/model/content.dart';
-import 'package:marful/app/modules/websit_company/data/model/company.dart';
+
+import '../../../../data/model/company.dart';
 
 class CompanyContent {
   int? id;
@@ -23,7 +24,9 @@ class CompanyContent {
         : Company.fromJson(json['company'] as Map<String, dynamic>);
     companyId = json['companyId'];
     contentId = json['contentId'];
-    content = Content.fromJson(json['content'] as Map<String, dynamic>);
+    content = json['content'] == null
+        ? null
+        : Content.fromJson(json['content'] as Map<String, dynamic>);
   }
 
   Map<String, dynamic> toJson() {

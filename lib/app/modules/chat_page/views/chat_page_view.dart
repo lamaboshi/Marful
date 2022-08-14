@@ -19,47 +19,136 @@ class ChatPageView extends GetView<ChatPageController> {
         actions: [
           IconButton(
               onPressed: () {
+                controller.getAllCompanyContent();
                 QPanel(
+                    width: 400,
                     alignment: Alignment.center,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text('New Job Agreement',
-                            style: TextStyle(fontSize: 20)),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                    child: Obx(() => Column(
+                          mainAxisSize: MainAxisSize.min,
                           children: [
-                            TextFieldWidget(
-                              onChanged: (txt) {
-                                controller.newJob.value.salary =
-                                    double.parse(txt);
-                              },
-                              type: TextInputType.multiline,
-                              hint: 'salary',
-                              obscureText: false,
-                              prefIcon: Icons.money,
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text('New Job Agreement',
+                                  style: TextStyle(fontSize: 20)),
                             ),
-                            TextFieldWidget(
-                              onChanged: (txt) {
-                                controller.newJob.value.code = txt;
-                              },
-                              type: TextInputType.multiline,
-                              hint: 'code',
-                              obscureText: false,
-                              prefIcon: Icons.money,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: SizedBox(
+                                      child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.connected_tv,
+                                        color: AppColors.orange,
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      QExpander(
+                                          child: Text(
+                                            controller
+                                                    .selectcompanyContent()
+                                                    .content!
+                                                    .name!
+                                                    .isEmpty
+                                                ? 'Content Company'
+                                                : controller
+                                                    .selectcompanyContent()
+                                                    .content!
+                                                    .name!,
+                                            style: TextStyle(fontSize: 17),
+                                          ),
+                                          expandChild: Column(
+                                            children: controller.companyContent
+                                                .map((element) => InkWell(
+                                                    onTap: () {
+                                                      controller
+                                                          .selectcompanyContent(
+                                                              element);
+                                                      controller.getAllBrand(
+                                                          element.id!);
+                                                    },
+                                                    child: Text(element
+                                                        .content!.name!)))
+                                                .toList(),
+                                          )),
+                                    ],
+                                  )),
+                                ),
+                                controller.brands.isEmpty
+                                    ? SizedBox.shrink()
+                                    : SizedBox(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                Icons.branding_watermark,
+                                                color: AppColors.orange,
+                                              ),
+                                              SizedBox(
+                                                width: 5,
+                                              ),
+                                              QExpander(
+                                                  child: Text(controller
+                                                          .selectbrand()
+                                                          .name!
+                                                          .isEmpty
+                                                      ? 'Brand Company'
+                                                      : controller
+                                                          .selectbrand()
+                                                          .name!),
+                                                  expandChild: Column(
+                                                    children: controller.brands
+                                                        .map((element) =>
+                                                            InkWell(
+                                                                onTap: () {
+                                                                  controller
+                                                                      .selectbrand(
+                                                                          element);
+                                                                },
+                                                                child: Text(
+                                                                    element
+                                                                        .name!)))
+                                                        .toList(),
+                                                  )),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                TextFieldWidget(
+                                  onChanged: (txt) {
+                                    controller.newJob.value.salary =
+                                        double.parse(txt);
+                                  },
+                                  type: TextInputType.multiline,
+                                  hint: 'salary',
+                                  obscureText: false,
+                                  prefIcon: Icons.money,
+                                ),
+                                TextFieldWidget(
+                                  onChanged: (txt) {
+                                    controller.newJob.value.code = txt;
+                                  },
+                                  type: TextInputType.multiline,
+                                  hint: 'code',
+                                  obscureText: false,
+                                  prefIcon: Icons.money,
+                                ),
+                              ],
                             ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: FloatingActionButton.extended(
+                                  onPressed: () {
+                                    controller.addJob();
+                                  },
+                                  label: Text('Save')),
+                            )
                           ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: FloatingActionButton.extended(
-                              onPressed: () {
-                                controller.addJob();
-                              },
-                              label: Text('Save')),
-                        )
-                      ],
-                    )).show();
+                        ))).show();
               },
               icon: Icon(Icons.work))
         ],

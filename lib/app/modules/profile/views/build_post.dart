@@ -266,11 +266,25 @@ class BuildPost extends GetResponsiveView<ProfileController> {
                 const SizedBox(
                   height: 8,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: Text(
-                    post!.description!,
-                  ),
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 4,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: Text(
+                          post!.description!,
+                        ),
+                      ),
+                    ),
+                    post!.jobId == null
+                        ? SizedBox.shrink()
+                        : Expanded(
+                            child: Chip(
+                            label: Text(post!.jobId.toString(),
+                                style: TextStyle(color: AppColors.orange)),
+                          ))
+                  ],
                 ),
                 const SizedBox(
                   height: 8,

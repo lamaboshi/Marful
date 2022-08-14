@@ -62,7 +62,7 @@ class HomeView extends GetView<HomeController> {
               ])
             : TabBarView(children: [
                 HomeMainView(),
-                ProfilePage(false),
+                ProfilePage(false, null, null),
                 const HomeMenuView(),
               ]),
       ),

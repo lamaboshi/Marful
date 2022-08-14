@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marful/app/core/component/deleteDialog.dart';
 import 'package:marful/app/core/component/textField.dart';
-
 import '../../../core/values/app_colors.dart';
 import '../controllers/content_controller.dart';
 
@@ -9,15 +9,6 @@ class ContentView extends GetView<ContentController> {
   const ContentView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    // List<String> content = [
-    //   'Comidy',
-    //   'Fashion',
-    //   'Drama',
-    //   'Comidy',
-    //   'Fashion',
-    //   'Drama',
-    //   'Comidy',
-    // ];
     return Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.orange,
@@ -81,20 +72,6 @@ class ContentView extends GetView<ContentController> {
                         const SizedBox(
                           height: 30,
                         ),
-                        // Align(
-                        //   alignment: Alignment.topRight,
-                        //   child: FloatingActionButton.extended(
-                        //   //  heroTag: 'uniqueTag',
-                        //     backgroundColor: AppColors.orange,
-                        //     label: Row(
-                        //       children: const [Icon(Icons.close), Text('close')],
-                        //     ),
-                        //     //      const Icon(Icons.close),
-                        //     onPressed: () {
-                        //       Get.back();
-                        //     },
-                        //   ),
-                        // ),
                       ],
                     ),
                   ));
@@ -111,10 +88,12 @@ class ContentView extends GetView<ContentController> {
                     trailing: IconButton(
                         padding: const EdgeInsets.all(0),
                         onPressed: () {
-                          controller
-                              .delcontentelement(controller.contents[index]);
+                          Get.dialog(DeleteDialogWidget(delFunction: () {
+                            controller
+                                .delcontentelement(controller.contents[index]);
+                          }));
                         },
-                        icon: const Icon(Icons.close)),
+                        icon: const Icon(Icons.delete)),
                   )),
               separatorBuilder: ((context, index) => const Divider(
                     endIndent: 8,
