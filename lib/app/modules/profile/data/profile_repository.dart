@@ -16,14 +16,18 @@ import 'model_data.dart';
 
 class ProfailRepository extends IProfailRepository {
   final _dio = Get.find<Dio>();
+  @override
   Future<List<CompanyContent>> getCompanyConent(int idCompany) async {
     var result =
         await _dio.get('https://localhost:7192/api/CompanyContent/$idCompany');
     print(result);
     var list = <CompanyContent>[];
-    for (var item in result.data) {
-      list.add(CompanyContent.fromJson(item));
+    if (result.statusCode == 200) {
+      for (var item in result.data) {
+        list.add(CompanyContent.fromJson(item));
+      }
     }
+
     return list;
   }
 
@@ -33,8 +37,10 @@ class ProfailRepository extends IProfailRepository {
         await _dio.get('https://localhost:7192/api/InfulonserContent/$idInful');
     print(result);
     var list = <Content>[];
-    for (var item in result.data) {
-      list.add(Content.fromJson(item));
+    if (result.statusCode == 200) {
+      for (var item in result.data) {
+        list.add(Content.fromJson(item));
+      }
     }
     return list;
   }
@@ -44,8 +50,10 @@ class ProfailRepository extends IProfailRepository {
     var result = await _dio
         .get('https://localhost:7192/api/Infulonser/GetAllPosts/$idInful');
     var list = <Post>[];
-    for (var item in result.data) {
-      list.add(Post.fromJson(item));
+    if (result.statusCode == 200) {
+      for (var item in result.data) {
+        list.add(Post.fromJson(item));
+      }
     }
     return list;
   }
@@ -56,8 +64,10 @@ class ProfailRepository extends IProfailRepository {
         .get('https://localhost:7192/api/Company/GetAllPosts/$idCompany');
 
     var list = <Post>[];
-    for (var item in result.data) {
-      list.add(Post.fromJson(item));
+    if (result.statusCode == 200) {
+      for (var item in result.data) {
+        list.add(Post.fromJson(item));
+      }
     }
     print(
         '--------------------------------------------------------Get Post Company Done-------------------------------');
@@ -130,8 +140,10 @@ class ProfailRepository extends IProfailRepository {
         'https://localhost:7192/api/Infulonser/GetFollowers',
         queryParameters: {'email': email});
     var list = <ModelData>[];
-    for (var item in result.data) {
-      list.add(ModelData.fromJson(item));
+    if (result.statusCode == 200) {
+      for (var item in result.data) {
+        list.add(ModelData.fromJson(item));
+      }
     }
     print(
         '--------------------------------------------------------Get getAllFollowInfu Done-------------------------------');
@@ -144,8 +156,10 @@ class ProfailRepository extends IProfailRepository {
         'https://localhost:7192/api/Company/GetFollowers',
         queryParameters: {'email': email});
     var list = <ModelData>[];
-    for (var item in result.data) {
-      list.add(ModelData.fromJson(item));
+    if (result.statusCode == 200) {
+      for (var item in result.data) {
+        list.add(ModelData.fromJson(item));
+      }
     }
     print(
         '--------------------------------------------------------Get getAllFollowCompany Done-------------------------------');

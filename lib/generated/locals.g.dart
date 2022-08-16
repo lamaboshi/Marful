@@ -118,7 +118,7 @@ class AppTranslation extends Translations {
               "In the search, you can filter the output by clicking on the desired button for a product, brand, influencer or company",
           "Theconversationisexclusivelybetweenacompanyandaninfluencertoconcludebusinessagreements":
               "The conversation is exclusively between a company and an influencer to conclude business agreements",
-          "Editpersonalinformation,andifitisacompanyorinfluencer,itcanmodifythecontentsandcanmodifytheinformationofpreviouspostsordeleteposts'":
+          "Editpersonalinformation,andifitisacompanyorinfluencer,itcanmodifythecontentsandcanmodifytheinformationofpreviouspostsordeleteposts":
               "Edit personal information, and if it is a company or influencer, it can modify the contents and can modify the information of previous posts or delete posts'",
           "Theinfluencerandthecompanycanaddnewcontentbyusingtheaddbuttonandwritingthenameofthenewcontent,orhecandeletecontentbyusingthedeletebuttonandconfirmingit":
               "The influencer and the company can add new content by using the add button and writing the name of the new content, or he can delete content by using the delete button and confirming it",
@@ -241,7 +241,7 @@ class AppTranslation extends Translations {
               "في البحث تستطيع فلترة الناتج بالضغط على الزر المراد منتج او ماركة او مؤثر او شركة",
           "Theconversationisexclusivelybetweenacompanyandaninfluencertoconcludebusinessagreements":
               "المحادثة حصرا بين شركة ومؤثر لعقد اتفاقيات العمل",
-          "Editpersonalinformation,andifitisacompanyorinfluencer,itcanmodifythecontentsandcanmodifytheinformationofpreviouspostsordeleteposts'":
+          "Editpersonalinformation,andifitisacompanyorinfluencer,itcanmodifythecontentsandcanmodifytheinformationofpreviouspostsordeleteposts":
               "تعديل المعلومات الشخصية واذا كان شركة او مؤثر يمكنه تعديل المحتويات ويستطيع تعديل معلومات البوستات السابقة او حذف البوستات",
           "Theinfluencerandthecompanycanaddnewcontentbyusingtheaddbuttonandwritingthenameofthenewcontent,orhecandeletecontentbyusingthedeletebuttonandconfirmingit":
               "يستطيع المؤثر والشركة اضافة محتوى جديد عن طريق زر الضافة وكتابة اسم المحتوى الجديد او يستطيع حذف محتوى عن طريق زر الحذف وتأكيده",

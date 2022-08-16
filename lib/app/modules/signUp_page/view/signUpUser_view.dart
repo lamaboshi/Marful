@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signUp_page/controllers/signUp_controller.dart';
 
+import '../../../../sheard/util.dart';
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
 
@@ -40,18 +41,29 @@ class SignUpUserPage extends GetView<SignUpController> {
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: CircleAvatar(
-                        radius: height * 80 / height,
-                        backgroundImage:
-                            const AssetImage('assets/images/person.png'),
-                      ),
-                    ),
+                        padding: const EdgeInsets.only(top: 10),
+                        child: Obx(
+                          () => ClipRRect(
+                            borderRadius: BorderRadius.circular(40),
+                            child: controller.stringPickImage.value.isEmpty
+                                ? Image.asset(
+                                    'assets/images/person.png',
+                                    height: 100,
+                                    width: 100,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Utility.imageFromBase64String(
+                                    controller.stringPickImage.value, 100, 100),
+                          ),
+                        )),
                     const SizedBox(
                       height: 5,
                     ),
                     InkWell(
-                        onTap: () {}, child: const Text('Add Your Photo..')),
+                        onTap: () {
+                          controller.pickImageFun();
+                        },
+                        child: const Text('Add Your Photo..')),
                     const SizedBox(
                       height: 20,
                     ),

@@ -5,6 +5,7 @@ import 'package:marful/sheard/date_extation.dart';
 import 'package:marful/sheard/util.dart';
 import 'package:q_overlay/q_overlay.dart';
 
+import '../../../core/component/deleteDialog.dart';
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
 import '../../homeMain_page/data/model/Post.dart';
@@ -255,8 +256,12 @@ class BuildPost extends GetResponsiveView<ProfileController> {
                                                     color: Colors.black),
                                               ),
                                               onPressed: () {
-                                                controller
-                                                    .deletePost(post!.id!);
+                                                Get.dialog(DeleteDialogWidget(
+                                                    delFunction: () async {
+                                                  controller
+                                                      .deletePost(post!.id!);
+                                                  Get.back();
+                                                }));
                                               },
                                             ))
                                       ],

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:marful/app/data/model/infulonser.dart';
 import 'package:marful/app/data/model/user_model.dart';
 import 'package:marful/app/modules/signUp_page/data/influencer_repo.dart';
 import 'package:marful/app/modules/signUp_page/data/user_repo.dart';
+import 'package:marful/sheard/util.dart';
 
 import '../../../../sheard/auth_service.dart';
 import '../../../data/model/company.dart';
@@ -21,6 +23,16 @@ class SignUpController extends GetxController {
     return null;
   }
 
+  Future pickImageFun() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image == null) return;
+      stringPickImage.value = Utility.base64String(await image.readAsBytes());
+    } catch (e) {
+      print('Failed to pick image: $e');
+    }
+  }
+
   final userForm = GlobalKey<FormState>();
   final influencerForm = GlobalKey<FormState>();
   final companyForm = GlobalKey<FormState>();
@@ -28,6 +40,7 @@ class SignUpController extends GetxController {
   final isShownInfluencer = false.obs;
   final isShownCompany = false.obs;
   final isSaveData = false.obs;
+  final stringPickImage = ''.obs;
   final company = Company(
     id: 0,
     address: 'United Arab Emirates.',
@@ -68,6 +81,7 @@ class SignUpController extends GetxController {
   final auth = Get.find<AuthService>();
 
   Future<void> signUpCompany() async {
+    company.value.image = Utility.dataFromBase64String(stringPickImage.value);
     var data = await companyRpo.regierterComp(company.value);
     if (data) {
       await auth.logIn(company.value.email!, company.value.password!);
@@ -76,6 +90,8 @@ class SignUpController extends GetxController {
   }
 
   Future<void> signUpInfluencer() async {
+    influencer.value.image =
+        Utility.dataFromBase64String(stringPickImage.value);
     var data = await influencerRpo.regierterInfluencer(influencer.value);
     if (data) {
       await auth.logIn(influencer.value.email!, influencer.value.password!);
@@ -84,6 +100,7 @@ class SignUpController extends GetxController {
   }
 
   Future<void> signUpUser() async {
+    user.value.image = Utility.dataFromBase64String(stringPickImage.value);
     var data = await userRpo.regierterUser(user.value);
     if (data) {
       await auth.logIn(user.value.email!, user.value.password!);

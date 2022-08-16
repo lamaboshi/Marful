@@ -1,15 +1,16 @@
 import 'package:get/get.dart';
+import 'package:marful/app/routes/app_pages.dart';
 
 class HelpPageeController extends GetxController {
   List<String> screen = [
-    'Homepage'.tr,
-    'Profil'.tr,
-    'Search'.tr,
-    'Conversation'.tr,
-    'Editprofil'.tr,
-    'Content'.tr,
-    'Brand'.tr,
-    'Permission'.tr
+    Routes.HOME,
+    Routes.Profile,
+    Routes.Search,
+    Routes.CONVERSATION_PAGE,
+    Routes.EditProfile,
+    Routes.Content,
+    Routes.BRAND_PAGE,
+    Routes.PERMISSIONS_PAGE
   ];
   List<String> description = [
     'Viewpostsandinteractwiththem'.tr,
@@ -22,17 +23,25 @@ class HelpPageeController extends GetxController {
     'Add,deleteormodifypermission'.tr
   ];
   List<String> help = [
-    'Theusercanseetheposts,interactwiththem,andgotothesiteinordertopurchasetheproductsinthepostTheinfluencerandthecompanycanalsoseethepostsandaddapostbyusingtheaddbuttonandwritingthepostinformation'.tr,
-    'Thecompanyandtheinfluencerdisplaytheinformationofthepoststheyhavepublished,viewfollowersandtheirnumber,anddisplaythecontentstheyprovide'.tr,
-    'Inthesearch,youcanfiltertheoutputbyclickingonthedesiredbuttonforaproduct,brand,influencerorcompany'.tr,
-    'Theconversationisexclusivelybetweenacompanyandaninfluencertoconcludebusinessagreements'.tr,
-    'Editpersonalinformation,andifitisacompanyorinfluencer,itcanmodifythecontentsandcanmodifytheinformationofpreviouspostsordeleteposts'.tr,
-    'Theinfluencerandthecompanycanaddnewcontentbyusingtheaddbuttonandwritingthenameofthenewcontent,orhecandeletecontentbyusingthedeletebuttonandconfirmingit'.tr,
-    'Theinfluencerandthecompanycanaddanewbrandthroughtheaddbuttonandwritetheinformationofthenewbrand,orhecandeleteaspecificbrandthroughthedeletebuttonandconfirmit'.tr,
-    'Thecompanycanaddnewpermissionsbyusingtheaddbuttonandwritingthenewpermissioninformation,oritcandeleteaspecificpermissionthroughthedeletebuttonandconfirmit,oritcanmodifythepermission'.tr
+    'Theusercanseetheposts,interactwiththem,andgotothesiteinordertopurchasetheproductsinthepostTheinfluencerandthecompanycanalsoseethepostsandaddapostbyusingtheaddbuttonandwritingthepostinformation'
+        .tr,
+    'Thecompanyandtheinfluencerdisplaytheinformationofthepoststheyhavepublished,viewfollowersandtheirnumber,anddisplaythecontentstheyprovide'
+        .tr,
+    'Inthesearch,youcanfiltertheoutputbyclickingonthedesiredbuttonforaproduct,brand,influencerorcompany'
+        .tr,
+    'Theconversationisexclusivelybetweenacompanyandaninfluencertoconcludebusinessagreements'
+        .tr,
+    'Editpersonalinformation,andifitisacompanyorinfluencer,itcanmodifythecontentsandcanmodifytheinformationofpreviouspostsordeleteposts'
+        .tr,
+    'Theinfluencerandthecompanycanaddnewcontentbyusingtheaddbuttonandwritingthenameofthenewcontent,orhecandeletecontentbyusingthedeletebuttonandconfirmingit'
+        .tr,
+    'Theinfluencerandthecompanycanaddanewbrandthroughtheaddbuttonandwritetheinformationofthenewbrand,orhecandeleteaspecificbrandthroughthedeletebuttonandconfirmit'
+        .tr,
+    'Thecompanycanaddnewpermissionsbyusingtheaddbuttonandwritingthenewpermissioninformation,oritcandeleteaspecificpermissionthroughthedeletebuttonandconfirmit,oritcanmodifythepermission'
+        .tr
   ];
 
- //  home='يستطيع المستخدم رؤية المنشورات والتفاعل معها والذهاب للموقع من اجل شراء المنتجات الموجودة في البوست.
+  //  home='يستطيع المستخدم رؤية المنشورات والتفاعل معها والذهاب للموقع من اجل شراء المنتجات الموجودة في البوست.
   //  يستطيع المؤثر والشركة رؤية المنشورات ايضا واضافة منشور عن طريق زر الاضافة وكتابة معلومات المنشور'
   //content='يستطيع المؤثر والشركة اضافة محتوى جديد عن طريق زر الضافة وكتابة اسم المحتوى الجديد او يستطيع حذف محتوى عن طريق زر الحذف وتأكيده '
   //brand='يستطيع المؤثر والشركة اضافة ماركةجديد عن طريق زر الضافة وكتابة معلومات البراند الجديد او يستطيع حذف براند معين عن طريق زر الحذف وتأكيده '

@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marful/app/routes/app_pages.dart';
 import 'package:marful/sheard/auth_service.dart';
 import 'package:marful/sheard/util.dart';
 
@@ -308,6 +309,22 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                           prefIcon: Icons.description,
                         ),
                       ),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: InkWell(
+                      onTap: () {
+                        Get.rootDelegate.toNamed(Routes.Password);
+                      },
+                      child: Text(
+                        'ForgotYourPasswod'.tr,
+                        style:
+                            const TextStyle(fontSize: 15, color: Colors.grey),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

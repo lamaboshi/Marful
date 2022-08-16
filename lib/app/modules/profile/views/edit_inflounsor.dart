@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marful/app/core/component/deleteDialog.dart';
 import 'package:q_overlay/q_overlay.dart';
 
 import '../../../../sheard/auth_service.dart';
@@ -27,7 +28,7 @@ class EditInflounsorPage extends GetResponsiveView<ProfileController> {
             children: [
               Row(
                 children: [
-                  Text(
+                  const Text(
                     'Content',
                     style: TextStyle(
                       fontSize: 20,
@@ -37,16 +38,12 @@ class EditInflounsorPage extends GetResponsiveView<ProfileController> {
                   SizedBox(
                       width: 100,
                       child: QExpander(
-                        child: Icon(
-                          Icons.add,
-                          color: AppColors.orange,
-                        ),
                         expandChild: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: controller.allContents
                                 .map(
                                   (element) => Padding(
-                                      padding: EdgeInsets.all(6),
+                                      padding: const EdgeInsets.all(6),
                                       child: TextButton(
                                         onPressed: () {
                                           controller
@@ -54,19 +51,23 @@ class EditInflounsorPage extends GetResponsiveView<ProfileController> {
                                         },
                                         child: Text(
                                           element.name!,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 16,
                                               color: Colors.black),
                                         ),
                                       )),
                                 )
                                 .toList()),
+                        child: Icon(
+                          Icons.add,
+                          color: AppColors.orange,
+                        ),
                       )),
                 ],
               ),
               SizedBox(width: screen.width, height: 65, child: contentPart()),
               Row(
-                children: [
+                children: const [
                   Text(
                     'Post',
                     style: TextStyle(
@@ -109,7 +110,7 @@ class EditInflounsorPage extends GetResponsiveView<ProfileController> {
                       avatar: Container(
                         width: 20,
                         height: 20,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
                               image: AssetImage(
@@ -118,14 +119,18 @@ class EditInflounsorPage extends GetResponsiveView<ProfileController> {
                         ),
                       ),
                       elevation: 2,
-                      deleteIcon: Icon(Icons.close, size: 20),
+                      deleteIcon: const Icon(Icons.close, size: 20),
                       onDeleted: () {
-                        if (controller.auth.getTypeEnum() == Auth.infulonser) {
-                          controller.Deletcontentinfo(e.id!);
-                        } else if (controller.auth.getTypeEnum() ==
-                            Auth.comapny) {
-                          controller.Deletcontentcomp(e.id!);
-                        }
+                        Get.dialog(DeleteDialogWidget(delFunction: () async {
+                          if (controller.auth.getTypeEnum() ==
+                              Auth.infulonser) {
+                            controller.Deletcontentinfo(e.id!);
+                          } else if (controller.auth.getTypeEnum() ==
+                              Auth.comapny) {
+                            controller.Deletcontentcomp(e.id!);
+                          }
+                          Get.back();
+                        }));
                       },
                     ),
                   ))

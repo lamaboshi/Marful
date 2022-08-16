@@ -21,11 +21,13 @@ class HomeMainRepositry extends IHomeMainRepository {
     var list = <GetPost>[];
     var result = await _dio.get('https://localhost:7192/api/Main/Posts',
         queryParameters: {"Type": type, "email": email});
-    if (result.statusCode == 404) return [];
-    for (var item in result.data) {
-      list.add(GetPost.fromJson(item));
+    if (result.statusCode == 200) {
+      for (var item in result.data) {
+        list.add(GetPost.fromJson(item));
+      }
+      return list;
     }
-    return list;
+    return [];
   }
 
   @override
@@ -34,9 +36,12 @@ class HomeMainRepositry extends IHomeMainRepository {
     var result = await _dio.get('https://localhost:7192/api/Main/PostsContent',
         queryParameters: {"id": contentId, "email": email, "Type": type});
     var list = <GetPost>[];
-    for (var item in result.data) {
-      list.add(GetPost.fromJson(item));
+    if (result.statusCode == 200) {
+      for (var item in result.data) {
+        list.add(GetPost.fromJson(item));
+      }
     }
+
     return list;
   }
 
@@ -44,14 +49,20 @@ class HomeMainRepositry extends IHomeMainRepository {
   Future<double> getDisLikesCount(int postId, String type) async {
     var result = await _dio.get('https://localhost:7192/api/Main/GeDistLikes',
         queryParameters: {"id": postId, "Type": type});
-    return double.parse(result.data.toString());
+    if (result.statusCode == 200) {
+      return double.parse(result.data.toString());
+    }
+    return 0;
   }
 
   @override
   Future<double> getLikesCount(int postId, String type) async {
     var result = await _dio.get('https://localhost:7192/api/Main/GetLikes',
         queryParameters: {"id": postId, "Type": type});
-    return double.parse(result.data.toString());
+    if (result.statusCode == 200) {
+      return double.parse(result.data.toString());
+    }
+    return 0;
   }
 
   @override
@@ -72,9 +83,12 @@ class HomeMainRepositry extends IHomeMainRepository {
     var result =
         await _dio.get('https://localhost:7192/api/CompanyContent/$idCompany');
     var list = <CompanyContent>[];
-    for (var item in result.data) {
-      list.add(CompanyContent.fromJson(item));
+    if (result.statusCode == 200) {
+      for (var item in result.data) {
+        list.add(CompanyContent.fromJson(item));
+      }
     }
+
     return list;
   }
 
@@ -83,9 +97,12 @@ class HomeMainRepositry extends IHomeMainRepository {
     var result = await _dio.get(
         'https://localhost:7192/api/Company/GetAllBarndCompany/$idCompanyConent');
     var list = <Brand>[];
-    for (var item in result.data) {
-      list.add(Brand.fromJson(item));
+    if (result.statusCode == 200) {
+      for (var item in result.data) {
+        list.add(Brand.fromJson(item));
+      }
     }
+
     return list;
   }
 
@@ -108,9 +125,12 @@ class HomeMainRepositry extends IHomeMainRepository {
     var result =
         await _dio.get('https://localhost:7192/api/UserPost/GetByUser/$userId');
     var list = <PostUser>[];
-    for (var item in result.data) {
-      list.add(PostUser.fromJson(item));
+    if (result.statusCode == 200) {
+      for (var item in result.data) {
+        list.add(PostUser.fromJson(item));
+      }
     }
+
     return list;
   }
 
@@ -120,9 +140,12 @@ class HomeMainRepositry extends IHomeMainRepository {
         .get('https://localhost:7192/api/PostInfulonser/GetByInfu/$infoId');
     print(result);
     var list = <PostInfulonser>[];
-    for (var item in result.data) {
-      list.add(PostInfulonser.fromJson(item));
+    if (result.statusCode == 200) {
+      for (var item in result.data) {
+        list.add(PostInfulonser.fromJson(item));
+      }
     }
+
     return list;
   }
 
@@ -158,8 +181,10 @@ class HomeMainRepositry extends IHomeMainRepository {
     var result = await _dio
         .get('https://localhost:7192/api/Job/GetJobsCompany/$idbrand');
     var list = <Job>[];
-    for (var item in result.data) {
-      list.add(Job.fromJson(item));
+    if (result.statusCode == 200) {
+      for (var item in result.data) {
+        list.add(Job.fromJson(item));
+      }
     }
     return list;
   }
@@ -169,8 +194,10 @@ class HomeMainRepositry extends IHomeMainRepository {
     var result = await _dio.get('https://localhost:7192/api/Job/Get/$idInfo');
     print(result);
     var list = <Job>[];
-    for (var item in result.data) {
-      list.add(Job.fromJson(item));
+    if (result.statusCode == 200) {
+      for (var item in result.data) {
+        list.add(Job.fromJson(item));
+      }
     }
     print(
         '--------------------------------------get all Job----------------------------------------------');
@@ -181,7 +208,9 @@ class HomeMainRepositry extends IHomeMainRepository {
   Future<Company> getCompanyByJob(int idJob) async {
     var result =
         await _dio.get('https://localhost:7192/api/Job/GetCompany/$idJob');
-
-    return Company.fromJson(result.data as Map<String, dynamic>);
+    if (result.statusCode == 200) {
+      return Company.fromJson(result.data as Map<String, dynamic>);
+    }
+    return Company();
   }
 }

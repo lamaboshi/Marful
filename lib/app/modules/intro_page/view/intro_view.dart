@@ -101,7 +101,7 @@ PageViewModel interPage(context) {
                 Get.rootDelegate.offNamed(Routes.SignUpInfluencer);
               },
               child: Text(
-                "Influencer".tr,
+                'Influencer'.tr,
                 style: const TextStyle(fontSize: 18),
               ),
             ),

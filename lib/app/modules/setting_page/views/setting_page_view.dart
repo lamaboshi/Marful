@@ -15,7 +15,7 @@ class SettingPageView extends GetView<SettingPageController> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Setting'),
+        title: Text('Setting'.tr),
         backgroundColor: AppColors.orange,
       ),
       body: Padding(
@@ -37,7 +37,7 @@ class SettingPageView extends GetView<SettingPageController> {
                     (controller.auth.getTypeEnum() == Auth.comapny &&
                         controller.auth.companyType() == 'Publishing Officer')
                 ? const SizedBox.shrink()
-                : buildCard('Delete My Account', Icons.delete, () async {
+                : buildCard('DeleteMyAccount'.tr, Icons.delete, () async {
                     await controller.deleteAccount();
                   }),
             controller.auth.getTypeEnum() == Auth.comapny
