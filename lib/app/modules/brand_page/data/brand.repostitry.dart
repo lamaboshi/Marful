@@ -44,16 +44,4 @@ class BrandRepository extends IBrandRepository {
     }
     return list;
   }
-
-  @override
-  Future<List<Brand>> getAllBrandInfo(int idInfo) async {
-    var result = await _dio.get(
-        'https://localhost:7192/api/Infulonser/GetInfulonsersBrand/$idInfo');
-    print(result);
-    var list = <Brand>[];
-    for (var item in result.data) {
-      list.add(Brand.fromJson(item));
-    }
-    return list;
-  }
 }

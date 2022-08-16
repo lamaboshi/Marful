@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:marful/app/data/model/infulonser.dart';
 import 'package:marful/app/modules/websit_company/data/model/companycontent.dart';
 import 'package:marful/sheard/util.dart';
 
@@ -21,8 +20,7 @@ class BrandPageController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    auth.getTypeEnum() == Auth.comapny ? getContentComapny() : null;
-    getAllBrand(null);
+    getContentComapny();
   }
 
   Future pickImage() async {
@@ -43,15 +41,9 @@ class BrandPageController extends GetxController {
     contents.assignAll(data);
   }
 
-  Future<void> getAllBrand(int? id) async {
-    if (auth.getTypeEnum() == Auth.infulonser) {
-      var idInfo = (auth.getDataFromStorage() as Infulonser).id!;
-      var data = await braRepo.getAllBrandInfo(idInfo);
-      allBrands.assignAll(data);
-    } else {
-      var data = await braRepo.getAllBrand(id!);
-      allBrands.assignAll(data);
-    }
+  Future<void> getAllBrand(int id) async {
+    var data = await braRepo.getAllBrand(id);
+    allBrands.assignAll(data);
   }
 
   Future<void> DelBrands(int id) async {
@@ -63,17 +55,9 @@ class BrandPageController extends GetxController {
 
   Future<void> addbrand(Brand brand) async {
     brand.image = Utility.dataFromBase64String(stringPickImage.value);
-    if (auth.getTypeEnum() == Auth.infulonser) {
-      brand.infulonserId = (auth.getDataFromStorage() as Infulonser).id!;
-      print(brand.infulonserId);
-    } else {
-      brand.companyContentId = idContent.value;
-    }
-
+    brand.companyContentId = idContent.value;
     await braRepo.AddBrand(brand);
-    auth.getTypeEnum() == Auth.comapny
-        ? getAllBrand(idContent.value)
-        : getAllBrand(null);
+    getAllBrand(idContent.value);
     Get.back();
   }
 }

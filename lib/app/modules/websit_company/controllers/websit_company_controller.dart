@@ -23,6 +23,8 @@ class WebsitcompanyController extends GetxController {
   }
 
   Future<void> getAll() async {
+    print(Get.rootDelegate.arguments().toString());
+    userpostId.value = int.parse(Get.rootDelegate.arguments().toString());
     loading.value = true;
     var data = await webRepo.getdata();
     allCompany.value = data;
@@ -30,8 +32,6 @@ class WebsitcompanyController extends GetxController {
   }
 
   Future<void> addBasket() async {
-    print(Get.rootDelegate.arguments().toString());
-    userpostId.value = int.parse(Get.rootDelegate.arguments().toString());
     var res = false;
     for (var item in allProduct.toList()) {
       var basket = Basket(

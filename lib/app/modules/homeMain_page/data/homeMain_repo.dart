@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/data/model/brand.dart';
-import 'package:marful/app/data/model/company.dart';
 import 'package:marful/app/modules/chat_page/data/model/job.dart';
 import 'package:marful/app/modules/homeMain_page/data/adapter/homeMain_adapter.dart';
 import 'package:marful/app/modules/homeMain_page/data/model/Post.dart';
@@ -180,13 +179,5 @@ class HomeMainRepositry extends IHomeMainRepository {
     print(
         '--------------------------------------get all Job----------------------------------------------');
     return list;
-  }
-
-  @override
-  Future<Company> getCompanyByJob(int idJob) async {
-    var result =
-        await _dio.get('https://localhost:7192/api/Job/GetCompany/$idJob');
-
-    return Company.fromJson(result.data as Map<String, dynamic>);
   }
 }

@@ -22,7 +22,7 @@ class SettingPageView extends GetView<SettingPageController> {
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
-            controller.auth.getTypeEnum() != Auth.user
+            controller.auth.getTypeEnum() == Auth.comapny
                 ? buildCard('Brand', Icons.settings,
                     () => Get.rootDelegate.toNamed(Routes.BRAND_PAGE))
                 : const SizedBox.shrink(),
@@ -46,13 +46,6 @@ class SettingPageView extends GetView<SettingPageController> {
                     Get.to(const PermissionsPageView());
                   })
                 : const SizedBox.shrink(),
-            buildCard('About', Icons.abc_outlined, () {}),
-            buildCard('Delete My Account', Icons.delete, () async {
-              await controller.deleteAccount();
-            }),
-            buildCard('Permission', AppIcons.trending_up, () {
-              Get.to(const PermissionsPageView());
-            }),
             Expanded(
               flex: 5,
               child: Image.asset(

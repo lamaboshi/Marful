@@ -31,7 +31,7 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                               controller.stringPickImage.value, 200, 200)
                           : image == null
                               ? Image.asset(
-                                  'assets/images/person.png',
+                                  'assets/images/8.jpg',
                                   width: 200,
                                   height: 200,
                                 )

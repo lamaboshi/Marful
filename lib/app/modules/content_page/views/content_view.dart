@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/core/component/deleteDialog.dart';
 import 'package:marful/app/core/component/textField.dart';
-
 import '../../../core/values/app_colors.dart';
 import '../controllers/content_controller.dart';
 
@@ -89,10 +88,9 @@ class ContentView extends GetView<ContentController> {
                     trailing: IconButton(
                         padding: const EdgeInsets.all(0),
                         onPressed: () {
-                          Get.dialog(DeleteDialogWidget(delFunction: () async {
-                            await controller
+                          Get.dialog(DeleteDialogWidget(delFunction: () {
+                            controller
                                 .delcontentelement(controller.contents[index]);
-                            Get.back();
                           }));
                         },
                         icon: const Icon(Icons.delete)),

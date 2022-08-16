@@ -6,9 +6,8 @@ import 'package:get/get.dart';
 import 'package:marful/app/core/values/app_colors.dart';
 import 'package:marful/app/data/model/user_model.dart';
 import 'package:marful/app/routes/app_pages.dart';
+import 'package:marful/sheard/auth_service.dart';
 
-import '../../../../sheard/auth_service.dart';
-import '../../../../sheard/util.dart';
 import '../../../core/values/my_flutter_app_icons.dart';
 import '../../help_pagee/views/help_pagee_view.dart';
 import '../../profile/views/edit_profile.dart';
@@ -30,6 +29,7 @@ class HomeMenuView extends GetView<MenuController> {
                     (controller.auth.getDataFromStorage() as UserModel).name!,
                     (controller.auth.getDataFromStorage() as UserModel).image)
                 : const SizedBox.shrink(),
+
             buildCard(
                 'Edit profil', Icons.edit, () => Get.to(EditProfilePage())),
             buildCard('Setting', Icons.settings,
@@ -38,6 +38,7 @@ class HomeMenuView extends GetView<MenuController> {
             buildCard('Help', AppIcons.help_outline, () {
               Get.to(const HelpPageeView());
             }),
+            buildCard('About', Icons.abc_outlined, () {}),
             buildCard('Log out', Icons.logout, () {
               Get.dialog(AlertDialog(
                 content: Row(
@@ -99,21 +100,18 @@ class HomeMenuView extends GetView<MenuController> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Center(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(100),
-              child: image == null
-                  ? Image.asset(
-                      'assets/images/person.png',
-                      width: 200,
-                      height: 200,
-                    )
-                  : Utility.imageFromBase64String(
-                      Utility.base64String(image), 200, 200),
-            ),
+            child: Obx(() => ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: Image.asset(
+                    'assets/images/8.jpg',
+                    width: 200,
+                    height: 200,
+                  ),
+                )),
           ),
           Center(
               child: Text(
-            name ?? ' ',
+            name ?? '',
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           )),
         ],

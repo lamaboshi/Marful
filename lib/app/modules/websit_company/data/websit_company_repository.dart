@@ -11,7 +11,7 @@ class WebsiteCompanyRepository implements IWebsiteCompanyRepository {
   @override
   Future<CompanyDto> getdata() async {
     var result = await _dio.get(
-        'https://localhost:7192/api/Company/CompanyContentBrandProduct/JUICYBEAUTY@test.com');
+        'https://localhost:7192/api/Company/CompanyContentBrandProduct/company1@test.com');
     print('-------------------------- get CompanyDto-----------------------');
     return CompanyDto.fromJson(result.data as Map<String, dynamic>);
   }
