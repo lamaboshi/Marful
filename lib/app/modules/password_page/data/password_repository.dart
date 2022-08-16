@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/data/model/infulonser.dart';
-
 import 'adapter/password_adapter.dart';
 import 'model/rest_password.dart';
 

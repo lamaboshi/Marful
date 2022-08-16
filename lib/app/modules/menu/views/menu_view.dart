@@ -1,12 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/permissions_page/views/permissions_page_view.dart';
 import 'package:marful/app/routes/app_pages.dart';
-
 import '../../../core/values/my_flutter_app_icons.dart';
 import '../../help_pagee/views/help_pagee_view.dart';
 import '../../profile/views/edit_profile.dart';
+import '../../setting_page/views/setting_page_view.dart';
 import '../controllers/menu_controller.dart';
 
 class HomeMenuView extends GetView<MenuController> {
@@ -23,10 +22,9 @@ class HomeMenuView extends GetView<MenuController> {
             buildCard(
                 'Edit profil', Icons.edit, () => Get.to(EditProfilePage())),
             buildCard('Setting', Icons.settings,
-                () => Get.rootDelegate.toNamed(Routes.SETTING_PAGE)),
-            //   buildCard('Report', AppIcons.trending_up, ()=> Get.to(() =>const ReportView())),
+                () => Get.to(const SettingPageView())),
             buildCard('Help', AppIcons.help_outline, () {
-              Get.to(HelpPageeView());
+              Get.to(const HelpPageeView());
             }),
             buildCard('About', Icons.abc_outlined, () {}),
             buildCard('Log out', Icons.logout, () {
@@ -34,7 +32,7 @@ class HomeMenuView extends GetView<MenuController> {
               Get.rootDelegate.toNamed(Routes.SignIn);
             }),
               buildCard('Log out', Icons.logout, () {
-             Get.to(PermissionsPageView());
+             Get.to(const PermissionsPageView());
             }),
         ],
         ),
@@ -61,7 +59,7 @@ class HomeMenuView extends GetView<MenuController> {
           Center(
               child: Text(
             name == null ? '' : name,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            style:const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           )),
         ],
       ),

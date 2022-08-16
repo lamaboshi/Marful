@@ -17,7 +17,10 @@ class HelpPageeView extends GetView<HelpPageeController> {
       ),
       body: ListView.separated(
           padding: const EdgeInsets.all(15),
+    
+              physics: const BouncingScrollPhysics(),
           itemBuilder: ((context, index) => Card(
+            clipBehavior:Clip.antiAlias,
               elevation: 5,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),

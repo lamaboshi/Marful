@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:q_overlay/q_overlay.dart';
-
 import '../../../core/values/app_colors.dart';
 import '../controllers/password_controller.dart';
 
@@ -27,11 +25,11 @@ class Confirmpassword extends GetView<PasswordController> {
                       onPressed: () {
                         Get.back();
                       },
-                      icon: Icon(Icons.arrow_back,
+                      icon: const Icon(Icons.arrow_back,
                           size: 30, color: AppColors.blue)),
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(12, 0, 0, 0),
                   child: Text(
                     'Reset  Your Password',
                     style: TextStyle(
@@ -43,18 +41,18 @@ class Confirmpassword extends GetView<PasswordController> {
             ),
             Card(
                 elevation: 0,
-                child: Container(
+                child: SizedBox(
                     width: width / 2,
                     height: height / 2,
                     child: Image.asset('assets/images/Social media (1).gif'))),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
               child: Text(
                 'Enter your new password below',
                 style: TextStyle(fontSize: 20, color: Colors.black54),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             TextField(
@@ -65,7 +63,7 @@ class Confirmpassword extends GetView<PasswordController> {
               cursorColor: AppColors.blue,
               cursorHeight: 20,
               autofocus: false,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   labelStyle: TextStyle(color: Colors.grey),
                   labelText: ' Password',
                   hintText: "New password",
@@ -85,7 +83,7 @@ class Confirmpassword extends GetView<PasswordController> {
                     borderSide: BorderSide(color: AppColors.orange, width: 1.5),
                   )),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextField(
@@ -96,7 +94,7 @@ class Confirmpassword extends GetView<PasswordController> {
               cursorColor: AppColors.blue,
               cursorHeight: 20,
               autofocus: false,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   labelStyle: TextStyle(color: Colors.grey),
                   labelText: 'Confirm',
                   hintText: "Comfirmpassword",
@@ -116,7 +114,7 @@ class Confirmpassword extends GetView<PasswordController> {
                     borderSide: BorderSide(color: AppColors.orange, width: 1.5),
                   )),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             ElevatedButton(
@@ -133,11 +131,9 @@ class Confirmpassword extends GetView<PasswordController> {
                       alignment: Alignment.bottomCenter,
                       width: 40,
                       height: 40,
-                      child: Container(
-                        child: Text(
-                          'Comfirm from the enter value',
-                          style: TextStyle(color: Colors.red),
-                        ),
+                      child: const Text(
+                        'Comfirm from the enter value',
+                        style: TextStyle(color: Colors.red),
                       )).show();
                 }
               },

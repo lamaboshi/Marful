@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:marful/app/modules/product_page/data/product_repositry.dart';
 import 'package:marful/app/modules/websit_company/data/model/Product.dart';
-
 import '../../../../api/socket/managment_hub.dart';
 import '../../../../sheard/util.dart';
 

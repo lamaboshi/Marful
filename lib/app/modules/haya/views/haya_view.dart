@@ -6,7 +6,6 @@ import 'package:marful/app/modules/haya/views/hayamain.dart';
 
 import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
-import '../../homePost_page/views/homePost_view.dart';
 import '../../menu/views/menu_view.dart';
 import '../controllers/haya_controller.dart';
 

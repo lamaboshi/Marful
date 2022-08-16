@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/password_page/controllers/password_controller.dart';
-
 import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
 
 class PasswordPageView extends GetView<PasswordController> {
+  const PasswordPageView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-    return Scaffold(backgroundColor: Colors.white,
+    return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: SingleChildScrollView(
           child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
@@ -40,33 +42,33 @@ class PasswordPageView extends GetView<PasswordController> {
             ),
             Card(
                 elevation: 0,
-                child: Container(
+                child: SizedBox(
                     width: width / 2,
                     height: height / 2.3,
                     child: Image.asset('assets/images/Social ideas.gif'))),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
               child: Text(
                 'Enter the registerd email address',
                 style: TextStyle(fontSize: 20, color: Colors.black54),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
               child: Text(
                 'we will email you a link to reset  ',
                 style: TextStyle(fontSize: 18, color: Colors.black45),
               ),
             ),
-            Text(
+            const Text(
               ' your password',
               style: TextStyle(fontSize: 18, color: Colors.black45),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(25,16,25,15),
+              padding: const EdgeInsets.fromLTRB(25, 16, 25, 15),
               child: TextField(
                 onChanged: (newText) {
                   controller.email.value = newText;
@@ -75,7 +77,7 @@ class PasswordPageView extends GetView<PasswordController> {
                 cursorColor: AppColors.blue,
                 cursorHeight: 20,
                 autofocus: false,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     labelStyle: TextStyle(color: Colors.grey),
                     labelText: 'Email',
                     hintText: "hy@gmail.com",
@@ -99,7 +101,7 @@ class PasswordPageView extends GetView<PasswordController> {
                     )),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             ElevatedButton(

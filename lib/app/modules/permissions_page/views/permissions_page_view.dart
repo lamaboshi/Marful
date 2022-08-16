@@ -102,6 +102,7 @@ class PermissionsPageView extends GetView<PermissionsPageController> {
           )),
       body: ListView.separated(
           padding: const EdgeInsets.all(15),
+              physics: const BouncingScrollPhysics(),
           itemBuilder: ((context, index) => Card(
               elevation: 5,
               shape: RoundedRectangleBorder(

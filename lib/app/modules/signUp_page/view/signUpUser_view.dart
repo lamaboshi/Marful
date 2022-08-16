@@ -1,3 +1,4 @@
+// ignore_for_file: file_names
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -70,6 +71,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                               type: TextInputType.name,
                               label: ' Name',
                               hint: "Haya Eid",
+                              validator: controller.forceValue,
                               prefIcon: Icons.person,
                             ),
                             //UserName
@@ -82,6 +84,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                               label: 'User Name',
                               hint: "Haya ",
                               prefIcon: Icons.person,
+                              validator: controller.forceValue,
                             ),
                             //Age
                             TextFieldWidget(
@@ -93,6 +96,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                               label: 'Age',
                               hint: "21 ",
                               prefIcon: Icons.description,
+                              validator: controller.forceValue,
                             ),
                             //Phone
                             TextFieldWidget(
@@ -104,6 +108,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                               label: 'PhoneNumber',
                               hint: "099717424666 ",
                               prefIcon: Icons.phone,
+                              validator: controller.forceValue,
                             ),
                             //address
                             TextFieldWidget(
@@ -115,6 +120,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                               label: 'location',
                               hint: "aleppo ",
                               prefIcon: Icons.location_on,
+                              validator: controller.forceValue,
                             ),
                             //PayBal
                             TextFieldWidget(
@@ -126,6 +132,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                               label: 'PayBal',
                               hint: "hsd235dfgdf ",
                               prefIcon: Icons.paypal,
+                              validator: controller.forceValue,
                             ),
 
                             //Email
@@ -138,6 +145,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                               label: 'Email',
                               hint: "hy@gmail.com ",
                               prefIcon: Icons.email,
+                              validator: controller.forceValue,
                             ),
                             ////////Passeword
                             Obx(() {
@@ -162,6 +170,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                                   ),
                                 ),
                                 prefIcon: Icons.key,
+                                validator: controller.forceValue,
                               );
                             }),
                             const SizedBox(
@@ -174,7 +183,10 @@ class SignUpUserPage extends GetView<SignUpController> {
                                   fixedSize: MaterialStateProperty.all(
                                       const Size.fromWidth(150))),
                               onPressed: () async {
-                                controller.signUpUser();
+                                if (controller.userForm.currentState!
+                                    .validate()) {
+                                  controller.signUpUser();
+                                }
                               },
                               child: const Text(
                                 "Sign Up",
