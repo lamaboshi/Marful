@@ -8,6 +8,7 @@ import 'package:marful/sheard/util.dart';
 import 'package:q_overlay/q_overlay.dart';
 
 import '../../../core/values/app_colors.dart';
+import '../../help_pagee/views/help_pagee_view.dart';
 
 class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
   WebsiteCompanyPage({super.key});
@@ -82,10 +83,15 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
             appBar: AppBar(
                 elevation: 0,
                 backgroundColor: Colors.white,
-                leading: Icon(
-                  Icons.help,
-                  size: 30,
-                  color: AppColors.orange,
+                leading: IconButton(
+                  onPressed: () {
+                    Get.to(HelpPageeView());
+                  },
+                  icon: Icon(
+                    Icons.help,
+                    size: 30,
+                    color: AppColors.orange,
+                  ),
                 ),
                 actions: [
                   Padding(
@@ -367,7 +373,7 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                                           controller.count[index];
                                 },
                                 icon: Icon(
-                                  Icons.add_shopping_cart,
+                                  Icons.done,
                                   color: AppColors.orange,
                                   size: 35,
                                 ))),

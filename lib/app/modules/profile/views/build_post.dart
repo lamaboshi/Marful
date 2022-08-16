@@ -35,42 +35,52 @@ class BuildPost extends GetResponsiveView<ProfileController> {
                     children: [
                       Row(
                         children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(40),
-                            child: controller.auth.getTypeEnum() ==
-                                    Auth.infulonser
-                                ? controller.infulencer.value.image == null
-                                    ? Image.asset(
-                                        "assets/images/8.jpg",
-                                        height: 60,
-                                        width: 60,
-                                        fit: BoxFit.cover,
-                                      )
-                                    : Utility.imageFromBase64String(
-                                        Utility.base64String(
-                                            controller.infulencer.value.image!),
+                          Obx(() => ClipRRect(
+                                borderRadius: BorderRadius.circular(40),
+                                child: controller
+                                        .stringPickImage.value.isNotEmpty
+                                    ? Utility.imageFromBase64String(
+                                        controller.stringPickImage.value,
                                         60,
                                         60)
-                                : controller.auth.getTypeEnum() == Auth.comapny
-                                    ? controller.company.value.image == null
-                                        ? Image.asset(
-                                            "assets/images/8.jpg",
-                                            height: 60,
-                                            width: 60,
-                                            fit: BoxFit.cover,
-                                          )
-                                        : Utility.imageFromBase64String(
-                                            Utility.base64String(controller
-                                                .company.value.image!),
-                                            60,
-                                            60)
-                                    : Image.asset(
-                                        "assets/images/8.jpg",
-                                        height: 60,
-                                        width: 60,
-                                        fit: BoxFit.cover,
-                                      ),
-                          ),
+                                    : controller.auth.getTypeEnum() ==
+                                            Auth.infulonser
+                                        ? controller.infulencer.value.image ==
+                                                null
+                                            ? Image.asset(
+                                                'assets/images/person.png',
+                                                height: 60,
+                                                width: 60,
+                                                fit: BoxFit.cover,
+                                              )
+                                            : Utility.imageFromBase64String(
+                                                Utility.base64String(controller
+                                                    .infulencer.value.image!),
+                                                60,
+                                                60)
+                                        : controller.auth.getTypeEnum() ==
+                                                Auth.comapny
+                                            ? controller.company.value.image ==
+                                                    null
+                                                ? Image.asset(
+                                                    'assets/images/person.png',
+                                                    height: 60,
+                                                    width: 60,
+                                                    fit: BoxFit.cover,
+                                                  )
+                                                : Utility.imageFromBase64String(
+                                                    Utility.base64String(
+                                                        controller.company.value
+                                                            .image!),
+                                                    60,
+                                                    60)
+                                            : Image.asset(
+                                                "assets/images/8.jpg",
+                                                height: 60,
+                                                width: 60,
+                                                fit: BoxFit.cover,
+                                              ),
+                              )),
                           const SizedBox(
                             width: 20,
                           ),

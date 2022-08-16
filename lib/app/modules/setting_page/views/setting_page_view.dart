@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/permissions_page/views/permissions_page_view.dart';
 import 'package:marful/app/routes/app_pages.dart';
+
 import '../../../../sheard/auth_service.dart';
 import '../../../core/values/app_colors.dart';
 import '../../../core/values/my_flutter_app_icons.dart';
-import '../../content_page/views/content_view.dart';
-import '../../haya/views/haya_brand.dart';
 import '../controllers/setting_page_controller.dart';
 
 class SettingPageView extends GetView<SettingPageController> {
@@ -23,22 +22,30 @@ class SettingPageView extends GetView<SettingPageController> {
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
-            controller.auth.getTypeEnum() == Auth.comapny
+            controller.auth.getTypeEnum() != Auth.user
                 ? buildCard('Brand', Icons.settings,
                     () => Get.rootDelegate.toNamed(Routes.BRAND_PAGE))
-                : SizedBox.shrink(),
+                : const SizedBox.shrink(),
             controller.auth.getTypeEnum() != Auth.user
                 ? buildCard('Content', Icons.edit,
                     () => Get.rootDelegate.toNamed(Routes.Content))
-                : SizedBox.shrink(),
-            buildCard('About', Icons.abc_outlined, () {}),
-            buildCard('Delete My Account', Icons.delete, () async {
-              await controller.deleteAccount();
-            }),
-            buildCard('Permission', AppIcons.trending_up, () {
-              Get.to(PermissionsPageView());
-              
-            }),
+                : const SizedBox.shrink(),
+            (controller.auth.getTypeEnum() == Auth.comapny &&
+                        controller.auth.companyType() == 'Editing Officer') ||
+                    (controller.auth.getTypeEnum() == Auth.comapny &&
+                        controller.auth.companyType() == 'chat employee') ||
+                    (controller.auth.getTypeEnum() == Auth.comapny &&
+                        controller.auth.companyType() == 'Publishing Officer')
+                ? const SizedBox.shrink()
+                : buildCard('Delete My Account', Icons.delete, () async {
+                    await controller.deleteAccount();
+                  }),
+            controller.auth.getTypeEnum() == Auth.comapny
+                ? buildCard('Permission', AppIcons.trending_up, () {
+                    Get.rootDelegate.toNamed(Routes.PERMISSIONS_PAGE);
+                    Get.to(const PermissionsPageView());
+                  })
+                : const SizedBox.shrink(),
             Expanded(
               flex: 5,
               child: Image.asset(

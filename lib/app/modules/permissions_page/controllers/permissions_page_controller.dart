@@ -1,22 +1,37 @@
 import 'package:get/get.dart';
+import 'package:marful/app/data/model/company.dart';
+import 'package:marful/app/modules/permissions_page/data/companyType_repository.dart';
+import 'package:marful/sheard/auth_service.dart';
+
+import '../data/company_type.dart';
 
 class PermissionsPageController extends GetxController {
-  //TODO: Implement PermissionsPageController
-
+  final repo = CompanyTypeRepository();
+  final authService = Get.find<AuthService>();
   final count = 0.obs;
+  final newCompany = CompanyTypeModel().obs;
+  final typeCompanyList = <CompanyTypeModel>[];
   @override
   void onInit() {
     super.onInit();
+    getAllType();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  Future<void> addtype() async {
+    await repo.addCompanyType(newCompany.value);
+    getAllType();
   }
 
-  @override
-  void onClose() {
-    super.onClose();
+  Future<void> deletetype(int id) async {
+    await repo.deleteCompanyType(id);
+    getAllType();
+  }
+
+  Future<void> getAllType() async {
+    typeCompanyList.clear();
+    var data = await repo
+        .getCompanyType((authService.getDataFromStorage() as Company).id!);
+    typeCompanyList.assignAll(data);
   }
 
   void increment() => count.value++;

@@ -257,6 +257,7 @@ class BrandPageView extends GetResponsiveView<BrandPageController> {
                                     controller.DelBrands(
                                         controller.allBrands[index].id!);
                                   }));
+                                  Get.back();
                                 },
                                 icon: const Icon(Icons.delete)),
                           )),

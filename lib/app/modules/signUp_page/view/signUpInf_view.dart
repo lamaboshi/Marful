@@ -171,7 +171,58 @@ class SignUpInfluencer extends GetView<SignUpController> {
                                 fixedSize: MaterialStateProperty.all(
                                     const Size.fromWidth(150))),
                             onPressed: () async {
-                              await controller.signUpInfluencer();
+                              Get.dialog(AlertDialog(
+                                content: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.info_outlined,
+                                      color: AppColors.orange,
+                                    ),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                        'Are you sure want to Save Your Data ?'),
+                                  ],
+                                ),
+                                contentPadding:
+                                    const EdgeInsets.fromLTRB(20, 20, 20, 10),
+                                actionsPadding:
+                                    const EdgeInsets.fromLTRB(15, 10, 15, 20),
+                                actions: [
+                                  Row(children: [
+                                    ElevatedButton(
+                                      onPressed: () async {
+                                        controller.isSaveData.value = true;
+                                        await controller.signUpInfluencer();
+                                      },
+                                      style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all(
+                                                  AppColors.blue),
+                                          foregroundColor:
+                                              MaterialStateProperty.all(
+                                                  Colors.white)),
+                                      child: Text('Yes'),
+                                    ),
+                                    const Spacer(),
+                                    ElevatedButton(
+                                      onPressed: () async {
+                                        controller.isSaveData.value = false;
+                                        await controller.signUpInfluencer();
+                                      },
+                                      style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all(
+                                                  AppColors.blue),
+                                          foregroundColor:
+                                              MaterialStateProperty.all(
+                                                  Colors.white)),
+                                      child: Text('Cancel'),
+                                    ),
+                                  ]),
+                                ],
+                              ));
                             },
                             child: const Text(
                               "Sign Up",

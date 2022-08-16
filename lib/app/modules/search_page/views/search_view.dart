@@ -5,6 +5,7 @@ import 'package:marful/app/modules/search_page/controllers/search_controller.dar
 import 'package:marful/sheard/auth_service.dart';
 
 import '../../../../sheard/util.dart';
+import '../../../routes/app_pages.dart';
 import '../../profile/views/profile_view.dart';
 
 class SearchView extends GetView<SearchController> {
@@ -184,6 +185,11 @@ class SearchView extends GetView<SearchController> {
                                   itemBuilder: (BuildContext context,
                                           int index) =>
                                       ListTile(
+                                        onTap: () {
+                                          Get.rootDelegate.toNamed(
+                                              Routes.WebsiteCompany,
+                                              arguments: 1);
+                                        },
                                         leading: Container(
                                           height: 40,
                                           width: 40,

@@ -124,7 +124,7 @@ class ChatPageView extends GetView<ChatPageController> {
                                         double.parse(txt);
                                   },
                                   type: TextInputType.multiline,
-                                  hint: 'salary',
+                                  hint: 'percentage %',
                                   obscureText: false,
                                   prefIcon: Icons.money,
                                 ),

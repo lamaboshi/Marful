@@ -32,7 +32,7 @@ class Brand {
     json['name'] = name;
     json['description'] = description;
     json['image'] = image == null ? null : Uint8List.fromList(image!);
-    json['infulonserId'] = infulonserId == null ? null : infulonserId;
+    json['InfulonserId'] = infulonserId == null ? null : infulonserId;
     json['companyContentId'] =
         companyContentId == null ? null : companyContentId;
     return json;

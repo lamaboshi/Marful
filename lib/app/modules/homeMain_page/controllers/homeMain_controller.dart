@@ -29,6 +29,7 @@ class HomeMainController extends GetxController {
   final companyContent = <CompanyContent>[].obs;
   final newPost = Post().obs;
   final loading = false.obs;
+  //Ti Add Post
   final contentId = 0.obs;
   final stringPickImage = ''.obs;
   final brand = <Brand>[].obs;
