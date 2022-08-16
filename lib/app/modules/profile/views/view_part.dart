@@ -1,276 +1,21 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marful/sheard/auth_service.dart';
+import 'package:marful/sheard/util.dart';
 
-import '../../../../sheard/auth_service.dart';
-import '../../../core/values/app_colors.dart';
+import '../../../core/component/textField.dart';
 import '../controllers/profile_controller.dart';
-import 'edit_company.dart';
-import 'edit_inflounsor.dart';
-import 'view_part.dart';
 
-class EditProfilePage extends GetResponsiveView<ProfileController> {
-  EditProfilePage({super.key});
-
+class ViewPart extends GetResponsiveView<ProfileController> {
+  ViewPart(this.name, this.descraption, this.type, this.image);
+  String name;
+  String descraption;
+  int type;
+  Uint8List? image;
   @override
   Widget builder() {
-    controller.info.value = controller.infulencer.value;
-    controller.comp.value = controller.company.value;
-    controller.use.value = controller.user.value;
-    return Scaffold(
-      floatingActionButton: FloatingActionButton.extended(
-          backgroundColor: AppColors.orange,
-          onPressed: () async {
-            await controller.UpdateDataforperson();
-          },
-          label: Text(
-            "buildPostSave".tr,
-            style: TextStyle(
-              fontSize: 18,
-              color: Colors.white,
-            ),
-          )),
-      appBar: AppBar(
-        backgroundColor: AppColors.orange,
-        title: Text('buildPostEditProfile'.tr),
-      ),
-      body: SingleChildScrollView(child: getType()),
-    );
-  }
-
-  Widget getType() {
-    //////////////////////infulonseer
-    switch (controller.typeAuth.value) {
-      case Auth.infulonser:
-<<<<<<< HEAD
-        return Column(
-          children: [
-            viewPart(controller.infulencer.value.name!,
-                controller.infulencer.value.description!, 1),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        'editProfilerContent'.tr,
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: AppColors.orange,
-                        ),
-                      ),
-                      SizedBox(
-                          width: 100,
-                          child: QExpander(
-                            child: Icon(
-                              Icons.add,
-                              color: AppColors.orange,
-                            ),
-                            expandChild: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: controller.allContents
-                                    .map(
-                                      (element) => Padding(
-                                          padding: EdgeInsets.all(6),
-                                          child: TextButton(
-                                            onPressed: () {
-                                              if (controller.auth
-                                                      .getTypeEnum() ==
-                                                  Auth.infulonser) {
-                                                controller.addcontentinfo(
-                                                    element.id!);
-                                              } else if (controller.auth
-                                                      .getTypeEnum() ==
-                                                  Auth.comapny) {
-                                                controller.addcontentcomp(
-                                                    element.id!);
-                                              }
-                                            },
-                                            child: Text(
-                                              element.name!,
-                                              style: TextStyle(
-                                                  fontSize: 16,
-                                                  color: Colors.black),
-                                            ),
-                                          )),
-                                    )
-                                    .toList()),
-                          )),
-                    ],
-                  ),
-                  SizedBox(
-                      width: screen.width, height: 65, child: contentPart()),
-                  Row(
-                    children: [
-                      Text(
-                        'editProfilerPost'.tr,
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: AppColors.orange,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Obx(
-                    () => Column(
-                      children: controller.posts
-                          .map((e) => BuildPost(
-                                infoname: controller.infulencer.value.name!,
-                                post: e,
-                                isEdit: true,
-                              ))
-                          .toList(),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        );
-      /////////////company
-      case Auth.comapny:
-        return Column(
-          children: [
-            viewPart(controller.company.value.name!,
-                controller.company.value.description!, 2),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        'editProfilerContent'.tr,
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: AppColors.orange,
-                        ),
-                      ),
-                      SizedBox(
-                          width: 100,
-                          child: QExpander(
-                            child: Icon(
-                              Icons.add,
-                              color: AppColors.orange,
-                            ),
-                            expandChild: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: controller.allContents
-                                    .map(
-                                      (element) => Padding(
-                                          padding: EdgeInsets.all(6),
-                                          child: TextButton(
-                                            onPressed: () {
-                                              if (!controller.contents
-                                                  .contains(element)) {
-                                                controller.contents
-                                                    .add(element);
-                                              }
-                                              contentPart();
-                                            },
-                                            child: Text(
-                                              element.name!,
-                                              style: TextStyle(fontSize: 16),
-                                            ),
-                                          )),
-                                    )
-                                    .toList()),
-                          )),
-                    ],
-                  ),
-                  SizedBox(
-                      width: screen.width, height: 65, child: contentPart()),
-                  Row(
-                    children: [
-                      Text(
-                        'editProfilerPost'.tr,
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: AppColors.orange,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: controller.posts
-                        .map((e) => BuildPost(
-                              infoname: controller.infulencer.value.name!,
-                              post: e,
-                              isEdit: true,
-                            ))
-                        .toList(),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        );
-=======
-        return EditInflounsorPage();
-      /////////////company
-      case Auth.comapny:
-        return EditCompanyPage();
->>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
-      ///////////////user
-      case Auth.user:
-        return Column(
-          children: [
-            ViewPart(controller.user.value.name!, '', 3, null),
-          ],
-        );
-      default:
-        return Text('editProfilerNoValue'.tr);
-    }
-  }
-<<<<<<< HEAD
-
-  Widget contentPart() {
-    return Obx(() => ListView(
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
-          children: controller.contents
-              .toList()
-              .map<Widget>((e) => Container(
-                    height: 55,
-                    padding: const EdgeInsets.all(10),
-                    child: Chip(
-                      backgroundColor: Colors.white,
-                      label: Text(e.name!),
-                      avatar: Container(
-                        width: 20,
-                        height: 20,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                              image: AssetImage(
-                            'assets/images/angryimg.png',
-                          )),
-                        ),
-                      ),
-                      elevation: 2,
-                      deleteIcon: Icon(Icons.close, size: 20),
-                      onDeleted: () {
-                        if (controller.auth.getTypeEnum() == Auth.infulonser) {
-                          controller.Deletcontentinfo(e.id!);
-                        } else if (controller.auth.getTypeEnum() ==
-                            Auth.comapny) {
-                          controller.Deletcontentcomp(e.id!);
-                        }
-                      },
-                    ),
-                  ))
-              .toList(),
-        ));
-  }
-
-  Widget viewPart(
-    String name,
-    String descraption,
-    int type,
-  ) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -284,17 +29,14 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                       child: controller.stringPickImage.value.isNotEmpty
                           ? Utility.imageFromBase64String(
                               controller.stringPickImage.value, 200, 200)
-                          : controller.infulencer.value.image == null
+                          : image == null
                               ? Image.asset(
                                   'assets/images/8.jpg',
                                   width: 200,
                                   height: 200,
                                 )
                               : Utility.imageFromBase64String(
-                                  Utility.base64String(
-                                      controller.infulencer.value.image!),
-                                  200,
-                                  200),
+                                  Utility.base64String(image!), 200, 200),
                     )),
                 Positioned(
                     right: -10,
@@ -338,7 +80,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                           }
                         },
                         type: TextInputType.multiline,
-                        hint: 'SignUpInfName'.tr,
+                        hint: 'Name',
                         obscureText: false,
                         prefIcon: Icons.person,
                       ),
@@ -368,7 +110,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                       }
                     },
                     type: TextInputType.multiline,
-                    hint: 'SignUpCmpMob'.tr,
+                    hint: 'Phone',
                     obscureText: false,
                     prefIcon: Icons.phone,
                   ),
@@ -385,7 +127,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                                   ? controller.company.value.email
                                   : controller.user.value.email,
                           type: TextInputType.multiline,
-                          hint: 'SignUpCmpEmail'.tr,
+                          hint: 'Email',
                           obscureText: false,
                           prefIcon: Icons.email,
                           onChanged: (txt) {
@@ -431,7 +173,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                                 }
                               },
                               type: TextInputType.multiline,
-                              hint: 'SignUpInfPaybal'.tr,
+                              hint: 'PayPal',
                               obscureText: false,
                               prefIcon: Icons.paypal,
                             ),
@@ -462,7 +204,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                             }
                           },
                           type: TextInputType.multiline,
-                          hint: 'SignCmpUplocation'.tr,
+                          hint: 'Address',
                           obscureText: false,
                           prefIcon: Icons.location_on,
                         ),
@@ -493,7 +235,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                                 }
                               },
                               type: TextInputType.multiline,
-                              hint: 'SignUpInfUserName'.tr,
+                              hint: 'Username',
                               obscureText: false,
                               prefIcon: Icons.person,
                             ),
@@ -523,7 +265,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                             }
                           },
                           type: TextInputType.multiline,
-                          hint: 'SignUpCmpTele'.tr,
+                          hint: 'TelePhone',
                           obscureText: false,
                           prefIcon: Icons.phone,
                         ),
@@ -553,7 +295,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                             }
                           },
                           type: TextInputType.multiline,
-                          hint: 'buildPostDes'.tr,
+                          hint: 'Description',
                           obscureText: false,
                           prefIcon: Icons.description,
                         ),
@@ -579,7 +321,7 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
                             }
                           },
                           type: TextInputType.multiline,
-                          hint: 'SignUpUserAge'.tr,
+                          hint: 'Age',
                           obscureText: false,
                           prefIcon: Icons.description,
                         ),
@@ -591,6 +333,4 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
       ),
     );
   }
-=======
->>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
 }

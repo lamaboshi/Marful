@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
     var storge = Get.put(StorageService());
     storge.init();
     Get.put(AuthService());
+
     return GetMaterialApp.router(
       title: "MarFul",
       key: key,
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
       defaultTransition: Transition.cupertino,
       getPages: AppPages.routes,
       enableLog: true,
+       theme: ThemeData(fontFamily: 'Uchen'),
     );
   }
 }

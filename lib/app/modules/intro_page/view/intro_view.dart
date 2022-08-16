@@ -76,7 +76,11 @@ PageViewModel interPage(context) {
     titleWidget:  Align(
         alignment: Alignment.topLeft,
         child: Text(
+<<<<<<< HEAD
           'YouCanChooseAcountToSignUp'.tr,
+=======
+          'You can choose acount to signUp',
+>>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
           style: TextStyle(fontSize: 15),
         )),
 
@@ -181,8 +185,13 @@ PageViewModel interInfluncerPage(context) {
       ),
     ),
     //text
+<<<<<<< HEAD
     bodyWidget:  Text(
         'AContentCreatorissomeonewhosharesinformationandussuallytargetsspecificusers.acontentcreatorcancreatediffrenttypesofcontent'.tr),
+=======
+    bodyWidget: const Text(
+        'Influencer can add posts and make a conversation with company and create a special brand'),
+>>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
     footer: Column(
       children: [
         ///btn Sign Up As Influencer
@@ -216,8 +225,13 @@ PageViewModel interInfluncerPage(context) {
               width: 3,
             ),
             InkWell(
+<<<<<<< HEAD
               child: Text(
                 'signin'.tr,
+=======
+              child:const Text(
+                'sign in',
+>>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
                 style: TextStyle(
                   color: Colors.grey,
                   decoration: TextDecoration.underline,
@@ -265,8 +279,13 @@ PageViewModel interCompanyPage(context) {
     ),
 
     ///text
+<<<<<<< HEAD
     bodyWidget: Text(
         'thecompanyconsistsofmorethanonepersonanditisabrandthatpromotesitisproduct'.tr),
+=======
+    bodyWidget: const Text(
+        'Company can add posts and have employee with permissions'),
+>>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
     footer: Column(
       children: [
         ///btn Sign Up As Company
@@ -299,8 +318,13 @@ PageViewModel interCompanyPage(context) {
               width: 3,
             ),
             InkWell(
+<<<<<<< HEAD
               child: Text(
                 'signin'.tr,
+=======
+              child:const Text(
+                'sign in',
+>>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
                 style: TextStyle(
                   color: Colors.grey,
                   decoration: TextDecoration.underline,
@@ -349,8 +373,13 @@ PageViewModel interUserPage(context) {
     ),
 
     ///text
+<<<<<<< HEAD
     bodyWidget: Text(
         'theuserfollowscopaniesandcontentmakers'.tr),
+=======
+    bodyWidget: const Text(
+        'User can shopping and interact posts '),
+>>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
     footer: Column(
       children: [
         ///btn Sign Up As User

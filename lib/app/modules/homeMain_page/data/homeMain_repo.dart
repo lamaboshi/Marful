@@ -8,7 +8,7 @@ import 'package:marful/app/modules/homeMain_page/data/model/post_infulonser.dart
 import 'package:marful/app/modules/homeMain_page/data/model/user_post.dart';
 
 import '../../../../sheard/auth_service.dart';
-import '../../../data/model/content.dart';
+import '../../websit_company/data/model/companycontent.dart';
 
 class HomeMainRepositry extends IHomeMainRepository {
   final _dio = Get.find<Dio>();
@@ -19,6 +19,7 @@ class HomeMainRepositry extends IHomeMainRepository {
     var list = <GetPost>[];
     var result = await _dio.get('https://localhost:7192/api/Main/Posts',
         queryParameters: {"Type": type, "email": email});
+    print('00000000000000000000000000${result.data}');
     if (result.statusCode == 404) return [];
     for (var item in result.data) {
       list.add(GetPost.fromJson(item));
@@ -66,14 +67,13 @@ class HomeMainRepositry extends IHomeMainRepository {
     }
   }
 
-  @override
-  Future<List<Content>> getCompanyConent(int idCompany) async {
-    var result = await _dio
-        .get('https://localhost:7192/api/CompanyContent/{$idCompany}');
+  Future<List<CompanyContent>> getCompanyConent(int idCompany) async {
+    var result =
+        await _dio.get('https://localhost:7192/api/CompanyContent/$idCompany');
     print(result);
-    var list = <Content>[];
+    var list = <CompanyContent>[];
     for (var item in result.data) {
-      list.add(Content.fromJson(item));
+      list.add(CompanyContent.fromJson(item));
     }
     return list;
   }

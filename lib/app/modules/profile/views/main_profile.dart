@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/profile/views/company_profile.dart';
@@ -17,8 +19,10 @@ class MainProfile extends GetView<ProfileController> {
         return SingleChildScrollView(
           child: Column(
             children: [
-              viewPart(controller.infulencer.value.name!,
-                  controller.infulencer.value.description!),
+              Obx(() => viewPart(
+                  controller.infulencer.value.name!,
+                  controller.infulencer.value.description!,
+                  controller.infulencer.value.image!)),
               InfulonserProfilePage(isSearch)
             ],
           ),
@@ -26,8 +30,10 @@ class MainProfile extends GetView<ProfileController> {
       case Auth.comapny:
         return Column(
           children: [
-            viewPart(controller.company.value.name!,
-                controller.company.value.description!),
+            Obx(() => viewPart(
+                controller.company.value.name!,
+                controller.company.value.description!,
+                controller.company.value.image!)),
             CompanyProfilePage(isSearch)
           ],
         );
@@ -37,28 +43,24 @@ class MainProfile extends GetView<ProfileController> {
     }
   }
 
-  Widget viewPart(String name, String descraption) {
+  Widget viewPart(String name, String descraption, Uint8List? image) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Center(
-            child: Obx(() => ClipRRect(
-                  borderRadius: BorderRadius.circular(100),
-                  child: controller.infulencer.value.image == null
-                      ? Image.asset(
-                          'assets/images/8.jpg',
-                          width: 200,
-                          height: 200,
-                        )
-                      : Utility.imageFromBase64String(
-                          Utility.base64String(
-                              controller.infulencer.value.image!),
-                          200,
-                          200),
-                )),
-          ),
+              child: ClipRRect(
+            borderRadius: BorderRadius.circular(100),
+            child: image == null
+                ? Image.asset(
+                    'assets/images/8.jpg',
+                    width: 200,
+                    height: 200,
+                  )
+                : Utility.imageFromBase64String(
+                    Utility.base64String(image), 200, 200),
+          )),
           Center(
               child: Text(
             name == null ? '' : name,

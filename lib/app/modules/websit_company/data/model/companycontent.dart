@@ -1,7 +1,5 @@
-import 'package:marful/app/modules/websit_company/data/model/Content.dart';
+import 'package:marful/app/data/model/content.dart';
 import 'package:marful/app/modules/websit_company/data/model/company.dart';
-
-import 'Content.dart';
 
 class CompanyContent {
   int? id;

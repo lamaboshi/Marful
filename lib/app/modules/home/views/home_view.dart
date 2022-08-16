@@ -46,11 +46,13 @@ class HomeView extends GetView<HomeController> {
                   Get.rootDelegate.toNamed(Routes.Search);
                 },
                 icon: const Icon(Icons.search)),
-            IconButton(
-                onPressed: () {
-                  Get.rootDelegate.toNamed(Routes.CONVERSATION_PAGE);
-                },
-                icon: const Icon(Icons.message))
+            controller.auth.getTypeEnum() == Auth.user
+                ? SizedBox.shrink()
+                : IconButton(
+                    onPressed: () {
+                      Get.rootDelegate.toNamed(Routes.CONVERSATION_PAGE);
+                    },
+                    icon: const Icon(Icons.message))
           ],
         ),
         body: controller.auth.getTypeEnum() == Auth.user

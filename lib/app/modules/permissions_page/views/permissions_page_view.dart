@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marful/app/core/values/app_colors.dart';
 import '../../../core/component/deleteDialog.dart';
 import '../../../core/component/textField.dart';
-import '../../addEmployee_page/views/add_employee_page_view.dart';
-import '../controllers/employee_per_page_controller.dart';
+import '../../../core/values/app_colors.dart';
+import '../controllers/permissions_page_controller.dart';
 
-class EmployeePerPageView extends GetView<EmployeePerPageController> {
-  const EmployeePerPageView({Key? key}) : super(key: key);
+class PermissionsPageView extends GetView<PermissionsPageController> {
+  const PermissionsPageView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     List<String> employee = [
@@ -85,7 +84,7 @@ class EmployeePerPageView extends GetView<EmployeePerPageController> {
                           ),
                         ),
                         const SizedBox(
-                          height:10,
+                          height: 10,
                         ),
                       ],
                     ),
@@ -194,110 +193,16 @@ class EmployeePerPageView extends GetView<EmployeePerPageController> {
                     IconButton(
                         padding: const EdgeInsets.all(0),
                         onPressed: () {
-                          Get.dialog(DeleteDialogWidget(delFunction: (){},));
+                          Get.dialog(DeleteDialogWidget(
+                            delFunction: () {},
+                          ));
                         },
                         icon: const Icon(
                           Icons.delete,
                         ))
                   ],
                 ),
-              )
-              //  Center(
-              //   child: ListTile(
-              //     onTap: () {
-              //       Get.to(const AddEmployeePageView());
-              //       // Get.dialog(
-              //       //     barrierDismissible: false,
-              //       //     AlertDialog( scrollable : true,
-              //       //       actionsPadding: const EdgeInsets.all(13),
-              //       //       actions: [
-              //       //         SingleChildScrollView(
-              //       //           child: Column(
-              //       //             children: [
-              //       //               Text(employee[index]),
-              //       //               ExpansionTile(
-              //       //                 title: const Text('Employee permissions'),
-              //       //                 leading: const Icon(Icons.menu),
-              //       //                 tilePadding: const EdgeInsets.all(0),
-              //       //                 childrenPadding: const EdgeInsets.all(0),
-              //       //                 children: [
-              //       //                   for (var item in employee)
-              //       //                     Padding(
-              //       //                       padding: const EdgeInsets.fromLTRB(
-              //       //                           3, 10, 0, 0),
-              //       //                       child: InkWell(
-              //       //                         onTap: () {},
-              //       //                         child: Column(
-              //       //                           crossAxisAlignment:
-              //       //                               CrossAxisAlignment.start,
-              //       //                           children: [
-              //       //                             Row(
-              //       //                               children: [
-              //       //                                 Text(item),
-              //       //                                 const Spacer(),
-              //       //                                 IconButton(
-              //       //                                   onPressed: () {},
-              //       //                                   icon:
-              //       //                                       const Icon(Icons.close),
-              //       //                                   padding:
-              //       //                                       const EdgeInsets.all(0),
-              //       //                                   alignment:
-              //       //                                       Alignment.topRight,
-              //       //                                 ),
-              //       //                               ],
-              //       //                             ),
-              //       //                             const SizedBox(
-              //       //                               height: 5,
-              //       //                             ),
-              //       //                             const Divider(),
-              //       //                           ],
-              //       //                         ),
-              //       //                       ),
-              //       //                     ),
-              //       //                 ],
-              //       //               ),
-              //       //               TextFieldWidget(
-              //       //                 obscureText: false,
-              //       //                 prefIcon: Icons.border_color,
-              //       //                 type: TextInputType.name,
-              //       //               ),
-              //       //               ElevatedButton(
-              //       //                 onPressed: () {
-              //       //                   Get.back();
-              //       //                 },
-              //       //                 style: ButtonStyle(
-              //       //                     backgroundColor:
-              //       //                         MaterialStateProperty.all(
-              //       //                             AppColors.orange),
-              //       //                     foregroundColor:
-              //       //                         MaterialStateProperty.all(
-              //       //                             Colors.white)),
-              //       //                 child: const Center(child: Text('Add')),
-              //       //               ),
-              //       //             ],
-              //       //           ),
-              //       //         ),
-              //       //       ],
-              //       //     ));
-              //     },
-
-              //     title: Text(employee[index]),
-              //     //   subtitle: Text(description[index]),
-              //     // leading: Image.asset(
-              //     //   'assets/images/3.jpg',
-              //     // ),
-              //     shape: const RoundedRectangleBorder(
-              //         borderRadius: BorderRadius.all(Radius.circular(30))),
-              // trailing: IconButton(
-              //     padding: const EdgeInsets.all(0),
-              //     onPressed: () {
-              //       Get.dialog(DeleteDialogWidget());
-              //     },
-              //     icon: const Icon(Icons.delete)),
-              //   ),
-              // ),
-
-              )),
+              ))),
           separatorBuilder: ((context, index) => const SizedBox(
                 height: 5,
               )),

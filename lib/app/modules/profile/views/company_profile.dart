@@ -1,11 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:q_overlay/q_overlay.dart';
 
 import '../../../core/values/app_colors.dart';
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+import '../../../core/values/h.dart';
 import '../../../core/values/my_flutter_app_icons.dart';
+=======
+>>>>>>> 493fe85a13b8dff599fc3b330d4be50dce8133c6
+>>>>>>> 9d82cc27bbf6ef371054f7ccf773f110f502fc8a
 import '../controllers/profile_controller.dart';
 import 'build_content.dart';
+import 'build_post.dart';
 
 class CompanyProfilePage extends GetResponsiveView<ProfileController> {
   final bool isSearch;
@@ -13,6 +22,8 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
   @override
   Widget builder() {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         isSearch
             ? Padding(
@@ -60,25 +71,89 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
         SizedBox(
           height: 15,
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(8, 12, 8, 8),
-          child: IntrinsicHeight(
-            child: Center(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: screen.width / 3.4,
+        IntrinsicHeight(
+          child: Center(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                OutlinedButton(
+                  onPressed: () async {
+                    QPanel(
+                            width: screen.width / 2,
+                            alignment: Alignment.centerLeft,
+                            child: Column(
+                                children: controller.follower
+                                    .map((element) => ListTile(
+                                          leading: Icon(Icons.person,
+                                              color: AppColors.orange),
+                                          title: Text(element.name!),
+                                          subtitle: Text(element.email!),
+                                        ))
+                                    .toList()))
+                        .show();
+                  },
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                        side: BorderSide(color: AppColors.orange),
+                        borderRadius: BorderRadius.circular(10))),
                   ),
-                  Padding(
+                  child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: [
+                        Obx(() => Text(
+                              controller.followerCount.value.toString(),
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.orange),
+                            )),
                         Text(
-                          '291',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
+                          'Followors ',
+                          style:
+                              TextStyle(fontSize: 18, color: AppColors.orange),
                         ),
+                      ],
+                    ),
+                  ),
+                ),
+                VerticalDivider(
+                  color: Colors.grey,
+                  thickness: 2,
+                ),
+                OutlinedButton(
+                  onPressed: () async {
+                    await controller
+                        .getPostCompany(controller.company.value.id!);
+                    QPanel(
+                        width: screen.width / 1.2,
+                        alignment: Alignment.centerRight,
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: controller.posts
+                                .map((e) => BuildPost(
+                                      infoname: controller.company.value.name!,
+                                      post: e,
+                                    ))
+                                .toList(),
+                          ),
+                        )).show();
+                  },
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                        side: BorderSide(color: AppColors.blue),
+                        borderRadius: BorderRadius.circular(10))),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(5),
+                    child: Column(
+                      children: [
+                        Obx(() => Text(
+                              controller.posts.length.toString(),
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            )),
                         Text(
                           'CmpProfilePosts'.tr,
                           style: TextStyle(fontSize: 18),
@@ -86,6 +161,7 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                       ],
                     ),
                   ),
+<<<<<<< HEAD
                   VerticalDivider(
                     color: Colors.grey,
                     thickness: 2,
@@ -108,6 +184,10 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                   ),
                 ],
               ),
+=======
+                ),
+              ],
+>>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
             ),
           ),
         ),
@@ -121,7 +201,11 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
+<<<<<<< HEAD
             ' ibeleviethatnooneshouldchoosebetweenacareerweloveandproveourlivers.',
+=======
+            controller.company.value.description!,
+>>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
             style: TextStyle(fontSize: 16, color: Colors.black54),
           ),
         ),
@@ -132,94 +216,30 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
         ),
-        Buildcontent(),
-        Column(
-          children: controller.posts
-              .map((e) => buildpost(
-                    e.description!,
-                    controller.company.value.name!,
-                  ))
-              .toList(),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Buildcontent(),
         ),
+        Padding(
+          padding: const EdgeInsets.all(9.0),
+          child: Text(
+            ' Posts',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
+          ),
+        ),
+        Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Obx(
+              () => Column(
+                children: controller.posts
+                    .map((e) => BuildPost(
+                          infoname: controller.company.value.name!,
+                          post: e,
+                        ))
+                    .toList(),
+              ),
+            )),
       ],
     );
   }
-
-  Widget buildpost(String description, String companyname) => Padding(
-        padding: const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
-        child: Card(
-          elevation: 2,
-          child: Padding(
-            padding: const EdgeInsets.all(15),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(40),
-                      child: Image.asset(
-                        "assets/images/8.jpg",
-                        height: 60,
-                        width: 60,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Text(
-                      companyname,
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Image.asset(
-                  'assets/images/6.jpg',
-                  height: 220,
-                  width: 380,
-                  fit: BoxFit.cover,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  description,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 15),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          AppIcons.basket,
-                          color: AppColors.orange,
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          AppIcons.thumbs_down,
-                          color: Colors.black,
-                        ),
-                      ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            AppIcons.favorite,
-                            color: Colors.red,
-                          )),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      );
 }
