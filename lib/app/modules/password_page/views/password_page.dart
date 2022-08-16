@@ -10,7 +10,8 @@ class PasswordPageView extends GetView<PasswordController> {
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-    return Scaffold(backgroundColor: Colors.white,
+    return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: SingleChildScrollView(
           child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
@@ -28,11 +29,11 @@ class PasswordPageView extends GetView<PasswordController> {
                           size: 30, color: AppColors.blue),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(12, 0, 0, 0),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
                     child: Text(
                       'ForgotYourPasswod'.tr,
-                      style: TextStyle(fontSize: 22, color: Colors.black),
+                      style: const TextStyle(fontSize: 22, color: Colors.black),
                     ),
                   ),
                 ],
@@ -40,7 +41,7 @@ class PasswordPageView extends GetView<PasswordController> {
             ),
             Card(
                 elevation: 0,
-                child: Container(
+                child: SizedBox(
                     width: width / 2,
                     height: height / 2.3,
                     child: Image.asset('assets/images/Social ideas.gif'))),
@@ -48,25 +49,25 @@ class PasswordPageView extends GetView<PasswordController> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 'Entertheregisterdemailaddress'.tr,
-                style: TextStyle(fontSize: 20, color: Colors.black54),
+                style: const TextStyle(fontSize: 20, color: Colors.black54),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 'wewillemailyoualinktoreset'.tr,
-                style: TextStyle(fontSize: 18, color: Colors.black45),
+                style: const TextStyle(fontSize: 18, color: Colors.black45),
               ),
             ),
             Text(
               'yourpassword'.tr,
-              style: TextStyle(fontSize: 18, color: Colors.black45),
+              style: const TextStyle(fontSize: 18, color: Colors.black45),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(25,16,25,15),
+              padding: const EdgeInsets.fromLTRB(25, 16, 25, 15),
               child: TextField(
                 onChanged: (newText) {
                   controller.email.value = newText;
@@ -76,30 +77,30 @@ class PasswordPageView extends GetView<PasswordController> {
                 cursorHeight: 20,
                 autofocus: false,
                 decoration: InputDecoration(
-                    labelStyle: TextStyle(color: Colors.grey),
+                    labelStyle: const TextStyle(color: Colors.grey),
                     labelText: 'Email'.tr,
                     hintText: "hy@gmail.com",
-                    prefixIcon: Icon(
+                    prefixIcon: const Icon(
                       Icons.email,
                       color: AppColors.orange,
                     ),
-                    border: UnderlineInputBorder(
+                    border: const UnderlineInputBorder(
                       borderSide:
                           BorderSide(color: AppColors.orange, width: 1.5),
                     ),
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                    enabledBorder: UnderlineInputBorder(
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 15, horizontal: 15),
+                    enabledBorder: const UnderlineInputBorder(
                       borderSide:
                           BorderSide(color: AppColors.orange, width: 1.5),
                     ),
-                    focusedBorder: UnderlineInputBorder(
+                    focusedBorder: const UnderlineInputBorder(
                       borderSide:
                           BorderSide(color: AppColors.orange, width: 1.5),
                     )),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             ElevatedButton(
@@ -112,7 +113,7 @@ class PasswordPageView extends GetView<PasswordController> {
               },
               child: Text(
                 "Send".tr,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 18,
                   color: Colors.white,
                 ),

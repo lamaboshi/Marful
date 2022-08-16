@@ -51,7 +51,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                       height: 5,
                     ),
                     InkWell(
-                        onTap: () {}, child:  Text('SignUpCmpPH'.tr)),
+                        onTap: () {}, child: const Text('Add Your Photo..')),
                     const SizedBox(
                       height: 20,
                     ),
@@ -67,7 +67,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                               controller.company.value.name = value;
                             },
                             type: TextInputType.name,
-                            label: 'SignUpCmpName'.tr,
+                            label: 'Company Name',
                             hint: "narin",
                             prefIcon: Icons.person,
                           ),
@@ -79,7 +79,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                               controller.company.value.phone = value;
                             },
                             type: TextInputType.number,
-                            label: 'SignUpCmpMob'.tr,
+                            label: 'PhoneNumber',
                             hint: "099717424666",
                             prefIcon: Icons.phone,
                           ),
@@ -91,7 +91,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                               controller.company.value.telePhone = value;
                             },
                             type: TextInputType.number,
-                            label: 'SignUpCmpTele'.tr,
+                            label: 'TelePhone',
                             hint: "5225356",
                             prefIcon: Icons.phone,
                           ),
@@ -104,7 +104,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                               controller.company.value.description = value;
                             },
                             type: TextInputType.name,
-                            label: 'SignUpCmpDes'.tr,
+                            label: 'Description',
                             hint: "i am gdfsdfj,gh",
                             prefIcon: Icons.description,
                           ),
@@ -116,7 +116,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                               controller.company.value.address = value;
                             },
                             type: TextInputType.none,
-                            label: 'SignUpCmplocation'.tr,
+                            label: 'location',
                             hint: "aleppo",
                             prefIcon: Icons.location_on,
                           ),
@@ -128,7 +128,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                               controller.company.value.email = value;
                             },
                             type: TextInputType.emailAddress,
-                            label: 'SignUpCmpEmail'.tr,
+                            label: 'Email',
                             hint: "hy@gmail.com",
                             prefIcon: Icons.email,
                           ),
@@ -141,7 +141,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                               },
                               obscureText: !controller.isShownCompany.value,
                               type: TextInputType.visiblePassword,
-                              label: 'SignUpCmpPassword'.tr,
+                              label: 'Passeword',
                               hint: "***",
                               suffixIcon: IconButton(
                                 onPressed: () {
@@ -168,10 +168,61 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                                 fixedSize: MaterialStateProperty.all(
                                     const Size.fromWidth(150))),
                             onPressed: () async {
-                              controller.signUpCompany();
+                              Get.dialog(AlertDialog(
+                                content: Row(
+                                  children: const [
+                                    Icon(
+                                      Icons.info_outlined,
+                                      color: AppColors.orange,
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                        'Are you sure want to Save Your Data ?'),
+                                  ],
+                                ),
+                                contentPadding:
+                                    const EdgeInsets.fromLTRB(20, 20, 20, 10),
+                                actionsPadding:
+                                    const EdgeInsets.fromLTRB(15, 10, 15, 20),
+                                actions: [
+                                  Row(children: [
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        controller.isSaveData.value = true;
+                                        controller.signUpCompany();
+                                      },
+                                      style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all(
+                                                  AppColors.blue),
+                                          foregroundColor:
+                                              MaterialStateProperty.all(
+                                                  Colors.white)),
+                                      child: const Text('Yes'),
+                                    ),
+                                    const Spacer(),
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        controller.isSaveData.value = false;
+                                        controller.signUpCompany();
+                                      },
+                                      style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all(
+                                                  AppColors.blue),
+                                          foregroundColor:
+                                              MaterialStateProperty.all(
+                                                  Colors.white)),
+                                      child: const Text('Cancel'),
+                                    ),
+                                  ]),
+                                ],
+                              ));
                             },
-                            child:  Text(
-                              "SignUpCmp".tr,
+                            child: const Text(
+                              "Sign Up",
                               style: TextStyle(
                                 fontSize: 18,
                                 color: Colors.white,

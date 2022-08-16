@@ -33,68 +33,81 @@ class BuildPost extends GetResponsiveView<ProfileController> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(40),
-                          child: controller.auth.getTypeEnum() ==
-                                  Auth.infulonser
-                              ? controller.infulencer.value.image == null
-                                  ? Image.asset(
-                                      'assets/images/person.png',
-                                      height: 60,
-                                      width: 60,
-                                      fit: BoxFit.cover,
-                                    )
-                                  : Utility.imageFromBase64String(
-                                      Utility.base64String(
-                                          controller.infulencer.value.image!),
-                                      60,
-                                      60)
-                              : controller.auth.getTypeEnum() == Auth.comapny
-                                  ? controller.company.value.image == null
-                                      ? Image.asset(
-                                          'assets/images/person.png',
-                                          height: 60,
-                                          width: 60,
-                                          fit: BoxFit.cover,
-                                        )
-                                      : Utility.imageFromBase64String(
-                                          Utility.base64String(
-                                              controller.company.value.image!),
-                                          60,
-                                          60)
-                                  : Image.asset(
-                                      "assets/images/8.jpg",
-                                      height: 60,
-                                      width: 60,
-                                      fit: BoxFit.cover,
-                                    ),
-                        )
-                      ]),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      Row(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(4),
-                            child: Text(
-                              infoname ?? '',
-                              style: const TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w500),
-                            ),
+                          Obx(() => ClipRRect(
+                                borderRadius: BorderRadius.circular(40),
+                                child: controller
+                                        .stringPickImage.value.isNotEmpty
+                                    ? Utility.imageFromBase64String(
+                                        controller.stringPickImage.value,
+                                        60,
+                                        60)
+                                    : controller.auth.getTypeEnum() ==
+                                            Auth.infulonser
+                                        ? controller.infulencer.value.image ==
+                                                null
+                                            ? Image.asset(
+                                                'assets/images/person.png',
+                                                height: 60,
+                                                width: 60,
+                                                fit: BoxFit.cover,
+                                              )
+                                            : Utility.imageFromBase64String(
+                                                Utility.base64String(controller
+                                                    .infulencer.value.image!),
+                                                60,
+                                                60)
+                                        : controller.auth.getTypeEnum() ==
+                                                Auth.comapny
+                                            ? controller.company.value.image ==
+                                                    null
+                                                ? Image.asset(
+                                                    'assets/images/person.png',
+                                                    height: 60,
+                                                    width: 60,
+                                                    fit: BoxFit.cover,
+                                                  )
+                                                : Utility.imageFromBase64String(
+                                                    Utility.base64String(
+                                                        controller.company.value
+                                                            .image!),
+                                                    60,
+                                                    60)
+                                            : Image.asset(
+                                                "assets/images/8.jpg",
+                                                height: 60,
+                                                width: 60,
+                                                fit: BoxFit.cover,
+                                              ),
+                              )),
+                          const SizedBox(
+                            width: 20,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(3),
-                            child: Text(
-                              post!.dateTime == null
-                                  ? ''
-                                  : getFormattedDate(post!.dateTime!),
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.grey.withOpacity(0.6)),
-                            ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(4),
+                                child: Text(
+                                  infoname,
+                                  style: const TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(3),
+                                child: Text(
+                                  post!.dateTime == null
+                                      ? ''
+                                      : getFormattedDate(post!.dateTime!),
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.grey.withOpacity(0.6)),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -109,9 +122,9 @@ class BuildPost extends GetResponsiveView<ProfileController> {
                                         Padding(
                                           padding: const EdgeInsets.all(3),
                                           child: TextButton(
-                                            child: Text(
-                                              'buildPostDelete'.tr,
-                                              style: const TextStyle(
+                                            child: const Text(
+                                              'Edit',
+                                              style: TextStyle(
                                                   color: Colors.black),
                                             ),
                                             onPressed: () {
@@ -249,7 +262,7 @@ class BuildPost extends GetResponsiveView<ProfileController> {
                                       ],
                                     ),
                                   ),
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.more_vert_rounded,
                                     color: AppColors.orange,
                                   )),

@@ -1,11 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
+import 'adapter/search_adapter.dart';
 import 'search_model.dart';
 
-class SearchRepository
-//extends ISearchRepository
-{
+class SearchRepository extends ISearchRepository {
   final _dio = Get.find<Dio>();
 
   @override
@@ -50,5 +49,17 @@ class SearchRepository
         queryParameters: {"search": name});
     print(result);
     return SearchModel.fromJson(result.data as Map<String, dynamic>);
+  }
+
+  @override
+  Future<List<SearchModel>> getSearch(String name) async {
+    var list = <SearchModel>[];
+    var result = await _dio.get('https://localhost:7192/api/Search/Search',
+        queryParameters: {"search": name});
+    if (result.statusCode == 404) return [];
+    for (var item in result.data) {
+      list.add(SearchModel.fromJson(item));
+    }
+    return list;
   }
 }

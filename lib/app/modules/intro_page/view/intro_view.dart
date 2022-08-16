@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:marful/app/modules/intro_page/controllers/intro_controller.dart';
+
 import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
 
@@ -25,14 +26,14 @@ class IntroPage extends GetView<IntroController> {
         showBackButton: true,
         showSkipButton: false,
         back: Text("Back".tr,
-            style:
-                TextStyle(color: AppColors.blue, fontWeight: FontWeight.w600)),
-        next:  Text("Next".tr,
-            style:
-                TextStyle(color: AppColors.blue, fontWeight: FontWeight.w600)),
-        done:  Text("Done".tr,
-            style:
-                TextStyle(fontWeight: FontWeight.w600, color: AppColors.blue)),
+            style: const TextStyle(
+                color: AppColors.blue, fontWeight: FontWeight.w600)),
+        next: Text("Next".tr,
+            style: const TextStyle(
+                color: AppColors.blue, fontWeight: FontWeight.w600)),
+        done: Text("Done".tr,
+            style: const TextStyle(
+                fontWeight: FontWeight.w600, color: AppColors.blue)),
         globalBackgroundColor: Colors.white,
         dotsDecorator: const DotsDecorator(
           size: Size(10.0, 10.0),
@@ -73,19 +74,15 @@ PageViewModel interPage(context) {
     ),
 
     ///image
-    titleWidget:  Align(
+    titleWidget: Align(
         alignment: Alignment.topLeft,
         child: Text(
-<<<<<<< HEAD
           'YouCanChooseAcountToSignUp'.tr,
-=======
-          'You can choose acount to signUp',
->>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
-          style: TextStyle(fontSize: 15),
+          style: const TextStyle(fontSize: 15),
         )),
 
     ///text
-    bodyWidget:const SizedBox(
+    bodyWidget: const SizedBox(
       height: 0,
     ),
     footer: Row(
@@ -103,9 +100,9 @@ PageViewModel interPage(context) {
               onPressed: () {
                 Get.rootDelegate.offNamed(Routes.SignUpInfluencer);
               },
-              child:  Text(
+              child: Text(
                 "Influencer".tr,
-                style: TextStyle(fontSize: 18),
+                style: const TextStyle(fontSize: 18),
               ),
             ),
           ),
@@ -123,9 +120,9 @@ PageViewModel interPage(context) {
               onPressed: () {
                 Get.rootDelegate.offNamed(Routes.SignUpCompany);
               },
-              child:  Text(
+              child: Text(
                 "Company".tr,
-                style: TextStyle(fontSize: 18),
+                style: const TextStyle(fontSize: 18),
               ),
             ),
           ),
@@ -143,9 +140,9 @@ PageViewModel interPage(context) {
               onPressed: () {
                 Get.rootDelegate.offNamed(Routes.SignUpUserPage);
               },
-              child:  Text(
+              child: Text(
                 "User".tr,
-                style: TextStyle(fontSize: 18),
+                style: const TextStyle(fontSize: 18),
               ),
             ),
           ),
@@ -171,9 +168,9 @@ PageViewModel interInfluncerPage(context) {
       bodyAlignment: Alignment.center,
       bodyPadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
     ),
-    image:  Text('BeInfluencer'.tr,
+    image: Text('BeInfluencer'.tr,
         textAlign: TextAlign.start,
-        style: TextStyle(
+        style: const TextStyle(
             color: AppColors.orange,
             fontWeight: FontWeight.bold,
             fontSize: 45.0)),
@@ -185,13 +182,10 @@ PageViewModel interInfluncerPage(context) {
       ),
     ),
     //text
-<<<<<<< HEAD
-    bodyWidget:  Text(
-        'AContentCreatorissomeonewhosharesinformationandussuallytargetsspecificusers.acontentcreatorcancreatediffrenttypesofcontent'.tr),
-=======
-    bodyWidget: const Text(
-        'Influencer can add posts and make a conversation with company and create a special brand'),
->>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
+    bodyWidget: Text(
+        'AContentCreatorissomeonewhosharesinformationandussuallytargetsspecificusers.acontentcreatorcancreatediffrenttypesofcontent'
+            .tr),
+
     footer: Column(
       children: [
         ///btn Sign Up As Influencer
@@ -208,7 +202,7 @@ PageViewModel interInfluncerPage(context) {
             },
             child: Text(
               "SignUpAsInfluencer".tr,
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
           ),
         ),
@@ -218,21 +212,16 @@ PageViewModel interInfluncerPage(context) {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('youHaveAccount?'.tr,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.grey,
                 )),
             const SizedBox(
               width: 3,
             ),
             InkWell(
-<<<<<<< HEAD
               child: Text(
                 'signin'.tr,
-=======
-              child:const Text(
-                'sign in',
->>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.grey,
                   decoration: TextDecoration.underline,
                 ),
@@ -264,9 +253,9 @@ PageViewModel interCompanyPage(context) {
       bodyAlignment: Alignment.center,
       bodyPadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
     ),
-    image:  Text('BeCompany'.tr,
+    image: Text('BeCompany'.tr,
         textAlign: TextAlign.start,
-        style: TextStyle(
+        style: const TextStyle(
             color: AppColors.orange,
             fontWeight: FontWeight.bold,
             fontSize: 45.0)),
@@ -278,14 +267,9 @@ PageViewModel interCompanyPage(context) {
       ),
     ),
 
-    ///text
-<<<<<<< HEAD
     bodyWidget: Text(
-        'thecompanyconsistsofmorethanonepersonanditisabrandthatpromotesitisproduct'.tr),
-=======
-    bodyWidget: const Text(
-        'Company can add posts and have employee with permissions'),
->>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
+        'thecompanyconsistsofmorethanonepersonanditisabrandthatpromotesitisproduct'
+            .tr),
     footer: Column(
       children: [
         ///btn Sign Up As Company
@@ -301,7 +285,7 @@ PageViewModel interCompanyPage(context) {
             },
             child: Text(
               "SignUpAsCompany".tr,
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
           ),
         ),
@@ -310,22 +294,17 @@ PageViewModel interCompanyPage(context) {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-             Text('youHaveAccount?'.tr,
-                style: TextStyle(
+            Text('youHaveAccount?'.tr,
+                style: const TextStyle(
                   color: Colors.grey,
                 )),
             const SizedBox(
               width: 3,
             ),
             InkWell(
-<<<<<<< HEAD
               child: Text(
                 'signin'.tr,
-=======
-              child:const Text(
-                'sign in',
->>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.grey,
                   decoration: TextDecoration.underline,
                 ),
@@ -359,7 +338,7 @@ PageViewModel interUserPage(context) {
     ),
     image: Text('BeUser'.tr,
         textAlign: TextAlign.start,
-        style: TextStyle(
+        style: const TextStyle(
             color: AppColors.orange,
             fontWeight: FontWeight.bold,
             fontSize: 45.0)),
@@ -373,13 +352,8 @@ PageViewModel interUserPage(context) {
     ),
 
     ///text
-<<<<<<< HEAD
-    bodyWidget: Text(
-        'theuserfollowscopaniesandcontentmakers'.tr),
-=======
-    bodyWidget: const Text(
-        'User can shopping and interact posts '),
->>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
+    bodyWidget: Text('theuserfollowscopaniesandcontentmakers'.tr),
+
     footer: Column(
       children: [
         ///btn Sign Up As User
@@ -395,7 +369,7 @@ PageViewModel interUserPage(context) {
             },
             child: Text(
               "SignUpAsUser".tr,
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
           ),
         ),
@@ -405,7 +379,7 @@ PageViewModel interUserPage(context) {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('youHaveAccount?'.tr,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.grey,
                 )),
             const SizedBox(
@@ -414,7 +388,7 @@ PageViewModel interUserPage(context) {
             InkWell(
               child: Text(
                 'signin'.tr,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.grey,
                   decoration: TextDecoration.underline,
                 ),

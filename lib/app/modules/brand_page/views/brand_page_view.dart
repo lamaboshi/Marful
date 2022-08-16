@@ -14,7 +14,7 @@ class BrandPageView extends GetResponsiveView<BrandPageController> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.orange,
-          title:  Text('Brand'.tr),
+          title: const Text('Brand'),
         ),
         floatingActionButton: FloatingActionButton.extended(
             heroTag: 'uniqueTag',
@@ -43,7 +43,7 @@ class BrandPageView extends GetResponsiveView<BrandPageController> {
                                   child: Utility.imageFromBase64String(
                                       controller.stringPickImage.value, 75, 75),
                                 )
-                              : CircleAvatar(
+                              : const CircleAvatar(
                                   radius: 50,
                                   backgroundImage:
                                       AssetImage('assets/images/person.png'),
@@ -55,7 +55,7 @@ class BrandPageView extends GetResponsiveView<BrandPageController> {
                               onTap: () async {
                                 await controller.pickImage();
                               },
-                              child:  Text('SignUpCmpPH'.tr)),
+                              child: const Text('Add an image..')),
 
                           const SizedBox(
                             height: 20,
@@ -67,7 +67,7 @@ class BrandPageView extends GetResponsiveView<BrandPageController> {
                             type: TextInputType.name,
                             obscureText: false,
                             prefIcon: Icons.input,
-                            label: 'SignUpInfName'.tr,
+                            label: 'Name',
                           ),
                           const SizedBox(
                             height: 20,
@@ -79,7 +79,7 @@ class BrandPageView extends GetResponsiveView<BrandPageController> {
                             type: TextInputType.name,
                             obscureText: false,
                             prefIcon: Icons.input,
-                            label: 'buildPostDes'.tr,
+                            label: 'Description',
                           ),
                           const SizedBox(
                             height: 20,
@@ -122,7 +122,7 @@ class BrandPageView extends GetResponsiveView<BrandPageController> {
                                       AppColors.orange),
                                   foregroundColor:
                                       MaterialStateProperty.all(Colors.white)),
-                              child:  Center(child: Text('ProductPageAdd'.tr)),
+                              child: const Center(child: Text('Add')),
                             ),
                           ),
                           const SizedBox(
@@ -148,7 +148,7 @@ class BrandPageView extends GetResponsiveView<BrandPageController> {
                   ));
             },
             label: Row(
-              children:  [Icon(Icons.add), Text('ProductPageAdd'.tr)],
+              children: const [Icon(Icons.add), Text('Add')],
             )),
         body: Column(
           children: [
@@ -200,7 +200,7 @@ class BrandPageView extends GetResponsiveView<BrandPageController> {
                                 child: Container(
                                   width: 25,
                                   height: 25,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                         image: AssetImage(
@@ -257,6 +257,7 @@ class BrandPageView extends GetResponsiveView<BrandPageController> {
                                     controller.DelBrands(
                                         controller.allBrands[index].id!);
                                   }));
+                                  Get.back();
                                 },
                                 icon: const Icon(Icons.delete)),
                           )),

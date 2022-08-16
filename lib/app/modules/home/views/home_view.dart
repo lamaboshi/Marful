@@ -15,12 +15,19 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: controller.auth.getTypeEnum() == Auth.user ? 2 : 3,
+      length: controller.auth.getTypeEnum() == Auth.user
+          ? 2
+          : (controller.auth.getTypeEnum() == Auth.comapny &&
+                      controller.auth.companyType() == 'chat employee') ||
+                  (controller.auth.getTypeEnum() == Auth.comapny &&
+                      controller.auth.companyType() == 'Publishing Officer')
+              ? 2
+              : 3,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.orange,
           bottom: controller.auth.getTypeEnum() == Auth.user
-              ? TabBar(indicatorColor: Colors.white, tabs: [
+              ? const TabBar(indicatorColor: Colors.white, tabs: [
                   Tab(
                     icon: Icon(Icons.home),
                   ),
@@ -28,17 +35,29 @@ class HomeView extends GetView<HomeController> {
                     icon: Icon(Icons.menu),
                   )
                 ])
-              : TabBar(indicatorColor: Colors.white, tabs: [
-                  Tab(
-                    icon: Icon(Icons.home),
-                  ),
-                  Tab(
-                    icon: Icon(Icons.person),
-                  ),
-                  Tab(
-                    icon: Icon(Icons.menu),
-                  )
-                ]),
+              : (controller.auth.getTypeEnum() == Auth.comapny &&
+                          controller.auth.companyType() == 'chat employee') ||
+                      (controller.auth.getTypeEnum() == Auth.comapny &&
+                          controller.auth.companyType() == 'Publishing Officer')
+                  ? const TabBar(indicatorColor: Colors.white, tabs: [
+                      Tab(
+                        icon: Icon(Icons.home),
+                      ),
+                      Tab(
+                        icon: Icon(Icons.person),
+                      ),
+                    ])
+                  : const TabBar(indicatorColor: Colors.white, tabs: [
+                      Tab(
+                        icon: Icon(Icons.home),
+                      ),
+                      Tab(
+                        icon: Icon(Icons.person),
+                      ),
+                      Tab(
+                        icon: Icon(Icons.menu),
+                      )
+                    ]),
           title: const Text('MarFlu'),
           actions: [
             IconButton(
@@ -46,8 +65,61 @@ class HomeView extends GetView<HomeController> {
                   Get.rootDelegate.toNamed(Routes.Search);
                 },
                 icon: const Icon(Icons.search)),
-            controller.auth.getTypeEnum() == Auth.user
-                ? SizedBox.shrink()
+            controller.auth.getTypeEnum() == Auth.user ||
+                    (controller.auth.getTypeEnum() == Auth.comapny &&
+                        controller.auth.companyType() == 'Editing Officer') ||
+                    (controller.auth.getTypeEnum() == Auth.comapny &&
+                        controller.auth.companyType() == 'Publishing Officer')
+                ? IconButton(
+                    onPressed: () {
+                      Get.dialog(AlertDialog(
+                        content: Row(
+                          children: const [
+                            Icon(
+                              Icons.info_outlined,
+                              color: AppColors.orange,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text('Are you sure want to LogOut ?'),
+                          ],
+                        ),
+                        contentPadding:
+                            const EdgeInsets.fromLTRB(20, 20, 20, 10),
+                        actionsPadding:
+                            const EdgeInsets.fromLTRB(15, 10, 15, 20),
+                        actions: [
+                          Row(children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                controller.auth.stroge.deleteAllKeys();
+                                Get.rootDelegate.toNamed(Routes.SignIn);
+                              },
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all(AppColors.blue),
+                                  foregroundColor:
+                                      MaterialStateProperty.all(Colors.white)),
+                              child: const Text('Yes'),
+                            ),
+                            const Spacer(),
+                            ElevatedButton(
+                              onPressed: () {
+                                Get.back();
+                              },
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all(AppColors.blue),
+                                  foregroundColor:
+                                      MaterialStateProperty.all(Colors.white)),
+                              child: const Text('Cancel'),
+                            ),
+                          ]),
+                        ],
+                      ));
+                    },
+                    icon: const Icon(Icons.logout))
                 : IconButton(
                     onPressed: () {
                       Get.rootDelegate.toNamed(Routes.CONVERSATION_PAGE);
@@ -60,11 +132,19 @@ class HomeView extends GetView<HomeController> {
                 HomeMainView(),
                 const HomeMenuView(),
               ])
-            : TabBarView(children: [
-                HomeMainView(),
-                ProfilePage(false, null, null),
-                const HomeMenuView(),
-              ]),
+            : (controller.auth.getTypeEnum() == Auth.comapny &&
+                        controller.auth.companyType() == 'chat employee') ||
+                    (controller.auth.getTypeEnum() == Auth.comapny &&
+                        controller.auth.companyType() == 'Publishing Officer')
+                ? TabBarView(children: [
+                    HomeMainView(),
+                    ProfilePage(false, null, null),
+                  ])
+                : TabBarView(children: [
+                    HomeMainView(),
+                    ProfilePage(false, null, null),
+                    const HomeMenuView(),
+                  ]),
       ),
     );
   }

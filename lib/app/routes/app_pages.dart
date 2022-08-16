@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 import '../../sheard/auth_service.dart';
 import '../modules/brand_page/bindings/brand_page_binding.dart';
 import '../modules/brand_page/views/brand_page_view.dart';
@@ -80,12 +81,12 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.SignIn,
-      page: () => SignInPage(),
+      page: () => const SignInPage(),
       binding: SignInBinding(),
     ),
     GetPage(
       name: _Paths.FirstSplash,
-      page: () => FiestSplashView(),
+      page: () => const FiestSplashView(),
       binding: FirstSplashBinding(),
     ),
     GetPage(
@@ -95,10 +96,10 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.Content,
-      page: () => ContentView(),
+      page: () => const ContentView(),
       binding: ContentBinding(),
     ),
-    GetPage(name: _Paths.HOME, page: () => HomeView(), bindings: [
+    GetPage(name: _Paths.HOME, page: () => const HomeView(), bindings: [
       HomeBinding(),
       HomeMainBinding(),
       HomePostBinding(),
@@ -138,18 +139,18 @@ class AppPages {
 
     GetPage(
       name: _Paths.SignUpUserPage,
-      page: () => SignUpUserPage(),
+      page: () => const SignUpUserPage(),
       binding: SignUpBinding(),
     ),
 
     GetPage(
       name: _Paths.SignUpInfluencer,
-      page: () => SignUpInfluencer(),
+      page: () => const SignUpInfluencer(),
       binding: SignUpBinding(),
     ),
     GetPage(
       name: _Paths.SignUpCompany,
-      page: () => SignUpCompanyPage(),
+      page: () => const SignUpCompanyPage(),
       binding: SignUpBinding(),
     ),
     // GetPage(

@@ -31,7 +31,7 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                               controller.stringPickImage.value, 200, 200)
                           : image == null
                               ? Image.asset(
-                                  'assets/images/8.jpg',
+                                  'assets/images/person.png',
                                   width: 200,
                                   height: 200,
                                 )
@@ -45,7 +45,7 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                         onPressed: () async {
                           await controller.pickImage();
                         },
-                        icon: Icon(Icons.camera_enhance)))
+                        icon: const Icon(Icons.camera_enhance)))
               ],
             ),
           ),
@@ -66,17 +66,15 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                                 ? controller.company.value.name
                                 : controller.user.value.name,
                         onChanged: (txt) {
-                          if (txt != null) {
-                            switch (type) {
-                              case 1:
-                                controller.info.value.name = txt;
-                                break;
-                              case 2:
-                                controller.comp.value.name = txt;
-                                break;
-                              default:
-                                controller.use.value.name = txt;
-                            }
+                          switch (type) {
+                            case 1:
+                              controller.info.value.name = txt;
+                              break;
+                            case 2:
+                              controller.comp.value.name = txt;
+                              break;
+                            default:
+                              controller.use.value.name = txt;
                           }
                         },
                         type: TextInputType.multiline,
@@ -96,17 +94,15 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                             ? controller.company.value.phone
                             : controller.user.value.phone,
                     onChanged: (txt) {
-                      if (txt != null) {
-                        switch (type) {
-                          case 1:
-                            controller.info.value.phone = txt;
-                            break;
-                          case 2:
-                            controller.comp.value.phone = txt;
-                            break;
-                          default:
-                            controller.use.value.phone = txt;
-                        }
+                      switch (type) {
+                        case 1:
+                          controller.info.value.phone = txt;
+                          break;
+                        case 2:
+                          controller.comp.value.phone = txt;
+                          break;
+                        default:
+                          controller.use.value.phone = txt;
                       }
                     },
                     type: TextInputType.multiline,
@@ -131,24 +127,22 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                           obscureText: false,
                           prefIcon: Icons.email,
                           onChanged: (txt) {
-                            if (txt != null) {
-                              switch (type) {
-                                case 1:
-                                  controller.info.value.email = txt;
-                                  break;
-                                case 2:
-                                  controller.comp.value.email = txt;
-                                  break;
-                                default:
-                                  controller.use.value.email = txt;
-                              }
+                            switch (type) {
+                              case 1:
+                                controller.info.value.email = txt;
+                                break;
+                              case 2:
+                                controller.comp.value.email = txt;
+                                break;
+                              default:
+                                controller.use.value.email = txt;
                             }
                           }),
                     ),
                   ],
                 ),
                 controller.typeAuth.value == Auth.comapny
-                    ? SizedBox.shrink()
+                    ? const SizedBox.shrink()
                     : Row(
                         children: [
                           const Text('*', style: TextStyle(color: Colors.red)),
@@ -159,17 +153,15 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                                   ? controller.infulencer.value.paypal
                                   : controller.user.value.paypal,
                               onChanged: (txt) {
-                                if (txt != null) {
-                                  switch (type) {
-                                    case 1:
-                                      controller.info.value.paypal = txt;
-                                      break;
-                                    case 2:
-                                      //controller.comp.value.==txt;
-                                      break;
-                                    default:
-                                      controller.use.value.paypal = txt;
-                                  }
+                                switch (type) {
+                                  case 1:
+                                    controller.info.value.paypal = txt;
+                                    break;
+                                  case 2:
+                                    //controller.comp.value.==txt;
+                                    break;
+                                  default:
+                                    controller.use.value.paypal = txt;
                                 }
                               },
                               type: TextInputType.multiline,
@@ -181,7 +173,7 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                         ],
                       ),
                 controller.typeAuth.value == Auth.user
-                    ? SizedBox.shrink()
+                    ? const SizedBox.shrink()
                     : SizedBox(
                         width: screen.width - 50,
                         child: TextFieldWidget(
@@ -191,16 +183,14 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                                   ? controller.company.value.address
                                   : '',
                           onChanged: (txt) {
-                            if (txt != null) {
-                              switch (type) {
-                                case 1:
-                                  controller.info.value.address = txt;
-                                  break;
-                                case 2:
-                                  controller.comp.value.address = txt;
-                                  break;
-                                default:
-                              }
+                            switch (type) {
+                              case 1:
+                                controller.info.value.address = txt;
+                                break;
+                              case 2:
+                                controller.comp.value.address = txt;
+                                break;
+                              default:
                             }
                           },
                           type: TextInputType.multiline,
@@ -210,7 +200,7 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                         ),
                       ),
                 controller.typeAuth.value == Auth.comapny
-                    ? SizedBox.shrink()
+                    ? const SizedBox.shrink()
                     : Row(
                         children: [
                           const Text('*', style: TextStyle(color: Colors.red)),
@@ -221,17 +211,15 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                                   ? controller.infulencer.value.userName
                                   : controller.user.value.userName,
                               onChanged: (txt) {
-                                if (txt != null) {
-                                  switch (type) {
-                                    case 1:
-                                      controller.info.value.userName = txt;
-                                      break;
-                                    case 2:
-                                      //   controller.comp.value.userName==txt;
-                                      break;
-                                    default:
-                                      controller.use.value.userName = txt;
-                                  }
+                                switch (type) {
+                                  case 1:
+                                    controller.info.value.userName = txt;
+                                    break;
+                                  case 2:
+                                    //   controller.comp.value.userName==txt;
+                                    break;
+                                  default:
+                                    controller.use.value.userName = txt;
                                 }
                               },
                               type: TextInputType.multiline,
@@ -243,7 +231,7 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                         ],
                       ),
                 controller.typeAuth.value != Auth.comapny
-                    ? SizedBox.shrink()
+                    ? const SizedBox.shrink()
                     : SizedBox(
                         width: screen.width - 50,
                         child: TextFieldWidget(
@@ -251,17 +239,15 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                               ? controller.company.value.telePhone
                               : '',
                           onChanged: (txt) {
-                            if (txt != null) {
-                              switch (type) {
-                                case 1:
-                                  //   controller.info.value.==txt;
-                                  break;
-                                case 2:
-                                  controller.comp.value.telePhone = txt;
-                                  break;
-                                default:
-                                // controller.use.value.t=txt;
-                              }
+                            switch (type) {
+                              case 1:
+                                //   controller.info.value.==txt;
+                                break;
+                              case 2:
+                                controller.comp.value.telePhone = txt;
+                                break;
+                              default:
+                              // controller.use.value.t=txt;
                             }
                           },
                           type: TextInputType.multiline,
@@ -271,7 +257,7 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                         ),
                       ),
                 controller.typeAuth.value == Auth.user
-                    ? SizedBox.shrink()
+                    ? const SizedBox.shrink()
                     : SizedBox(
                         width: screen.width - 50,
                         child: TextFieldWidget(
@@ -281,17 +267,15 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                                   ? controller.company.value.description
                                   : '',
                           onChanged: (txt) {
-                            if (txt != null) {
-                              switch (type) {
-                                case 1:
-                                  controller.info.value.description = txt;
-                                  break;
-                                case 2:
-                                  controller.comp.value.description = txt;
-                                  break;
-                                default:
-                                //  controller.use.value.descraption=txt;
-                              }
+                            switch (type) {
+                              case 1:
+                                controller.info.value.description = txt;
+                                break;
+                              case 2:
+                                controller.comp.value.description = txt;
+                                break;
+                              default:
+                              //  controller.use.value.descraption=txt;
                             }
                           },
                           type: TextInputType.multiline,
@@ -301,23 +285,21 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                         ),
                       ),
                 controller.typeAuth.value != Auth.user
-                    ? SizedBox.shrink()
+                    ? const SizedBox.shrink()
                     : SizedBox(
                         width: screen.width - 50,
                         child: TextFieldWidget(
                           dufaltText: controller.user.value.age.toString(),
                           onChanged: (txt) {
-                            if (txt != null) {
-                              switch (type) {
-                                case 1:
-                                  //    controller.info.value.==txt;
-                                  break;
-                                case 2:
-                                  //  controller.comp.value.==txt;
-                                  break;
-                                default:
-                                  controller.use.value.age = int.parse(txt);
-                              }
+                            switch (type) {
+                              case 1:
+                                //    controller.info.value.==txt;
+                                break;
+                              case 2:
+                                //  controller.comp.value.==txt;
+                                break;
+                              default:
+                                controller.use.value.age = int.parse(txt);
                             }
                           },
                           type: TextInputType.multiline,

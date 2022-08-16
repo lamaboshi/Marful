@@ -50,7 +50,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                       height: 5,
                     ),
                     InkWell(
-                        onTap: () {}, child:  Text('SignUpCmpPH'.tr)),
+                        onTap: () {}, child: const Text('Add Your Photo..')),
                     const SizedBox(
                       height: 20,
                     ),
@@ -66,7 +66,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               controller.influencer.value.name = value;
                             },
                             type: TextInputType.name,
-                            label: 'SignUpInfName'.tr,
+                            label: ' Name',
                             hint: "Haya Eid",
                             prefIcon: Icons.person,
                           ),
@@ -77,7 +77,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               controller.influencer.value.userName = value;
                             },
                             type: TextInputType.name,
-                            label: 'SignUpInfUserName'.tr,
+                            label: 'User Name',
                             hint: "Haya ",
                             prefIcon: Icons.person,
                           ),
@@ -88,7 +88,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               controller.influencer.value.description = value;
                             },
                             type: TextInputType.name,
-                            label: 'SignUpCmpDes'.tr,
+                            label: 'Description',
                             hint: "I have so many bfghfccgbfg ",
                             prefIcon: Icons.description,
                           ),
@@ -99,7 +99,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               controller.influencer.value.phone = value;
                             },
                             type: TextInputType.number,
-                            label: 'SignUpCmpMob'.tr,
+                            label: 'PhoneNumber',
                             hint: "099717424666 ",
                             prefIcon: Icons.phone,
                           ),
@@ -110,7 +110,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               controller.influencer.value.address = value;
                             },
                             type: TextInputType.name,
-                            label: 'SignCmpUplocation'.tr,
+                            label: 'location',
                             hint: "aleppo ",
                             prefIcon: Icons.location_on,
                           ),
@@ -121,7 +121,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               controller.influencer.value.paypal = value;
                             },
                             type: TextInputType.number,
-                            label: 'SignUpInfPaybal'.tr,
+                            label: 'PayBal',
                             hint: "hsd235dfgdf ",
                             prefIcon: Icons.paypal,
                           ),
@@ -132,7 +132,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               controller.influencer.value.email = value;
                             },
                             type: TextInputType.emailAddress,
-                            label: 'SignUpCmpEmail'.tr,
+                            label: 'Email',
                             hint: "hy@gmail.com ",
                             prefIcon: Icons.email,
                           ),
@@ -144,7 +144,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               },
                               obscureText: !controller.isShownInfluencer.value,
                               type: TextInputType.visiblePassword,
-                              label: 'SignUpCmpPassword'.tr,
+                              label: 'Passeword',
                               hint: "***",
                               suffixIcon: IconButton(
                                 onPressed: () {
@@ -171,10 +171,61 @@ class SignUpInfluencer extends GetView<SignUpController> {
                                 fixedSize: MaterialStateProperty.all(
                                     const Size.fromWidth(150))),
                             onPressed: () async {
-                              await controller.signUpInfluencer();
+                              Get.dialog(AlertDialog(
+                                content: Row(
+                                  children: const [
+                                    Icon(
+                                      Icons.info_outlined,
+                                      color: AppColors.orange,
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                        'Are you sure want to Save Your Data ?'),
+                                  ],
+                                ),
+                                contentPadding:
+                                    const EdgeInsets.fromLTRB(20, 20, 20, 10),
+                                actionsPadding:
+                                    const EdgeInsets.fromLTRB(15, 10, 15, 20),
+                                actions: [
+                                  Row(children: [
+                                    ElevatedButton(
+                                      onPressed: () async {
+                                        controller.isSaveData.value = true;
+                                        await controller.signUpInfluencer();
+                                      },
+                                      style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all(
+                                                  AppColors.blue),
+                                          foregroundColor:
+                                              MaterialStateProperty.all(
+                                                  Colors.white)),
+                                      child: const Text('Yes'),
+                                    ),
+                                    const Spacer(),
+                                    ElevatedButton(
+                                      onPressed: () async {
+                                        controller.isSaveData.value = false;
+                                        await controller.signUpInfluencer();
+                                      },
+                                      style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all(
+                                                  AppColors.blue),
+                                          foregroundColor:
+                                              MaterialStateProperty.all(
+                                                  Colors.white)),
+                                      child: const Text('Cancel'),
+                                    ),
+                                  ]),
+                                ],
+                              ));
                             },
-                            child:  Text(
-                              "SignUpCmp".tr,
+                            child: const Text(
+                              "Sign Up",
                               style: TextStyle(
                                 fontSize: 18,
                                 color: Colors.white,

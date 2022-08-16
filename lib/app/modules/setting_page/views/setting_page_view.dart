@@ -15,19 +15,19 @@ class SettingPageView extends GetView<SettingPageController> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Setting'.tr),
+        title: const Text('Setting'),
         backgroundColor: AppColors.orange,
       ),
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
-            controller.auth.getTypeEnum() == Auth.comapny
+            controller.auth.getTypeEnum() != Auth.user
                 ? buildCard('Brand', Icons.settings,
                     () => Get.rootDelegate.toNamed(Routes.BRAND_PAGE))
                 : const SizedBox.shrink(),
             controller.auth.getTypeEnum() != Auth.user
-                ? buildCard('Content'.tr, Icons.edit,
+                ? buildCard('Content', Icons.edit,
                     () => Get.rootDelegate.toNamed(Routes.Content))
                 : const SizedBox.shrink(),
             (controller.auth.getTypeEnum() == Auth.comapny &&

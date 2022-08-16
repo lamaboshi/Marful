@@ -14,7 +14,7 @@ class ChatPageView extends GetView<ChatPageController> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.orange,
-        title: Text('ConversationPage'.tr),
+        title: const Text('ConversationPageView'),
         centerTitle: true,
         actions: [
           IconButton(
@@ -23,39 +23,11 @@ class ChatPageView extends GetView<ChatPageController> {
                 QPanel(
                     width: 400,
                     alignment: Alignment.center,
-<<<<<<< HEAD
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text('NewJobAgreement'.tr,
-                            style: TextStyle(fontSize: 20)),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            TextFieldWidget(
-                              onChanged: (txt) {
-                                controller.newJob.value.salary =
-                                    double.parse(txt);
-                              },
-                              type: TextInputType.multiline,
-                              hint: 'salary'.tr,
-                              obscureText: false,
-                              prefIcon: Icons.money,
-                            ),
-                            TextFieldWidget(
-                              onChanged: (txt) {
-                                controller.newJob.value.code = txt;
-                              },
-                              type: TextInputType.multiline,
-                              hint: 'code'.tr,
-                              obscureText: false,
-                              prefIcon: Icons.money,
-=======
                     child: Obx(() => Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
+                            const Padding(
+                              padding: EdgeInsets.all(8.0),
                               child: Text('New Job Agreement',
                                   style: TextStyle(fontSize: 20)),
                             ),
@@ -67,27 +39,14 @@ class ChatPageView extends GetView<ChatPageController> {
                                   child: SizedBox(
                                       child: Row(
                                     children: [
-                                      Icon(
+                                      const Icon(
                                         Icons.connected_tv,
                                         color: AppColors.orange,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 5,
                                       ),
                                       QExpander(
-                                          child: Text(
-                                            controller
-                                                    .selectcompanyContent()
-                                                    .content!
-                                                    .name!
-                                                    .isEmpty
-                                                ? 'Content Company'
-                                                : controller
-                                                    .selectcompanyContent()
-                                                    .content!
-                                                    .name!,
-                                            style: TextStyle(fontSize: 17),
-                                          ),
                                           expandChild: Column(
                                             children: controller.companyContent
                                                 .map((element) => InkWell(
@@ -101,33 +60,38 @@ class ChatPageView extends GetView<ChatPageController> {
                                                     child: Text(element
                                                         .content!.name!)))
                                                 .toList(),
+                                          ),
+                                          child: Text(
+                                            controller
+                                                    .selectcompanyContent()
+                                                    .content!
+                                                    .name!
+                                                    .isEmpty
+                                                ? 'Content Company'
+                                                : controller
+                                                    .selectcompanyContent()
+                                                    .content!
+                                                    .name!,
+                                            style: TextStyle(fontSize: 17),
                                           )),
                                     ],
                                   )),
                                 ),
                                 controller.brands.isEmpty
-                                    ? SizedBox.shrink()
+                                    ? const SizedBox.shrink()
                                     : SizedBox(
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Row(
                                             children: [
-                                              Icon(
+                                              const Icon(
                                                 Icons.branding_watermark,
                                                 color: AppColors.orange,
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 width: 5,
                                               ),
                                               QExpander(
-                                                  child: Text(controller
-                                                          .selectbrand()
-                                                          .name!
-                                                          .isEmpty
-                                                      ? 'Brand Company'
-                                                      : controller
-                                                          .selectbrand()
-                                                          .name!),
                                                   expandChild: Column(
                                                     children: controller.brands
                                                         .map((element) =>
@@ -141,7 +105,15 @@ class ChatPageView extends GetView<ChatPageController> {
                                                                     element
                                                                         .name!)))
                                                         .toList(),
-                                                  )),
+                                                  ),
+                                                  child: Text(controller
+                                                          .selectbrand()
+                                                          .name!
+                                                          .isEmpty
+                                                      ? 'Brand Company'
+                                                      : controller
+                                                          .selectbrand()
+                                                          .name!)),
                                             ],
                                           ),
                                         ),
@@ -152,7 +124,7 @@ class ChatPageView extends GetView<ChatPageController> {
                                         double.parse(txt);
                                   },
                                   type: TextInputType.multiline,
-                                  hint: 'salary',
+                                  hint: 'percentage %',
                                   obscureText: false,
                                   prefIcon: Icons.money,
                                 ),
@@ -166,7 +138,6 @@ class ChatPageView extends GetView<ChatPageController> {
                                   prefIcon: Icons.money,
                                 ),
                               ],
->>>>>>> cff778314f108fe79ca5b53b9aada6b8488e6cd8
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -174,26 +145,12 @@ class ChatPageView extends GetView<ChatPageController> {
                                   onPressed: () {
                                     controller.addJob();
                                   },
-                                  label: Text('Save')),
+                                  label: const Text('Save')),
                             )
                           ],
-<<<<<<< HEAD
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: FloatingActionButton.extended(
-                              onPressed: () {
-                                controller.addJob();
-                              },
-                              label: Text('buildPostSave'.tr)),
-                        )
-                      ],
-                    )).show();
-=======
                         ))).show();
->>>>>>> cff778314f108fe79ca5b53b9aada6b8488e6cd8
               },
-              icon: Icon(Icons.work))
+              icon: const Icon(Icons.work))
         ],
       ),
       body: Stack(
@@ -273,16 +230,16 @@ class ChatPageView extends GetView<ChatPageController> {
                             onChanged: (value) {
                               controller.textMessage.value = value;
                             },
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                                 border: OutlineInputBorder(
                                     borderSide:
                                         BorderSide(color: AppColors.orange)),
                                 hintText: 'Hi',
-                                prefixIcon: const Icon(Icons.message,
+                                prefixIcon: Icon(Icons.message,
                                     color: AppColors.orange),
                                 prefixText: ' ',
                                 suffixStyle:
-                                    const TextStyle(color: AppColors.orange)),
+                                    TextStyle(color: AppColors.orange)),
                           ),
                         ),
                         Expanded(
@@ -290,7 +247,7 @@ class ChatPageView extends GetView<ChatPageController> {
                               onPressed: () async {
                                 await controller.addMessage();
                               },
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.send,
                                 color: AppColors.orange,
                               )),
@@ -319,7 +276,7 @@ class ChatPageView extends GetView<ChatPageController> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(text, style: TextStyle(fontSize: 17)),
+                    child: Text(text, style: const TextStyle(fontSize: 17)),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -327,15 +284,15 @@ class ChatPageView extends GetView<ChatPageController> {
                       Padding(
                         padding: const EdgeInsets.all(3),
                         child: Text(getFormattedDate(date),
-                            style: TextStyle(fontSize: 12)),
+                            style: const TextStyle(fontSize: 12)),
                       ),
-                      hasjiob ? Icon(Icons.star) : SizedBox.shrink()
+                      hasjiob ? const Icon(Icons.star) : const SizedBox.shrink()
                     ],
                   ),
                 ],
               ),
             ),
-            SizedBox.shrink(),
+            const SizedBox.shrink(),
           ],
         ),
       );
@@ -344,7 +301,7 @@ class ChatPageView extends GetView<ChatPageController> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox.shrink(),
+            const SizedBox.shrink(),
             Card(
               color: AppColors.blue.withOpacity(0.4),
               child: Column(
@@ -352,7 +309,7 @@ class ChatPageView extends GetView<ChatPageController> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(text, style: TextStyle(fontSize: 17)),
+                    child: Text(text, style: const TextStyle(fontSize: 17)),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -360,9 +317,9 @@ class ChatPageView extends GetView<ChatPageController> {
                       Padding(
                         padding: const EdgeInsets.all(3),
                         child: Text(getFormattedDate(date),
-                            style: TextStyle(fontSize: 12)),
+                            style: const TextStyle(fontSize: 12)),
                       ),
-                      hasjiob ? Icon(Icons.star) : SizedBox.shrink()
+                      hasjiob ? const Icon(Icons.star) : const SizedBox.shrink()
                     ],
                   ),
                 ],
