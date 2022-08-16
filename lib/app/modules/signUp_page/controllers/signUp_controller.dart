@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/data/model/infulonser.dart';
 import 'package:marful/app/data/model/user_model.dart';
@@ -10,6 +11,19 @@ import '../../../routes/app_pages.dart';
 import '../data/company_repo.dart';
 
 class SignUpController extends GetxController {
+  String? forceValue(dynamic value) {
+    if (value == null) {
+      return 'requird';
+    }
+    if (value is String && value.isEmpty) {
+      return 'requird';
+    }
+    return null;
+  }
+
+  final userForm = GlobalKey<FormState>();
+  final influencerForm = GlobalKey<FormState>();
+  final companyForm = GlobalKey<FormState>();
   final isShownUser = false.obs;
   final isShownInfluencer = false.obs;
   final isShownCompany = false.obs;

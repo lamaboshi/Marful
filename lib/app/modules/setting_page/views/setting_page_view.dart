@@ -5,6 +5,8 @@ import 'package:marful/app/routes/app_pages.dart';
 import '../../../../sheard/auth_service.dart';
 import '../../../core/values/app_colors.dart';
 import '../../../core/values/my_flutter_app_icons.dart';
+import '../../content_page/views/content_view.dart';
+import '../../haya/views/haya_brand.dart';
 import '../controllers/setting_page_controller.dart';
 
 class SettingPageView extends GetView<SettingPageController> {
@@ -36,12 +38,16 @@ class SettingPageView extends GetView<SettingPageController> {
               Get.to(PermissionPageView());
 =======
             buildCard('About', Icons.abc_outlined, () {}),
-            buildCard('Delete My Account', Icons.delete, () {
-              controller.deleteAccount();
+            buildCard('Delete My Account', Icons.delete, () async {
+              await controller.deleteAccount();
             }),
             buildCard('Permission', AppIcons.trending_up, () {
               Get.to(PermissionsPageView());
+<<<<<<< HEAD
 >>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
+=======
+              
+>>>>>>> cff778314f108fe79ca5b53b9aada6b8488e6cd8
             }),
             Expanded(
               flex: 5,

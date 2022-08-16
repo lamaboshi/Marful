@@ -1,34 +1,48 @@
 import 'package:get/get.dart';
+import 'package:marful/app/data/model/company.dart';
 import 'package:marful/app/modules/websit_company/data/model/Product.dart';
-import 'package:marful/app/modules/websit_company/data/model/company.dart';
-import 'package:marful/app/modules/websit_company/data/model/companycontent.dart';
+import 'package:marful/app/modules/websit_company/data/model/bascket.dart';
+import 'package:marful/app/modules/websit_company/data/model/company_dto.dart';
 
 import '../data/websit_company_repository.dart';
 
 class WebsitcompanyController extends GetxController {
   final webRepo = WebsiteCompanyRepository();
-  var allProducts = <Product>[].obs;
-   var companys = Company().obs;
-    var allcompanyscontent = <CompanyContent>[].obs;
+  var allCompany = CompanyDto().obs;
+  var companys = Company().obs;
+  var userpostId = 0.obs;
+  final idbrand = 0.obs;
+  var allProduct = <Product>[].obs;
+  var count = <int>[].obs;
+  final totle = 0.obs;
   final loading = false.obs;
   @override
   void onInit() {
     super.onInit();
-    getcompany();
-    getAllProduct();
+    getAll();
   }
 
-  Future<void> getAllProduct() async {
+  Future<void> getAll() async {
+    print(Get.rootDelegate.arguments().toString());
+    userpostId.value = int.parse(Get.rootDelegate.arguments().toString());
     loading.value = true;
     var data = await webRepo.getdata();
-    allProducts.assignAll(data);
+    allCompany.value = data;
     loading.value = false;
   }
-  Future<void> getcompany() async {
-    loading.value = true;
-    var data = await webRepo.getdatacompany(1);
-    companys.value=data;
-    loading.value = false;
+
+  Future<void> addBasket() async {
+    var res = false;
+    for (var item in allProduct.toList()) {
+      var basket = Basket(
+          productId: item.id,
+          userPostId: userpostId.value,
+          totalPrice: double.parse((item.price! *
+                  count[allProduct.indexOf(item).isNegative
+                      ? 0
+                      : allProduct.indexOf(item)])
+              .toString()));
+      res = await webRepo.addBasket(basket);
+    }
   }
- 
 }

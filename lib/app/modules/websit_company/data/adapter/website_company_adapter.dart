@@ -1,11 +1,10 @@
-import 'package:marful/app/modules/websit_company/data/model/company.dart';
 import 'package:marful/app/modules/websit_company/data/model/companycontent.dart';
 
-import '../model/Product.dart';
+import '../model/bascket.dart';
+import '../model/company_dto.dart';
 
 abstract class IWebsiteCompanyRepository {
-  Future<List<Product>> getdata();
-   Future<Company> getdatacompany(int id);
-   Future<List<CompanyContent>> getdatacompcontent(); 
-
+  Future<CompanyDto> getdata();
+  Future<List<CompanyContent>> getdatacompcontent();
+  Future<bool> addBasket(Basket basket);
 }

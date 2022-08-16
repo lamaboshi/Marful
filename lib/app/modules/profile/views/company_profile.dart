@@ -4,14 +4,10 @@ import 'package:get/get.dart';
 import 'package:q_overlay/q_overlay.dart';
 
 import '../../../core/values/app_colors.dart';
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 import '../../../core/values/h.dart';
 import '../../../core/values/my_flutter_app_icons.dart';
-=======
->>>>>>> 493fe85a13b8dff599fc3b330d4be50dce8133c6
->>>>>>> 9d82cc27bbf6ef371054f7ccf773f110f502fc8a
+import '../../../core/values/h.dart';
+import '../../../core/values/my_flutter_app_icons.dart';
 import '../controllers/profile_controller.dart';
 import 'build_content.dart';
 import 'build_post.dart';
@@ -31,6 +27,7 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                 child: Row(
                   children: [
                     SizedBox(width: screen.width / 6),
+<<<<<<< HEAD
                     ElevatedButton(
                       style: ButtonStyle(
                           backgroundColor:
@@ -46,6 +43,26 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                         ),
                       ),
                     ),
+=======
+                    Obx(() => ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor: !controller.hasFollowed.value
+                                  ? MaterialStateProperty.all(AppColors.blue)
+                                  : MaterialStateProperty.all(AppColors.orange),
+                              fixedSize: MaterialStateProperty.all(
+                                  const Size.fromWidth(150))),
+                          onPressed: () {
+                            controller.addFollow(controller.typeAuth.value);
+                          },
+                          child: const Text(
+                            "Follow",
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                            ),
+                          ),
+                        )),
+>>>>>>> cff778314f108fe79ca5b53b9aada6b8488e6cd8
                     SizedBox(
                       width: 18,
                     ),
@@ -124,8 +141,11 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                 ),
                 OutlinedButton(
                   onPressed: () async {
-                    await controller
-                        .getPostCompany(controller.company.value.id!);
+                    isSearch
+                        ? await controller
+                            .getPostCompany(controller.companySearch.value.id!)
+                        : await controller
+                            .getPostCompany(controller.company.value.id!);
                     QPanel(
                         width: screen.width / 1.2,
                         alignment: Alignment.centerRight,
@@ -133,7 +153,9 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                           child: Column(
                             children: controller.posts
                                 .map((e) => BuildPost(
-                                      infoname: controller.company.value.name!,
+                                      infoname: isSearch
+                                          ? controller.companySearch.value.name!
+                                          : controller.company.value.name!,
                                       post: e,
                                     ))
                                 .toList(),
@@ -202,10 +224,16 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
           padding: const EdgeInsets.all(8.0),
           child: Text(
 <<<<<<< HEAD
+<<<<<<< HEAD
             ' ibeleviethatnooneshouldchoosebetweenacareerweloveandproveourlivers.',
 =======
             controller.company.value.description!,
 >>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
+=======
+            isSearch
+                ? controller.companySearch.value.description!
+                : controller.company.value.description!,
+>>>>>>> cff778314f108fe79ca5b53b9aada6b8488e6cd8
             style: TextStyle(fontSize: 16, color: Colors.black54),
           ),
         ),
@@ -233,7 +261,9 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
               () => Column(
                 children: controller.posts
                     .map((e) => BuildPost(
-                          infoname: controller.company.value.name!,
+                          infoname: isSearch
+                              ? controller.companySearch.value.name!
+                              : controller.company.value.name!,
                           post: e,
                         ))
                     .toList(),

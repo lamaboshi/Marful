@@ -1,6 +1,9 @@
 import 'package:get/get.dart';
 import 'package:marful/app/core/component/lists_extensions.dart';
+import 'package:marful/app/data/model/brand.dart';
+import 'package:marful/app/data/model/content.dart';
 import 'package:marful/app/modules/chat_page/data/model/message_model.dart';
+import 'package:marful/app/modules/websit_company/data/model/companycontent.dart';
 import 'package:signalr_core/signalr_core.dart';
 
 import '../../../../api/socket/hub_listen.dart';
@@ -19,10 +22,14 @@ class ChatPageController extends GetxController {
   final typeAuth = Auth.user.obs;
   final auth = Get.find<AuthService>();
   final allMessage = <Message>[].obs;
+  final brands = <Brand>[].obs;
+  final companyContent = <CompanyContent>[].obs;
   final selectMessage = <Message>[].obs;
   final allConversations = ConversationModel().obs;
   final textMessage = ''.obs;
   final convId = 0.obs;
+  final selectbrand = Brand(name: '').obs;
+  final selectcompanyContent = CompanyContent(content: Content(name: '')).obs;
   final newJob = Job().obs;
   final isLoading = false.obs;
   final repo = ChatPageRepository();
@@ -43,7 +50,7 @@ class ChatPageController extends GetxController {
 
   Future<void> addJob() async {
     newJob.value.infulonserId = allConversations.value.infulonserId;
-    newJob.value.brandId = 1;
+    newJob.value.brandId = selectbrand.value.id;
     newJob.value.messages = selectMessage.toList();
     await repo.addJob(newJob.value);
   }
@@ -89,6 +96,18 @@ class ChatPageController extends GetxController {
     var result = await hub.GA_Messages(id);
     allMessage.assignAll(result);
     convId.value = allMessage.first.conversationId!;
+  }
+
+  Future<void> getAllBrand(int idContentCom) async {
+    var result = await repo.getAllBrand(idContentCom);
+    brands.assignAll(result);
+  }
+
+  Future<void> getAllCompanyContent() async {
+    var result = await repo.getCompanyConent(allConversations.value.companyId!);
+    companyContent.assignAll(result);
+    print(
+        '--------------------------- getAllCompanyContent Chat-----------------');
   }
 
   Future<void> getAllConversations() async {

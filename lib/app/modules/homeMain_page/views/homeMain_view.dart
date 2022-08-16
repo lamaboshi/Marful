@@ -1,13 +1,14 @@
-//import 'dart:html' as html;
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marful/app/routes/app_pages.dart';
 import 'package:marful/sheard/auth_service.dart';
 import 'package:marful/sheard/date_extation.dart';
 import 'package:marful/sheard/util.dart';
+import 'package:q_overlay/q_overlay.dart';
 
 import '../../../core/values/app_colors.dart';
-import '../../../core/values/h.dart';
 import '../../../core/values/my_flutter_app_icons.dart';
 import '../controllers/homeMain_controller.dart';
 
@@ -255,7 +256,9 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
           ? SizedBox.shrink()
           : FloatingActionButton.extended(
               onPressed: () async {
-                await controller.getContentComapny();
+                controller.auth.getTypeEnum() == Auth.comapny
+                    ? await controller.getContentComapny()
+                    : await controller.getAllJob();
                 Get.bottomSheet(
                   SingleChildScrollView(
                     child: Padding(
@@ -415,6 +418,93 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                                         );
                                       },
                                     ),
+                                  ),
+                                )
+                              : SizedBox.shrink(),
+                          controller.auth.getTypeEnum() == Auth.infulonser
+                              ? SizedBox(
+                                  height: 30,
+                                  child: Obx(
+                                    () => controller.jobs.isNotEmpty
+                                        ? ListView.separated(
+                                            scrollDirection: Axis.horizontal,
+                                            itemCount: controller.jobs.length,
+                                            itemBuilder: (context, index) {
+                                              return InkWell(
+                                                onTap: () {
+                                                  controller
+                                                          .newPost.value.jobId =
+                                                      controller
+                                                          .jobs[index].id!;
+                                                },
+                                                child: Obx(() {
+                                                  return Center(
+                                                    child: AnimatedContainer(
+                                                        duration:
+                                                            const Duration(
+                                                                milliseconds:
+                                                                    130),
+                                                        width: 75,
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .symmetric(
+                                                                horizontal: 6,
+                                                                vertical: 6),
+                                                        decoration: BoxDecoration(
+                                                            color: controller
+                                                                        .newPost
+                                                                        .value
+                                                                        .jobId ==
+                                                                    controller
+                                                                        .jobs[
+                                                                            index]
+                                                                        .id!
+                                                                ? AppColors
+                                                                    .orange
+                                                                : AppColors
+                                                                    .orange
+                                                                    .withOpacity(
+                                                                        0.1),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        25)),
+                                                        child: Center(
+                                                          child: Text(
+                                                            controller
+                                                                .jobs[index]
+                                                                .code!,
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: TextStyle(
+                                                              color: controller
+                                                                          .newPost
+                                                                          .value
+                                                                          .jobId ==
+                                                                      controller
+                                                                          .jobs[
+                                                                              index]
+                                                                          .id!
+                                                                  ? Colors.white
+                                                                  : AppColors
+                                                                      .orange,
+                                                              fontSize: 13,
+                                                            ),
+                                                          ),
+                                                        )),
+                                                  );
+                                                }),
+                                              );
+                                            },
+                                            separatorBuilder:
+                                                (BuildContext context,
+                                                    int index) {
+                                              return const SizedBox(
+                                                width: 8,
+                                              );
+                                            },
+                                          )
+                                        : Text('You Dont Have job Yet'),
                                   ),
                                 )
                               : SizedBox.shrink(),
@@ -628,6 +718,40 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                           children: [
                             IconButton(
                               onPressed: () {
+                                controller.getifHaveUserPost(
+                                        controller.post[index])
+                                    ? Get.rootDelegate.toNamed(
+                                        Routes.WebsiteCompany,
+                                        arguments: controller.auth
+                                                    .getTypeEnum() ==
+                                                Auth.user
+                                            ? controller.mainUserpost
+                                                .firstWhere((element) =>
+                                                    element.postId ==
+                                                    controller
+                                                        .post[index].post!.id)
+                                                .id!
+                                            : controller.auth.getTypeEnum() ==
+                                                    Auth.infulonser
+                                                ? controller.mainInfupost
+                                                    .firstWhere((element) =>
+                                                        element.postId ==
+                                                        controller.post[index]
+                                                            .post!.id)
+                                                    .id!
+                                                : null)
+                                    : QPanel(
+                                        alignment: Alignment.topCenter,
+                                        duration: Duration(seconds: 2),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            'Plase InterAction To Post',
+                                            style: TextStyle(
+                                                fontSize: 25,
+                                                color: AppColors.orange),
+                                          ),
+                                        )).show();
                                 // html.window.open(
                                 //   '${html.window.location.protocol}/#/WebsiteCompany',
                                 //   'WebsiteCompany',

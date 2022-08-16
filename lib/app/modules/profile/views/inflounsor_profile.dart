@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marful/app/core/values/app_colors.dart';
 import 'package:q_overlay/q_overlay.dart';
 
-import '../../../core/values/app_colors.dart';
-import '../../../routes/app_pages.dart';
 import '../controllers/profile_controller.dart';
 import 'build_content.dart';
 import 'build_post.dart';
@@ -25,6 +24,7 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
                 child: Row(
                   children: [
                     SizedBox(width: screen.width / 6),
+<<<<<<< HEAD
                     ElevatedButton(
                       style: ButtonStyle(
                           backgroundColor:
@@ -42,6 +42,26 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
                         ),
                       ),
                     ),
+=======
+                    Obx(() => ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor: !controller.hasFollowed.value
+                                  ? MaterialStateProperty.all(AppColors.blue)
+                                  : MaterialStateProperty.all(AppColors.orange),
+                              fixedSize: MaterialStateProperty.all(
+                                  const Size.fromWidth(150))),
+                          onPressed: () {
+                            controller.addFollow(controller.typeAuth.value);
+                          },
+                          child: const Text(
+                            "Follow",
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                            ),
+                          ),
+                        )),
+>>>>>>> cff778314f108fe79ca5b53b9aada6b8488e6cd8
                     SizedBox(
                       width: 18,
                     ),
@@ -120,8 +140,11 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
                 ),
                 OutlinedButton(
                   onPressed: () async {
-                    await controller
-                        .getPostInful(controller.infulencer.value.id!);
+                    isSearch
+                        ? await controller
+                            .getPostInful(controller.infoSearch.value.id!)
+                        : await controller
+                            .getPostInful(controller.infulencer.value.id!);
                     QPanel(
                         width: screen.width / 1.2,
                         alignment: Alignment.centerRight,
@@ -129,8 +152,9 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
                           child: Column(
                             children: controller.posts
                                 .map((e) => BuildPost(
-                                      infoname:
-                                          controller.infulencer.value.name!,
+                                      infoname: isSearch
+                                          ? controller.infoSearch.value.name!
+                                          : controller.infulencer.value.name!,
                                       post: e,
                                     ))
                                 .toList(),
@@ -170,13 +194,15 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            controller.infulencer.value.description!,
-            style: TextStyle(fontSize: 16, color: Colors.black54),
-          ),
-        ),
+        Obx(() => Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                isSearch
+                    ? controller.infoSearch.value.description!
+                    : controller.infulencer.value.description!,
+                style: TextStyle(fontSize: 16, color: Colors.black54),
+              ),
+            )),
         Padding(
           padding: const EdgeInsets.all(9.0),
           child: Text(
@@ -201,7 +227,9 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
               () => Column(
                 children: controller.posts
                     .map((e) => BuildPost(
-                          infoname: controller.infulencer.value.name!,
+                          infoname: isSearch
+                              ? controller.infoSearch.value.name!
+                              : controller.infulencer.value.name!,
                           post: e,
                         ))
                     .toList(),
