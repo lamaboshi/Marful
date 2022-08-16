@@ -29,24 +29,24 @@ class HomeMenuView extends GetView<MenuController> {
                 ? viewPart(
                     (controller.auth.getDataFromStorage() as UserModel).name!,
                     (controller.auth.getDataFromStorage() as UserModel).image)
-                : SizedBox.shrink(),
+                : const SizedBox.shrink(),
             buildCard(
                 'Edit profil', Icons.edit, () => Get.to(EditProfilePage())),
             buildCard('Setting', Icons.settings,
                 () => Get.rootDelegate.toNamed(Routes.SETTING_PAGE)),
             //   buildCard('Report', AppIcons.trending_up, ()=> Get.to(() =>const ReportView())),
             buildCard('Help', AppIcons.help_outline, () {
-              Get.to(HelpPageeView());
+              Get.to(const HelpPageeView());
             }),
             buildCard('Log out', Icons.logout, () {
               Get.dialog(AlertDialog(
                 content: Row(
-                  children: [
+                  children: const [
                     Icon(
                       Icons.info_outlined,
                       color: AppColors.orange,
                     ),
-                    const SizedBox(
+                    SizedBox(
                       width: 5,
                     ),
                     Text('Are you sure want to LogOut ?'),
@@ -66,7 +66,7 @@ class HomeMenuView extends GetView<MenuController> {
                               MaterialStateProperty.all(AppColors.blue),
                           foregroundColor:
                               MaterialStateProperty.all(Colors.white)),
-                      child: Text('Yes'),
+                      child: const Text('Yes'),
                     ),
                     const Spacer(),
                     ElevatedButton(
@@ -78,11 +78,13 @@ class HomeMenuView extends GetView<MenuController> {
                               MaterialStateProperty.all(AppColors.blue),
                           foregroundColor:
                               MaterialStateProperty.all(Colors.white)),
-                      child: Text('Cancel'),
+                      child: const Text('Cancel'),
                     ),
                   ]),
                 ],
               ));
+              controller.auth.stroge.deleteAllKeys();
+              Get.rootDelegate.toNamed(Routes.SignIn);
             }),
           ],
         ),
@@ -111,8 +113,8 @@ class HomeMenuView extends GetView<MenuController> {
           ),
           Center(
               child: Text(
-            name == null ? ' ' : name,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            name ?? ' ',
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           )),
         ],
       ),

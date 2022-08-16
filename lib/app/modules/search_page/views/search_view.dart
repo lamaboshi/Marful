@@ -14,11 +14,19 @@ class SearchView extends GetView<SearchController> {
   @override
   Widget build(BuildContext context) {
     List<String> filter = [
+<<<<<<< HEAD
+      'Brand'.tr,
+      'Influencer'.tr,
+      'Company'.tr,
+      'Content'.tr,
+      'Product'.tr
+=======
       'company',
       'infulonser',
       'content',
       'brand',
       'product'
+>>>>>>> cff778314f108fe79ca5b53b9aada6b8488e6cd8
     ];
     return Scaffold(
       appBar: AppBar(
@@ -48,6 +56,9 @@ class SearchView extends GetView<SearchController> {
                           },
                           icon: Icon(Icons.clear),
                         ),
+<<<<<<< HEAD
+                        hintText: "SearchPage".tr,
+=======
                         suffixIcon: IconButton(
                           onPressed: () {
                             controller.getSearsh();
@@ -55,6 +66,7 @@ class SearchView extends GetView<SearchController> {
                           icon: Icon(Icons.search),
                         ),
                         hintText: "Search",
+>>>>>>> cff778314f108fe79ca5b53b9aada6b8488e6cd8
                         hintStyle: TextStyle(fontSize: 15),
                       )),
                 ),

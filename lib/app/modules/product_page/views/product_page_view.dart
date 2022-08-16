@@ -13,7 +13,7 @@ class ProductPageView extends GetView<ProductPageController> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Product'),
+          title: Text('ProductPage'.tr),
           backgroundColor: AppColors.orange,
         ),
         floatingActionButton: FloatingActionButton.extended(
@@ -55,7 +55,7 @@ class ProductPageView extends GetView<ProductPageController> {
                               onTap: () async {
                                 await controller.pickImage();
                               },
-                              child: const Text('Add an image..')),
+                              child:  Text('SignUpCmpPH'.tr)),
                           const SizedBox(
                             height: 20,
                           ),
@@ -66,7 +66,7 @@ class ProductPageView extends GetView<ProductPageController> {
                             type: TextInputType.name,
                             obscureText: false,
                             prefIcon: Icons.input,
-                            label: 'Name',
+                            label: 'ProductPageName'.tr,
                           ),
                           const SizedBox(
                             height: 20,
@@ -78,7 +78,7 @@ class ProductPageView extends GetView<ProductPageController> {
                             type: TextInputType.name,
                             obscureText: false,
                             prefIcon: Icons.input,
-                            label: 'Description',
+                            label: 'ProductPageDes'.tr,
                           ),
                           const SizedBox(
                             height: 20,
@@ -90,7 +90,7 @@ class ProductPageView extends GetView<ProductPageController> {
                             type: TextInputType.number,
                             obscureText: false,
                             prefIcon: Icons.input,
-                            label: 'Price',
+                            label: 'ProductPagePrice'.tr,
                           ),
                           const SizedBox(
                             height: 20,
@@ -102,7 +102,7 @@ class ProductPageView extends GetView<ProductPageController> {
                             type: TextInputType.name,
                             obscureText: false,
                             prefIcon: Icons.input,
-                            label: 'Code',
+                            label: 'ProductPageCode'.tr,
                           ),
                           const SizedBox(
                             height: 20,
@@ -118,7 +118,7 @@ class ProductPageView extends GetView<ProductPageController> {
                                       AppColors.orange),
                                   foregroundColor:
                                       MaterialStateProperty.all(Colors.white)),
-                              child: const Center(child: Text('Add')),
+                              child: Center(child: Text('ProductPageAdd'.tr)),
                             ),
                           ),
                           const SizedBox(
@@ -130,7 +130,7 @@ class ProductPageView extends GetView<ProductPageController> {
                   ));
             },
             label: Row(
-              children: const [Icon(Icons.add), Text('Add')],
+              children:  [Icon(Icons.add), Text('ProductPageAdd'.tr)],
             )),
         body: Obx(
           () => Padding(

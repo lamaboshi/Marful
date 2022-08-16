@@ -24,6 +24,25 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
                 child: Row(
                   children: [
                     SizedBox(width: screen.width / 6),
+<<<<<<< HEAD
+                    ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(AppColors.blue),
+                          fixedSize: MaterialStateProperty.all(
+                              const Size.fromWidth(150))),
+                      onPressed: () {
+                        Get.rootDelegate.toNamed(Routes.WebsiteCompany);
+                      },
+                      child:  Text(
+                        "CmpProfileFollow".tr,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+=======
                     Obx(() => ElevatedButton(
                           style: ButtonStyle(
                               backgroundColor: !controller.hasFollowed.value
@@ -42,6 +61,7 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
                             ),
                           ),
                         )),
+>>>>>>> cff778314f108fe79ca5b53b9aada6b8488e6cd8
                     SizedBox(
                       width: 18,
                     ),
@@ -52,8 +72,8 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
                           fixedSize: MaterialStateProperty.all(
                               const Size.fromWidth(150))),
                       onPressed: () {},
-                      child: const Text(
-                        "Message",
+                      child:  Text(
+                        "CmpProfileMessage".tr,
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.black,
@@ -106,7 +126,7 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
                                   color: AppColors.orange),
                             )),
                         Text(
-                          'Followors ',
+                          'CmpProfileFollowors'.tr,
                           style:
                               TextStyle(fontSize: 18, color: AppColors.orange),
                         ),
@@ -156,7 +176,7 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
                                   fontSize: 18, fontWeight: FontWeight.bold),
                             )),
                         Text(
-                          'Posts',
+                          'CmpProfilePosts'.tr,
                           style: TextStyle(fontSize: 18),
                         ),
                       ],
@@ -170,7 +190,7 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
         Padding(
           padding: const EdgeInsets.all(9.0),
           child: Text(
-            ' About Me',
+            'CmpProfileAboutMe'.tr,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
         ),
@@ -186,7 +206,7 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
         Padding(
           padding: const EdgeInsets.all(9.0),
           child: Text(
-            ' Contents',
+            'CmpProfileContent'.tr,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
           ),
         ),
@@ -197,7 +217,7 @@ class InfulonserProfilePage extends GetResponsiveView<ProfileController> {
         Padding(
           padding: const EdgeInsets.all(9.0),
           child: Text(
-            ' Posts',
+            'CmpProfilePosts'.tr,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
           ),
         ),

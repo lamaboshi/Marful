@@ -27,6 +27,23 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                 child: Row(
                   children: [
                     SizedBox(width: screen.width / 6),
+<<<<<<< HEAD
+                    ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(AppColors.blue),
+                          fixedSize: MaterialStateProperty.all(
+                              const Size.fromWidth(150))),
+                      onPressed: () {},
+                      child: Text(
+                        "CmpProfileFollow".tr,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+=======
                     Obx(() => ElevatedButton(
                           style: ButtonStyle(
                               backgroundColor: !controller.hasFollowed.value
@@ -45,6 +62,7 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                             ),
                           ),
                         )),
+>>>>>>> cff778314f108fe79ca5b53b9aada6b8488e6cd8
                     SizedBox(
                       width: 18,
                     ),
@@ -55,8 +73,8 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                           fixedSize: MaterialStateProperty.all(
                               const Size.fromWidth(150))),
                       onPressed: () {},
-                      child: const Text(
-                        "Message",
+                      child: Text(
+                        "CmpProfileMessage".tr,
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.black,
@@ -159,37 +177,70 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                                   fontSize: 18, fontWeight: FontWeight.bold),
                             )),
                         Text(
-                          'Posts',
+                          'CmpProfilePosts'.tr,
                           style: TextStyle(fontSize: 18),
                         ),
                       ],
                     ),
                   ),
+<<<<<<< HEAD
+                  VerticalDivider(
+                    color: Colors.grey,
+                    thickness: 2,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Text(
+                          '6,200 ',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          'CmpProfileFollowors'.tr,
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+=======
                 ),
               ],
+>>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
             ),
           ),
         ),
         Padding(
           padding: const EdgeInsets.all(9.0),
           child: Text(
-            ' About Me',
+            'CmpProfileAboutMe'.tr,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
+<<<<<<< HEAD
+<<<<<<< HEAD
+            ' ibeleviethatnooneshouldchoosebetweenacareerweloveandproveourlivers.',
+=======
+            controller.company.value.description!,
+>>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
+=======
             isSearch
                 ? controller.companySearch.value.description!
                 : controller.company.value.description!,
+>>>>>>> cff778314f108fe79ca5b53b9aada6b8488e6cd8
             style: TextStyle(fontSize: 16, color: Colors.black54),
           ),
         ),
         Padding(
           padding: const EdgeInsets.all(9.0),
           child: Text(
-            ' Contents',
+            'CmpProfileContent'.tr,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
         ),

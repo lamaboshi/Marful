@@ -50,7 +50,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                       height: 5,
                     ),
                     InkWell(
-                        onTap: () {}, child: const Text('Add Your Photo..')),
+                        onTap: () {}, child:  Text('SignUpCmpPH'.tr)),
                     const SizedBox(
                       height: 20,
                     ),
@@ -66,7 +66,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               controller.influencer.value.name = value;
                             },
                             type: TextInputType.name,
-                            label: ' Name',
+                            label: 'SignUpInfName'.tr,
                             hint: "Haya Eid",
                             prefIcon: Icons.person,
                           ),
@@ -77,7 +77,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               controller.influencer.value.userName = value;
                             },
                             type: TextInputType.name,
-                            label: 'User Name',
+                            label: 'SignUpInfUserName'.tr,
                             hint: "Haya ",
                             prefIcon: Icons.person,
                           ),
@@ -88,7 +88,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               controller.influencer.value.description = value;
                             },
                             type: TextInputType.name,
-                            label: 'Description',
+                            label: 'SignUpCmpDes'.tr,
                             hint: "I have so many bfghfccgbfg ",
                             prefIcon: Icons.description,
                           ),
@@ -99,7 +99,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               controller.influencer.value.phone = value;
                             },
                             type: TextInputType.number,
-                            label: 'PhoneNumber',
+                            label: 'SignUpCmpMob'.tr,
                             hint: "099717424666 ",
                             prefIcon: Icons.phone,
                           ),
@@ -110,7 +110,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               controller.influencer.value.address = value;
                             },
                             type: TextInputType.name,
-                            label: 'location',
+                            label: 'SignCmpUplocation'.tr,
                             hint: "aleppo ",
                             prefIcon: Icons.location_on,
                           ),
@@ -121,7 +121,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               controller.influencer.value.paypal = value;
                             },
                             type: TextInputType.number,
-                            label: 'PayBal',
+                            label: 'SignUpInfPaybal'.tr,
                             hint: "hsd235dfgdf ",
                             prefIcon: Icons.paypal,
                           ),
@@ -132,7 +132,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               controller.influencer.value.email = value;
                             },
                             type: TextInputType.emailAddress,
-                            label: 'Email',
+                            label: 'SignUpCmpEmail'.tr,
                             hint: "hy@gmail.com ",
                             prefIcon: Icons.email,
                           ),
@@ -144,7 +144,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               },
                               obscureText: !controller.isShownInfluencer.value,
                               type: TextInputType.visiblePassword,
-                              label: 'Passeword',
+                              label: 'SignUpCmpPassword'.tr,
                               hint: "***",
                               suffixIcon: IconButton(
                                 onPressed: () {
@@ -224,8 +224,8 @@ class SignUpInfluencer extends GetView<SignUpController> {
                                 ],
                               ));
                             },
-                            child: const Text(
-                              "Sign Up",
+                            child:  Text(
+                              "SignUpCmp".tr,
                               style: TextStyle(
                                 fontSize: 18,
                                 color: Colors.white,

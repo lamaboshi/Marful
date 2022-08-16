@@ -13,7 +13,7 @@ class ContentView extends GetView<ContentController> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.orange,
-          title: const Text('Content'),
+          title:  Text('Content'.tr),
         ),
         floatingActionButton: FloatingActionButton.extended(
             backgroundColor: AppColors.orange,
@@ -37,8 +37,8 @@ class ContentView extends GetView<ContentController> {
                         const SizedBox(
                           height: 20,
                         ),
-                        const Text(
-                          'Add new content',
+                         Text(
+                          'Addnewcontent'.tr,
                           style: TextStyle(fontSize: 17),
                         ),
                         const SizedBox(
@@ -78,7 +78,7 @@ class ContentView extends GetView<ContentController> {
                   ));
             },
             label: Row(
-              children: const [Icon(Icons.add), Text('Add')],
+              children:  [Icon(Icons.add), Text('ProductPageAdd'.tr)],
             )),
         body: Obx(
           () => ListView.separated(

@@ -15,8 +15,8 @@ class HomePostView extends GetView<HomePostController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "Add new post",
+             Text(
+              "HomePostAddPost".tr,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
             ),
             const SizedBox(
@@ -81,7 +81,7 @@ class HomePostView extends GetView<HomePostController> {
                 showCursor: true,
                 decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: "Write your post",
+                    hintText: "HomeMainWritePost".tr,
                     hintStyle: TextStyle(color: Colors.black.withOpacity(0.2))),
               ),
             ),
@@ -119,7 +119,7 @@ class HomePostView extends GetView<HomePostController> {
                       backgroundColor:
                           MaterialStateProperty.all(AppColors.orange),
                       foregroundColor: MaterialStateProperty.all(Colors.white)),
-                  child: const Text('Publish'),
+                  child:  Text('HomeMainPublish'.tr),
                 ),
               ],
             ),

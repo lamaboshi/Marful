@@ -14,7 +14,7 @@ class BrandPageView extends GetResponsiveView<BrandPageController> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.orange,
-          title: const Text('Brand'),
+          title:  Text('Brand'.tr),
         ),
         floatingActionButton: FloatingActionButton.extended(
             heroTag: 'uniqueTag',
@@ -55,7 +55,7 @@ class BrandPageView extends GetResponsiveView<BrandPageController> {
                               onTap: () async {
                                 await controller.pickImage();
                               },
-                              child: const Text('Add an image..')),
+                              child:  Text('SignUpCmpPH'.tr)),
 
                           const SizedBox(
                             height: 20,
@@ -67,7 +67,7 @@ class BrandPageView extends GetResponsiveView<BrandPageController> {
                             type: TextInputType.name,
                             obscureText: false,
                             prefIcon: Icons.input,
-                            label: 'Name',
+                            label: 'SignUpInfName'.tr,
                           ),
                           const SizedBox(
                             height: 20,
@@ -79,7 +79,7 @@ class BrandPageView extends GetResponsiveView<BrandPageController> {
                             type: TextInputType.name,
                             obscureText: false,
                             prefIcon: Icons.input,
-                            label: 'Description',
+                            label: 'buildPostDes'.tr,
                           ),
                           const SizedBox(
                             height: 20,
@@ -122,7 +122,7 @@ class BrandPageView extends GetResponsiveView<BrandPageController> {
                                       AppColors.orange),
                                   foregroundColor:
                                       MaterialStateProperty.all(Colors.white)),
-                              child: const Center(child: Text('Add')),
+                              child:  Center(child: Text('ProductPageAdd'.tr)),
                             ),
                           ),
                           const SizedBox(
@@ -148,7 +148,7 @@ class BrandPageView extends GetResponsiveView<BrandPageController> {
                   ));
             },
             label: Row(
-              children: const [Icon(Icons.add), Text('Add')],
+              children:  [Icon(Icons.add), Text('ProductPageAdd'.tr)],
             )),
         body: Column(
           children: [

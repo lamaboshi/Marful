@@ -14,7 +14,7 @@ class ChatPageView extends GetView<ChatPageController> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.orange,
-        title: Text('ConversationPageView'),
+        title: Text('ConversationPage'.tr),
         centerTitle: true,
         actions: [
           IconButton(
@@ -23,6 +23,34 @@ class ChatPageView extends GetView<ChatPageController> {
                 QPanel(
                     width: 400,
                     alignment: Alignment.center,
+<<<<<<< HEAD
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text('NewJobAgreement'.tr,
+                            style: TextStyle(fontSize: 20)),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextFieldWidget(
+                              onChanged: (txt) {
+                                controller.newJob.value.salary =
+                                    double.parse(txt);
+                              },
+                              type: TextInputType.multiline,
+                              hint: 'salary'.tr,
+                              obscureText: false,
+                              prefIcon: Icons.money,
+                            ),
+                            TextFieldWidget(
+                              onChanged: (txt) {
+                                controller.newJob.value.code = txt;
+                              },
+                              type: TextInputType.multiline,
+                              hint: 'code'.tr,
+                              obscureText: false,
+                              prefIcon: Icons.money,
+=======
                     child: Obx(() => Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -138,6 +166,7 @@ class ChatPageView extends GetView<ChatPageController> {
                                   prefIcon: Icons.money,
                                 ),
                               ],
+>>>>>>> cff778314f108fe79ca5b53b9aada6b8488e6cd8
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -148,7 +177,21 @@ class ChatPageView extends GetView<ChatPageController> {
                                   label: Text('Save')),
                             )
                           ],
+<<<<<<< HEAD
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: FloatingActionButton.extended(
+                              onPressed: () {
+                                controller.addJob();
+                              },
+                              label: Text('buildPostSave'.tr)),
+                        )
+                      ],
+                    )).show();
+=======
                         ))).show();
+>>>>>>> cff778314f108fe79ca5b53b9aada6b8488e6cd8
               },
               icon: Icon(Icons.work))
         ],
