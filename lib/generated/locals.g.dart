@@ -1,7 +1,6 @@
 // Code generated at 2022-08-17 15:06:41.392240 by Qlevar Local Manager
 
 import 'package:get/get.dart';
-
 class AppTranslation extends Translations {
   Map<String, Map<String, String>> get keys => {
         "en_EN": {
