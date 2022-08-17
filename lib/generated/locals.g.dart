@@ -1,7 +1,9 @@
 // Code generated at 2022-08-17 13:04:41.390362 by Qlevar Local Manager
 
-class AppTranslation {
-  static Map<String, Map<String, String>> translations = {
+import 'package:get/get.dart';
+
+class AppTranslation extends Translations {
+   Map<String, Map<String, String>> get keys=> {
     "en_EN": {
       "SignUpCmpPH": "Add Photo", 
       "SignUpCmpName": "Company Name", 
