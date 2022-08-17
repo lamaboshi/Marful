@@ -292,11 +292,12 @@ class BuildPost extends GetResponsiveView<ProfileController> {
                     ),
                     post!.jobId == null
                         ? const SizedBox.shrink()
-                        : Expanded(
+                        : const Expanded(
                             child: Chip(
-                            label: Text(post!.jobId.toString(),
-                                style:
-                                    const TextStyle(color: AppColors.orange)),
+                            label: Icon(
+                              Icons.star,
+                              color: AppColors.orange,
+                            ),
                           ))
                   ],
                 ),

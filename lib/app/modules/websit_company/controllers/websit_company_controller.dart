@@ -24,7 +24,7 @@ class WebsitcompanyController extends GetxController {
 
   Future<void> getAll() async {
     loading.value = true;
-    var data = await webRepo.getdata();
+    var data = await webRepo.getdata('JUICYBEAUTY@test.com');
     allCompany.value = data;
     loading.value = false;
   }

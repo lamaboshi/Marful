@@ -213,4 +213,14 @@ class HomeMainRepositry extends IHomeMainRepository {
     }
     return Company();
   }
+
+  @override
+  Future<Company> getCompanyByBrandId(int idBrand) async {
+    var result = await _dio
+        .get('https://localhost:7192/api/Company/getCompanyByBrandId/$idBrand');
+    if (result.statusCode == 200) {
+      return Company.fromJson(result.data as Map<String, dynamic>);
+    }
+    return Company();
+  }
 }

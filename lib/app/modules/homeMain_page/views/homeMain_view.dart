@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marful/app/routes/app_pages.dart';
 import 'package:marful/sheard/auth_service.dart';
 import 'package:marful/sheard/date_extation.dart';
 import 'package:marful/sheard/util.dart';
-import 'package:q_overlay/q_overlay.dart';
 
 import '../../../core/values/app_colors.dart';
 import '../../../core/values/my_flutter_app_icons.dart';
@@ -35,7 +33,13 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                             controller.contents[index].id!;
                         await controller.getPostsWithContent();
                       },
-                      child: buildCircul(controller.contents[index].name!),
+                      child: controller.contents[index].id ==
+                              controller.contentId.value
+                          ? Container(
+                              color: Colors.grey.withOpacity(0.4),
+                              child:
+                                  buildCircul(controller.contents[index].name!))
+                          : buildCircul(controller.contents[index].name!),
                     );
                   },
                 ),
@@ -254,10 +258,23 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                                                 itemBuilder: (context, index) {
                                                   return InkWell(
                                                     onTap: () {
-                                                      controller.newPost.value
-                                                              .jobId =
-                                                          controller
-                                                              .jobs[index].id!;
+                                                      if (controller.newPost
+                                                              .value.jobId !=
+                                                          controller.jobs[index]
+                                                              .id!) {
+                                                        controller.newPost.value
+                                                                .jobId =
+                                                            controller
+                                                                .jobs[index]
+                                                                .id!;
+                                                        controller.newPost
+                                                            .refresh();
+                                                      } else {
+                                                        controller.newPost.value
+                                                            .jobId = null;
+                                                        controller.newPost
+                                                            .refresh();
+                                                      }
                                                     },
                                                     child: Obx(() {
                                                       return Center(
@@ -327,7 +344,7 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                                     )
                                   : const SizedBox.shrink(),
                               const SizedBox(
-                                height: 20,
+                                height: 10,
                               ),
                               TextField(
                                 maxLines: null,
@@ -343,12 +360,12 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                                         color: Colors.black.withOpacity(0.2))),
                               ),
                               const SizedBox(
-                                height: 12,
+                                height: 8,
                               ),
                               Obx(() => controller.stringPickImage.value.isEmpty
                                   ? Image.asset(
-                                      'assets/images/ghaith.jpg',
-                                      width: screen.width,
+                                      'assets/images/angryimg.png',
+                                      width: screen.width * 2,
                                       height: screen.height / 3,
                                     )
                                   : Utility.imageFromBase64String(
@@ -407,27 +424,32 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
     );
   }
 
-  Widget buildCircul(String name) => Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          CircleAvatar(
-            backgroundColor: AppColors.blue,
-            radius: 42,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(50),
-              child: Image.asset(
-                'assets/images/angryimg.png',
-                height: 80,
-                width: 80,
-                fit: BoxFit.cover,
+  Widget buildCircul(String name) => InkWell(
+        onTap: () {
+          controller.getPostsWithContent();
+        },
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CircleAvatar(
+              backgroundColor: AppColors.blue,
+              radius: 42,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(50),
+                child: Image.asset(
+                  'assets/images/angryimg.png',
+                  height: 80,
+                  width: 80,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(3),
-            child: Text(name),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.all(3),
+              child: Text(name),
+            ),
+          ],
+        ),
       );
   Widget buildpost(int index) => Padding(
         padding: const EdgeInsets.all(5),
@@ -491,11 +513,22 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                   const SizedBox(
                     height: 8,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(3),
-                    child: Text(controller.post[index].post!.description == null
-                        ? ''
-                        : controller.post[index].post!.description!),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(3),
+                        child: Text(
+                            controller.post[index].post!.description == null
+                                ? ''
+                                : controller.post[index].post!.description!),
+                      ),
+                      controller.post[index].post!.jobId == null
+                          ? const SizedBox.shrink()
+                          : const Chip(
+                              label: Icon(Icons.star, color: AppColors.orange),
+                            )
+                    ],
                   ),
                   const SizedBox(
                     height: 8,
@@ -522,50 +555,7 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                             controller.auth.getTypeEnum() == Auth.user
                                 ? IconButton(
                                     onPressed: () {
-                                      controller.getifHaveUserPost(
-                                              controller.post[index])
-                                          ? Get.rootDelegate.toNamed(
-                                              Routes.WebsiteCompany,
-                                              arguments: 1
-                                              // controller.auth
-                                              //             .getTypeEnum() ==
-                                              //         Auth.user
-                                              //     ? controller.mainUserpost
-                                              //         .firstWhere((element) =>
-                                              //             element.postId ==
-                                              //             controller.post[index]
-                                              //                 .post!.id)
-                                              //         .id!
-                                              //     : controller.auth
-                                              //                 .getTypeEnum() ==
-                                              //             Auth.infulonser
-                                              //         ? controller.mainInfupost
-                                              //             .firstWhere((element) =>
-                                              //                 element.postId ==
-                                              //                 controller
-                                              //                     .post[index]
-                                              //                     .post!
-                                              //                     .id)
-                                              //             .id!
-                                              //         : null
-                                              )
-                                          : QPanel(
-                                              alignment: Alignment.topCenter,
-                                              duration:
-                                                  const Duration(seconds: 2),
-                                              child: const Padding(
-                                                padding: EdgeInsets.all(8.0),
-                                                child: Text(
-                                                  'Plase InterAction To Post',
-                                                  style: TextStyle(
-                                                      fontSize: 25,
-                                                      color: AppColors.orange),
-                                                ),
-                                              )).show();
-                                      // html.window.open(
-                                      //   '${html.window.location.protocol}/#/WebsiteCompany',
-                                      //   'WebsiteCompany',
-                                      // );
+                                      controller.getComapnyByBrand(index);
                                     },
                                     icon: const Icon(
                                       AppIcons.basket,
