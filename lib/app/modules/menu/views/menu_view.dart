@@ -80,6 +80,7 @@ class HomeMenuView extends GetView<MenuController> {
                     ElevatedButton(
                       onPressed: () {
                         controller.auth.stroge.deleteAllKeys();
+                        Get.rootDelegate.history.clear();
                         Get.rootDelegate.toNamed(Routes.SignIn);
                       },
                       style: ButtonStyle(
