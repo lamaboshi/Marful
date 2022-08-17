@@ -14,7 +14,7 @@ class ChatPageView extends GetView<ChatPageController> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.orange,
-        title: const Text('ConversationPageView'),
+        title:  Text('ConversationPageView'.tr),
         centerTitle: true,
         actions: [
           IconButton(
@@ -28,7 +28,7 @@ class ChatPageView extends GetView<ChatPageController> {
                           children: [
                             const Padding(
                               padding: EdgeInsets.all(8.0),
-                              child: Text('New Job Agreement',
+                              child: Text('NewJobAgreement'.tr,
                                   style: TextStyle(fontSize: 20)),
                             ),
                             Column(
@@ -67,7 +67,7 @@ class ChatPageView extends GetView<ChatPageController> {
                                                     .content!
                                                     .name!
                                                     .isEmpty
-                                                ? 'Content Company'
+                                                ? 'ContentCompany'.tr
                                                 : controller
                                                     .selectcompanyContent()
                                                     .content!
@@ -110,7 +110,7 @@ class ChatPageView extends GetView<ChatPageController> {
                                                           .selectbrand()
                                                           .name!
                                                           .isEmpty
-                                                      ? 'Brand Company'
+                                                      ? 'BrandCompany'.tr
                                                       : controller
                                                           .selectbrand()
                                                           .name!)),
@@ -124,7 +124,7 @@ class ChatPageView extends GetView<ChatPageController> {
                                         double.parse(txt);
                                   },
                                   type: TextInputType.multiline,
-                                  hint: 'percentage %',
+                                  hint: 'percentage%'.tr,
                                   obscureText: false,
                                   prefIcon: Icons.money,
                                 ),
@@ -133,7 +133,7 @@ class ChatPageView extends GetView<ChatPageController> {
                                     controller.newJob.value.code = txt;
                                   },
                                   type: TextInputType.multiline,
-                                  hint: 'code',
+                                  hint: 'code'.tr,
                                   obscureText: false,
                                   prefIcon: Icons.money,
                                 ),
@@ -145,7 +145,7 @@ class ChatPageView extends GetView<ChatPageController> {
                                   onPressed: () {
                                     controller.addJob();
                                   },
-                                  label: const Text('Save')),
+                                  label:  Text('Save'.tr.tr)),
                             )
                           ],
                         ))).show();
