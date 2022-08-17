@@ -17,7 +17,7 @@ Function()? delFunction;
           const SizedBox(
             width: 5,
           ),
-          Text('Are you sure to delete?'),
+          Text('Areyousuretodelete?'.tr),
         ],
       ),
       contentPadding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
@@ -30,7 +30,7 @@ Function()? delFunction;
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(AppColors.blue),
                 foregroundColor: MaterialStateProperty.all(Colors.white)),
-            child: Text('Delete'),
+            child: Text('Delete'.tr),
           ),
           const Spacer(),
           ElevatedButton(
@@ -40,7 +40,7 @@ Function()? delFunction;
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(AppColors.blue),
                 foregroundColor: MaterialStateProperty.all(Colors.white)),
-            child: Text('Cancel'),
+            child: Text('Cancel'.tr),
           ),
         ]),
       ],

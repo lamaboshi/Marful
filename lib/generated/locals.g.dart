@@ -1,4 +1,4 @@
-// Code generated at 2022-08-16 14:11:22.619143 by Qlevar Local Manager
+// Code generated at 2022-08-17 12:57:41.387281 by Qlevar Local Manager
 
 class AppTranslation {
   static Map<String, Map<String, String>> translations = {
@@ -110,7 +110,13 @@ class AppTranslation {
       "Editpersonalinformation,andifitisacompanyorinfluencer,itcanmodifythecontentsandcanmodifytheinformationofpreviouspostsordeleteposts'": "Edit personal information, and if it is a company or influencer, it can modify the contents and can modify the information of previous posts or delete posts'", 
       "Theinfluencerandthecompanycanaddnewcontentbyusingtheaddbuttonandwritingthenameofthenewcontent,orhecandeletecontentbyusingthedeletebuttonandconfirmingit": "The influencer and the company can add new content by using the add button and writing the name of the new content, or he can delete content by using the delete button and confirming it", 
       "Theinfluencerandthecompanycanaddanewbrandthroughtheaddbuttonandwritetheinformationofthenewbrand,orhecandeleteaspecificbrandthroughthedeletebuttonandconfirmit": "The influencer and the company can add a new brand through the add button and write the information of the new brand, or he can delete a specific brand through the delete button and confirm it", 
-      "Thecompanycanaddnewpermissionsbyusingtheaddbuttonandwritingthenewpermissioninformation,oritcandeleteaspecificpermissionthroughthedeletebuttonandconfirmit,oritcanmodifythepermission": "The company can add new permissions by using the add button and writing the new permission information, or it can delete a specific permission through the delete button and confirm it, or it can modify the permission"},
+      "Thecompanycanaddnewpermissionsbyusingtheaddbuttonandwritingthenewpermissioninformation,oritcandeleteaspecificpermissionthroughthedeletebuttonandconfirmit,oritcanmodifythepermission": "The company can add new permissions by using the add button and writing the new permission information, or it can delete a specific permission through the delete button and confirm it, or it can modify the permission", 
+      "Areyousuretodelete?": "Are you sure to delete?", 
+      "Delete": "Delete", 
+      "Cancel": "Cancel", 
+      "Name": "Name", 
+      "passeword": "passeword", 
+      "Add": "Add"},
 
     "ar_AR": {
       "SignUpCmpPH": "إختر صورة", 
@@ -220,7 +226,13 @@ class AppTranslation {
       "Editpersonalinformation,andifitisacompanyorinfluencer,itcanmodifythecontentsandcanmodifytheinformationofpreviouspostsordeleteposts'": "تعديل المعلومات الشخصية واذا كان شركة او مؤثر يمكنه تعديل المحتويات ويستطيع تعديل معلومات البوستات السابقة او حذف البوستات", 
       "Theinfluencerandthecompanycanaddnewcontentbyusingtheaddbuttonandwritingthenameofthenewcontent,orhecandeletecontentbyusingthedeletebuttonandconfirmingit": "يستطيع المؤثر والشركة اضافة محتوى جديد عن طريق زر الضافة وكتابة اسم المحتوى الجديد او يستطيع حذف محتوى عن طريق زر الحذف وتأكيده", 
       "Theinfluencerandthecompanycanaddanewbrandthroughtheaddbuttonandwritetheinformationofthenewbrand,orhecandeleteaspecificbrandthroughthedeletebuttonandconfirmit": "يستطيع المؤثر والشركة اضافة ماركةجديد عن طريق زر الضافة وكتابة معلومات البراند الجديد او يستطيع حذف براند معين عن طريق زر الحذف وتأكيده", 
-      "Thecompanycanaddnewpermissionsbyusingtheaddbuttonandwritingthenewpermissioninformation,oritcandeleteaspecificpermissionthroughthedeletebuttonandconfirmit,oritcanmodifythepermission": "تسطيع الشركة اضافة صلاحيات جديدة عن طريق زر الاضافة وكتابة معلومات الصلاحية الجديدة او تسطيع حذف صلاحية معينة عن طريق زر الحذف وتأكيده او تسطيع تعديل صلاحية"},
+      "Thecompanycanaddnewpermissionsbyusingtheaddbuttonandwritingthenewpermissioninformation,oritcandeleteaspecificpermissionthroughthedeletebuttonandconfirmit,oritcanmodifythepermission": "تسطيع الشركة اضافة صلاحيات جديدة عن طريق زر الاضافة وكتابة معلومات الصلاحية الجديدة او تسطيع حذف صلاحية معينة عن طريق زر الحذف وتأكيده او تسطيع تعديل صلاحية", 
+      "Areyousuretodelete?": "هل أنت متأكد من الحذف؟", 
+      "Delete": "حذف", 
+      "Cancel": "إلغاء", 
+      "Name": "الإسم", 
+      "passeword": "كلمة السر", 
+      "Add": ""},
   };
 }
   

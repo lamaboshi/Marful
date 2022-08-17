@@ -21,13 +21,13 @@ class DialogWidget extends StatelessWidget {
           obscureText: false,
           prefIcon: Icons.border_color,
           type: TextInputType.name,
-          label: 'name',
+          label: 'name'.tr,
         ),
         TextFieldWidget(
           obscureText: false,
           prefIcon: Icons.border_color,
           type: TextInputType.name,
-          label: 'passeword',
+          label: 'passeword'.tr,
         ),
         const SizedBox(
           height: 15,
@@ -39,7 +39,7 @@ class DialogWidget extends StatelessWidget {
           style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(AppColors.orange),
               foregroundColor: MaterialStateProperty.all(Colors.white)),
-          child: const Center(child: Text('Add')),
+          child: const Center(child: Text('Add'.tr)),
         ),
       ],
     );
