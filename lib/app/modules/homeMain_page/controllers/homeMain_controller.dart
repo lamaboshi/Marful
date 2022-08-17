@@ -135,13 +135,10 @@ class HomeMainController extends GetxController {
 
   Future<void> getAllPosts() async {
     post.clear();
-    loading.value = true;
     var res = await homeMainRepo.getAllPost(auth.personType(), getEmail());
     if (res.isNotEmpty) {
       post.assignAll(res);
     }
-
-    loading.value = false;
   }
 
   Future<void> getPostsWithContent() async {

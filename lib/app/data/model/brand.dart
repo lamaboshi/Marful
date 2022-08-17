@@ -27,14 +27,13 @@ class Brand {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = new Map<String, dynamic>();
-    json['id'] = id == null ? 0 : id;
+    final Map<String, dynamic> json = <String, dynamic>{};
+    json['id'] = id ?? 0;
     json['name'] = name;
     json['description'] = description;
     json['image'] = image == null ? null : Uint8List.fromList(image!);
-    json['infulonserId'] = infulonserId == null ? null : infulonserId;
-    json['companyContentId'] =
-        companyContentId == null ? null : companyContentId;
+    json['InfulonserId'] = infulonserId ?? null;
+    json['companyContentId'] = companyContentId ?? null;
     return json;
   }
 }

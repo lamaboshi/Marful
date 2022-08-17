@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/core/component/deleteDialog.dart';
 import 'package:marful/app/core/component/textField.dart';
+
 import '../../../core/values/app_colors.dart';
 import '../controllers/content_controller.dart';
 
@@ -12,7 +13,7 @@ class ContentView extends GetView<ContentController> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.orange,
-          title:  Text('Content'.tr),
+          title: const Text('Content'),
         ),
         floatingActionButton: FloatingActionButton.extended(
             backgroundColor: AppColors.orange,
@@ -36,8 +37,8 @@ class ContentView extends GetView<ContentController> {
                         const SizedBox(
                           height: 20,
                         ),
-                         Text(
-                          'Addnewcontent'.tr,
+                        const Text(
+                          'Add new content',
                           style: TextStyle(fontSize: 17),
                         ),
                         const SizedBox(
@@ -77,7 +78,7 @@ class ContentView extends GetView<ContentController> {
                   ));
             },
             label: Row(
-              children:  [Icon(Icons.add), Text('ProductPageAdd'.tr)],
+              children: const [Icon(Icons.add), Text('Add')],
             )),
         body: Obx(
           () => ListView.separated(
@@ -88,9 +89,10 @@ class ContentView extends GetView<ContentController> {
                     trailing: IconButton(
                         padding: const EdgeInsets.all(0),
                         onPressed: () {
-                          Get.dialog(DeleteDialogWidget(delFunction: () {
-                            controller
+                          Get.dialog(DeleteDialogWidget(delFunction: () async {
+                            await controller
                                 .delcontentelement(controller.contents[index]);
+                            Get.back();
                           }));
                         },
                         icon: const Icon(Icons.delete)),

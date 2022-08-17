@@ -1,13 +1,16 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signIn_page/controllers/signIn_controller.dart';
+import 'package:q_overlay/q_overlay.dart';
 
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
-import '../../../routes/app_pages.dart';
-class SignInPage extends GetView<SignInController> {
-  const SignInPage({Key? key}) : super(key: key);
+
+class CompanyType extends GetView<SignInController> {
+  const CompanyType({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +47,7 @@ class SignInPage extends GetView<SignInController> {
                       const Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          'Sign In to your account',
+                          'Add Your Permissions',
                           textAlign: TextAlign.start,
                           style: TextStyle(
                               fontSize: 23, fontWeight: FontWeight.w500),
@@ -53,19 +56,48 @@ class SignInPage extends GetView<SignInController> {
                       const SizedBox(
                         height: 50,
                       ),
-
+                      QExpander(
+                          expandChild: Padding(
+                            padding: const EdgeInsets.all(4),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: controller.typeCompanyList
+                                  .map((e) => InkWell(
+                                        onTap: () {
+                                          controller.typeCompany.value = e;
+                                          QOverlay.dismissLast();
+                                        },
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(5),
+                                          child: Text(
+                                            e,
+                                            style:
+                                                const TextStyle(fontSize: 18),
+                                          ),
+                                        ),
+                                      ))
+                                  .toList(),
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              children: [
+                                const Icon(
+                                  Icons.account_balance_wallet_sharp,
+                                  color: AppColors.orange,
+                                ),
+                                const SizedBox(width: 8),
+                                Obx(() => Text(
+                                    controller.typeCompany.value.isEmpty
+                                        ? 'Company Type'
+                                        : controller.typeCompany.value,
+                                    style: const TextStyle(fontSize: 18))),
+                              ],
+                            ),
+                          )),
                       //Email
-                      TextFieldWidget(
-                        obscureText: false,
-                        type: TextInputType.emailAddress,
-                        label: 'Email',
-                        hint: "hy@gmail.com",
-                        prefIcon: Icons.email,
-                        onChanged: (value) {
-                          controller.email.value = value;
-                        },
-                      ),
-                      //////////passeword
                       Obx(() {
                         return TextFieldWidget(
                           type: TextInputType.visiblePassword,
@@ -90,22 +122,7 @@ class SignInPage extends GetView<SignInController> {
                           prefIcon: Icons.key,
                         );
                       }),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      //Forgot Your Passeword?
-                      Align(
-                        alignment: Alignment.topRight,
-                        child: InkWell(
-                          onTap: () {
-                            Get.rootDelegate.toNamed(Routes.Password);
-                          },
-                          child: const Text(
-                            'Forgot Your Passeword?',
-                            style: TextStyle(fontSize: 15, color: Colors.grey),
-                          ),
-                        ),
-                      ),
+
                       const SizedBox(
                         height: 80,
                       ),
@@ -117,27 +134,17 @@ class SignInPage extends GetView<SignInController> {
                             fixedSize: MaterialStateProperty.all(
                                 const Size.fromWidth(150))),
                         onPressed: () {
-                          controller.logIn();
+                          controller.logInTypeFun();
                         },
                         child: const Text(
-                          "Sign In",
+                          "SignIn ",
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 17,
                             color: Colors.white,
                           ),
                         ),
                       ),
-                      TextButton(
-                        onPressed: () {
-                          Get.rootDelegate.toNamed(Routes.FirstSplash);
-                        },
-                        // ignore: sort_child_properties_last
-                        child: const Text('Create Your Account?'),
-                        style: ButtonStyle(
-                          foregroundColor:
-                              MaterialStateProperty.all(Colors.black),
-                        ),
-                      ),
+
                       const SizedBox(
                         height: 70,
                       ),

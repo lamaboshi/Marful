@@ -4,10 +4,6 @@ import 'package:get/get.dart';
 import 'package:q_overlay/q_overlay.dart';
 
 import '../../../core/values/app_colors.dart';
-import '../../../core/values/h.dart';
-import '../../../core/values/my_flutter_app_icons.dart';
-import '../../../core/values/h.dart';
-import '../../../core/values/my_flutter_app_icons.dart';
 import '../controllers/profile_controller.dart';
 import 'build_content.dart';
 import 'build_post.dart';
@@ -27,43 +23,24 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                 child: Row(
                   children: [
                     SizedBox(width: screen.width / 6),
-<<<<<<< HEAD
                     ElevatedButton(
                       style: ButtonStyle(
                           backgroundColor:
                               MaterialStateProperty.all(AppColors.blue),
                           fixedSize: MaterialStateProperty.all(
                               const Size.fromWidth(150))),
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.addFollow(controller.typeAuth.value);
+                      },
                       child: Text(
                         "CmpProfileFollow".tr,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18,
                           color: Colors.white,
                         ),
                       ),
                     ),
-=======
-                    Obx(() => ElevatedButton(
-                          style: ButtonStyle(
-                              backgroundColor: !controller.hasFollowed.value
-                                  ? MaterialStateProperty.all(AppColors.blue)
-                                  : MaterialStateProperty.all(AppColors.orange),
-                              fixedSize: MaterialStateProperty.all(
-                                  const Size.fromWidth(150))),
-                          onPressed: () {
-                            controller.addFollow(controller.typeAuth.value);
-                          },
-                          child: const Text(
-                            "Follow",
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.white,
-                            ),
-                          ),
-                        )),
->>>>>>> cff778314f108fe79ca5b53b9aada6b8488e6cd8
-                    SizedBox(
+                    const SizedBox(
                       width: 18,
                     ),
                     ElevatedButton(
@@ -75,7 +52,7 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                       onPressed: () {},
                       child: Text(
                         "CmpProfileMessage".tr,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18,
                           color: Colors.black,
                         ),
@@ -84,8 +61,8 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                   ],
                 ),
               )
-            : SizedBox.shrink(),
-        SizedBox(
+            : const SizedBox.shrink(),
+        const SizedBox(
           height: 15,
         ),
         IntrinsicHeight(
@@ -102,7 +79,7 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                             child: Column(
                                 children: controller.follower
                                     .map((element) => ListTile(
-                                          leading: Icon(Icons.person,
+                                          leading: const Icon(Icons.person,
                                               color: AppColors.orange),
                                           title: Text(element.name!),
                                           subtitle: Text(element.email!),
@@ -112,7 +89,7 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                   },
                   style: ButtonStyle(
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                        side: BorderSide(color: AppColors.orange),
+                        side: const BorderSide(color: AppColors.orange),
                         borderRadius: BorderRadius.circular(10))),
                   ),
                   child: Padding(
@@ -121,12 +98,12 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                       children: [
                         Obx(() => Text(
                               controller.followerCount.value.toString(),
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                   color: AppColors.orange),
                             )),
-                        Text(
+                        const Text(
                           'Followors ',
                           style:
                               TextStyle(fontSize: 18, color: AppColors.orange),
@@ -135,7 +112,7 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                     ),
                   ),
                 ),
-                VerticalDivider(
+                const VerticalDivider(
                   color: Colors.grey,
                   thickness: 2,
                 ),
@@ -164,7 +141,7 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                   },
                   style: ButtonStyle(
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                        side: BorderSide(color: AppColors.blue),
+                        side: const BorderSide(color: AppColors.blue),
                         borderRadius: BorderRadius.circular(10))),
                   ),
                   child: Padding(
@@ -173,43 +150,18 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                       children: [
                         Obx(() => Text(
                               controller.posts.length.toString(),
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold),
                             )),
                         Text(
                           'CmpProfilePosts'.tr,
-                          style: TextStyle(fontSize: 18),
+                          style: const TextStyle(fontSize: 18),
                         ),
                       ],
                     ),
                   ),
-<<<<<<< HEAD
-                  VerticalDivider(
-                    color: Colors.grey,
-                    thickness: 2,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Text(
-                          '6,200 ',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'CmpProfileFollowors'.tr,
-                          style: TextStyle(fontSize: 18),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-=======
                 ),
               ],
->>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
             ),
           ),
         ),
@@ -217,39 +169,31 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
           padding: const EdgeInsets.all(9.0),
           child: Text(
             'CmpProfileAboutMe'.tr,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-<<<<<<< HEAD
-<<<<<<< HEAD
-            ' ibeleviethatnooneshouldchoosebetweenacareerweloveandproveourlivers.',
-=======
-            controller.company.value.description!,
->>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
-=======
             isSearch
                 ? controller.companySearch.value.description!
                 : controller.company.value.description!,
->>>>>>> cff778314f108fe79ca5b53b9aada6b8488e6cd8
-            style: TextStyle(fontSize: 16, color: Colors.black54),
+            style: const TextStyle(fontSize: 16, color: Colors.black54),
           ),
         ),
         Padding(
           padding: const EdgeInsets.all(9.0),
           child: Text(
             'CmpProfileContent'.tr,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Buildcontent(),
         ),
-        Padding(
-          padding: const EdgeInsets.all(9.0),
+        const Padding(
+          padding: EdgeInsets.all(9.0),
           child: Text(
             ' Posts',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),

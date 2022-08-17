@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/core/component/deleteDialog.dart';
 import 'package:marful/sheard/util.dart';
+
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
 import '../controllers/product_page_controller.dart';
@@ -12,7 +13,7 @@ class ProductPageView extends GetView<ProductPageController> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('ProductPage'.tr),
+          title: const Text('Product'),
           backgroundColor: AppColors.orange,
         ),
         floatingActionButton: FloatingActionButton.extended(
@@ -42,7 +43,7 @@ class ProductPageView extends GetView<ProductPageController> {
                                   child: Utility.imageFromBase64String(
                                       controller.stringPickImage.value, 75, 75),
                                 )
-                              :const CircleAvatar(
+                              : const CircleAvatar(
                                   radius: 50,
                                   backgroundImage:
                                       AssetImage('assets/images/person.png'),
@@ -54,7 +55,7 @@ class ProductPageView extends GetView<ProductPageController> {
                               onTap: () async {
                                 await controller.pickImage();
                               },
-                              child:  Text('SignUpCmpPH'.tr)),
+                              child: const Text('Add an image..')),
                           const SizedBox(
                             height: 20,
                           ),
@@ -65,7 +66,7 @@ class ProductPageView extends GetView<ProductPageController> {
                             type: TextInputType.name,
                             obscureText: false,
                             prefIcon: Icons.input,
-                            label: 'ProductPageName'.tr,
+                            label: 'Name',
                           ),
                           const SizedBox(
                             height: 20,
@@ -77,7 +78,7 @@ class ProductPageView extends GetView<ProductPageController> {
                             type: TextInputType.name,
                             obscureText: false,
                             prefIcon: Icons.input,
-                            label: 'ProductPageDes'.tr,
+                            label: 'Description',
                           ),
                           const SizedBox(
                             height: 20,
@@ -89,7 +90,7 @@ class ProductPageView extends GetView<ProductPageController> {
                             type: TextInputType.number,
                             obscureText: false,
                             prefIcon: Icons.input,
-                            label: 'ProductPagePrice'.tr,
+                            label: 'Price',
                           ),
                           const SizedBox(
                             height: 20,
@@ -101,7 +102,7 @@ class ProductPageView extends GetView<ProductPageController> {
                             type: TextInputType.name,
                             obscureText: false,
                             prefIcon: Icons.input,
-                            label: 'ProductPageCode'.tr,
+                            label: 'Code',
                           ),
                           const SizedBox(
                             height: 20,
@@ -117,7 +118,7 @@ class ProductPageView extends GetView<ProductPageController> {
                                       AppColors.orange),
                                   foregroundColor:
                                       MaterialStateProperty.all(Colors.white)),
-                              child: Center(child: Text('ProductPageAdd'.tr)),
+                              child: const Center(child: Text('Add')),
                             ),
                           ),
                           const SizedBox(
@@ -129,7 +130,7 @@ class ProductPageView extends GetView<ProductPageController> {
                   ));
             },
             label: Row(
-              children:  [Icon(Icons.add), Text('ProductPageAdd'.tr)],
+              children: const [Icon(Icons.add), Text('Add')],
             )),
         body: Obx(
           () => Padding(
@@ -178,7 +179,7 @@ class ProductPageView extends GetView<ProductPageController> {
                                       ),
                                       Text(
                                         controller.allproducts[index].name!,
-                                        style:const TextStyle(
+                                        style: const TextStyle(
                                             height: 1,
                                             fontSize: 20,
                                             fontWeight: FontWeight.bold),
@@ -190,7 +191,8 @@ class ProductPageView extends GetView<ProductPageController> {
                                       Text(
                                         controller
                                             .allproducts[index].description!,
-                                        style:const TextStyle(color: Colors.grey),
+                                        style:
+                                            const TextStyle(color: Colors.grey),
                                       ),
                                       const Spacer(),
 
@@ -198,19 +200,19 @@ class ProductPageView extends GetView<ProductPageController> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.end,
                                         children: [
-                                     const     Icon(
+                                          const Icon(
                                             Icons.price_change,
                                             color: AppColors.blue,
                                             size: 20,
                                           ),
-                                      const    SizedBox(
+                                          const SizedBox(
                                             width: 10,
                                           ),
                                           //price
                                           Text(
                                             controller.allproducts[index].price!
                                                 .toString(),
-                                            style:const TextStyle(
+                                            style: const TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 18,
                                                 color: AppColors.blue),
@@ -232,6 +234,7 @@ class ProductPageView extends GetView<ProductPageController> {
                                         DeleteDialogWidget(delFunction: () {
                                       controller.Delproduct(
                                           controller.allproducts[index].id!);
+                                      Get.back();
                                     }))),
                                 child: const Icon(
                                   Icons.close,

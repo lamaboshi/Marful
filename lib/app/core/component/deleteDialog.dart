@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../values/app_colors.dart';
 
 class DeleteDialogWidget extends StatelessWidget {
-   DeleteDialogWidget({Key? key,required Function()? delFunction,}) : super(key: key);
-Function()? delFunction;
+  DeleteDialogWidget({
+    Key? key,
+    this.delFunction,
+  }) : super(key: key);
+  Function()? delFunction;
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
       content: Row(
-        children: [
+        children: const [
           Icon(
             Icons.info_outlined,
             color: AppColors.orange,
           ),
-          const SizedBox(
+          SizedBox(
             width: 5,
           ),
           Text('Areyousuretodelete?'.tr),
@@ -25,12 +29,12 @@ Function()? delFunction;
       actions: [
         Row(children: [
           ElevatedButton(
-            onPressed: () {delFunction;
-            },
+            onPressed: delFunction!,
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(AppColors.blue),
                 foregroundColor: MaterialStateProperty.all(Colors.white)),
             child: Text('Delete'.tr),
+
           ),
           const Spacer(),
           ElevatedButton(

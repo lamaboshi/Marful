@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:marful/app/modules/intro_page/controllers/intro_controller.dart';
+
 import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
 
@@ -18,21 +19,21 @@ class IntroPage extends GetView<IntroController> {
           interCompanyPage(context),
           interUserPage(context)
         ],
-        onDone: () {
-          Get.rootDelegate.offNamed(Routes.HAYA);
-        },
+        done: Text("Done".tr,
+            style: const TextStyle(
+                color: AppColors.blue, fontWeight: FontWeight.w600)),
         showNextButton: true,
         showBackButton: true,
         showSkipButton: false,
+        onDone: () {
+          Get.rootDelegate.offNamed(Routes.SignIn);
+        },
         back: Text("Back".tr,
-            style:
-                TextStyle(color: AppColors.blue, fontWeight: FontWeight.w600)),
-        next:  Text("Next".tr,
-            style:
-                TextStyle(color: AppColors.blue, fontWeight: FontWeight.w600)),
-        done:  Text("Done".tr,
-            style:
-                TextStyle(fontWeight: FontWeight.w600, color: AppColors.blue)),
+            style: const TextStyle(
+                color: AppColors.blue, fontWeight: FontWeight.w600)),
+        next: Text("Next".tr,
+            style: const TextStyle(
+                color: AppColors.blue, fontWeight: FontWeight.w600)),
         globalBackgroundColor: Colors.white,
         dotsDecorator: const DotsDecorator(
           size: Size(10.0, 10.0),
@@ -73,81 +74,112 @@ PageViewModel interPage(context) {
     ),
 
     ///image
-    titleWidget:  Align(
+    titleWidget: Align(
         alignment: Alignment.topLeft,
         child: Text(
-<<<<<<< HEAD
           'YouCanChooseAcountToSignUp'.tr,
-=======
-          'You can choose acount to signUp',
->>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
-          style: TextStyle(fontSize: 15),
+          style: const TextStyle(fontSize: 15),
         )),
 
     ///text
-    bodyWidget:const SizedBox(
+    bodyWidget: const SizedBox(
       height: 0,
     ),
-    footer: Row(
+    footer: Column(
       children: [
-        //Influencer
-        Padding(
-          padding: const EdgeInsets.only(left: 0, right: 3),
-          child: SizedBox(
-            width: 130,
-            height: 38,
-            child: ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(AppColors.orange),
-              ),
-              onPressed: () {
-                Get.rootDelegate.offNamed(Routes.SignUpInfluencer);
-              },
-              child:  Text(
-                "Influencer".tr,
-                style: TextStyle(fontSize: 18),
+        Row(
+          children: [
+            //Influencer
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 0, right: 3),
+                child: SizedBox(
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(AppColors.orange),
+                    ),
+                    onPressed: () {
+                      Get.rootDelegate.offNamed(Routes.SignUpInfluencer);
+                    },
+                    child: Text(
+                      'SignUpAsInfluencer'.tr,
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ),
+                ),
               ),
             ),
-          ),
+            //company
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 3, right: 3),
+                child: SizedBox(
+                  height: 50,
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(AppColors.orange),
+                    ),
+                    onPressed: () {
+                      Get.rootDelegate.offNamed(Routes.SignUpCompany);
+                    },
+                    child: Text(
+                      'SignUpAsCompany'.tr,
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            //user
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 3, right: 0),
+                child: SizedBox(
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(AppColors.orange),
+                    ),
+                    onPressed: () {
+                      Get.rootDelegate.offNamed(Routes.SignUpUserPage);
+                    },
+                    child: Text(
+                      'SignUpAsUser'.tr,
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
-        //company
         Padding(
-          padding: const EdgeInsets.only(left: 3, right: 3),
-          child: SizedBox(
-            width: 130,
-            height: 38,
-            child: ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(AppColors.orange),
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('youHaveAccount?'.tr,
+                  style: const TextStyle(
+                    color: Colors.grey,
+                  )),
+              const SizedBox(
+                width: 3,
               ),
-              onPressed: () {
-                Get.rootDelegate.offNamed(Routes.SignUpCompany);
-              },
-              child:  Text(
-                "Company".tr,
-                style: TextStyle(fontSize: 18),
+              InkWell(
+                child: Text(
+                  'signin'.tr,
+                  style: const TextStyle(
+                    color: Colors.grey,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+                onTap: () {
+                  Get.rootDelegate.offNamed(Routes.SignIn);
+                },
               ),
-            ),
-          ),
-        ),
-        //user
-        Padding(
-          padding: const EdgeInsets.only(left: 3, right: 0),
-          child: SizedBox(
-            width: 120,
-            height: 38,
-            child: ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(AppColors.orange),
-              ),
-              onPressed: () {
-                Get.rootDelegate.offNamed(Routes.SignUpUserPage);
-              },
-              child:  Text(
-                "User".tr,
-                style: TextStyle(fontSize: 18),
-              ),
-            ),
+            ],
           ),
         ),
       ],
@@ -171,9 +203,9 @@ PageViewModel interInfluncerPage(context) {
       bodyAlignment: Alignment.center,
       bodyPadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
     ),
-    image:  Text('BeInfluencer'.tr,
+    image: Text('BeInfluencer'.tr,
         textAlign: TextAlign.start,
-        style: TextStyle(
+        style: const TextStyle(
             color: AppColors.orange,
             fontWeight: FontWeight.bold,
             fontSize: 45.0)),
@@ -185,13 +217,10 @@ PageViewModel interInfluncerPage(context) {
       ),
     ),
     //text
-<<<<<<< HEAD
-    bodyWidget:  Text(
-        'AContentCreatorissomeonewhosharesinformationandussuallytargetsspecificusers.acontentcreatorcancreatediffrenttypesofcontent'.tr),
-=======
-    bodyWidget: const Text(
-        'Influencer can add posts and make a conversation with company and create a special brand'),
->>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
+    bodyWidget: Text(
+        'AContentCreatorissomeonewhosharesinformationandussuallytargetsspecificusers.acontentcreatorcancreatediffrenttypesofcontent'
+            .tr),
+
     footer: Column(
       children: [
         ///btn Sign Up As Influencer
@@ -208,7 +237,7 @@ PageViewModel interInfluncerPage(context) {
             },
             child: Text(
               "SignUpAsInfluencer".tr,
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
           ),
         ),
@@ -218,21 +247,16 @@ PageViewModel interInfluncerPage(context) {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('youHaveAccount?'.tr,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.grey,
                 )),
             const SizedBox(
               width: 3,
             ),
             InkWell(
-<<<<<<< HEAD
               child: Text(
                 'signin'.tr,
-=======
-              child:const Text(
-                'sign in',
->>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.grey,
                   decoration: TextDecoration.underline,
                 ),
@@ -264,9 +288,9 @@ PageViewModel interCompanyPage(context) {
       bodyAlignment: Alignment.center,
       bodyPadding: EdgeInsets.fromLTRB(0, 20, 0, 20),
     ),
-    image:  Text('BeCompany'.tr,
+    image: Text('BeCompany'.tr,
         textAlign: TextAlign.start,
-        style: TextStyle(
+        style: const TextStyle(
             color: AppColors.orange,
             fontWeight: FontWeight.bold,
             fontSize: 45.0)),
@@ -278,14 +302,9 @@ PageViewModel interCompanyPage(context) {
       ),
     ),
 
-    ///text
-<<<<<<< HEAD
     bodyWidget: Text(
-        'thecompanyconsistsofmorethanonepersonanditisabrandthatpromotesitisproduct'.tr),
-=======
-    bodyWidget: const Text(
-        'Company can add posts and have employee with permissions'),
->>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
+        'thecompanyconsistsofmorethanonepersonanditisabrandthatpromotesitisproduct'
+            .tr),
     footer: Column(
       children: [
         ///btn Sign Up As Company
@@ -301,7 +320,7 @@ PageViewModel interCompanyPage(context) {
             },
             child: Text(
               "SignUpAsCompany".tr,
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
           ),
         ),
@@ -310,22 +329,17 @@ PageViewModel interCompanyPage(context) {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-             Text('youHaveAccount?'.tr,
-                style: TextStyle(
+            Text('youHaveAccount?'.tr,
+                style: const TextStyle(
                   color: Colors.grey,
                 )),
             const SizedBox(
               width: 3,
             ),
             InkWell(
-<<<<<<< HEAD
               child: Text(
                 'signin'.tr,
-=======
-              child:const Text(
-                'sign in',
->>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.grey,
                   decoration: TextDecoration.underline,
                 ),
@@ -359,7 +373,7 @@ PageViewModel interUserPage(context) {
     ),
     image: Text('BeUser'.tr,
         textAlign: TextAlign.start,
-        style: TextStyle(
+        style: const TextStyle(
             color: AppColors.orange,
             fontWeight: FontWeight.bold,
             fontSize: 45.0)),
@@ -373,13 +387,8 @@ PageViewModel interUserPage(context) {
     ),
 
     ///text
-<<<<<<< HEAD
-    bodyWidget: Text(
-        'theuserfollowscopaniesandcontentmakers'.tr),
-=======
-    bodyWidget: const Text(
-        'User can shopping and interact posts '),
->>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
+    bodyWidget: Text('theuserfollowscopaniesandcontentmakers'.tr),
+
     footer: Column(
       children: [
         ///btn Sign Up As User
@@ -395,7 +404,7 @@ PageViewModel interUserPage(context) {
             },
             child: Text(
               "SignUpAsUser".tr,
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
           ),
         ),
@@ -405,7 +414,7 @@ PageViewModel interUserPage(context) {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('youHaveAccount?'.tr,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.grey,
                 )),
             const SizedBox(
@@ -414,7 +423,7 @@ PageViewModel interUserPage(context) {
             InkWell(
               child: Text(
                 'signin'.tr,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.grey,
                   decoration: TextDecoration.underline,
                 ),

@@ -7,6 +7,7 @@ import 'package:marful/api/storge/storge_service.dart';
 import 'package:marful/app/data/model/company.dart';
 import 'package:marful/app/data/model/infulonser.dart';
 import 'package:marful/app/data/model/user_model.dart';
+import 'package:marful/app/modules/permissions_page/data/company_type.dart';
 
 import '../app/routes/app_pages.dart';
 
@@ -19,6 +20,9 @@ class AuthService {
   bool isAuth() => stroge.containsKey('type');
 
   String personType() => jsonDecode(stroge.getData('type')!).toString();
+  String companyType() => stroge.containsKey('CompanyType')
+      ? jsonDecode(stroge.getData('CompanyType')!).toString()
+      : '';
   Auth getTypeEnum() {
     switch (personType()) {
       case 'user':
@@ -42,6 +46,19 @@ class AuthService {
         case 'infulonser':
           return Infulonser.fromJson(data as Map<String, dynamic>);
       }
+    }
+    return null;
+  }
+
+  Future<CompanyTypeModel?> logInType(String type, String password) async {
+    var result = await _dio.get(
+        'https://localhost:7192/api/CompanyType/Existing',
+        queryParameters: {"Type": type, "password": password});
+    print(result.data);
+    if (result.statusCode == 200) {
+      var data = CompanyTypeModel.fromJson(result.data as Map<String, dynamic>);
+      stroge.saveData('CompanyType', jsonEncode(data.type!));
+      return data;
     }
     return null;
   }
@@ -78,6 +95,8 @@ class AuthService {
 
 class AuthMiddlware extends GetMiddleware {
   var storge = Get.put(StorageService());
-  RouteSettings? redirect(String? route) =>
-      !storge.containsKey('type') ? RouteSettings(name: Routes.Intro) : null;
+  @override
+  RouteSettings? redirect(String? route) => !storge.containsKey('type')
+      ? const RouteSettings(name: Routes.Intro)
+      : null;
 }

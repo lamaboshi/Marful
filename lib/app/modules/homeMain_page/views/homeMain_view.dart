@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/routes/app_pages.dart';
@@ -56,552 +54,356 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
         ]),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-<<<<<<< HEAD
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () async {
-          await controller.getContentComapny();
-          Get.bottomSheet(
-            SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                     Text(
-                      "HomePostAddPost".tr,
-                      textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    controller.auth.getTypeEnum() == Auth.comapny
-                        ? SizedBox(
-                            height: 30,
-                            child: Obx(
-                              () => ListView.separated(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: controller.companyContent.length,
-                                itemBuilder: (context, index) {
-                                  return InkWell(
-                                    onTap: () async {
-                                      controller.contentId.value =
-                                          controller.companyContent[index].id!;
-                                      await controller.getBrandComapny();
-                                    },
-                                    child: Obx(() {
-                                      return Center(
-                                        child: AnimatedContainer(
-                                            duration: const Duration(
-                                                milliseconds: 130),
-                                            width: 75,
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 6, vertical: 6),
-                                            decoration: BoxDecoration(
-                                                color: controller.selectedBrand
-                                                            .value ==
-                                                        index
-                                                    ? AppColors.orange
-                                                    : AppColors.orange
-                                                        .withOpacity(0.1),
-                                                borderRadius:
-                                                    BorderRadius.circular(25)),
-                                            child: Center(
-                                              child: Text(
-                                                controller.companyContent[index]
-                                                    .name!,
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                  color: controller
-                                                              .selectedBrand
-                                                              .value ==
-                                                          index
-                                                      ? Colors.white
-                                                      : AppColors.orange,
-                                                  fontSize: 13,
-                                                ),
-                                              ),
-                                            )),
-                                      );
-                                    }),
-                                  );
-                                },
-                                separatorBuilder:
-                                    (BuildContext context, int index) {
-                                  return const SizedBox(
-                                    width: 8,
-                                  );
-                                },
-                              ),
-                            ),
-                          )
-                        : SizedBox.shrink(),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    controller.auth.getTypeEnum() == Auth.comapny
-                        ? SizedBox(
-                            height: 30,
-                            child: Obx(
-                              () => ListView.separated(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: controller.brand.length,
-                                itemBuilder: (context, index) {
-                                  return InkWell(
-                                    onTap: () {
-                                      controller.newPost.value.brandId =
-                                          controller.brand[index].id!;
-                                    },
-                                    child: Obx(() {
-                                      return Center(
-                                        child: AnimatedContainer(
-                                            duration: const Duration(
-                                                milliseconds: 130),
-                                            width: 75,
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 6, vertical: 6),
-                                            decoration: BoxDecoration(
-                                                color: controller.selectedBrand
-                                                            .value ==
-                                                        index
-                                                    ? AppColors.orange
-                                                    : AppColors.orange
-                                                        .withOpacity(0.1),
-                                                borderRadius:
-                                                    BorderRadius.circular(25)),
-                                            child: Center(
-                                              child: Text(
-                                                controller.brand[index].name!,
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                  color: controller
-                                                              .selectedBrand
-                                                              .value ==
-                                                          index
-                                                      ? Colors.white
-                                                      : AppColors.orange,
-                                                  fontSize: 13,
-                                                ),
-                                              ),
-                                            )),
-                                      );
-                                    }),
-                                  );
-                                },
-                                separatorBuilder:
-                                    (BuildContext context, int index) {
-                                  return const SizedBox(
-                                    width: 8,
-                                  );
-                                },
-                              ),
-                            ),
-                          )
-                        : SizedBox.shrink(),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    TextField(
-                      maxLines: null,
-                      cursorColor: AppColors.orange,
-                      showCursor: true,
-                      onChanged: (value) {
-                        controller.newPost.value.description = value;
-                      },
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "HomeMainWritePost".tr,
-                          hintStyle:
-                              TextStyle(color: Colors.black.withOpacity(0.2))),
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    Obx(() => controller.stringPickImage.value.isEmpty
-                        ? Image.asset(
-                            'assets/images/ghaith.jpg',
-                            width: screen.width,
-                            height: screen.height / 3,
-                          )
-                        : Utility.imageFromBase64String(
-                            controller.stringPickImage.value,
-                            screen.width / 1,
-                            screen.height / 6)),
-                    Row(
-                      children: [
-                        IconButton(
-                            padding: const EdgeInsets.all(0),
-                            onPressed: () async {
-                              await controller.pickImageFun();
-                            },
-                            icon: Icon(Icons.image,
-                                size: 30,
-                                color: AppColors.orange.withOpacity(0.4))),
-                        const Spacer(),
-                        ElevatedButton(
-                          onPressed: () async {
-                            await controller.addPost();
-                          },
-                          style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(AppColors.orange),
-                              foregroundColor:
-                                  MaterialStateProperty.all(Colors.white)),
-                          child:  Text('HomeMainPublish'.tr),
-                        ),
-                      ],
-=======
       floatingActionButton: controller.auth.getTypeEnum() == Auth.user
-          ? SizedBox.shrink()
-          : FloatingActionButton.extended(
-              onPressed: () async {
-                controller.auth.getTypeEnum() == Auth.comapny
-                    ? await controller.getContentComapny()
-                    : await controller.getAllJob();
-                Get.bottomSheet(
-                  SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Text(
-                            "Add new post",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 25),
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          controller.auth.getTypeEnum() == Auth.comapny
-                              ? SizedBox(
-                                  height: 30,
-                                  child: Obx(
-                                    () => ListView.separated(
-                                      scrollDirection: Axis.horizontal,
-                                      itemCount:
-                                          controller.companyContent.length,
-                                      itemBuilder: (context, index) {
-                                        return InkWell(
-                                          onTap: () async {
-                                            controller.contentId.value =
-                                                controller
-                                                    .companyContent[index].id!;
-                                            await controller.getBrandComapny();
-                                          },
-                                          child: Obx(() {
-                                            return Center(
-                                              child: AnimatedContainer(
-                                                  duration: const Duration(
-                                                      milliseconds: 130),
-                                                  width: 75,
-                                                  padding: const EdgeInsets
-                                                          .symmetric(
-                                                      horizontal: 6,
-                                                      vertical: 6),
-                                                  decoration: BoxDecoration(
-                                                      color: controller
-                                                                  .contentId
-                                                                  .value ==
-                                                              controller
-                                                                  .companyContent[
-                                                                      index]
-                                                                  .id!
-                                                          ? AppColors.orange
-                                                          : AppColors.orange
-                                                              .withOpacity(0.1),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              25)),
-                                                  child: Center(
-                                                    child: Text(
-                                                      controller
-                                                          .companyContent[index]
-                                                          .content!
-                                                          .name!,
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: TextStyle(
-                                                        color: controller
-                                                                    .contentId
-                                                                    .value ==
-                                                                controller
-                                                                    .companyContent[
-                                                                        index]
-                                                                    .id!
-                                                            ? Colors.white
-                                                            : AppColors.orange,
-                                                        fontSize: 13,
-                                                      ),
-                                                    ),
-                                                  )),
-                                            );
-                                          }),
-                                        );
-                                      },
-                                      separatorBuilder:
-                                          (BuildContext context, int index) {
-                                        return const SizedBox(
-                                          width: 8,
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                )
-                              : SizedBox.shrink(),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          controller.auth.getTypeEnum() == Auth.comapny
-                              ? SizedBox(
-                                  height: 30,
-                                  child: Obx(
-                                    () => ListView.separated(
-                                      scrollDirection: Axis.horizontal,
-                                      itemCount: controller.brand.length,
-                                      itemBuilder: (context, index) {
-                                        return InkWell(
-                                          onTap: () {
-                                            controller.newPost.value.brandId =
-                                                controller.brand[index].id!;
-                                            controller.selectedBrand.value =
-                                                index;
-                                          },
-                                          child: Obx(() {
-                                            return Center(
-                                              child: AnimatedContainer(
-                                                  duration: const Duration(
-                                                      milliseconds: 130),
-                                                  width: 75,
-                                                  padding: const EdgeInsets
-                                                          .symmetric(
-                                                      horizontal: 6,
-                                                      vertical: 6),
-                                                  decoration: BoxDecoration(
-                                                      color: controller
-                                                                  .selectedBrand
-                                                                  .value ==
-                                                              index
-                                                          ? AppColors.orange
-                                                          : AppColors.orange
-                                                              .withOpacity(0.1),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              25)),
-                                                  child: Center(
-                                                    child: Text(
-                                                      controller
-                                                          .brand[index].name!,
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: TextStyle(
-                                                        color: controller
-                                                                    .selectedBrand
-                                                                    .value ==
-                                                                index
-                                                            ? Colors.white
-                                                            : AppColors.orange,
-                                                        fontSize: 13,
-                                                      ),
-                                                    ),
-                                                  )),
-                                            );
-                                          }),
-                                        );
-                                      },
-                                      separatorBuilder:
-                                          (BuildContext context, int index) {
-                                        return const SizedBox(
-                                          width: 8,
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                )
-                              : SizedBox.shrink(),
-                          controller.auth.getTypeEnum() == Auth.infulonser
-                              ? SizedBox(
-                                  height: 30,
-                                  child: Obx(
-                                    () => controller.jobs.isNotEmpty
-                                        ? ListView.separated(
-                                            scrollDirection: Axis.horizontal,
-                                            itemCount: controller.jobs.length,
-                                            itemBuilder: (context, index) {
-                                              return InkWell(
-                                                onTap: () {
-                                                  controller
-                                                          .newPost.value.jobId =
-                                                      controller
-                                                          .jobs[index].id!;
-                                                },
-                                                child: Obx(() {
-                                                  return Center(
-                                                    child: AnimatedContainer(
-                                                        duration:
-                                                            const Duration(
-                                                                milliseconds:
-                                                                    130),
-                                                        width: 75,
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .symmetric(
-                                                                horizontal: 6,
-                                                                vertical: 6),
-                                                        decoration: BoxDecoration(
+          ? const SizedBox.shrink()
+          : (controller.auth.getTypeEnum() == Auth.comapny &&
+                      controller.auth.companyType() == 'chat employee') ||
+                  (controller.auth.getTypeEnum() == Auth.comapny &&
+                      controller.auth.companyType() == 'Editing Officer')
+              ? const SizedBox.shrink()
+              : FloatingActionButton.extended(
+                  onPressed: () async {
+                    controller.auth.getTypeEnum() == Auth.comapny
+                        ? await controller.getContentComapny()
+                        : await controller.getAllJob();
+                    Get.bottomSheet(
+                      SingleChildScrollView(
+                        child: Padding(
+                          padding: const EdgeInsets.all(15),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Text(
+                                "Add new post",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 25),
+                              ),
+                              const SizedBox(
+                                height: 12,
+                              ),
+                              controller.auth.getTypeEnum() == Auth.comapny
+                                  ? SizedBox(
+                                      height: 30,
+                                      child: Obx(
+                                        () => ListView.separated(
+                                          scrollDirection: Axis.horizontal,
+                                          itemCount:
+                                              controller.companyContent.length,
+                                          itemBuilder: (context, index) {
+                                            return InkWell(
+                                              onTap: () async {
+                                                controller.contentId.value =
+                                                    controller
+                                                        .companyContent[index]
+                                                        .id!;
+                                                await controller
+                                                    .getBrandComapny();
+                                              },
+                                              child: Obx(() {
+                                                return Center(
+                                                  child: AnimatedContainer(
+                                                      duration: const Duration(
+                                                          milliseconds: 130),
+                                                      width: 75,
+                                                      padding: const EdgeInsets
+                                                              .symmetric(
+                                                          horizontal: 6,
+                                                          vertical: 6),
+                                                      decoration: BoxDecoration(
+                                                          color: controller
+                                                                      .contentId
+                                                                      .value ==
+                                                                  controller
+                                                                      .companyContent[
+                                                                          index]
+                                                                      .id!
+                                                              ? AppColors.orange
+                                                              : AppColors.orange
+                                                                  .withOpacity(
+                                                                      0.1),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      25)),
+                                                      child: Center(
+                                                        child: Text(
+                                                          controller
+                                                              .companyContent[
+                                                                  index]
+                                                              .content!
+                                                              .name!,
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: TextStyle(
                                                             color: controller
-                                                                        .newPost
-                                                                        .value
-                                                                        .jobId ==
+                                                                        .contentId
+                                                                        .value ==
+                                                                    controller
+                                                                        .companyContent[
+                                                                            index]
+                                                                        .id!
+                                                                ? Colors.white
+                                                                : AppColors
+                                                                    .orange,
+                                                            fontSize: 13,
+                                                          ),
+                                                        ),
+                                                      )),
+                                                );
+                                              }),
+                                            );
+                                          },
+                                          separatorBuilder:
+                                              (BuildContext context,
+                                                  int index) {
+                                            return const SizedBox(
+                                              width: 8,
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    )
+                                  : const SizedBox.shrink(),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              controller.auth.getTypeEnum() == Auth.comapny
+                                  ? SizedBox(
+                                      height: 30,
+                                      child: Obx(
+                                        () => ListView.separated(
+                                          scrollDirection: Axis.horizontal,
+                                          itemCount: controller.brand.length,
+                                          itemBuilder: (context, index) {
+                                            return InkWell(
+                                              onTap: () {
+                                                controller
+                                                        .newPost.value.brandId =
+                                                    controller.brand[index].id!;
+                                                controller.selectedBrand.value =
+                                                    index;
+                                              },
+                                              child: Obx(() {
+                                                return Center(
+                                                  child: AnimatedContainer(
+                                                      duration: const Duration(
+                                                          milliseconds: 130),
+                                                      width: 75,
+                                                      padding: const EdgeInsets
+                                                              .symmetric(
+                                                          horizontal: 6,
+                                                          vertical: 6),
+                                                      decoration: BoxDecoration(
+                                                          color: controller
+                                                                      .selectedBrand
+                                                                      .value ==
+                                                                  index
+                                                              ? AppColors.orange
+                                                              : AppColors.orange
+                                                                  .withOpacity(
+                                                                      0.1),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      25)),
+                                                      child: Center(
+                                                        child: Text(
+                                                          controller
+                                                              .brand[index]
+                                                              .name!,
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: TextStyle(
+                                                            color: controller
+                                                                        .selectedBrand
+                                                                        .value ==
+                                                                    index
+                                                                ? Colors.white
+                                                                : AppColors
+                                                                    .orange,
+                                                            fontSize: 13,
+                                                          ),
+                                                        ),
+                                                      )),
+                                                );
+                                              }),
+                                            );
+                                          },
+                                          separatorBuilder:
+                                              (BuildContext context,
+                                                  int index) {
+                                            return const SizedBox(
+                                              width: 8,
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    )
+                                  : const SizedBox.shrink(),
+                              controller.auth.getTypeEnum() == Auth.infulonser
+                                  ? SizedBox(
+                                      height: 30,
+                                      child: Obx(
+                                        () => controller.jobs.isNotEmpty
+                                            ? ListView.separated(
+                                                scrollDirection:
+                                                    Axis.horizontal,
+                                                itemCount:
+                                                    controller.jobs.length,
+                                                itemBuilder: (context, index) {
+                                                  return InkWell(
+                                                    onTap: () {
+                                                      controller.newPost.value
+                                                              .jobId =
+                                                          controller
+                                                              .jobs[index].id!;
+                                                    },
+                                                    child: Obx(() {
+                                                      return Center(
+                                                        child:
+                                                            AnimatedContainer(
+                                                                duration: const Duration(
+                                                                    milliseconds:
+                                                                        130),
+                                                                width: 75,
+                                                                padding: const EdgeInsets
+                                                                        .symmetric(
+                                                                    horizontal:
+                                                                        6,
+                                                                    vertical:
+                                                                        6),
+                                                                decoration: BoxDecoration(
+                                                                    color: controller.newPost.value.jobId ==
+                                                                            controller
+                                                                                .jobs[
+                                                                                    index]
+                                                                                .id!
+                                                                        ? AppColors
+                                                                            .orange
+                                                                        : AppColors
+                                                                            .orange
+                                                                            .withOpacity(
+                                                                                0.1),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            25)),
+                                                                child: Center(
+                                                                  child: Text(
                                                                     controller
                                                                         .jobs[
                                                                             index]
-                                                                        .id!
-                                                                ? AppColors
-                                                                    .orange
-                                                                : AppColors
-                                                                    .orange
-                                                                    .withOpacity(
-                                                                        0.1),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        25)),
-                                                        child: Center(
-                                                          child: Text(
-                                                            controller
-                                                                .jobs[index]
-                                                                .code!,
-                                                            textAlign: TextAlign
-                                                                .center,
-                                                            style: TextStyle(
-                                                              color: controller
-                                                                          .newPost
-                                                                          .value
-                                                                          .jobId ==
-                                                                      controller
-                                                                          .jobs[
-                                                                              index]
-                                                                          .id!
-                                                                  ? Colors.white
-                                                                  : AppColors
-                                                                      .orange,
-                                                              fontSize: 13,
-                                                            ),
-                                                          ),
-                                                        )),
+                                                                        .code!,
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .center,
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: controller.newPost.value.jobId == controller.jobs[index].id!
+                                                                          ? Colors
+                                                                              .white
+                                                                          : AppColors
+                                                                              .orange,
+                                                                      fontSize:
+                                                                          13,
+                                                                    ),
+                                                                  ),
+                                                                )),
+                                                      );
+                                                    }),
                                                   );
-                                                }),
-                                              );
-                                            },
-                                            separatorBuilder:
-                                                (BuildContext context,
-                                                    int index) {
-                                              return const SizedBox(
-                                                width: 8,
-                                              );
-                                            },
-                                          )
-                                        : Text('You Dont Have job Yet'),
-                                  ),
-                                )
-                              : SizedBox.shrink(),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          TextField(
-                            maxLines: null,
-                            cursorColor: AppColors.orange,
-                            showCursor: true,
-                            onChanged: (value) {
-                              controller.newPost.value.description = value;
-                            },
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "Write your post",
-                                hintStyle: TextStyle(
-                                    color: Colors.black.withOpacity(0.2))),
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          Obx(() => controller.stringPickImage.value.isEmpty
-                              ? Image.asset(
-                                  'assets/images/ghaith.jpg',
-                                  width: screen.width,
-                                  height: screen.height / 3,
-                                )
-                              : Utility.imageFromBase64String(
-                                  controller.stringPickImage.value,
-                                  screen.width / 1,
-                                  screen.height / 6)),
-                          Row(
-                            children: [
-                              IconButton(
-                                  padding: const EdgeInsets.all(0),
-                                  onPressed: () async {
-                                    await controller.pickImageFun();
-                                  },
-                                  icon: Icon(Icons.image,
-                                      size: 30,
-                                      color:
-                                          AppColors.orange.withOpacity(0.4))),
-                              const Spacer(),
-                              ElevatedButton(
-                                onPressed: () async {
-                                  await controller.addPost();
+                                                },
+                                                separatorBuilder:
+                                                    (BuildContext context,
+                                                        int index) {
+                                                  return const SizedBox(
+                                                    width: 8,
+                                                  );
+                                                },
+                                              )
+                                            : const Text(
+                                                'You Dont Have job Yet'),
+                                      ),
+                                    )
+                                  : const SizedBox.shrink(),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              TextField(
+                                maxLines: null,
+                                cursorColor: AppColors.orange,
+                                showCursor: true,
+                                onChanged: (value) {
+                                  controller.newPost.value.description = value;
                                 },
-                                style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(
-                                        AppColors.orange),
-                                    foregroundColor: MaterialStateProperty.all(
-                                        Colors.white)),
-                                child: const Text('Publish'),
+                                decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: "Write your post",
+                                    hintStyle: TextStyle(
+                                        color: Colors.black.withOpacity(0.2))),
+                              ),
+                              const SizedBox(
+                                height: 12,
+                              ),
+                              Obx(() => controller.stringPickImage.value.isEmpty
+                                  ? Image.asset(
+                                      'assets/images/ghaith.jpg',
+                                      width: screen.width,
+                                      height: screen.height / 3,
+                                    )
+                                  : Utility.imageFromBase64String(
+                                      controller.stringPickImage.value,
+                                      screen.width / 1,
+                                      screen.height / 6)),
+                              Row(
+                                children: [
+                                  IconButton(
+                                      padding: const EdgeInsets.all(0),
+                                      onPressed: () async {
+                                        await controller.pickImageFun();
+                                      },
+                                      icon: Icon(Icons.image,
+                                          size: 30,
+                                          color: AppColors.orange
+                                              .withOpacity(0.4))),
+                                  const Spacer(),
+                                  ElevatedButton(
+                                    onPressed: () async {
+                                      await controller.addPost();
+                                    },
+                                    style: ButtonStyle(
+                                        backgroundColor:
+                                            MaterialStateProperty.all(
+                                                AppColors.orange),
+                                        foregroundColor:
+                                            MaterialStateProperty.all(
+                                                Colors.white)),
+                                    child: const Text('Publish'),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
-                        ],
+                        ),
                       ),
->>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
-                    ),
+                      exitBottomSheetDuration:
+                          const Duration(milliseconds: 400),
+                      enterBottomSheetDuration:
+                          const Duration(milliseconds: 500),
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(30),
+                          topLeft: Radius.circular(30),
+                        ),
+                      ),
+                      backgroundColor: Colors.white,
+                    );
+                  },
+                  backgroundColor: AppColors.orange,
+                  label: Row(
+                    children: const [Icon(Icons.add), Text('Add post')],
                   ),
-                  exitBottomSheetDuration: const Duration(milliseconds: 400),
-                  enterBottomSheetDuration: const Duration(milliseconds: 500),
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(30),
-                      topLeft: Radius.circular(30),
-                    ),
-                  ),
-                  backgroundColor: Colors.white,
-                );
-              },
-              backgroundColor: AppColors.orange,
-              label: Row(
-                children: const [Icon(Icons.add), Text('Add post')],
-              ),
-            ),
-<<<<<<< HEAD
-            exitBottomSheetDuration: const Duration(milliseconds: 400),
-            enterBottomSheetDuration: const Duration(milliseconds: 500),
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(30),
-                topLeft: Radius.circular(30),
-              ),
-            ),
-            backgroundColor: Colors.white,
-          );
-        },
-        backgroundColor: AppColors.orange,
-        label: Row(
-          children: [Icon(Icons.add), Text('HomeMainAddPost'.tr)],
-        ),
-      ),
-=======
->>>>>>> 43d837c95ce2aa383c5368a4426259af07ae4e26
+                ),
     );
   }
 
@@ -666,7 +468,7 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                               controller.post[index].name == null
                                   ? ''
                                   : controller.post[index].name!,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.w500),
                             ),
                             Padding(
@@ -703,65 +505,74 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                     child: controller.post[index].post!.image == null
                         ? Image.asset(
                             'assets/images/angryimg.png',
+                            width: screen.width,
                             fit: BoxFit.fill,
                           )
                         : Utility.imageFromBase64String(
                             Utility.base64String(
                                 controller.post[index].post!.image!),
-                            null,
+                            screen.width,
                             null),
                   ),
                   controller.auth.getTypeEnum() == Auth.comapny
-                      ? SizedBox.shrink()
+                      ? const SizedBox.shrink()
                       : Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            IconButton(
-                              onPressed: () {
-                                controller.getifHaveUserPost(
-                                        controller.post[index])
-                                    ? Get.rootDelegate.toNamed(
-                                        Routes.WebsiteCompany,
-                                        arguments: controller.auth
-                                                    .getTypeEnum() ==
-                                                Auth.user
-                                            ? controller.mainUserpost
-                                                .firstWhere((element) =>
-                                                    element.postId ==
-                                                    controller
-                                                        .post[index].post!.id)
-                                                .id!
-                                            : controller.auth.getTypeEnum() ==
-                                                    Auth.infulonser
-                                                ? controller.mainInfupost
-                                                    .firstWhere((element) =>
-                                                        element.postId ==
-                                                        controller.post[index]
-                                                            .post!.id)
-                                                    .id!
-                                                : null)
-                                    : QPanel(
-                                        alignment: Alignment.topCenter,
-                                        duration: Duration(seconds: 2),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            'Plase InterAction To Post',
-                                            style: TextStyle(
-                                                fontSize: 25,
-                                                color: AppColors.orange),
-                                          ),
-                                        )).show();
-                                // html.window.open(
-                                //   '${html.window.location.protocol}/#/WebsiteCompany',
-                                //   'WebsiteCompany',
-                                // );
-                              },
-                              icon: const Icon(
-                                AppIcons.basket,
-                                color: Colors.black,
-                              ),
-                            ),
+                            controller.auth.getTypeEnum() == Auth.user
+                                ? IconButton(
+                                    onPressed: () {
+                                      controller.getifHaveUserPost(
+                                              controller.post[index])
+                                          ? Get.rootDelegate.toNamed(
+                                              Routes.WebsiteCompany,
+                                              arguments: 1
+                                              // controller.auth
+                                              //             .getTypeEnum() ==
+                                              //         Auth.user
+                                              //     ? controller.mainUserpost
+                                              //         .firstWhere((element) =>
+                                              //             element.postId ==
+                                              //             controller.post[index]
+                                              //                 .post!.id)
+                                              //         .id!
+                                              //     : controller.auth
+                                              //                 .getTypeEnum() ==
+                                              //             Auth.infulonser
+                                              //         ? controller.mainInfupost
+                                              //             .firstWhere((element) =>
+                                              //                 element.postId ==
+                                              //                 controller
+                                              //                     .post[index]
+                                              //                     .post!
+                                              //                     .id)
+                                              //             .id!
+                                              //         : null
+                                              )
+                                          : QPanel(
+                                              alignment: Alignment.topCenter,
+                                              duration:
+                                                  const Duration(seconds: 2),
+                                              child: const Padding(
+                                                padding: EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  'Plase InterAction To Post',
+                                                  style: TextStyle(
+                                                      fontSize: 25,
+                                                      color: AppColors.orange),
+                                                ),
+                                              )).show();
+                                      // html.window.open(
+                                      //   '${html.window.location.protocol}/#/WebsiteCompany',
+                                      //   'WebsiteCompany',
+                                      // );
+                                    },
+                                    icon: const Icon(
+                                      AppIcons.basket,
+                                      color: Colors.black,
+                                    ),
+                                  )
+                                : const SizedBox.shrink(),
                             Text(controller.post[index].numDislike.toString()),
                             IconButton(
                               onPressed: () {
