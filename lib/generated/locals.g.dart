@@ -1,4 +1,4 @@
-// Code generated at 2022-08-17 15:06:14.390013 by Qlevar Local Manager
+// Code generated at 2022-08-17 15:06:41.392240 by Qlevar Local Manager
 
 class AppTranslation {
   static Map<String, Map<String, String>> translations = {
