@@ -11,9 +11,6 @@ import '../modules/conversation_page/bindings/conversation_page_binding.dart';
 import '../modules/conversation_page/views/conversation_page_view.dart';
 import '../modules/firstsplash_page/bindings/firstSplash_binding.dart';
 import '../modules/firstsplash_page/views/firstSplash_view.dart';
-import '../modules/haya/bindings/haya_binding.dart';
-import '../modules/haya/views/hayaIntro.dart';
-import '../modules/haya/views/haya_view.dart';
 import '../modules/help_pagee/bindings/help_pagee_binding.dart';
 import '../modules/help_pagee/views/help_pagee_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -21,6 +18,7 @@ import '../modules/home/views/home_view.dart';
 import '../modules/homeMain_page/bindings/homeMain_binding.dart';
 import '../modules/homePost_page/bindings/homePost_binding.dart';
 import '../modules/homePost_page/views/homePost_view.dart';
+import '../modules/intro_page/view/intro_view.dart';
 import '../modules/menu/bindings/menu_binding.dart';
 import '../modules/menu/views/menu_view.dart';
 import '../modules/password_page/bindings/password_binding.dart';
@@ -75,11 +73,6 @@ class AppPages {
           ),
         ]),
     GetPage(
-      name: _Paths.HAYA,
-      page: () => const HayaView(),
-      bindings: [HayaBinding(), MenuBinding(), HomePostBinding()],
-    ),
-    GetPage(
       name: _Paths.SignIn,
       page: () => const SignInPage(),
       binding: SignInBinding(),
@@ -88,11 +81,6 @@ class AppPages {
       name: _Paths.FirstSplash,
       page: () => const FiestSplashView(),
       binding: FirstSplashBinding(),
-    ),
-    GetPage(
-      name: _Paths.HAYA,
-      page: () => const HayaView(),
-      bindings: [HayaBinding(), MenuBinding(), HomePostBinding()],
     ),
     GetPage(
       name: _Paths.Content,

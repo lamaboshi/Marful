@@ -19,21 +19,21 @@ class IntroPage extends GetView<IntroController> {
           interCompanyPage(context),
           interUserPage(context)
         ],
-        onDone: () {
-          Get.rootDelegate.offNamed(Routes.HAYA);
-        },
+        done: Text("Done".tr,
+            style: const TextStyle(
+                color: AppColors.blue, fontWeight: FontWeight.w600)),
         showNextButton: true,
         showBackButton: true,
         showSkipButton: false,
+        onDone: () {
+          Get.rootDelegate.offNamed(Routes.SignIn);
+        },
         back: Text("Back".tr,
             style: const TextStyle(
                 color: AppColors.blue, fontWeight: FontWeight.w600)),
         next: Text("Next".tr,
             style: const TextStyle(
                 color: AppColors.blue, fontWeight: FontWeight.w600)),
-        done: Text("Done".tr,
-            style: const TextStyle(
-                fontWeight: FontWeight.w600, color: AppColors.blue)),
         globalBackgroundColor: Colors.white,
         dotsDecorator: const DotsDecorator(
           size: Size(10.0, 10.0),
@@ -85,66 +85,101 @@ PageViewModel interPage(context) {
     bodyWidget: const SizedBox(
       height: 0,
     ),
-    footer: Row(
+    footer: Column(
       children: [
-        //Influencer
-        Padding(
-          padding: const EdgeInsets.only(left: 0, right: 3),
-          child: SizedBox(
-            width: 130,
-            height: 38,
-            child: ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(AppColors.orange),
-              ),
-              onPressed: () {
-                Get.rootDelegate.offNamed(Routes.SignUpInfluencer);
-              },
-              child: Text(
-                'Influencer'.tr,
-                style: const TextStyle(fontSize: 18),
+        Row(
+          children: [
+            //Influencer
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 0, right: 3),
+                child: SizedBox(
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(AppColors.orange),
+                    ),
+                    onPressed: () {
+                      Get.rootDelegate.offNamed(Routes.SignUpInfluencer);
+                    },
+                    child: Text(
+                      'SignUpAsInfluencer'.tr,
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ),
+                ),
               ),
             ),
-          ),
+            //company
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 3, right: 3),
+                child: SizedBox(
+                  height: 50,
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(AppColors.orange),
+                    ),
+                    onPressed: () {
+                      Get.rootDelegate.offNamed(Routes.SignUpCompany);
+                    },
+                    child: Text(
+                      'SignUpAsCompany'.tr,
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            //user
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 3, right: 0),
+                child: SizedBox(
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(AppColors.orange),
+                    ),
+                    onPressed: () {
+                      Get.rootDelegate.offNamed(Routes.SignUpUserPage);
+                    },
+                    child: Text(
+                      'SignUpAsUser'.tr,
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
-        //company
         Padding(
-          padding: const EdgeInsets.only(left: 3, right: 3),
-          child: SizedBox(
-            width: 130,
-            height: 38,
-            child: ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(AppColors.orange),
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('youHaveAccount?'.tr,
+                  style: const TextStyle(
+                    color: Colors.grey,
+                  )),
+              const SizedBox(
+                width: 3,
               ),
-              onPressed: () {
-                Get.rootDelegate.offNamed(Routes.SignUpCompany);
-              },
-              child: Text(
-                "Company".tr,
-                style: const TextStyle(fontSize: 18),
+              InkWell(
+                child: Text(
+                  'signin'.tr,
+                  style: const TextStyle(
+                    color: Colors.grey,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+                onTap: () {
+                  Get.rootDelegate.offNamed(Routes.SignIn);
+                },
               ),
-            ),
-          ),
-        ),
-        //user
-        Padding(
-          padding: const EdgeInsets.only(left: 3, right: 0),
-          child: SizedBox(
-            width: 120,
-            height: 38,
-            child: ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(AppColors.orange),
-              ),
-              onPressed: () {
-                Get.rootDelegate.offNamed(Routes.SignUpUserPage);
-              },
-              child: Text(
-                "User".tr,
-                style: const TextStyle(fontSize: 18),
-              ),
-            ),
+            ],
           ),
         ),
       ],
