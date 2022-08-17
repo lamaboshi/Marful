@@ -35,42 +35,52 @@ class BuildPost extends GetResponsiveView<ProfileController> {
                     children: [
                       Row(
                         children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(40),
-                            child: controller.auth.getTypeEnum() ==
-                                    Auth.infulonser
-                                ? controller.infulencer.value.image == null
-                                    ? Image.asset(
-                                        "assets/images/8.jpg",
-                                        height: 60,
-                                        width: 60,
-                                        fit: BoxFit.cover,
-                                      )
-                                    : Utility.imageFromBase64String(
-                                        Utility.base64String(
-                                            controller.infulencer.value.image!),
+                          Obx(() => ClipRRect(
+                                borderRadius: BorderRadius.circular(40),
+                                child: controller
+                                        .stringPickImage.value.isNotEmpty
+                                    ? Utility.imageFromBase64String(
+                                        controller.stringPickImage.value,
                                         60,
                                         60)
-                                : controller.auth.getTypeEnum() == Auth.comapny
-                                    ? controller.company.value.image == null
-                                        ? Image.asset(
-                                            "assets/images/8.jpg",
-                                            height: 60,
-                                            width: 60,
-                                            fit: BoxFit.cover,
-                                          )
-                                        : Utility.imageFromBase64String(
-                                            Utility.base64String(controller
-                                                .company.value.image!),
-                                            60,
-                                            60)
-                                    : Image.asset(
-                                        "assets/images/8.jpg",
-                                        height: 60,
-                                        width: 60,
-                                        fit: BoxFit.cover,
-                                      ),
-                          ),
+                                    : controller.auth.getTypeEnum() ==
+                                            Auth.infulonser
+                                        ? controller.infulencer.value.image ==
+                                                null
+                                            ? Image.asset(
+                                                'assets/images/person.png',
+                                                height: 60,
+                                                width: 60,
+                                                fit: BoxFit.cover,
+                                              )
+                                            : Utility.imageFromBase64String(
+                                                Utility.base64String(controller
+                                                    .infulencer.value.image!),
+                                                60,
+                                                60)
+                                        : controller.auth.getTypeEnum() ==
+                                                Auth.comapny
+                                            ? controller.company.value.image ==
+                                                    null
+                                                ? Image.asset(
+                                                    'assets/images/person.png',
+                                                    height: 60,
+                                                    width: 60,
+                                                    fit: BoxFit.cover,
+                                                  )
+                                                : Utility.imageFromBase64String(
+                                                    Utility.base64String(
+                                                        controller.company.value
+                                                            .image!),
+                                                    60,
+                                                    60)
+                                            : Image.asset(
+                                                "assets/images/8.jpg",
+                                                height: 60,
+                                                width: 60,
+                                                fit: BoxFit.cover,
+                                              ),
+                              )),
                           const SizedBox(
                             width: 20,
                           ),
@@ -80,8 +90,8 @@ class BuildPost extends GetResponsiveView<ProfileController> {
                               Padding(
                                 padding: const EdgeInsets.all(4),
                                 child: Text(
-                                  infoname == null ? '' : infoname,
-                                  style: TextStyle(
+                                  infoname,
+                                  style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w500),
                                 ),
@@ -105,10 +115,6 @@ class BuildPost extends GetResponsiveView<ProfileController> {
                           ? SizedBox(
                               width: 70,
                               child: QExpander(
-                                  child: Icon(
-                                    Icons.more_vert_rounded,
-                                    color: AppColors.orange,
-                                  ),
                                   expandChild: Padding(
                                     padding: const EdgeInsets.all(5),
                                     child: Column(
@@ -116,7 +122,7 @@ class BuildPost extends GetResponsiveView<ProfileController> {
                                         Padding(
                                           padding: const EdgeInsets.all(3),
                                           child: TextButton(
-                                            child: Text(
+                                            child: const Text(
                                               'Edit',
                                               style: TextStyle(
                                                   color: Colors.black),
@@ -134,7 +140,7 @@ class BuildPost extends GetResponsiveView<ProfileController> {
                                                     mainAxisSize:
                                                         MainAxisSize.min,
                                                     children: [
-                                                      Text(
+                                                      const Text(
                                                         'Edit Profile',
                                                         style: TextStyle(
                                                           fontSize: 20,
@@ -149,10 +155,8 @@ class BuildPost extends GetResponsiveView<ProfileController> {
                                                           dufaltText: post!
                                                               .description!,
                                                           onChanged: (txt) {
-                                                            if (txt != null) {
-                                                              post!.description =
-                                                                  txt;
-                                                            }
+                                                            post!.description =
+                                                                txt;
                                                           },
                                                           type: TextInputType
                                                               .multiline,
@@ -245,7 +249,7 @@ class BuildPost extends GetResponsiveView<ProfileController> {
                                         Padding(
                                             padding: const EdgeInsets.all(0),
                                             child: TextButton(
-                                              child: Text(
+                                              child: const Text(
                                                 'Delete',
                                                 style: TextStyle(
                                                     color: Colors.black),
@@ -257,9 +261,13 @@ class BuildPost extends GetResponsiveView<ProfileController> {
                                             ))
                                       ],
                                     ),
+                                  ),
+                                  child: const Icon(
+                                    Icons.more_vert_rounded,
+                                    color: AppColors.orange,
                                   )),
                             )
-                          : SizedBox.shrink()
+                          : const SizedBox.shrink()
                     ],
                   ),
                 ),
@@ -278,11 +286,12 @@ class BuildPost extends GetResponsiveView<ProfileController> {
                       ),
                     ),
                     post!.jobId == null
-                        ? SizedBox.shrink()
+                        ? const SizedBox.shrink()
                         : Expanded(
                             child: Chip(
                             label: Text(post!.jobId.toString(),
-                                style: TextStyle(color: AppColors.orange)),
+                                style:
+                                    const TextStyle(color: AppColors.orange)),
                           ))
                   ],
                 ),

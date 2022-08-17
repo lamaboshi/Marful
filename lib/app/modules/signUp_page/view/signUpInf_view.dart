@@ -194,6 +194,81 @@ class SignUpInfluencer extends GetView<SignUpController> {
                                   color: Colors.white,
                                 ),
                               ),
+<<<<<<< HEAD
+=======
+                              prefIcon: Icons.key,
+                            );
+                          }),
+                          const SizedBox(
+                            height: 40,
+                          ),
+                          ElevatedButton(
+                            style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all(AppColors.blue),
+                                fixedSize: MaterialStateProperty.all(
+                                    const Size.fromWidth(150))),
+                            onPressed: () async {
+                              Get.dialog(AlertDialog(
+                                content: Row(
+                                  children: const [
+                                    Icon(
+                                      Icons.info_outlined,
+                                      color: AppColors.orange,
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                        'Are you sure want to Save Your Data ?'),
+                                  ],
+                                ),
+                                contentPadding:
+                                    const EdgeInsets.fromLTRB(20, 20, 20, 10),
+                                actionsPadding:
+                                    const EdgeInsets.fromLTRB(15, 10, 15, 20),
+                                actions: [
+                                  Row(children: [
+                                    ElevatedButton(
+                                      onPressed: () async {
+                                        controller.isSaveData.value = true;
+                                        await controller.signUpInfluencer();
+                                      },
+                                      style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all(
+                                                  AppColors.blue),
+                                          foregroundColor:
+                                              MaterialStateProperty.all(
+                                                  Colors.white)),
+                                      child: const Text('Yes'),
+                                    ),
+                                    const Spacer(),
+                                    ElevatedButton(
+                                      onPressed: () async {
+                                        controller.isSaveData.value = false;
+                                        await controller.signUpInfluencer();
+                                      },
+                                      style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all(
+                                                  AppColors.blue),
+                                          foregroundColor:
+                                              MaterialStateProperty.all(
+                                                  Colors.white)),
+                                      child: const Text('Cancel'),
+                                    ),
+                                  ]),
+                                ],
+                              ));
+                            },
+                            child: const Text(
+                              "Sign Up",
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                              ),
+>>>>>>> cc0742d3233425887591ce1d8b7e7d3941c6a3d5
                             ),
                             const SizedBox(
                               height: 40,

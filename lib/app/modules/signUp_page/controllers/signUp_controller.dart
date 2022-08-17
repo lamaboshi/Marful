@@ -25,6 +25,7 @@ class SignUpController extends GetxController {
   final isShownUser = false.obs;
   final isShownInfluencer = false.obs;
   final isShownCompany = false.obs;
+  final isSaveData = false.obs;
   final company = Company(
     id: 0,
     address: 'United Arab Emirates.',

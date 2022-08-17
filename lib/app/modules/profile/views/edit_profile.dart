@@ -24,15 +24,15 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
             await controller.UpdateDataforperson();
           },
           label: Text(
-            "Save ",
-            style: TextStyle(
+            "buildPostSave".tr,
+            style: const TextStyle(
               fontSize: 18,
               color: Colors.white,
             ),
           )),
       appBar: AppBar(
         backgroundColor: AppColors.orange,
-        title: Text('Edit Profile'),
+        title: Text('buildPostEditProfile'.tr),
       ),
       body: SingleChildScrollView(child: getType()),
     );
@@ -46,7 +46,6 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
       /////////////company
       case Auth.comapny:
         return EditCompanyPage();
-      ///////////////user
       case Auth.user:
         return Column(
           children: [
@@ -54,7 +53,46 @@ class EditProfilePage extends GetResponsiveView<ProfileController> {
           ],
         );
       default:
-        return Text('no Value');
+        return Text('editProfilerNoValue'.tr);
     }
+  }
+
+  Widget contentPart() {
+    return Obx(() => ListView(
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          children: controller.contents
+              .toList()
+              .map<Widget>((e) => Container(
+                    height: 55,
+                    padding: const EdgeInsets.all(10),
+                    child: Chip(
+                      backgroundColor: Colors.white,
+                      label: Text(e.name!),
+                      avatar: Container(
+                        width: 20,
+                        height: 20,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              image: AssetImage(
+                            'assets/images/angryimg.png',
+                          )),
+                        ),
+                      ),
+                      elevation: 2,
+                      deleteIcon: const Icon(Icons.close, size: 20),
+                      onDeleted: () {
+                        if (controller.auth.getTypeEnum() == Auth.infulonser) {
+                          controller.Deletcontentinfo(e.id!);
+                        } else if (controller.auth.getTypeEnum() ==
+                            Auth.comapny) {
+                          controller.Deletcontentcomp(e.id!);
+                        }
+                      },
+                    ),
+                  ))
+              .toList(),
+        ));
   }
 }

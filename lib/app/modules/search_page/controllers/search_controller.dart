@@ -7,6 +7,7 @@ import '../../../data/model/company.dart';
 import '../../../data/model/content.dart';
 import '../../../data/model/infulonser.dart';
 import '../../websit_company/data/model/Product.dart';
+import '../data/search_model.dart';
 
 class SearchController extends GetxController {
   final authService = Get.find<AuthService>();
@@ -18,11 +19,8 @@ class SearchController extends GetxController {
   final brand = <Brand>[].obs;
   final product = <Product>[].obs;
   final content = <Content>[].obs;
+  final search = <SearchModel>[].obs;
   final loading = false.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   void getSearsh() {
     loading.value = true;
@@ -31,18 +29,47 @@ class SearchController extends GetxController {
     infulonser.clear();
     product.clear();
     content.clear();
-    if (type.value == 'brand') {
-      getBrand(inputvalue.value);
-    } else if (type.value == 'product') {
-      getproduct(inputvalue.value);
-    } else if (type.value == 'company') {
-      getcompany(inputvalue.value);
-    } else if (type.value == 'infulonser') {
-      getInfulonser(inputvalue.value);
-    } else if (type.value == 'content') {
-      getcontent(inputvalue.value);
+    if (type.isEmpty) {
+      getSearch(inputvalue.value);
+    } else {
+      if (type.value == 'brand') {
+        getBrand(inputvalue.value);
+      } else if (type.value == 'product') {
+        getproduct(inputvalue.value);
+      } else if (type.value == 'company') {
+        getcompany(inputvalue.value);
+      } else if (type.value == 'infulonser') {
+        getInfulonser(inputvalue.value);
+      } else if (type.value == 'content') {
+        getcontent(inputvalue.value);
+      }
     }
     loading.value = false;
+  }
+
+  Future<void> getSearch(String value) async {
+    var data = await Repo.getSearch(value);
+    search.assignAll(data);
+    // for (var element in data) {
+    //   if (element.type == 'company') {
+    //     search.add(SearchModel(
+    //         search: element.search as List<Company>, type: element.type));
+    //   } else if (type.value == 'product') {
+    //     search.add(SearchModel(
+    //         search: element.search as List<Product>, type: element.type));
+    //   } else if (type.value == 'infulonser') {
+    //     search.add(SearchModel(
+    //         search: element.search as List<Infulonser>, type: element.type));
+    //   } else if (type.value == 'content') {
+    //     search.add(SearchModel(
+    //         search: element.search as List<Content>, type: element.type));
+    //   } else if (type.value == 'brand') {
+    //     search.add(SearchModel(
+    //         search: element.search as List<Brand>, type: element.type));
+    //   }
+    // }
+
+    print(search.first.search!.first);
   }
 
   Future<void> getcompany(String value) async {

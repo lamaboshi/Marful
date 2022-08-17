@@ -7,6 +7,7 @@ import 'package:q_overlay/q_overlay.dart';
 
 import 'api/storge/storge_service.dart';
 import 'app/routes/app_pages.dart';
+import 'generated/locals.g.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,11 +31,12 @@ class MyApp extends StatelessWidget {
       title: "MarFul",
       key: key,
       debugShowCheckedModeBanner: false,
+      translations: AppTranslation(),
       locale: Get.locale,
       defaultTransition: Transition.cupertino,
       getPages: AppPages.routes,
       enableLog: true,
-       theme: ThemeData(fontFamily: 'Uchen'),
+      theme: ThemeData(fontFamily: 'Uchen'),
     );
   }
 }

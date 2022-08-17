@@ -8,6 +8,7 @@ import 'package:marful/sheard/util.dart';
 import 'package:q_overlay/q_overlay.dart';
 
 import '../../../core/values/app_colors.dart';
+import '../../help_pagee/views/help_pagee_view.dart';
 
 class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
   WebsiteCompanyPage({super.key});
@@ -33,8 +34,8 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
+                              const Padding(
+                                padding: EdgeInsets.all(8.0),
                                 child: Center(
                                     child: Text(
                                   'The Products ',
@@ -62,7 +63,7 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                                 },
                                 child: Obx(
                                   () => Text("Total ${controller.totle.value}",
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 18,
                                         color: Colors.white,
                                       )),
@@ -74,18 +75,22 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                         alignment: Alignment.topRight)
                     .show();
               },
-              icon: Icon(Icons.shopping_basket),
-              label: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text('Your Basket')),
+              icon: const Icon(Icons.shopping_basket),
+              label: const Padding(
+                  padding: EdgeInsets.all(8.0), child: Text('Your Basket')),
             ),
             appBar: AppBar(
                 elevation: 0,
                 backgroundColor: Colors.white,
-                leading: Icon(
-                  Icons.help,
-                  size: 30,
-                  color: AppColors.orange,
+                leading: IconButton(
+                  onPressed: () {
+                    Get.to(const HelpPageeView());
+                  },
+                  icon: const Icon(
+                    Icons.help,
+                    size: 30,
+                    color: AppColors.orange,
+                  ),
                 ),
                 actions: [
                   Padding(
@@ -96,9 +101,10 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                       children: [
                         Text(
                           controller.allCompany().company!.name!,
-                          style: TextStyle(color: Colors.black, fontSize: 18),
+                          style: const TextStyle(
+                              color: Colors.black, fontSize: 18),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         ClipRRect(
@@ -114,7 +120,7 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                                         .image!),
                                     null,
                                     null)),
-                        SizedBox(
+                        const SizedBox(
                           width: 30,
                         ),
                       ],
@@ -158,7 +164,7 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                                                 controller.idbrand())
                                             .first
                                             .name!,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 40,
                                             color: AppColors.orange),
                                       ),
@@ -178,12 +184,12 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                                     )
                                   ],
                                 )
-                              : SizedBox.shrink(),
+                              : const SizedBox.shrink(),
                         ],
                       )),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Container(
+                    child: SizedBox(
                         height: height - 100,
                         width: width - 100,
                         child: Obx(
@@ -215,15 +221,15 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
       child: ListTile(
         title: Text(
           controller.allProduct[index].name!,
-          style: TextStyle(fontSize: 16, color: Colors.black),
+          style: const TextStyle(fontSize: 16, color: Colors.black),
         ),
         subtitle: Obx(() => Text('(${controller.count[index]})')),
         trailing: Text(
-          controller.allProduct[index].price.toString().toString() + '\$',
-          style:
-              TextStyle(fontWeight: FontWeight.bold, color: AppColors.orange),
+          '${controller.allProduct[index].price}\$',
+          style: const TextStyle(
+              fontWeight: FontWeight.bold, color: AppColors.orange),
         ),
-        leading: Container(
+        leading: SizedBox(
           height: 40,
           width: 40,
           child: controller.allProduct[index].image == null
@@ -262,7 +268,8 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                       Center(
                           child: Text(
                         controller.allProduct[index].name!,
-                        style: TextStyle(fontSize: 30, color: Colors.black54),
+                        style: const TextStyle(
+                            fontSize: 30, color: Colors.black54),
                       )),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -270,7 +277,7 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                           children: [
                             Text(
                               controller.allProduct[index].description!,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 18,
                               ),
                             ),
@@ -281,8 +288,8 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(8, 8, 8, 3),
+                            const Padding(
+                              padding: EdgeInsets.fromLTRB(8, 8, 8, 3),
                               child: Center(
                                 child: Text(
                                   'The price of One is :',
@@ -291,13 +298,12 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
                             Text(
-                              controller.allProduct[index].price.toString() +
-                                  '\$',
-                              style: TextStyle(fontSize: 18),
+                              '${controller.allProduct[index].price}\$',
+                              style: const TextStyle(fontSize: 18),
                             )
                           ],
                         ),
@@ -306,8 +312,8 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                         padding: const EdgeInsets.fromLTRB(8, 0, 8, 2),
                         child: Row(
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8),
+                            const Padding(
+                              padding: EdgeInsets.all(8),
                               child: Center(
                                 child: Text(
                                   'Total Count You Need ',
@@ -317,7 +323,7 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                             ),
                             Padding(
                               padding: const EdgeInsets.fromLTRB(8, 0, 8, 2),
-                              child: Container(
+                              child: SizedBox(
                                   width: screen.width / 17,
                                   child: Padding(
                                     padding:
@@ -336,7 +342,7 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                                       onPressed: () {
                                         controller.count[index]++;
                                       },
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.add,
                                         color: AppColors.blue,
                                         size: 20,
@@ -345,7 +351,7 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                                       onPressed: () {
                                         controller.count[index]--;
                                       },
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.remove,
                                         color: AppColors.blue,
                                         size: 20,
@@ -366,8 +372,8 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                                       controller.allProduct[index].price! *
                                           controller.count[index];
                                 },
-                                icon: Icon(
-                                  Icons.add_shopping_cart,
+                                icon: const Icon(
+                                  Icons.done,
                                   color: AppColors.orange,
                                   size: 35,
                                 ))),
@@ -389,7 +395,7 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
           height: 300,
           child: Stack(
             children: [
-              Container(
+              SizedBox(
                 height: 200,
                 width: 200,
                 child: ClipRRect(
@@ -423,14 +429,14 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                             //product
                             Text(
                               product.name!,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 18,
                               ),
                             ),
                             //description
                             Text(
                               product.description!,
-                              style: TextStyle(color: Colors.grey),
+                              style: const TextStyle(color: Colors.grey),
                             ),
 
                             Row(
@@ -438,11 +444,10 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                               children: [
                                 Row(
                                   children: [
-                                    Text('price : '),
+                                    const Text('price : '),
                                     Text(
-                                      product.price.toString().toString() +
-                                          '\$',
-                                      style: TextStyle(
+                                      '${product.price}\$',
+                                      style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: AppColors.orange),
                                     ),
@@ -458,7 +463,7 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                                             product.price!;
                                       }
                                     },
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.add_box_rounded,
                                       color: AppColors.orange,
                                     )),
@@ -501,7 +506,6 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
         child: SizedBox(
           width: 120,
           child: QExpander(
-              child: Chip(label: Text(name)),
               expandChild: Column(
                 children: controller
                     .allCompany()
@@ -518,7 +522,8 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                           ),
                         ))
                     .toList(),
-              )),
+              ),
+              child: Chip(label: Text(name))),
         ));
   }
 }

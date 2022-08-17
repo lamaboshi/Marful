@@ -30,11 +30,11 @@ class PasswordPageView extends GetView<PasswordController> {
                           size: 30, color: AppColors.blue),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(12, 0, 0, 0),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
                     child: Text(
-                      'Forgot  Your  Passwod',
-                      style: TextStyle(fontSize: 22, color: Colors.black),
+                      'ForgotYourPasswod'.tr,
+                      style: const TextStyle(fontSize: 22, color: Colors.black),
                     ),
                   ),
                 ],
@@ -49,20 +49,26 @@ class PasswordPageView extends GetView<PasswordController> {
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
-                'Enter the registerd email address',
-                style: TextStyle(fontSize: 20, color: Colors.black54),
+                'Entertheregisterdemailaddress'.tr,
+                style: const TextStyle(fontSize: 20, color: Colors.black54),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
-                'we will email you a link to reset  ',
-                style: TextStyle(fontSize: 18, color: Colors.black45),
+                'wewillemailyoualinktoreset'.tr,
+                style: const TextStyle(fontSize: 18, color: Colors.black45),
               ),
             ),
+<<<<<<< HEAD
             const Text(
               ' your password',
               style: TextStyle(fontSize: 18, color: Colors.black45),
+=======
+            Text(
+              'yourpassword'.tr,
+              style: const TextStyle(fontSize: 18, color: Colors.black45),
+>>>>>>> cc0742d3233425887591ce1d8b7e7d3941c6a3d5
             ),
             const SizedBox(
               height: 20,
@@ -77,25 +83,31 @@ class PasswordPageView extends GetView<PasswordController> {
                 cursorColor: AppColors.blue,
                 cursorHeight: 20,
                 autofocus: false,
+<<<<<<< HEAD
                 decoration: const InputDecoration(
                     labelStyle: TextStyle(color: Colors.grey),
                     labelText: 'Email',
+=======
+                decoration: InputDecoration(
+                    labelStyle: const TextStyle(color: Colors.grey),
+                    labelText: 'Email'.tr,
+>>>>>>> cc0742d3233425887591ce1d8b7e7d3941c6a3d5
                     hintText: "hy@gmail.com",
-                    prefixIcon: Icon(
+                    prefixIcon: const Icon(
                       Icons.email,
                       color: AppColors.orange,
                     ),
-                    border: UnderlineInputBorder(
+                    border: const UnderlineInputBorder(
                       borderSide:
                           BorderSide(color: AppColors.orange, width: 1.5),
                     ),
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                    enabledBorder: UnderlineInputBorder(
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 15, horizontal: 15),
+                    enabledBorder: const UnderlineInputBorder(
                       borderSide:
                           BorderSide(color: AppColors.orange, width: 1.5),
                     ),
-                    focusedBorder: UnderlineInputBorder(
+                    focusedBorder: const UnderlineInputBorder(
                       borderSide:
                           BorderSide(color: AppColors.orange, width: 1.5),
                     )),
@@ -112,9 +124,9 @@ class PasswordPageView extends GetView<PasswordController> {
               onPressed: () {
                 controller.getEmail();
               },
-              child: const Text(
-                "Send",
-                style: TextStyle(
+              child: Text(
+                "Send".tr,
+                style: const TextStyle(
                   fontSize: 18,
                   color: Colors.white,
                 ),

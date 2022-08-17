@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/data/model/brand.dart';
+import 'package:marful/app/data/model/company.dart';
 import 'package:marful/app/modules/chat_page/data/model/job.dart';
 import 'package:marful/app/modules/homeMain_page/data/adapter/homeMain_adapter.dart';
 import 'package:marful/app/modules/homeMain_page/data/model/Post.dart';
@@ -20,7 +21,6 @@ class HomeMainRepositry extends IHomeMainRepository {
     var list = <GetPost>[];
     var result = await _dio.get('https://localhost:7192/api/Main/Posts',
         queryParameters: {"Type": type, "email": email});
-    print('00000000000000000000000000${result.data}');
     if (result.statusCode == 404) return [];
     for (var item in result.data) {
       list.add(GetPost.fromJson(item));
@@ -35,7 +35,6 @@ class HomeMainRepositry extends IHomeMainRepository {
         queryParameters: {"id": contentId, "email": email, "Type": type});
     var list = <GetPost>[];
     for (var item in result.data) {
-      print(item);
       list.add(GetPost.fromJson(item));
     }
     return list;
@@ -68,10 +67,10 @@ class HomeMainRepositry extends IHomeMainRepository {
     }
   }
 
+  @override
   Future<List<CompanyContent>> getCompanyConent(int idCompany) async {
     var result =
         await _dio.get('https://localhost:7192/api/CompanyContent/$idCompany');
-    print(result);
     var list = <CompanyContent>[];
     for (var item in result.data) {
       list.add(CompanyContent.fromJson(item));
@@ -83,7 +82,6 @@ class HomeMainRepositry extends IHomeMainRepository {
   Future<List<Brand>> getCompanyBrand(int idCompanyConent) async {
     var result = await _dio.get(
         'https://localhost:7192/api/Company/GetAllBarndCompany/$idCompanyConent');
-    print(result);
     var list = <Brand>[];
     for (var item in result.data) {
       list.add(Brand.fromJson(item));
@@ -109,7 +107,6 @@ class HomeMainRepositry extends IHomeMainRepository {
   Future<List<PostUser>> getByUserId(int userId) async {
     var result =
         await _dio.get('https://localhost:7192/api/UserPost/GetByUser/$userId');
-    print(result);
     var list = <PostUser>[];
     for (var item in result.data) {
       list.add(PostUser.fromJson(item));
@@ -160,7 +157,6 @@ class HomeMainRepositry extends IHomeMainRepository {
   Future<List<Job>> getCompanyJob(int idbrand) async {
     var result = await _dio
         .get('https://localhost:7192/api/Job/GetJobsCompany/$idbrand');
-    print(result);
     var list = <Job>[];
     for (var item in result.data) {
       list.add(Job.fromJson(item));
@@ -179,5 +175,13 @@ class HomeMainRepositry extends IHomeMainRepository {
     print(
         '--------------------------------------get all Job----------------------------------------------');
     return list;
+  }
+
+  @override
+  Future<Company> getCompanyByJob(int idJob) async {
+    var result =
+        await _dio.get('https://localhost:7192/api/Job/GetCompany/$idJob');
+
+    return Company.fromJson(result.data as Map<String, dynamic>);
   }
 }

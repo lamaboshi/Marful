@@ -11,6 +11,7 @@ class Confirmpassword extends GetView<PasswordController> {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
+<<<<<<< HEAD
       backgroundColor: Colors.white,
       body: Center(
           child: Padding(
@@ -50,8 +51,44 @@ class Confirmpassword extends GetView<PasswordController> {
               child: Text(
                 'Enter your new password below',
                 style: TextStyle(fontSize: 20, color: Colors.black54),
+=======
+        backgroundColor: Colors.white,
+        body: Center(
+            child: Column(children: [
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: IconButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    icon: const Icon(Icons.arrow_back,
+                        size: 30, color: AppColors.blue)),
               ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
+                child: Text(
+                  'ResetYourPassword'.tr,
+                  style: const TextStyle(fontSize: 22, color: AppColors.blue),
+                ),
+>>>>>>> cc0742d3233425887591ce1d8b7e7d3941c6a3d5
+              ),
+            ],
+          ),
+          Card(
+              elevation: 10,
+              child: SizedBox(
+                  width: width / 2,
+                  height: height / 2,
+                  child: Image.asset('assets/images/Social media (1).gif'))),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'Enteryournewpasswordbelow'.tr,
+              style: const TextStyle(fontSize: 20, color: Colors.black54),
             ),
+<<<<<<< HEAD
             const SizedBox(
               height: 15,
             ),
@@ -118,6 +155,75 @@ class Confirmpassword extends GetView<PasswordController> {
               height: 20,
             ),
             ElevatedButton(
+=======
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          TextField(
+            onChanged: (newText) {
+              controller.resrtpassword.value = newText;
+            },
+            keyboardType: TextInputType.emailAddress,
+            cursorColor: AppColors.blue,
+            cursorHeight: 20,
+            autofocus: false,
+            decoration: InputDecoration(
+                labelStyle: const TextStyle(color: Colors.grey),
+                labelText: 'Password'.tr,
+                hintText: "Newpassword".tr,
+                prefixIcon: const Icon(
+                  Icons.lock_open_outlined,
+                  color: AppColors.orange,
+                ),
+                border: const UnderlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.orange, width: 1.5),
+                ),
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+                enabledBorder: const UnderlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.orange, width: 1.5),
+                ),
+                focusedBorder: const UnderlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.orange, width: 1.5),
+                )),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          TextField(
+            onChanged: (newText) {
+              controller.password.value = newText;
+            },
+            keyboardType: TextInputType.emailAddress,
+            cursorColor: AppColors.blue,
+            cursorHeight: 20,
+            autofocus: false,
+            decoration: InputDecoration(
+                labelStyle: const TextStyle(color: Colors.grey),
+                labelText: 'Confirm'.tr,
+                hintText: "Comfirmpassword".tr,
+                prefixIcon: const Icon(
+                  Icons.lock,
+                  color: AppColors.orange,
+                ),
+                border: const UnderlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.orange, width: 1.5),
+                ),
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+                enabledBorder: const UnderlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.orange, width: 1.5),
+                ),
+                focusedBorder: const UnderlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.orange, width: 1.5),
+                )),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          ElevatedButton(
+>>>>>>> cc0742d3233425887591ce1d8b7e7d3941c6a3d5
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(AppColors.blue),
                   fixedSize:
@@ -131,23 +237,25 @@ class Confirmpassword extends GetView<PasswordController> {
                       alignment: Alignment.bottomCenter,
                       width: 40,
                       height: 40,
+<<<<<<< HEAD
                       child: const Text(
                         'Comfirm from the enter value',
                         style: TextStyle(color: Colors.red),
+=======
+                      child: Container(
+                        child: Text(
+                          'Comfirmfromtheentervalue'.tr,
+                          style: const TextStyle(color: Colors.red),
+                        ),
+>>>>>>> cc0742d3233425887591ce1d8b7e7d3941c6a3d5
                       )).show();
                 }
               },
-              child: const Text(
-                "SUBMIT",
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ],
-        ),
-      )),
-    );
+              child: Text("SUBMIT".tr,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                  )))
+        ])));
   }
 }

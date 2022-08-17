@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signUp_page/controllers/signUp_controller.dart';
+
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
 
@@ -183,10 +184,65 @@ class SignUpUserPage extends GetView<SignUpController> {
                                   fixedSize: MaterialStateProperty.all(
                                       const Size.fromWidth(150))),
                               onPressed: () async {
+<<<<<<< HEAD
                                 if (controller.userForm.currentState!
                                     .validate()) {
                                   controller.signUpUser();
                                 }
+=======
+                                Get.dialog(AlertDialog(
+                                  content: Row(
+                                    children: const [
+                                      Icon(
+                                        Icons.info_outlined,
+                                        color: AppColors.orange,
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text(
+                                          'Are you sure want to Save Your Data ?'),
+                                    ],
+                                  ),
+                                  contentPadding:
+                                      const EdgeInsets.fromLTRB(20, 20, 20, 10),
+                                  actionsPadding:
+                                      const EdgeInsets.fromLTRB(15, 10, 15, 20),
+                                  actions: [
+                                    Row(children: [
+                                      ElevatedButton(
+                                        onPressed: () async {
+                                          controller.isSaveData.value = true;
+                                          controller.signUpUser();
+                                        },
+                                        style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                                    AppColors.blue),
+                                            foregroundColor:
+                                                MaterialStateProperty.all(
+                                                    Colors.white)),
+                                        child: const Text('Yes'),
+                                      ),
+                                      const Spacer(),
+                                      ElevatedButton(
+                                        onPressed: () async {
+                                          controller.isSaveData.value = false;
+                                          controller.signUpUser();
+                                        },
+                                        style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                                    AppColors.blue),
+                                            foregroundColor:
+                                                MaterialStateProperty.all(
+                                                    Colors.white)),
+                                        child: const Text('Cancel'),
+                                      ),
+                                    ]),
+                                  ],
+                                ));
+>>>>>>> cc0742d3233425887591ce1d8b7e7d3941c6a3d5
                               },
                               child: const Text(
                                 "Sign Up",

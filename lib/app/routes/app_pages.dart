@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 import '../../sheard/auth_service.dart';
 import '../modules/brand_page/bindings/brand_page_binding.dart';
 import '../modules/brand_page/views/brand_page_view.dart';

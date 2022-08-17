@@ -12,7 +12,7 @@ class ConversationPageView extends GetView<ConversationPageController> {
     return Obx(() => Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.orange,
-          title: Text('ChatPageView'),
+          title: Text('ConversationPage'.tr),
           centerTitle: true,
           actions: [
             IconButton(
