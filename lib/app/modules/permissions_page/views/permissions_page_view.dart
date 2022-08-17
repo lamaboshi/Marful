@@ -114,103 +114,6 @@ class PermissionsPageView extends GetView<PermissionsPageController> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
-<<<<<<< HEAD
-                ));
-          },
-          label: Row(
-            children: const [
-              Icon(Icons.add),
-              SizedBox(
-                width: 5,
-              ),
-              Text('Add')
-            ],
-          )),
-      body: ListView.separated(
-          padding: const EdgeInsets.all(15),
-              physics: const BouncingScrollPhysics(),
-          itemBuilder: ((context, index) => Card(
-              elevation: 5,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 5, 5, 5),
-                child: Row(
-                  children: [
-                    Text(employee[index]),
-                    const Spacer(),
-                    IconButton(
-                        padding: const EdgeInsets.all(0),
-                        onPressed: () {
-                          Get.bottomSheet(
-                              exitBottomSheetDuration:
-                                  const Duration(milliseconds: 400),
-                              enterBottomSheetDuration:
-                                  const Duration(milliseconds: 500),
-                              shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(30),
-                                  topLeft: Radius.circular(30),
-                                ),
-                              ),
-                              backgroundColor: Colors.white,
-                              Padding(
-                                padding: const EdgeInsets.all(20),
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const SizedBox(
-                                        height: 20,
-                                      ),
-                                      const Text(
-                                        'Edit',
-                                        style: TextStyle(fontSize: 17),
-                                      ),
-                                      const SizedBox(
-                                        height: 20,
-                                      ),
-                                      TextFieldWidget(
-                                        type: TextInputType.name,
-                                        obscureText: false,
-                                        prefIcon: Icons.input,
-                                        label: 'Name',
-                                      ),
-                                      const SizedBox(
-                                        height: 20,
-                                      ),
-                                      TextFieldWidget(
-                                        type: TextInputType.name,
-                                        obscureText: false,
-                                        prefIcon: Icons.input,
-                                        label: 'Passeword',
-                                      ),
-                                      const SizedBox(
-                                        height: 20,
-                                      ),
-                                      Align(
-                                        alignment: Alignment.center,
-                                        child: ElevatedButton(
-                                          onPressed: () {},
-                                          style: ButtonStyle(
-                                              backgroundColor:
-                                                  MaterialStateProperty.all(
-                                                      AppColors.orange),
-                                              foregroundColor:
-                                                  MaterialStateProperty.all(
-                                                      Colors.white)),
-                                          child:
-                                              const Center(child: Text('Edit')),
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                    ],
-=======
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(20, 5, 5, 5),
                     child: Row(
@@ -230,7 +133,6 @@ class PermissionsPageView extends GetView<PermissionsPageController> {
                                       topRight: Radius.circular(30),
                                       topLeft: Radius.circular(30),
                                     ),
->>>>>>> cc0742d3233425887591ce1d8b7e7d3941c6a3d5
                                   ),
                                   backgroundColor: Colors.white,
                                   Padding(

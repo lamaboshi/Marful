@@ -13,7 +13,7 @@ class DeleteDialogWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       content: Row(
-        children: const [
+        children:  [
           Icon(
             Icons.info_outlined,
             color: AppColors.orange,

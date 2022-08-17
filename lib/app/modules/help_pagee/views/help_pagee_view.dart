@@ -11,35 +11,6 @@ class HelpPageeView extends GetView<HelpPageeController> {
   Widget build(BuildContext context) {
     var controller = Get.put(HelpPageeController());
     return Scaffold(
-<<<<<<< HEAD
-      appBar: AppBar(
-        title: const Text('Help'),
-        backgroundColor: AppColors.orange,
-      ),
-      body: ListView.separated(
-          padding: const EdgeInsets.all(15),
-    
-              physics: const BouncingScrollPhysics(),
-          itemBuilder: ((context, index) => Card(
-            clipBehavior:Clip.antiAlias,
-              elevation: 5,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: ListTile(
-                onTap: () {
-                  controller.index.value = index;
-                  Get.to(const EveryHelpPage());
-                },
-                title: Text(controller.screen[index]),
-                subtitle: Text(controller.description[index]),
-              ))),
-          separatorBuilder: ((context, index) => const SizedBox(
-                height: 5,
-              )),
-          itemCount: controller.screen.length),
-    );
-=======
         appBar: AppBar(
           title: const Text('Help'),
           backgroundColor: AppColors.orange,
@@ -131,6 +102,5 @@ class HelpPageeView extends GetView<HelpPageeController> {
         //         )),
         //     itemCount: controller.screen.length),
         );
->>>>>>> cc0742d3233425887591ce1d8b7e7d3941c6a3d5
   }
 }

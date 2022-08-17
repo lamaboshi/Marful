@@ -42,11 +42,7 @@ class BrandPageView extends GetResponsiveView<BrandPageController> {
                                   child: Utility.imageFromBase64String(
                                       controller.stringPickImage.value, 75, 75),
                                 )
-<<<<<<< HEAD
-                              :const CircleAvatar(
-=======
                               : const CircleAvatar(
->>>>>>> cc0742d3233425887591ce1d8b7e7d3941c6a3d5
                                   radius: 50,
                                   backgroundImage:
                                       AssetImage('assets/images/person.png'),
@@ -163,11 +159,7 @@ class BrandPageView extends GetResponsiveView<BrandPageController> {
                                 child: Container(
                                   width: 25,
                                   height: 25,
-<<<<<<< HEAD
-                                  decoration:const BoxDecoration(
-=======
                                   decoration: const BoxDecoration(
->>>>>>> cc0742d3233425887591ce1d8b7e7d3941c6a3d5
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                         image: AssetImage(

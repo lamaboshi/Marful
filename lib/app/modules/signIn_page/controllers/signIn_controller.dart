@@ -7,12 +7,13 @@ import '../../../routes/app_pages.dart';
 import '../view/company_type.dart';
 
 class SignInController extends GetxController {
-    String? forceValue(String? value) {
+  String? forceValue(String? value) {
     if (value == null || value.isEmpty) {
       return 'requird';
     }
     return null;
   }
+
   final form = GlobalKey<FormState>();
   final email = ''.obs;
   final password = ''.obs;

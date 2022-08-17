@@ -21,8 +21,6 @@ class SignUpController extends GetxController {
     }
     return null;
   }
-<<<<<<< HEAD
-=======
 
   Future pickImageFun() async {
     try {
@@ -34,7 +32,6 @@ class SignUpController extends GetxController {
     }
   }
 
->>>>>>> 620b07e3a9add182ec6d9a38daa53f5351c42b28
   final userForm = GlobalKey<FormState>();
   final influencerForm = GlobalKey<FormState>();
   final companyForm = GlobalKey<FormState>();

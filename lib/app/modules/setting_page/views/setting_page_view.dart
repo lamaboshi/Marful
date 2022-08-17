@@ -25,20 +25,6 @@ class SettingPageView extends GetView<SettingPageController> {
             controller.auth.getTypeEnum() != Auth.user
                 ? buildCard('Brand', Icons.settings,
                     () => Get.rootDelegate.toNamed(Routes.BRAND_PAGE))
-<<<<<<< HEAD
-                :const SizedBox.shrink(),
-            controller.auth.getTypeEnum() != Auth.user
-                ? buildCard('Content', Icons.edit,
-                    () => Get.rootDelegate.toNamed(Routes.Content))
-                :const SizedBox.shrink(),
-            buildCard('About', Icons.abc_outlined, () {}),
-            buildCard('Delete My Account', Icons.delete, () async {
-              await controller.deleteAccount();
-            }),
-            buildCard('Permission', AppIcons.trending_up, () {
-              Get.to(const PermissionsPageView());
-            }),
-=======
                 : const SizedBox.shrink(),
             controller.auth.getTypeEnum() != Auth.user
                 ? buildCard('Content', Icons.edit,
@@ -60,7 +46,6 @@ class SettingPageView extends GetView<SettingPageController> {
                     Get.to(const PermissionsPageView());
                   })
                 : const SizedBox.shrink(),
->>>>>>> cc0742d3233425887591ce1d8b7e7d3941c6a3d5
             Expanded(
               flex: 5,
               child: Image.asset(

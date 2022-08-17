@@ -39,8 +39,9 @@ class SignInPage extends GetView<SignInController> {
               child: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: Form(key: controller.form,
-                                      child: Column(
+                  child: Form(
+                    key: controller.form,
+                    child: Column(
                       children: [
                         //Sign In to your account
                         Align(
@@ -53,7 +54,7 @@ class SignInPage extends GetView<SignInController> {
                           ),
                         ),
                         //Email
-                        TextFieldWidget( 
+                        TextFieldWidget(
                           validator: controller.forceValue,
                           obscureText: false,
                           type: TextInputType.emailAddress,
@@ -67,7 +68,7 @@ class SignInPage extends GetView<SignInController> {
                         //////////passeword
                         Obx(() {
                           return TextFieldWidget(
-                             validator: controller.forceValue,
+                            validator: controller.forceValue,
                             type: TextInputType.visiblePassword,
                             label: 'Passeword'.tr,
                             hint: '***',
@@ -77,70 +78,49 @@ class SignInPage extends GetView<SignInController> {
                             },
                           );
                         }),
-                          //////////passeword
-                          Obx(() {
-                            return TextFieldWidget(
-                              validator: controller.forceValue,
-                              type: TextInputType.visiblePassword,
-                              label: 'Passeword',
-                              hint: '***',
-                              obscureText: !controller.isShown.value,
-                              onChanged: (value) {
-                                controller.password.value = value;
-                              },
-                              suffixIcon: IconButton(
-                                onPressed: () {
-                                  controller.isShown.value =
-                                      !controller.isShown.value;
-                                },
-                                icon: Icon(
-                                  controller.isShown.value
-                                      ? Icons.remove_red_eye
-                                      : CupertinoIcons.eye_slash_fill,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              prefIcon: Icons.key,
-                            );
-                          }),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          //Forgot Your Passeword?
-                          Align(
-                            alignment: Alignment.topRight,
-                            child: InkWell(
-                              onTap: () {
-                                Get.rootDelegate.toNamed(Routes.Password);
-                              },
-                              child: const Text(
-                                'Forgot Your Passeword?',
-                                style:
-                                    TextStyle(fontSize: 15, color: Colors.grey),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 80,
-                          ),
-                          //btn Sign In
-                          ElevatedButton(
-                            style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all(AppColors.blue),
-                                fixedSize: MaterialStateProperty.all(
-                                    const Size.fromWidth(150))),
-                            onPressed: () {
-                              if (controller.form.currentState!.validate()) {
-                                controller.logIn();
-                              }
+                        //////////passeword
+                        Obx(() {
+                          return TextFieldWidget(
+                            validator: controller.forceValue,
+                            type: TextInputType.visiblePassword,
+                            label: 'Passeword',
+                            hint: '***',
+                            obscureText: !controller.isShown.value,
+                            onChanged: (value) {
+                              controller.password.value = value;
                             },
-                            child:  Text(
-                              'ForgotYourPasswod'.tr,
-                              style: TextStyle(fontSize: 15, color: Colors.grey),
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                controller.isShown.value =
+                                    !controller.isShown.value;
+                              },
+                              icon: Icon(
+                                controller.isShown.value
+                                    ? Icons.remove_red_eye
+                                    : CupertinoIcons.eye_slash_fill,
+                                color: Colors.black,
+                              ),
+                            ),
+                            prefIcon: Icons.key,
+                          );
+                        }),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        //Forgot Your Passeword?
+                        Align(
+                          alignment: Alignment.topRight,
+                          child: InkWell(
+                            onTap: () {
+                              Get.rootDelegate.toNamed(Routes.Password);
+                            },
+                            child: const Text(
+                              'Forgot Your Passeword?',
+                              style:
+                                  TextStyle(fontSize: 15, color: Colors.grey),
                             ),
                           ),
-                        
+                        ),
                         const SizedBox(
                           height: 80,
                         ),
@@ -152,7 +132,30 @@ class SignInPage extends GetView<SignInController> {
                               fixedSize: MaterialStateProperty.all(
                                   const Size.fromWidth(150))),
                           onPressed: () {
-                            controller.logIn();
+                            if (controller.form.currentState!.validate()) {
+                              controller.logIn();
+                            }
+                          },
+                          child: Text(
+                            'ForgotYourPasswod'.tr,
+                            style: TextStyle(fontSize: 15, color: Colors.grey),
+                          ),
+                        ),
+
+                        const SizedBox(
+                          height: 80,
+                        ),
+                        //btn Sign In
+                        ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(AppColors.blue),
+                              fixedSize: MaterialStateProperty.all(
+                                  const Size.fromWidth(150))),
+                          onPressed: () {
+                            if (controller.form.currentState!.validate()) {
+                              controller.logIn();
+                            }
                           },
                           child: Text(
                             "signin".tr,
@@ -167,18 +170,17 @@ class SignInPage extends GetView<SignInController> {
                             Get.rootDelegate.toNamed(Routes.FirstSplash);
                           },
                           // ignore: sort_child_properties_last
-                          child:  Text('CreateYourAccount?'.tr),
+                          child: Text('CreateYourAccount?'.tr),
                           style: ButtonStyle(
                             foregroundColor:
                                 MaterialStateProperty.all(Colors.black),
                           ),
                         )
-                        ],
-                      ),
-                   
+                      ],
+                    ),
+                  ),
                 ),
               ),
-                  ),
             ),
           ),
         )

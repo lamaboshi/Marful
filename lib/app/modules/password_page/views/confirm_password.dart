@@ -11,47 +11,6 @@ class Confirmpassword extends GetView<PasswordController> {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
-<<<<<<< HEAD
-      backgroundColor: Colors.white,
-      body: Center(
-          child: Padding(
-        padding: const EdgeInsets.all(25),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: IconButton(
-                      onPressed: () {
-                        Get.back();
-                      },
-                      icon: const Icon(Icons.arrow_back,
-                          size: 30, color: AppColors.blue)),
-                ),
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(12, 0, 0, 0),
-                  child: Text(
-                    'Reset  Your Password',
-                    style: TextStyle(
-                      fontSize: 22,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Card(
-                elevation: 0,
-                child: SizedBox(
-                    width: width / 2,
-                    height: height / 2,
-                    child: Image.asset('assets/images/Social media (1).gif'))),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                'Enter your new password below',
-                style: TextStyle(fontSize: 20, color: Colors.black54),
-=======
         backgroundColor: Colors.white,
         body: Center(
             child: Column(children: [
@@ -72,7 +31,6 @@ class Confirmpassword extends GetView<PasswordController> {
                   'ResetYourPassword'.tr,
                   style: const TextStyle(fontSize: 22, color: AppColors.blue),
                 ),
->>>>>>> cc0742d3233425887591ce1d8b7e7d3941c6a3d5
               ),
             ],
           ),
@@ -88,74 +46,6 @@ class Confirmpassword extends GetView<PasswordController> {
               'Enteryournewpasswordbelow'.tr,
               style: const TextStyle(fontSize: 20, color: Colors.black54),
             ),
-<<<<<<< HEAD
-            const SizedBox(
-              height: 15,
-            ),
-            TextField(
-              onChanged: (newText) {
-                controller.resrtpassword.value = newText;
-              },
-              keyboardType: TextInputType.emailAddress,
-              cursorColor: AppColors.blue,
-              cursorHeight: 20,
-              autofocus: false,
-              decoration: const InputDecoration(
-                  labelStyle: TextStyle(color: Colors.grey),
-                  labelText: ' Password',
-                  hintText: "New password",
-                  prefixIcon: Icon(
-                    Icons.lock_open_outlined,
-                    color: AppColors.orange,
-                  ),
-                  border: UnderlineInputBorder(
-                    borderSide: BorderSide(color: AppColors.orange, width: 1.5),
-                  ),
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: AppColors.orange, width: 1.5),
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: AppColors.orange, width: 1.5),
-                  )),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            TextField(
-              onChanged: (newText) {
-                controller.password.value = newText;
-              },
-              keyboardType: TextInputType.emailAddress,
-              cursorColor: AppColors.blue,
-              cursorHeight: 20,
-              autofocus: false,
-              decoration: const InputDecoration(
-                  labelStyle: TextStyle(color: Colors.grey),
-                  labelText: 'Confirm',
-                  hintText: "Comfirmpassword",
-                  prefixIcon: Icon(
-                    Icons.lock,
-                    color: AppColors.orange,
-                  ),
-                  border: UnderlineInputBorder(
-                    borderSide: BorderSide(color: AppColors.orange, width: 1.5),
-                  ),
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: AppColors.orange, width: 1.5),
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: AppColors.orange, width: 1.5),
-                  )),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-=======
           ),
           const SizedBox(
             height: 10,
@@ -223,7 +113,6 @@ class Confirmpassword extends GetView<PasswordController> {
             height: 20,
           ),
           ElevatedButton(
->>>>>>> cc0742d3233425887591ce1d8b7e7d3941c6a3d5
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(AppColors.blue),
                   fixedSize:
@@ -237,17 +126,11 @@ class Confirmpassword extends GetView<PasswordController> {
                       alignment: Alignment.bottomCenter,
                       width: 40,
                       height: 40,
-<<<<<<< HEAD
-                      child: const Text(
-                        'Comfirm from the enter value',
-                        style: TextStyle(color: Colors.red),
-=======
                       child: Container(
                         child: Text(
                           'Comfirmfromtheentervalue'.tr,
                           style: const TextStyle(color: Colors.red),
                         ),
->>>>>>> cc0742d3233425887591ce1d8b7e7d3941c6a3d5
                       )).show();
                 }
               },

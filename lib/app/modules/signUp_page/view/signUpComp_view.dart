@@ -3,11 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signUp_page/controllers/signUp_controller.dart';
-<<<<<<< HEAD
-=======
-import 'package:marful/sheard/util.dart';
-
->>>>>>> 620b07e3a9add182ec6d9a38daa53f5351c42b28
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
 
@@ -45,30 +40,19 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                 child: Column(
                   children: [
                     Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Obx(
-                          () => ClipRRect(
-                            borderRadius: BorderRadius.circular(40),
-                            child: controller.stringPickImage.value.isEmpty
-                                ? Image.asset(
-                                    'assets/images/person.png',
-                                    height: 100,
-                                    width: 100,
-                                    fit: BoxFit.cover,
-                                  )
-                                : Utility.imageFromBase64String(
-                                    controller.stringPickImage.value, 100, 100),
-                          ),
-                        )),
-                    const SizedBox(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: CircleAvatar(
+                        radius: height * 80 / height,
+                        backgroundImage:
+                            const AssetImage('assets/images/person.png'),
+                      ),
+                    ),
+                    SizedBox(
                       height: 5,
                     ),
                     InkWell(
-                        onTap: () {
-                          controller.pickImageFun();
-                        },
-                        child: const Text('Add Your Photo..')),
-                    const SizedBox(
+                        onTap: () {}, child: const Text('Add Your Photo..')),
+                    SizedBox(
                       height: 20,
                     ),
                     Container(
@@ -183,6 +167,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                                 validator: controller.forceValue,
                               );
                             }),
+
                             const SizedBox(
                               height: 40,
                             ),
@@ -195,7 +180,58 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                               onPressed: () async {
                                 if (controller.companyForm.currentState!
                                     .validate()) {
-                                  controller.signUpCompany();
+                                  Get.dialog(AlertDialog(
+                                    content: Row(
+                                      children: const [
+                                        Icon(
+                                          Icons.info_outlined,
+                                          color: AppColors.orange,
+                                        ),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Text(
+                                            'Are you sure want to Save Your Data ?'),
+                                      ],
+                                    ),
+                                    contentPadding: const EdgeInsets.fromLTRB(
+                                        20, 20, 20, 10),
+                                    actionsPadding: const EdgeInsets.fromLTRB(
+                                        15, 10, 15, 20),
+                                    actions: [
+                                      Row(children: [
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            controller.isSaveData.value = true;
+                                            controller.signUpCompany();
+                                          },
+                                          style: ButtonStyle(
+                                              backgroundColor:
+                                                  MaterialStateProperty.all(
+                                                      AppColors.blue),
+                                              foregroundColor:
+                                                  MaterialStateProperty.all(
+                                                      Colors.white)),
+                                          child: const Text('Yes'),
+                                        ),
+                                        const Spacer(),
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            controller.isSaveData.value = false;
+                                            controller.signUpCompany();
+                                          },
+                                          style: ButtonStyle(
+                                              backgroundColor:
+                                                  MaterialStateProperty.all(
+                                                      AppColors.blue),
+                                              foregroundColor:
+                                                  MaterialStateProperty.all(
+                                                      Colors.white)),
+                                          child: const Text('Cancel'),
+                                        ),
+                                      ]),
+                                    ],
+                                  ));
                                 }
                               },
                               child: const Text(
@@ -205,83 +241,8 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                                   color: Colors.white,
                                 ),
                               ),
-<<<<<<< HEAD
-=======
-                              prefIcon: Icons.key,
-                            );
-                          }),
-                          const SizedBox(
-                            height: 40,
-                          ),
-                          ElevatedButton(
-                            style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all(AppColors.blue),
-                                fixedSize: MaterialStateProperty.all(
-                                    const Size.fromWidth(150))),
-                            onPressed: () async {
-                              Get.dialog(AlertDialog(
-                                content: Row(
-                                  children: const [
-                                    Icon(
-                                      Icons.info_outlined,
-                                      color: AppColors.orange,
-                                    ),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text(
-                                        'Are you sure want to Save Your Data ?'),
-                                  ],
-                                ),
-                                contentPadding:
-                                    const EdgeInsets.fromLTRB(20, 20, 20, 10),
-                                actionsPadding:
-                                    const EdgeInsets.fromLTRB(15, 10, 15, 20),
-                                actions: [
-                                  Row(children: [
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        controller.isSaveData.value = true;
-                                        controller.signUpCompany();
-                                      },
-                                      style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all(
-                                                  AppColors.blue),
-                                          foregroundColor:
-                                              MaterialStateProperty.all(
-                                                  Colors.white)),
-                                      child: const Text('Yes'),
-                                    ),
-                                    const Spacer(),
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        controller.isSaveData.value = false;
-                                        controller.signUpCompany();
-                                      },
-                                      style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all(
-                                                  AppColors.blue),
-                                          foregroundColor:
-                                              MaterialStateProperty.all(
-                                                  Colors.white)),
-                                      child: const Text('Cancel'),
-                                    ),
-                                  ]),
-                                ],
-                              ));
-                            },
-                            child: const Text(
-                              "Sign Up",
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                              ),
->>>>>>> cc0742d3233425887591ce1d8b7e7d3941c6a3d5
                             ),
-                            const SizedBox(
+                            SizedBox(
                               height: 40,
                             ),
                           ],

@@ -46,29 +46,23 @@ class PasswordPageView extends GetView<PasswordController> {
                     width: width / 2,
                     height: height / 2.3,
                     child: Image.asset('assets/images/Social ideas.gif'))),
-            const Padding(
+            Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Entertheregisterdemailaddress'.tr,
                 style: const TextStyle(fontSize: 20, color: Colors.black54),
               ),
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'wewillemailyoualinktoreset'.tr,
                 style: const TextStyle(fontSize: 18, color: Colors.black45),
               ),
             ),
-<<<<<<< HEAD
-            const Text(
-              ' your password',
-              style: TextStyle(fontSize: 18, color: Colors.black45),
-=======
             Text(
               'yourpassword'.tr,
               style: const TextStyle(fontSize: 18, color: Colors.black45),
->>>>>>> cc0742d3233425887591ce1d8b7e7d3941c6a3d5
             ),
             const SizedBox(
               height: 20,
@@ -83,15 +77,9 @@ class PasswordPageView extends GetView<PasswordController> {
                 cursorColor: AppColors.blue,
                 cursorHeight: 20,
                 autofocus: false,
-<<<<<<< HEAD
-                decoration: const InputDecoration(
-                    labelStyle: TextStyle(color: Colors.grey),
-                    labelText: 'Email',
-=======
                 decoration: InputDecoration(
                     labelStyle: const TextStyle(color: Colors.grey),
                     labelText: 'Email'.tr,
->>>>>>> cc0742d3233425887591ce1d8b7e7d3941c6a3d5
                     hintText: "hy@gmail.com",
                     prefixIcon: const Icon(
                       Icons.email,
