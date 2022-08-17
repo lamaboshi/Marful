@@ -13,12 +13,12 @@ class DeleteDialogWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       content: Row(
-        children: const [
-          Icon(
+        children: [
+          const Icon(
             Icons.info_outlined,
             color: AppColors.orange,
           ),
-          SizedBox(
+          const SizedBox(
             width: 5,
           ),
           Text('Areyousuretodelete?'.tr),
@@ -34,7 +34,6 @@ class DeleteDialogWidget extends StatelessWidget {
                 backgroundColor: MaterialStateProperty.all(AppColors.blue),
                 foregroundColor: MaterialStateProperty.all(Colors.white)),
             child: Text('Delete'.tr),
-
           ),
           const Spacer(),
           ElevatedButton(

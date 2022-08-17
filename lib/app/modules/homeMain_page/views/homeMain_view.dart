@@ -77,7 +77,7 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                               Text(
+                              Text(
                                 "Addnewpost".tr,
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(
@@ -338,8 +338,7 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                                                   );
                                                 },
                                               )
-                                            : Text(
-                                                'YouDontHavejobYet'.tr),
+                                            : Text('YouDontHavejobYet'.tr),
                                       ),
                                     )
                                   : const SizedBox.shrink(),
@@ -395,7 +394,7 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                                         foregroundColor:
                                             MaterialStateProperty.all(
                                                 Colors.white)),
-                                    child:  Text('Publish'.tr),
+                                    child: Text('Publish'.tr),
                                   ),
                                 ],
                               ),
@@ -418,7 +417,7 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                   },
                   backgroundColor: AppColors.orange,
                   label: Row(
-                    children:  [const Icon(Icons.add), Text('Addpost'.tr)],
+                    children: [const Icon(Icons.add), Text('Addpost'.tr)],
                   ),
                 ),
     );
@@ -469,7 +468,7 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                           borderRadius: BorderRadius.circular(40),
                           child: controller.post[index].image == null
                               ? Image.asset(
-                                  'assets/images/ghaith.jpg',
+                                  'assets/images/person.png',
                                   height: 60,
                                   width: 60,
                                   fit: BoxFit.cover,
@@ -556,7 +555,6 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                                 ? IconButton(
                                     onPressed: () {
                                       controller.getComapnyByBrand(index);
-
                                     },
                                     icon: const Icon(
                                       AppIcons.basket,

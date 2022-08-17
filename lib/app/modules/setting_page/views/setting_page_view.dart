@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marful/app/core/component/deleteDialog.dart';
 import 'package:marful/app/modules/permissions_page/views/permissions_page_view.dart';
 import 'package:marful/app/routes/app_pages.dart';
 
@@ -38,7 +39,10 @@ class SettingPageView extends GetView<SettingPageController> {
                         controller.auth.companyType() == 'Publishing Officer')
                 ? const SizedBox.shrink()
                 : buildCard('DeleteMyAccount'.tr, Icons.delete, () async {
-                    await controller.deleteAccount();
+                    Get.dialog(DeleteDialogWidget(delFunction: () async {
+                      await controller.deleteAccount();
+                      Get.back();
+                    }));
                   }),
             controller.auth.getTypeEnum() == Auth.comapny
                 ? buildCard('Permission', AppIcons.trending_up, () {

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signUp_page/controllers/signUp_controller.dart';
+import 'package:q_overlay/q_overlay.dart';
 
 import '../../../../sheard/util.dart';
 import '../../../core/component/textField.dart';
@@ -224,7 +225,26 @@ class SignUpUserPage extends GetView<SignUpController> {
                                       ElevatedButton(
                                         onPressed: () async {
                                           controller.isSaveData.value = false;
-                                          controller.signUpUser();
+                                          if (controller.user.value.age! > 1 &&
+                                              controller.user.value.age! <
+                                                  100) {
+                                            QPanel(
+                                                    duration: const Duration(
+                                                        seconds: 2),
+                                                    child: const Center(
+                                                      child: Text(
+                                                        'pelase Enter Your Really Age',
+                                                        style: TextStyle(
+                                                            fontSize: 18,
+                                                            color: Colors.red),
+                                                      ),
+                                                    ),
+                                                    alignment:
+                                                        Alignment.topCenter)
+                                                .show();
+                                          } else {
+                                            controller.signUpUser();
+                                          }
                                         },
                                         style: ButtonStyle(
                                             backgroundColor:

@@ -19,11 +19,11 @@ class SearchView extends GetView<SearchController> {
   @override
   Widget build(BuildContext context) {
     List<String> filter = [
-      'company'.tr,
-      'infulonser'.tr,
-      'content'.tr,
-      'brand'.tr,
-      'product'.tr
+      'company',
+      'infulonser',
+      'content',
+      'brand',
+      'product'
     ];
     return Scaffold(
       appBar: AppBar(
@@ -107,7 +107,7 @@ class SearchView extends GetView<SearchController> {
                                             Colors.grey[200]),
                                 foregroundColor:
                                     MaterialStateProperty.all(Colors.black)),
-                            child: Text(filter[index]),
+                            child: Text(filter[index].tr),
                           ));
                     },
                   ),

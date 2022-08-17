@@ -39,7 +39,7 @@ class DialogWidget extends StatelessWidget {
           style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(AppColors.orange),
               foregroundColor: MaterialStateProperty.all(Colors.white)),
-          child: const Center(child: Text('Add'.tr)),
+          child: Center(child: Text('Add'.tr)),
         ),
       ],
     );
