@@ -28,8 +28,8 @@ class EditInflounsorPage extends GetResponsiveView<ProfileController> {
             children: [
               Row(
                 children: [
-                  const Text(
-                    'Content',
+                   Text(
+                    'Content'.tr,
                     style: TextStyle(
                       fontSize: 20,
                       color: AppColors.orange,
@@ -69,7 +69,7 @@ class EditInflounsorPage extends GetResponsiveView<ProfileController> {
               Row(
                 children: const [
                   Text(
-                    'Post',
+                    'Post'.tr,
                     style: TextStyle(
                       fontSize: 20,
                       color: AppColors.orange,

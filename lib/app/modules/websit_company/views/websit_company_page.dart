@@ -38,7 +38,7 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                                 padding: EdgeInsets.all(8.0),
                                 child: Center(
                                     child: Text(
-                                  'The Products ',
+                                  'TheProducts'.tr,
                                   style: TextStyle(
                                       fontSize: 20, color: Colors.black54),
                                 )),
@@ -76,8 +76,8 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                     .show();
               },
               icon: const Icon(Icons.shopping_basket),
-              label: const Padding(
-                  padding: EdgeInsets.all(8.0), child: Text('Your Basket')),
+              label:  Padding(
+                  padding: EdgeInsets.all(8.0), child: Text('YourBasket'.tr)),
             ),
             appBar: AppBar(
                 elevation: 0,
@@ -292,7 +292,7 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                               padding: EdgeInsets.fromLTRB(8, 8, 8, 3),
                               child: Center(
                                 child: Text(
-                                  'The price of One is :',
+                                  'ThepriceofOneis'.tr,
                                   style: TextStyle(
                                       fontSize: 18, color: Colors.black87),
                                 ),
@@ -316,7 +316,7 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                               padding: EdgeInsets.all(8),
                               child: Center(
                                 child: Text(
-                                  'Total Count You Need ',
+                                  'TotalCountYouNeed'.tr,
                                   style: TextStyle(fontSize: 16),
                                 ),
                               ),
@@ -444,7 +444,7 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                               children: [
                                 Row(
                                   children: [
-                                    const Text('price : '),
+                                     Text('price'.tr),
                                     Text(
                                       '${product.price}\$',
                                       style: const TextStyle(

@@ -70,7 +70,7 @@ class HomeMenuView extends GetView<MenuController> {
                     SizedBox(
                       width: 5,
                     ),
-                    Text('Are you sure want to LogOut ?'),
+                    Text('AreyousurewanttoLogOut'.tr),
                   ],
                 ),
                 contentPadding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
@@ -80,6 +80,7 @@ class HomeMenuView extends GetView<MenuController> {
                     ElevatedButton(
                       onPressed: () {
                         controller.auth.stroge.deleteAllKeys();
+                        Get.rootDelegate.history.clear();
                         Get.rootDelegate.toNamed(Routes.SignIn);
                       },
                       style: ButtonStyle(
@@ -87,7 +88,7 @@ class HomeMenuView extends GetView<MenuController> {
                               MaterialStateProperty.all(AppColors.blue),
                           foregroundColor:
                               MaterialStateProperty.all(Colors.white)),
-                      child: const Text('Yes'),
+                      child:  Text('Yes'.tr),
                     ),
                     const Spacer(),
                     ElevatedButton(
@@ -99,7 +100,7 @@ class HomeMenuView extends GetView<MenuController> {
                               MaterialStateProperty.all(AppColors.blue),
                           foregroundColor:
                               MaterialStateProperty.all(Colors.white)),
-                      child: const Text('Cancel'),
+                      child:  Text('Cancel'.tr),
                     ),
                   ]),
                 ],

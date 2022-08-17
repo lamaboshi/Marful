@@ -62,7 +62,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                         onTap: () {
                           controller.pickImageFun();
                         },
-                        child: const Text('Add Your Photo..')),
+                        child:  Text('AddYourPhoto'.tr)),
                     const SizedBox(
                       height: 20,
                     ),
@@ -78,7 +78,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               controller.influencer.value.name = value;
                             },
                             type: TextInputType.name,
-                            label: ' Name',
+                            label: 'Name'.tr,
                             hint: "Haya Eid",
                             prefIcon: Icons.person,
                           ),
@@ -89,7 +89,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               controller.influencer.value.userName = value;
                             },
                             type: TextInputType.name,
-                            label: 'User Name',
+                            label: 'UserName'.tr,
                             hint: "Haya ",
                             prefIcon: Icons.person,
                           ),
@@ -100,7 +100,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               controller.influencer.value.description = value;
                             },
                             type: TextInputType.name,
-                            label: 'Description',
+                            label: 'Description'.tr,
                             hint: "I have so many bfghfccgbfg ",
                             prefIcon: Icons.description,
                           ),
@@ -111,7 +111,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               controller.influencer.value.phone = value;
                             },
                             type: TextInputType.number,
-                            label: 'PhoneNumber',
+                            label: 'PhoneNumber'.tr,
                             hint: "099717424666 ",
                             prefIcon: Icons.phone,
                           ),
@@ -122,7 +122,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               controller.influencer.value.address = value;
                             },
                             type: TextInputType.name,
-                            label: 'location',
+                            label: 'location'.tr,
                             hint: "aleppo ",
                             prefIcon: Icons.location_on,
                           ),
@@ -133,7 +133,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               controller.influencer.value.paypal = value;
                             },
                             type: TextInputType.number,
-                            label: 'PayBal',
+                            label: 'PayBal'.tr,
                             hint: "hsd235dfgdf ",
                             prefIcon: Icons.paypal,
                           ),
@@ -144,7 +144,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               controller.influencer.value.email = value;
                             },
                             type: TextInputType.emailAddress,
-                            label: 'Email',
+                            label: 'Email'.tr,
                             hint: "hy@gmail.com ",
                             prefIcon: Icons.email,
                           ),
@@ -156,7 +156,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               },
                               obscureText: !controller.isShownInfluencer.value,
                               type: TextInputType.visiblePassword,
-                              label: 'Passeword',
+                              label: 'Passeword'.tr,
                               hint: "***",
                               suffixIcon: IconButton(
                                 onPressed: () {
@@ -194,7 +194,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                                       width: 5,
                                     ),
                                     Text(
-                                        'Are you sure want to Save Your Data ?'),
+                                        'AreyousurewanttoSaveYourData'.tr),
                                   ],
                                 ),
                                 contentPadding:
@@ -215,7 +215,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                                           foregroundColor:
                                               MaterialStateProperty.all(
                                                   Colors.white)),
-                                      child: const Text('Yes'),
+                                      child:  Text('Yes'.tr),
                                     ),
                                     const Spacer(),
                                     ElevatedButton(
@@ -230,14 +230,14 @@ class SignUpInfluencer extends GetView<SignUpController> {
                                           foregroundColor:
                                               MaterialStateProperty.all(
                                                   Colors.white)),
-                                      child: const Text('Cancel'),
+                                      child:  Text('Cancel'.tr),
                                     ),
                                   ]),
                                 ],
                               ));
                             },
-                            child: const Text(
-                              "Sign Up",
+                            child:  Text(
+                              "SignUp".tr,
                               style: TextStyle(
                                 fontSize: 18,
                                 color: Colors.white,

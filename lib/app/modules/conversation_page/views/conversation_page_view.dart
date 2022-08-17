@@ -76,11 +76,11 @@ class ConversationPageView extends GetView<ConversationPageController> {
                                         children: [
                                           Text(
                                             controller.auth.personType() ==
-                                                    'infulonser'
+                                                    'infulonser'.tr
                                                 ? element.company!.name!
                                                 : controller.auth
                                                             .personType() ==
-                                                        'comapny'
+                                                        'comapny'.tr
                                                     ? element
                                                         .infulonser!.userName!
                                                     : '',

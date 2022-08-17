@@ -77,10 +77,10 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              const Text(
-                                "Add new post",
+                               Text(
+                                "Addnewpost".tr,
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 25),
                               ),
                               const SizedBox(
@@ -338,8 +338,8 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                                                   );
                                                 },
                                               )
-                                            : const Text(
-                                                'You Dont Have job Yet'),
+                                            : Text(
+                                                'YouDontHavejobYet'.tr),
                                       ),
                                     )
                                   : const SizedBox.shrink(),
@@ -355,7 +355,7 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                                 },
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
-                                    hintText: "Write your post",
+                                    hintText: "Writeyourpost".tr,
                                     hintStyle: TextStyle(
                                         color: Colors.black.withOpacity(0.2))),
                               ),
@@ -395,7 +395,7 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                                         foregroundColor:
                                             MaterialStateProperty.all(
                                                 Colors.white)),
-                                    child: const Text('Publish'),
+                                    child:  Text('Publish'.tr),
                                   ),
                                 ],
                               ),
@@ -418,7 +418,7 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                   },
                   backgroundColor: AppColors.orange,
                   label: Row(
-                    children: const [Icon(Icons.add), Text('Add post')],
+                    children:  [const Icon(Icons.add), Text('Addpost'.tr)],
                   ),
                 ),
     );
@@ -556,6 +556,7 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                                 ? IconButton(
                                     onPressed: () {
                                       controller.getComapnyByBrand(index);
+
                                     },
                                     icon: const Icon(
                                       AppIcons.basket,
