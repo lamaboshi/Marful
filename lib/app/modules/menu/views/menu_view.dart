@@ -62,15 +62,15 @@ class HomeMenuView extends GetView<MenuController> {
             buildCard('Logout'.tr, Icons.logout, () {
               Get.dialog(AlertDialog(
                 content: Row(
-                  children: const [
-                    Icon(
+                  children: [
+                    const Icon(
                       Icons.info_outlined,
                       color: AppColors.orange,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 5,
                     ),
-                    Text('Are you sure want to LogOut ?'),
+                    Text('AreyousurewanttoLogOut'.tr),
                   ],
                 ),
                 contentPadding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
@@ -88,7 +88,7 @@ class HomeMenuView extends GetView<MenuController> {
                               MaterialStateProperty.all(AppColors.blue),
                           foregroundColor:
                               MaterialStateProperty.all(Colors.white)),
-                      child: const Text('Yes'),
+                      child: Text('Yes'.tr),
                     ),
                     const Spacer(),
                     ElevatedButton(
@@ -100,7 +100,7 @@ class HomeMenuView extends GetView<MenuController> {
                               MaterialStateProperty.all(AppColors.blue),
                           foregroundColor:
                               MaterialStateProperty.all(Colors.white)),
-                      child: const Text('Cancel'),
+                      child: Text('Cancel'.tr),
                     ),
                   ]),
                 ],

@@ -63,7 +63,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                         onTap: () {
                           controller.pickImageFun();
                         },
-                        child: const Text('Add Your Photo..')),
+                        child: Text('AddYourPhoto'.tr)),
                     const SizedBox(
                       height: 20,
                     ),
@@ -79,7 +79,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                               controller.company.value.name = value;
                             },
                             type: TextInputType.name,
-                            label: 'Company Name',
+                            label: 'CompanyName'.tr,
                             hint: "narin",
                             prefIcon: Icons.person,
                           ),
@@ -91,7 +91,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                               controller.company.value.phone = value;
                             },
                             type: TextInputType.number,
-                            label: 'PhoneNumber',
+                            label: 'PhoneNumber'.tr,
                             hint: "099717424666",
                             prefIcon: Icons.phone,
                           ),
@@ -103,7 +103,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                               controller.company.value.telePhone = value;
                             },
                             type: TextInputType.number,
-                            label: 'TelePhone',
+                            label: 'TelePhone'.tr,
                             hint: "5225356",
                             prefIcon: Icons.phone,
                           ),
@@ -116,7 +116,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                               controller.company.value.description = value;
                             },
                             type: TextInputType.name,
-                            label: 'Description',
+                            label: 'Description'.tr,
                             hint: "i am gdfsdfj,gh",
                             prefIcon: Icons.description,
                           ),
@@ -128,7 +128,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                               controller.company.value.address = value;
                             },
                             type: TextInputType.none,
-                            label: 'location',
+                            label: 'location'.tr,
                             hint: "aleppo",
                             prefIcon: Icons.location_on,
                           ),
@@ -140,7 +140,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                               controller.company.value.email = value;
                             },
                             type: TextInputType.emailAddress,
-                            label: 'Email',
+                            label: 'Email'.tr,
                             hint: "hy@gmail.com",
                             prefIcon: Icons.email,
                           ),
@@ -153,7 +153,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                               },
                               obscureText: !controller.isShownCompany.value,
                               type: TextInputType.visiblePassword,
-                              label: 'Passeword',
+                              label: 'Passeword'.tr,
                               hint: "***",
                               suffixIcon: IconButton(
                                 onPressed: () {
@@ -182,16 +182,15 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                             onPressed: () async {
                               Get.dialog(AlertDialog(
                                 content: Row(
-                                  children: const [
-                                    Icon(
+                                  children: [
+                                    const Icon(
                                       Icons.info_outlined,
                                       color: AppColors.orange,
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 5,
                                     ),
-                                    Text(
-                                        'Are you sure want to Save Your Data ?'),
+                                    Text('AreyousurewanttoSaveYourData'.tr),
                                   ],
                                 ),
                                 contentPadding:
@@ -212,7 +211,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                                           foregroundColor:
                                               MaterialStateProperty.all(
                                                   Colors.white)),
-                                      child: const Text('Yes'),
+                                      child: Text('Yes'.tr),
                                     ),
                                     const Spacer(),
                                     ElevatedButton(
@@ -227,15 +226,15 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                                           foregroundColor:
                                               MaterialStateProperty.all(
                                                   Colors.white)),
-                                      child: const Text('Cancel'),
+                                      child: Text('Cancel'.tr),
                                     ),
                                   ]),
                                 ],
                               ));
                             },
-                            child: const Text(
-                              "Sign Up",
-                              style: TextStyle(
+                            child: Text(
+                              "SignUp".tr,
+                              style: const TextStyle(
                                 fontSize: 18,
                                 color: Colors.white,
                               ),

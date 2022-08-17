@@ -29,4 +29,5 @@ abstract class IHomeMainRepository {
   Future<void> updateInterActionUser(int idpostUser, PostUser postUser);
   Future<void> updateInterActionInf(
       int idinfulonser, PostInfulonser infulonser);
+  Future<Company> getCompanyByBrandId(int idBrand);
 }

@@ -79,7 +79,7 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                           }
                         },
                         type: TextInputType.multiline,
-                        hint: 'Name',
+                        hint: 'Name'.tr,
                         obscureText: false,
                         prefIcon: Icons.person,
                       ),
@@ -107,7 +107,7 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                       }
                     },
                     type: TextInputType.multiline,
-                    hint: 'Phone',
+                    hint: 'Phone'.tr,
                     obscureText: false,
                     prefIcon: Icons.phone,
                   ),
@@ -124,7 +124,7 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                                   ? controller.company.value.email
                                   : controller.user.value.email,
                           type: TextInputType.multiline,
-                          hint: 'Email',
+                          hint: 'Email'.tr,
                           obscureText: false,
                           prefIcon: Icons.email,
                           onChanged: (txt) {
@@ -166,7 +166,7 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                                 }
                               },
                               type: TextInputType.multiline,
-                              hint: 'PayPal',
+                              hint: 'PayPal'.tr,
                               obscureText: false,
                               prefIcon: Icons.paypal,
                             ),
@@ -195,7 +195,7 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                             }
                           },
                           type: TextInputType.multiline,
-                          hint: 'Address',
+                          hint: 'Address'.tr,
                           obscureText: false,
                           prefIcon: Icons.location_on,
                         ),
@@ -224,7 +224,7 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                                 }
                               },
                               type: TextInputType.multiline,
-                              hint: 'Username',
+                              hint: 'Username'.tr,
                               obscureText: false,
                               prefIcon: Icons.person,
                             ),
@@ -252,7 +252,7 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                             }
                           },
                           type: TextInputType.multiline,
-                          hint: 'TelePhone',
+                          hint: 'TelePhone'.tr,
                           obscureText: false,
                           prefIcon: Icons.phone,
                         ),
@@ -280,7 +280,7 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                             }
                           },
                           type: TextInputType.multiline,
-                          hint: 'Description',
+                          hint: 'Description'.tr,
                           obscureText: false,
                           prefIcon: Icons.description,
                         ),
@@ -304,7 +304,7 @@ class ViewPart extends GetResponsiveView<ProfileController> {
                             }
                           },
                           type: TextInputType.multiline,
-                          hint: 'Age',
+                          hint: 'Age'.tr,
                           obscureText: false,
                           prefIcon: Icons.description,
                         ),

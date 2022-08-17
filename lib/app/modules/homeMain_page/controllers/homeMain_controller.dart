@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:marful/app/core/values/app_colors.dart';
 import 'package:marful/app/data/model/brand.dart';
 import 'package:marful/app/data/model/company.dart';
 import 'package:marful/app/data/model/infulonser.dart';
@@ -7,7 +9,9 @@ import 'package:marful/app/data/model/user_model.dart';
 import 'package:marful/app/modules/chat_page/data/model/job.dart';
 import 'package:marful/app/modules/homeMain_page/data/model/post_infulonser.dart';
 import 'package:marful/app/modules/websit_company/data/model/companycontent.dart';
+import 'package:marful/app/routes/app_pages.dart';
 import 'package:marful/sheard/util.dart';
+import 'package:q_overlay/q_overlay.dart';
 
 import '../../../../sheard/auth_service.dart';
 import '../../../data/model/content.dart';
@@ -47,6 +51,55 @@ class HomeMainController extends GetxController {
       var data = await homeMainRepo.getInfoJob(id);
       jobs.assignAll(data);
     }
+  }
+
+  Future<void> getComapnyByBrand(int index) async {
+    var data =
+        await homeMainRepo.getCompanyByBrandId(post[index].post!.brandId!);
+    getifHaveUserPost(post[index])
+        ? Get.rootDelegate.toNamed(Routes.WebsiteCompany, arguments: [
+            data.email!,
+            mainUserpost
+                .where((p0) => p0.postId == post[index].post!.id!)
+                .first
+                .id
+          ]
+            // controller.auth
+            //             .getTypeEnum() ==
+            //         Auth.user
+            //     ? controller.mainUserpost
+            //         .firstWhere((element) =>
+            //             element.postId ==
+            //             controller.post[index]
+            //                 .post!.id)
+            //         .id!
+            //     : controller.auth
+            //                 .getTypeEnum() ==
+            //             Auth.infulonser
+            //         ? controller.mainInfupost
+            //             .firstWhere((element) =>
+            //                 element.postId ==
+            //                 controller
+            //                     .post[index]
+            //                     .post!
+            //                     .id)
+            //             .id!
+            //         : null
+            )
+        : QPanel(
+            alignment: Alignment.topCenter,
+            duration: const Duration(seconds: 2),
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                'Plase InterAction To Post',
+                style: TextStyle(fontSize: 25, color: AppColors.orange),
+              ),
+            )).show();
+    // html.window.open(
+    //   '${html.window.location.protocol}/#/WebsiteCompany',
+    //   'WebsiteCompany',
+    // );
   }
 
   Future<void> getContentComapny() async {

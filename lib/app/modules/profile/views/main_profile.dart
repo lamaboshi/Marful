@@ -2,8 +2,10 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marful/app/core/values/app_colors.dart';
 import 'package:marful/app/modules/profile/views/company_profile.dart';
 import 'package:marful/app/modules/profile/views/inflounsor_profile.dart';
+import 'package:marful/app/routes/app_pages.dart';
 import 'package:marful/sheard/auth_service.dart';
 import 'package:marful/sheard/util.dart';
 
@@ -13,7 +15,7 @@ class MainProfile extends GetView<ProfileController> {
   final bool isSearch;
   final Auth? type;
   final int? id;
-  MainProfile(this.isSearch, this.type, this.id);
+  const MainProfile(this.isSearch, this.type, this.id);
   @override
   Widget build(BuildContext context) {
     if (type != null) {
@@ -48,6 +50,31 @@ class MainProfile extends GetView<ProfileController> {
             : SingleChildScrollView(
                 child: Column(
                   children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextButton.icon(
+                          onPressed: () {
+                            Get.rootDelegate.toNamed(Routes.WebsiteCompany,
+                                arguments: [
+                                  controller.company.value.email!,
+                                  0
+                                ]);
+                          },
+                          icon: const Icon(
+                            Icons.next_week_rounded,
+                            color: AppColors.orange,
+                            size: 20,
+                          ),
+                          label: const Text(
+                            'Web Site',
+                            style: TextStyle(
+                                color: AppColors.orange, fontSize: 18),
+                          ),
+                        ),
+                      ),
+                    ),
                     Obx(() => type == null
                         ? viewPart(controller.company.value.name!,
                             controller.company.value.image)
@@ -85,8 +112,8 @@ class MainProfile extends GetView<ProfileController> {
           )),
           Center(
               child: Text(
-            name == null ? '' : name,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            name,
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           )),
         ],
       ),

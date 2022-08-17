@@ -28,7 +28,7 @@ class EditCompanyPage extends GetResponsiveView<ProfileController> {
               Row(
                 children: [
                   Text(
-                    'Content',
+                    'Content'.tr,
                     style: TextStyle(
                       fontSize: 20,
                       color: AppColors.orange,
@@ -66,7 +66,7 @@ class EditCompanyPage extends GetResponsiveView<ProfileController> {
               Row(
                 children: [
                   Text(
-                    'Post',
+                    'Post'.tr,
                     style: TextStyle(
                       fontSize: 20,
                       color: AppColors.orange,

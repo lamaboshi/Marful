@@ -28,9 +28,9 @@ class EditInflounsorPage extends GetResponsiveView<ProfileController> {
             children: [
               Row(
                 children: [
-                  const Text(
-                    'Content',
-                    style: TextStyle(
+                  Text(
+                    'Content'.tr,
+                    style: const TextStyle(
                       fontSize: 20,
                       color: AppColors.orange,
                     ),
@@ -58,7 +58,7 @@ class EditInflounsorPage extends GetResponsiveView<ProfileController> {
                                       )),
                                 )
                                 .toList()),
-                        child: Icon(
+                        child: const Icon(
                           Icons.add,
                           color: AppColors.orange,
                         ),
@@ -67,10 +67,10 @@ class EditInflounsorPage extends GetResponsiveView<ProfileController> {
               ),
               SizedBox(width: screen.width, height: 65, child: contentPart()),
               Row(
-                children: const [
+                children: [
                   Text(
-                    'Post',
-                    style: TextStyle(
+                    'Post'.tr,
+                    style: const TextStyle(
                       fontSize: 20,
                       color: AppColors.orange,
                     ),
