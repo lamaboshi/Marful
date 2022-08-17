@@ -34,12 +34,12 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
                             children: [
-                              const Padding(
-                                padding: EdgeInsets.all(8.0),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
                                 child: Center(
                                     child: Text(
                                   'TheProducts'.tr,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 20, color: Colors.black54),
                                 )),
                               ),
@@ -76,8 +76,9 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                     .show();
               },
               icon: const Icon(Icons.shopping_basket),
-              label:  Padding(
-                  padding: EdgeInsets.all(8.0), child: Text('YourBasket'.tr)),
+              label: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text('YourBasket'.tr)),
             ),
             appBar: AppBar(
                 elevation: 0,
@@ -288,12 +289,12 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
                           children: [
-                            const Padding(
-                              padding: EdgeInsets.fromLTRB(8, 8, 8, 3),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(8, 8, 8, 3),
                               child: Center(
                                 child: Text(
                                   'ThepriceofOneis'.tr,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 18, color: Colors.black87),
                                 ),
                               ),
@@ -312,12 +313,12 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                         padding: const EdgeInsets.fromLTRB(8, 0, 8, 2),
                         child: Row(
                           children: [
-                            const Padding(
-                              padding: EdgeInsets.all(8),
+                            Padding(
+                              padding: const EdgeInsets.all(8),
                               child: Center(
                                 child: Text(
                                   'TotalCountYouNeed'.tr,
-                                  style: TextStyle(fontSize: 16),
+                                  style: const TextStyle(fontSize: 16),
                                 ),
                               ),
                             ),
@@ -444,7 +445,7 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                               children: [
                                 Row(
                                   children: [
-                                     Text('price'.tr),
+                                    Text('price'.tr),
                                     Text(
                                       '${product.price}\$',
                                       style: const TextStyle(

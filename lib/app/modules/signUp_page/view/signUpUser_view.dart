@@ -63,7 +63,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                         onTap: () {
                           controller.pickImageFun();
                         },
-                        child:  Text('AddYourPhoto'.tr)),
+                        child: Text('AddYourPhoto'.tr)),
                     const SizedBox(
                       height: 20,
                     ),
@@ -189,16 +189,15 @@ class SignUpUserPage extends GetView<SignUpController> {
                               onPressed: () async {
                                 Get.dialog(AlertDialog(
                                   content: Row(
-                                    children: const [
-                                      Icon(
+                                    children: [
+                                      const Icon(
                                         Icons.info_outlined,
                                         color: AppColors.orange,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 5,
                                       ),
-                                      Text(
-                                          'AreyousurewanttoSaveYourData'.tr),
+                                      Text('AreyousurewanttoSaveYourData'.tr),
                                     ],
                                   ),
                                   contentPadding:
@@ -219,7 +218,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                                             foregroundColor:
                                                 MaterialStateProperty.all(
                                                     Colors.white)),
-                                        child:  Text('Yes'.tr),
+                                        child: Text('Yes'.tr),
                                       ),
                                       const Spacer(),
                                       ElevatedButton(
@@ -234,15 +233,15 @@ class SignUpUserPage extends GetView<SignUpController> {
                                             foregroundColor:
                                                 MaterialStateProperty.all(
                                                     Colors.white)),
-                                        child:  Text('Cancel'.tr),
+                                        child: Text('Cancel'.tr),
                                       ),
                                     ]),
                                   ],
                                 ));
                               },
-                              child:  Text(
+                              child: Text(
                                 "SignUp".tr,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 18,
                                   color: Colors.white,
                                 ),

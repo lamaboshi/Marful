@@ -44,12 +44,12 @@ class CompanyType extends GetView<SignInController> {
                   child: Column(
                     children: [
                       //Sign In to your account
-                      const Align(
+                      Align(
                         alignment: Alignment.topLeft,
                         child: Text(
                           'AddYourPermissions'.tr,
                           textAlign: TextAlign.start,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 23, fontWeight: FontWeight.w500),
                         ),
                       ),
@@ -136,9 +136,9 @@ class CompanyType extends GetView<SignInController> {
                         onPressed: () {
                           controller.logInTypeFun();
                         },
-                        child:  Text(
+                        child: Text(
                           "SignIn".tr,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 17,
                             color: Colors.white,
                           ),

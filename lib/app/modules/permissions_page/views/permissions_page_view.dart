@@ -13,7 +13,7 @@ class PermissionsPageView extends GetView<PermissionsPageController> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title:  Text('Permissions'.tr),
+          title: Text('Permissions'.tr),
           backgroundColor: AppColors.orange,
         ),
         floatingActionButton: FloatingActionButton.extended(
@@ -40,9 +40,9 @@ class PermissionsPageView extends GetView<PermissionsPageController> {
                           const SizedBox(
                             height: 20,
                           ),
-                           Text(
+                          Text(
                             'AddnewemployeeType'.tr,
-                            style: TextStyle(fontSize: 17),
+                            style: const TextStyle(fontSize: 17),
                           ),
                           const SizedBox(
                             height: 20,
@@ -86,7 +86,7 @@ class PermissionsPageView extends GetView<PermissionsPageController> {
                                       AppColors.orange),
                                   foregroundColor:
                                       MaterialStateProperty.all(Colors.white)),
-                              child:  Center(child: Text('Add'.tr)),
+                              child: Center(child: Text('Add'.tr)),
                             ),
                           ),
                           const SizedBox(
@@ -98,9 +98,9 @@ class PermissionsPageView extends GetView<PermissionsPageController> {
                   ));
             },
             label: Row(
-              children: const [
-                Icon(Icons.add),
-                SizedBox(
+              children: [
+                const Icon(Icons.add),
+                const SizedBox(
                   width: 5,
                 ),
                 Text('Add'.tr)
@@ -146,9 +146,10 @@ class PermissionsPageView extends GetView<PermissionsPageController> {
                                           const SizedBox(
                                             height: 20,
                                           ),
-                                           Text(
+                                          Text(
                                             'Edit'.tr,
-                                            style: TextStyle(fontSize: 17),
+                                            style:
+                                                const TextStyle(fontSize: 17),
                                           ),
                                           const SizedBox(
                                             height: 20,
@@ -182,7 +183,7 @@ class PermissionsPageView extends GetView<PermissionsPageController> {
                                                   foregroundColor:
                                                       MaterialStateProperty.all(
                                                           Colors.white)),
-                                              child: const Center(
+                                              child: Center(
                                                   child: Text('Edit'.tr)),
                                             ),
                                           ),

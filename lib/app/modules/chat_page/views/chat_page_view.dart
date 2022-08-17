@@ -14,7 +14,7 @@ class ChatPageView extends GetView<ChatPageController> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.orange,
-        title:  Text('ConversationPageView'.tr),
+        title: Text('ConversationPageView'.tr),
         centerTitle: true,
         actions: [
           IconButton(
@@ -26,10 +26,10 @@ class ChatPageView extends GetView<ChatPageController> {
                     child: Obx(() => Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Padding(
-                              padding: EdgeInsets.all(8.0),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
                               child: Text('NewJobAgreement'.tr,
-                                  style: TextStyle(fontSize: 20)),
+                                  style: const TextStyle(fontSize: 20)),
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,7 +72,8 @@ class ChatPageView extends GetView<ChatPageController> {
                                                     .selectcompanyContent()
                                                     .content!
                                                     .name!,
-                                            style: TextStyle(fontSize: 17),
+                                            style:
+                                                const TextStyle(fontSize: 17),
                                           )),
                                     ],
                                   )),
@@ -145,7 +146,7 @@ class ChatPageView extends GetView<ChatPageController> {
                                   onPressed: () {
                                     controller.addJob();
                                   },
-                                  label:  Text('Save'.tr.tr)),
+                                  label: Text('Save'.tr.tr)),
                             )
                           ],
                         ))).show();
