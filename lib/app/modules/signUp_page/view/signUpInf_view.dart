@@ -63,8 +63,8 @@ class SignUpInfluencer extends GetView<SignUpController> {
                         onTap: () {
                           controller.pickImageFun();
                         },
-                        child: const Text('Add Your Photo..')),
-                    SizedBox(
+                        child: Text('AddYourPhoto'.tr)),
+                    const SizedBox(
                       height: 20,
                     ),
                     Container(
@@ -72,201 +72,200 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           const EdgeInsets.only(left: 20, top: 10, right: 20),
                       child: Form(
                         key: controller.influencerForm,
-                        child: Column(
-                          children: [
-                            //Name
-                            TextFieldWidget(
-                              obscureText: false,
-                              onChanged: (value) {
-                                controller.influencer.value.name = value;
-                              },
-                              type: TextInputType.name,
-                              label: ' Name',
-                              hint: "Haya Eid",
-                              prefIcon: Icons.person,
-                              validator: controller.forceValue,
-                            ),
-                            //UserName
-                            TextFieldWidget(
-                              obscureText: false,
-                              onChanged: (value) {
-                                controller.influencer.value.userName = value;
-                              },
-                              type: TextInputType.name,
-                              label: 'User Name',
-                              hint: "Haya ",
-                              prefIcon: Icons.person,
-                              validator: controller.forceValue,
-                            ),
-                            //Description
-                            TextFieldWidget(
-                              obscureText: false,
-                              onChanged: (value) {
-                                controller.influencer.value.description = value;
-                              },
-                              type: TextInputType.name,
-                              label: 'Description',
-                              hint: "I have so many bfghfccgbfg ",
-                              prefIcon: Icons.description,
-                              validator: controller.forceValue,
-                            ),
-                            //Phone
-                            TextFieldWidget(
-                              obscureText: false,
-                              onChanged: (value) {
-                                controller.influencer.value.phone = value;
-                              },
-                              type: TextInputType.number,
-                              label: 'PhoneNumber',
-                              hint: "099717424666 ",
-                              prefIcon: Icons.phone,
-                              validator: controller.forceValue,
-                            ),
-                            //address
-                            TextFieldWidget(
-                              obscureText: false,
-                              onChanged: (value) {
-                                controller.influencer.value.address = value;
-                              },
-                              type: TextInputType.name,
-                              label: 'location',
-                              hint: "aleppo ",
-                              prefIcon: Icons.location_on,
-                              validator: controller.forceValue,
-                            ),
-                            //PayBal
-                            TextFieldWidget(
-                              obscureText: false,
-                              onChanged: (value) {
-                                controller.influencer.value.paypal = value;
-                              },
-                              type: TextInputType.number,
-                              label: 'PayBal',
-                              hint: "hsd235dfgdf ",
-                              prefIcon: Icons.paypal,
-                              validator: controller.forceValue,
-                            ),
-                            //Email
-                            TextFieldWidget(
-                              obscureText: false,
-                              onChanged: (value) {
-                                controller.influencer.value.email = value;
-                              },
-                              type: TextInputType.emailAddress,
-                              label: 'Email',
-                              hint: "hy@gmail.com ",
-                              prefIcon: Icons.email,
-                              validator: controller.forceValue,
-                            ),
-                            ////////Passeword
-                            Obx(() {
-                              return TextFieldWidget(
-                                onChanged: (value) {
-                                  controller.influencer.value.password = value;
-                                },
-                                obscureText:
-                                    !controller.isShownInfluencer.value,
-                                type: TextInputType.visiblePassword,
-                                label: 'Passeword',
-                                hint: "***",
-                                suffixIcon: IconButton(
-                                  onPressed: () {
-                                    controller.isShownInfluencer.value =
-                                        !controller.isShownInfluencer.value;
-                                  },
-                                  icon: Icon(
-                                    controller.isShownInfluencer.value
-                                        ? Icons.remove_red_eye
-                                        : CupertinoIcons.eye_slash_fill,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                prefIcon: Icons.key,
-                                validator: controller.forceValue,
-                              );
-                            }),
-                            SizedBox(
-                              height: 40,
-                            ),
+                        child: Column(children: [
+                          //Name
+                          TextFieldWidget(
+                            validator: controller.forceValue,
+                            obscureText: false,
+                            onChanged: (value) {
+                              controller.influencer.value.name = value;
+                            },
+                            type: TextInputType.name,
+                            label: 'Name'.tr,
+                            hint: "Haya Eid",
+                            prefIcon: Icons.person,
+                          ),
+                          //UserName
+                          TextFieldWidget(
+                            validator: controller.forceValue,
+                            obscureText: false,
+                            onChanged: (value) {
+                              controller.influencer.value.userName = value;
+                            },
+                            type: TextInputType.name,
+                            label: 'UserName'.tr,
+                            hint: "Haya ",
+                            prefIcon: Icons.person,
+                          ),
+                          //Description
+                          TextFieldWidget(
+                            validator: controller.forceValue,
+                            obscureText: false,
+                            onChanged: (value) {
+                              controller.influencer.value.description = value;
+                            },
+                            type: TextInputType.name,
+                            label: 'Description'.tr,
+                            hint: "I have so many bfghfccgbfg ",
+                            prefIcon: Icons.description,
+                          ),
+                          //Phone
+                          TextFieldWidget(
+                            validator: controller.forceValue,
+                            obscureText: false,
+                            onChanged: (value) {
+                              controller.influencer.value.phone = value;
+                            },
+                            type: TextInputType.number,
+                            label: 'PhoneNumber'.tr,
+                            hint: "099717424666 ",
+                            prefIcon: Icons.phone,
+                          ),
+                          //address
+                          TextFieldWidget(
+                            validator: controller.forceValue,
+                            obscureText: false,
+                            onChanged: (value) {
+                              controller.influencer.value.address = value;
+                            },
+                            type: TextInputType.name,
+                            label: 'location'.tr,
+                            hint: "aleppo ",
+                            prefIcon: Icons.location_on,
+                          ),
+                          //PayBal
+                          TextFieldWidget(
+                            validator: controller.forceValue,
+                            obscureText: false,
+                            onChanged: (value) {
+                              controller.influencer.value.paypal = value;
+                            },
+                            type: TextInputType.number,
+                            label: 'PayBal'.tr,
+                            hint: "hsd235dfgdf ",
+                            prefIcon: Icons.paypal,
+                          ),
+                          //Email
+                          TextFieldWidget(
+                            validator: controller.forceValue,
+                            obscureText: false,
+                            onChanged: (value) {
+                              controller.influencer.value.email = value;
+                            },
+                            type: TextInputType.emailAddress,
+                            label: 'Email'.tr,
+                            hint: "hy@gmail.com ",
+                            prefIcon: Icons.email,
+                          ),
+                          ////////Passeword
 
-                            ElevatedButton(
-                              style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.all(AppColors.blue),
-                                  fixedSize: MaterialStateProperty.all(
-                                      const Size.fromWidth(150))),
-                              onPressed: () async {
-                                if (controller.influencerForm.currentState!
-                                    .validate()) {
-                                  Get.dialog(AlertDialog(
-                                    content: Row(
-                                      children: const [
-                                        Icon(
-                                          Icons.info_outlined,
-                                          color: AppColors.orange,
-                                        ),
-                                        SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text(
-                                            'Are you sure want to Save Your Data ?'),
-                                      ],
-                                    ),
-                                    contentPadding: const EdgeInsets.fromLTRB(
-                                        20, 20, 20, 10),
-                                    actionsPadding: const EdgeInsets.fromLTRB(
-                                        15, 10, 15, 20),
-                                    actions: [
-                                      Row(children: [
-                                        ElevatedButton(
-                                          onPressed: () async {
-                                            controller.isSaveData.value = true;
-                                            await controller.signUpInfluencer();
-                                          },
-                                          style: ButtonStyle(
-                                              backgroundColor:
-                                                  MaterialStateProperty.all(
-                                                      AppColors.blue),
-                                              foregroundColor:
-                                                  MaterialStateProperty.all(
-                                                      Colors.white)),
-                                          child: const Text('Yes'),
-                                        ),
-                                        const Spacer(),
-                                        ElevatedButton(
-                                          onPressed: () async {
-                                            controller.isSaveData.value = false;
-                                            await controller.signUpInfluencer();
-                                          },
-                                          style: ButtonStyle(
-                                              backgroundColor:
-                                                  MaterialStateProperty.all(
-                                                      AppColors.blue),
-                                              foregroundColor:
-                                                  MaterialStateProperty.all(
-                                                      Colors.white)),
-                                          child: const Text('Cancel'),
-                                        ),
-                                      ]),
-                                    ],
-                                  ));
-                                }
+                          Obx(() {
+                            return TextFieldWidget(
+                              validator: controller.forceValue,
+                              onChanged: (value) {
+                                controller.influencer.value.password = value;
                               },
-                              child: const Text(
-                                "Sign Up",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white,
+                              obscureText: !controller.isShownInfluencer.value,
+                              type: TextInputType.visiblePassword,
+                              label: 'Passeword'.tr,
+                              hint: "***",
+                              suffixIcon: IconButton(
+                                onPressed: () {
+                                  controller.isShownInfluencer.value =
+                                      !controller.isShownInfluencer.value;
+                                },
+                                icon: Icon(
+                                  controller.isShownInfluencer.value
+                                      ? Icons.remove_red_eye
+                                      : CupertinoIcons.eye_slash_fill,
+                                  color: Colors.black,
                                 ),
                               ),
+                              prefIcon: Icons.key,
+                            );
+                          }),
+
+                          //
+
+                          const SizedBox(
+                            height: 40,
+                          ),
+                          ElevatedButton(
+                            style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all(AppColors.blue),
+                                fixedSize: MaterialStateProperty.all(
+                                    const Size.fromWidth(150))),
+                            onPressed: () async {
+                              if (controller.influencerForm.currentState!
+                                  .validate()) {
+                                Get.dialog(AlertDialog(
+                                  content: Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.info_outlined,
+                                        color: AppColors.orange,
+                                      ),
+                                      const SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text('AreyousurewanttoSaveYourData'.tr),
+                                    ],
+                                  ),
+                                  contentPadding:
+                                      const EdgeInsets.fromLTRB(20, 20, 20, 10),
+                                  actionsPadding:
+                                      const EdgeInsets.fromLTRB(15, 10, 15, 20),
+                                  actions: [
+                                    Row(children: [
+                                      ElevatedButton(
+                                        onPressed: () async {
+                                          controller.isSaveData.value = true;
+                                          await controller.signUpInfluencer();
+                                        },
+                                        style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                                    AppColors.blue),
+                                            foregroundColor:
+                                                MaterialStateProperty.all(
+                                                    Colors.white)),
+                                        child: Text('Yes'.tr),
+                                      ),
+                                      const Spacer(),
+                                      ElevatedButton(
+                                        onPressed: () async {
+                                          controller.isSaveData.value = false;
+                                          await controller.signUpInfluencer();
+                                        },
+                                        style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                                    AppColors.blue),
+                                            foregroundColor:
+                                                MaterialStateProperty.all(
+                                                    Colors.white)),
+                                        child: Text('Cancel'.tr),
+                                      ),
+                                    ]),
+                                  ],
+                                ));
+                              }
+                            },
+                            child: Text(
+                              "SignUp".tr,
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                              ),
                             ),
-                            const SizedBox(
-                              height: 40,
-                            ),
-                          ],
-                        ),
+                            //  SizedBox(
+                            //   height: 40,
+                            // ),
+                          ),
+                        ]),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

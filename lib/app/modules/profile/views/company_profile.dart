@@ -103,10 +103,10 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                                   fontWeight: FontWeight.bold,
                                   color: AppColors.orange),
                             )),
-                        const Text(
-                          'Followors ',
-                          style:
-                              TextStyle(fontSize: 18, color: AppColors.orange),
+                        Text(
+                          'Followors'.tr,
+                          style: const TextStyle(
+                              fontSize: 18, color: AppColors.orange),
                         ),
                       ],
                     ),
@@ -192,11 +192,11 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
           padding: const EdgeInsets.all(8.0),
           child: Buildcontent(),
         ),
-        const Padding(
-          padding: EdgeInsets.all(9.0),
+        Padding(
+          padding: const EdgeInsets.all(9.0),
           child: Text(
-            ' Posts',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
+            'Posts'.tr,
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
           ),
         ),
         Padding(

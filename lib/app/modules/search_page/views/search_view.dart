@@ -68,7 +68,7 @@ class SearchView extends GetView<SearchController> {
                           },
                           icon: const Icon(Icons.search),
                         ),
-                        hintText: "Search",
+                        hintText: "Search".tr,
                         hintStyle: const TextStyle(fontSize: 15),
                       )),
                 ),
@@ -107,7 +107,7 @@ class SearchView extends GetView<SearchController> {
                                             Colors.grey[200]),
                                 foregroundColor:
                                     MaterialStateProperty.all(Colors.black)),
-                            child: Text(filter[index]),
+                            child: Text(filter[index].tr),
                           ));
                     },
                   ),

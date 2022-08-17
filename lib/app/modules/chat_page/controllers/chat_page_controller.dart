@@ -4,6 +4,7 @@ import 'package:marful/app/data/model/brand.dart';
 import 'package:marful/app/data/model/content.dart';
 import 'package:marful/app/modules/chat_page/data/model/message_model.dart';
 import 'package:marful/app/modules/websit_company/data/model/companycontent.dart';
+import 'package:q_overlay/q_overlay.dart';
 import 'package:signalr_core/signalr_core.dart';
 
 import '../../../../api/socket/hub_listen.dart';
@@ -53,6 +54,8 @@ class ChatPageController extends GetxController {
     newJob.value.brandId = selectbrand.value.id;
     newJob.value.messages = selectMessage.toList();
     await repo.addJob(newJob.value);
+    QOverlay.dismissLast();
+    onInit();
   }
 
   Future<void> conactionhub() async {

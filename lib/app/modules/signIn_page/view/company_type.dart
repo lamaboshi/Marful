@@ -44,12 +44,12 @@ class CompanyType extends GetView<SignInController> {
                   child: Column(
                     children: [
                       //Sign In to your account
-                      const Align(
+                      Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          'Add Your Permissions',
+                          'AddYourPermissions'.tr,
                           textAlign: TextAlign.start,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 23, fontWeight: FontWeight.w500),
                         ),
                       ),
@@ -91,7 +91,7 @@ class CompanyType extends GetView<SignInController> {
                                 const SizedBox(width: 8),
                                 Obx(() => Text(
                                     controller.typeCompany.value.isEmpty
-                                        ? 'Company Type'
+                                        ? 'CompanyType'.tr
                                         : controller.typeCompany.value,
                                     style: const TextStyle(fontSize: 18))),
                               ],
@@ -101,7 +101,7 @@ class CompanyType extends GetView<SignInController> {
                       Obx(() {
                         return TextFieldWidget(
                           type: TextInputType.visiblePassword,
-                          label: 'Passeword',
+                          label: 'Passeword'.tr,
                           hint: '***',
                           obscureText: !controller.isShown.value,
                           onChanged: (value) {
@@ -136,9 +136,9 @@ class CompanyType extends GetView<SignInController> {
                         onPressed: () {
                           controller.logInTypeFun();
                         },
-                        child: const Text(
-                          "SignIn ",
-                          style: TextStyle(
+                        child: Text(
+                          "SignIn".tr,
+                          style: const TextStyle(
                             fontSize: 17,
                             color: Colors.white,
                           ),

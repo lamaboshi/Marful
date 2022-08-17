@@ -297,6 +297,8 @@ class ProfileController extends GetxController {
     user.value = use.value;
     user.value.image = Utility.dataFromBase64String(stringPickImage.value);
     await repo.Updateuse(user.value, user.value.id!);
+    auth.stroge.deleteAllKeys();
+    auth.logIn(user.value.email!, user.value.password!);
   }
 
   Future<void> addcontentinfo(int id) async {

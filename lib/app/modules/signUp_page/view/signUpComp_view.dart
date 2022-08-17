@@ -51,8 +51,11 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                       height: 5,
                     ),
                     InkWell(
-                        onTap: () {}, child: const Text('Add Your Photo..')),
-                    SizedBox(
+                        onTap: () {
+                          controller.pickImageFun();
+                        },
+                        child: Text('AddYourPhoto'.tr)),
+                    const SizedBox(
                       height: 20,
                     ),
                     Container(
@@ -60,195 +63,202 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                           const EdgeInsets.only(left: 20, top: 10, right: 20),
                       child: Form(
                         key: controller.companyForm,
-                        child: Column(
-                          children: [
-                            //Name
-                            TextFieldWidget(
-                              obscureText: false,
-                              onChanged: (value) {
-                                controller.company.value.name = value;
-                              },
-                              type: TextInputType.name,
-                              label: 'Company Name',
-                              hint: "narin",
-                              prefIcon: Icons.person,
+                        child: Column(children: [
+                          //Name
+                          TextFieldWidget(
+                            validator: controller.forceValue,
+                            obscureText: false,
+                            onChanged: (value) {
+                              controller.company.value.name = value;
+                            },
+                            type: TextInputType.name,
+                            label: 'CompanyName'.tr,
+                            hint: "narin",
+                            prefIcon: Icons.person,
+                          ),
+
+                          //Phone
+                          TextFieldWidget(
+                            validator: controller.forceValue,
+                            obscureText: false,
+                            onChanged: (value) {
+                              controller.company.value.phone = value;
+                            },
+                            type: TextInputType.number,
+                            label: 'PhoneNumber'.tr,
+                            hint: "099717424666",
+                            prefIcon: Icons.phone,
+                          ),
+
+                          //TelePhone
+                          TextFieldWidget(
+                            validator: controller.forceValue,
+                            obscureText: false,
+                            onChanged: (value) {
+                              controller.company.value.telePhone = value;
+                            },
+                            type: TextInputType.number,
+                            label: 'TelePhone'.tr,
+                            hint: "5225356",
+                            prefIcon: Icons.phone,
+                          ),
+
+                          //TelePhone
+                          TextFieldWidget(
+                            validator: controller.forceValue,
+                            obscureText: false,
+                            onChanged: (value) {
+                              controller.company.value.telePhone = value;
+                            },
+                            type: TextInputType.number,
+                            label: 'TelePhone',
+                            hint: "5225356",
+                            prefIcon: Icons.phone,
+                          ),
+
+                          TextFieldWidget(
+                            validator: controller.forceValue,
+                            obscureText: false,
+                            onChanged: (value) {
+                              controller.company.value.description = value;
+                            },
+                            type: TextInputType.name,
+                            label: 'Description'.tr,
+                            hint: "i am gdfsdfj,gh",
+                            prefIcon: Icons.description,
+                          ),
+
+                          //Address
+                          TextFieldWidget(
+                            validator: controller.forceValue,
+                            obscureText: false,
+                            onChanged: (value) {
+                              controller.company.value.address = value;
+                            },
+                            type: TextInputType.none,
+                            label: 'location'.tr,
+                            hint: "aleppo",
+                            prefIcon: Icons.location_on,
+                          ),
+
+                          //Email
+                          TextFieldWidget(
+                            validator: controller.forceValue,
+                            obscureText: false,
+                            onChanged: (value) {
+                              controller.company.value.email = value;
+                            },
+                            type: TextInputType.emailAddress,
+                            label: 'Email'.tr,
+                            hint: "hy@gmail.com",
+                            prefIcon: Icons.email,
+                          ),
+
+                          ////////Passeword
+                          Obx(() {
+                            return TextFieldWidget(
                               validator: controller.forceValue,
-                            ),
-
-                            //Phone
-                            TextFieldWidget(
-                              obscureText: false,
                               onChanged: (value) {
-                                controller.company.value.phone = value;
+                                controller.company.value.password = value;
                               },
-                              type: TextInputType.number,
-                              label: 'PhoneNumber',
-                              hint: "099717424666",
-                              prefIcon: Icons.phone,
-                              validator: controller.forceValue,
-                            ),
-
-                            //TelePhone
-                            TextFieldWidget(
-                              obscureText: false,
-                              onChanged: (value) {
-                                controller.company.value.telePhone = value;
-                              },
-                              type: TextInputType.number,
-                              label: 'TelePhone',
-                              hint: "5225356",
-                              prefIcon: Icons.phone,
-                              validator: controller.forceValue,
-                            ),
-
-                            ///Description
-
-                            TextFieldWidget(
-                              obscureText: false,
-                              onChanged: (value) {
-                                controller.company.value.description = value;
-                              },
-                              type: TextInputType.name,
-                              label: 'Description',
-                              hint: "i am gdfsdfj,gh",
-                              prefIcon: Icons.description,
-                              validator: controller.forceValue,
-                            ),
-
-                            //Address
-                            TextFieldWidget(
-                              obscureText: false,
-                              onChanged: (value) {
-                                controller.company.value.address = value;
-                              },
-                              type: TextInputType.none,
-                              label: 'location',
-                              hint: "aleppo",
-                              prefIcon: Icons.location_on,
-                              validator: controller.forceValue,
-                            ),
-
-                            //Email
-                            TextFieldWidget(
-                              obscureText: false,
-                              onChanged: (value) {
-                                controller.company.value.email = value;
-                              },
-                              type: TextInputType.emailAddress,
-                              label: 'Email',
-                              hint: "hy@gmail.com",
-                              prefIcon: Icons.email,
-                              validator: controller.forceValue,
-                            ),
-
-                            ////////Passeword
-                            Obx(() {
-                              return TextFieldWidget(
-                                onChanged: (value) {
-                                  controller.company.value.password = value;
+                              obscureText: !controller.isShownCompany.value,
+                              type: TextInputType.visiblePassword,
+                              label: 'Passeword'.tr,
+                              hint: "***",
+                              prefIcon: Icons.key,
+                              suffixIcon: IconButton(
+                                onPressed: () {
+                                  controller.isShownCompany.value =
+                                      !controller.isShownCompany.value;
                                 },
-                                obscureText: !controller.isShownCompany.value,
-                                type: TextInputType.visiblePassword,
-                                label: 'Passeword',
-                                hint: "***",
-                                suffixIcon: IconButton(
-                                  onPressed: () {
-                                    controller.isShownCompany.value =
-                                        !controller.isShownCompany.value;
-                                  },
-                                  icon: Icon(
-                                    controller.isShownCompany.value
-                                        ? Icons.remove_red_eye
-                                        : CupertinoIcons.eye_slash_fill,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                prefIcon: Icons.key,
-                                validator: controller.forceValue,
-                              );
-                            }),
-
-                            const SizedBox(
-                              height: 40,
-                            ),
-                            ElevatedButton(
-                              style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.all(AppColors.blue),
-                                  fixedSize: MaterialStateProperty.all(
-                                      const Size.fromWidth(150))),
-                              onPressed: () async {
-                                if (controller.companyForm.currentState!
-                                    .validate()) {
-                                  Get.dialog(AlertDialog(
-                                    content: Row(
-                                      children: const [
-                                        Icon(
-                                          Icons.info_outlined,
-                                          color: AppColors.orange,
-                                        ),
-                                        SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text(
-                                            'Are you sure want to Save Your Data ?'),
-                                      ],
-                                    ),
-                                    contentPadding: const EdgeInsets.fromLTRB(
-                                        20, 20, 20, 10),
-                                    actionsPadding: const EdgeInsets.fromLTRB(
-                                        15, 10, 15, 20),
-                                    actions: [
-                                      Row(children: [
-                                        ElevatedButton(
-                                          onPressed: () {
-                                            controller.isSaveData.value = true;
-                                            controller.signUpCompany();
-                                          },
-                                          style: ButtonStyle(
-                                              backgroundColor:
-                                                  MaterialStateProperty.all(
-                                                      AppColors.blue),
-                                              foregroundColor:
-                                                  MaterialStateProperty.all(
-                                                      Colors.white)),
-                                          child: const Text('Yes'),
-                                        ),
-                                        const Spacer(),
-                                        ElevatedButton(
-                                          onPressed: () {
-                                            controller.isSaveData.value = false;
-                                            controller.signUpCompany();
-                                          },
-                                          style: ButtonStyle(
-                                              backgroundColor:
-                                                  MaterialStateProperty.all(
-                                                      AppColors.blue),
-                                              foregroundColor:
-                                                  MaterialStateProperty.all(
-                                                      Colors.white)),
-                                          child: const Text('Cancel'),
-                                        ),
-                                      ]),
-                                    ],
-                                  ));
-                                }
-                              },
-                              child: const Text(
-                                "Sign Up",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white,
+                                icon: Icon(
+                                  controller.isShownCompany.value
+                                      ? Icons.remove_red_eye
+                                      : CupertinoIcons.eye_slash_fill,
+                                  color: Colors.black,
                                 ),
                               ),
+                            );
+                          }),
+                          const SizedBox(
+                            height: 40,
+                          ),
+                          ElevatedButton(
+                            style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all(AppColors.blue),
+                                fixedSize: MaterialStateProperty.all(
+                                    const Size.fromWidth(150))),
+                            onPressed: () async {
+                              if (controller.companyForm.currentState!
+                                  .validate()) {
+                                Get.dialog(AlertDialog(
+                                  content: Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.info_outlined,
+                                        color: AppColors.orange,
+                                      ),
+                                      const SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text('AreyousurewanttoSaveYourData'.tr),
+                                    ],
+                                  ),
+                                  contentPadding:
+                                      const EdgeInsets.fromLTRB(20, 20, 20, 10),
+                                  actionsPadding:
+                                      const EdgeInsets.fromLTRB(15, 10, 15, 20),
+                                  actions: [
+                                    Row(children: [
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          controller.isSaveData.value = true;
+                                          controller.signUpCompany();
+                                        },
+                                        style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                                    AppColors.blue),
+                                            foregroundColor:
+                                                MaterialStateProperty.all(
+                                                    Colors.white)),
+                                        child: Text('Yes'.tr),
+                                      ),
+                                      const Spacer(),
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          controller.isSaveData.value = false;
+                                          controller.signUpCompany();
+                                        },
+                                        style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                                    AppColors.blue),
+                                            foregroundColor:
+                                                MaterialStateProperty.all(
+                                                    Colors.white)),
+                                        child: Text('Cancel'.tr),
+                                      ),
+                                    ]),
+                                  ],
+                                ));
+                              }
+                            },
+                            child: Text(
+                              "SignUp".tr,
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                              ),
                             ),
-                            SizedBox(
-                              height: 40,
-                            ),
-                          ],
-                        ),
+                            //  SizedBox(
+                            //   height: 40,
+                            // ),
+                          ),
+                        ]),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

@@ -15,6 +15,7 @@ class GetPost {
       this.noInteraction,
       this.post,
       this.image,
+      this.idCompany,
       this.name,
       this.numberLike,
       this.numDislike});
@@ -22,6 +23,7 @@ class GetPost {
   bool? interaction;
   bool? noInteraction;
   Post? post;
+  int? idCompany;
   String? name;
   double? numberLike;
   double? numDislike;
@@ -31,6 +33,7 @@ class GetPost {
         noInteraction: json["noInteraction"],
         numberLike: json["numberLike"],
         numDislike: json["numDislike"],
+        idCompany: json["idCompany"],
         name: json["name"],
         image: json['image'] == null
             ? null
@@ -44,6 +47,7 @@ class GetPost {
   Map<String, dynamic> toJson() => {
         "interaction": interaction,
         "noInteraction": noInteraction,
+        "idCompany": idCompany,
         "post": post,
         "image": image,
         "name": name

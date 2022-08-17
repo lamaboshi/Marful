@@ -4,7 +4,7 @@ import '../model/bascket.dart';
 import '../model/company_dto.dart';
 
 abstract class IWebsiteCompanyRepository {
-  Future<CompanyDto> getdata();
+  Future<CompanyDto> getdata(String email);
   Future<List<CompanyContent>> getdatacompcontent();
   Future<bool> addBasket(Basket basket);
 }

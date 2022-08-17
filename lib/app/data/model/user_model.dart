@@ -32,11 +32,13 @@ class UserModel {
     age = json['age'];
     password = json['password'];
     userName = json['userName'];
-    image = json['image'];
+    image = json['image'] == null
+        ? null
+        : Uint8List.fromList(List<int>.from(json['image']!));
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = new Map<String, dynamic>();
+    final Map<String, dynamic> json = <String, dynamic>{};
     json['id'] = id;
     json['name'] = name;
     json['phone'] = phone;
@@ -45,7 +47,7 @@ class UserModel {
     json['age'] = age;
     json['password'] = password;
     json['userName'] = userName;
-    json['image'] = image;
+    json['image'] = image == null ? null : Uint8List.fromList(image!);
     return json;
   }
 }

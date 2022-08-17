@@ -74,15 +74,15 @@ class HomeView extends GetView<HomeController> {
                     onPressed: () {
                       Get.dialog(AlertDialog(
                         content: Row(
-                          children: const [
-                            Icon(
+                          children: [
+                            const Icon(
                               Icons.info_outlined,
                               color: AppColors.orange,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 5,
                             ),
-                            Text('Are you sure want to LogOut ?'),
+                            Text('AreyousurewanttoLogOut'.tr),
                           ],
                         ),
                         contentPadding:
@@ -101,7 +101,7 @@ class HomeView extends GetView<HomeController> {
                                       MaterialStateProperty.all(AppColors.blue),
                                   foregroundColor:
                                       MaterialStateProperty.all(Colors.white)),
-                              child: const Text('Yes'),
+                              child: Text('Yes'.tr),
                             ),
                             const Spacer(),
                             ElevatedButton(
@@ -113,7 +113,7 @@ class HomeView extends GetView<HomeController> {
                                       MaterialStateProperty.all(AppColors.blue),
                                   foregroundColor:
                                       MaterialStateProperty.all(Colors.white)),
-                              child: const Text('Cancel'),
+                              child: Text('Cancel'.tr),
                             ),
                           ]),
                         ],
