@@ -31,12 +31,35 @@ class HomeMenuView extends GetView<MenuController> {
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
+            Obx(() => Row(
+                  children: [
+                    const Text('English'),
+                    Switch(
+                      value: controller.isSwitched.value,
+                      onChanged: (value) {
+                        if (value) {
+                          var locale = const Locale('ar', 'AR');
+                          Get.updateLocale(locale);
+                          controller.isSwitched.value = true;
+                        } else {
+                          var locale = const Locale('en', 'EN');
+                          Get.updateLocale(locale);
+                          controller.isSwitched.value = false;
+                        }
+                      },
+                      activeTrackColor: AppColors.orange,
+                      activeColor: AppColors.orange,
+                    ),
+                    const Text('عربي'),
+                  ],
+                )),
             controller.auth.getTypeEnum() == Auth.user
                 ? viewPart(
                     (controller.auth.getDataFromStorage() as UserModel).name!,
                     (controller.auth.getDataFromStorage() as UserModel).image)
                 : const SizedBox.shrink(),
             buildCard(
+<<<<<<< HEAD
                 'Edit profil', Icons.edit, () => Get.to(EditProfilePage())),
             buildCard('Setting', Icons.settings,
                 () => Get.to(const SettingPageView())),
@@ -51,6 +74,16 @@ class HomeMenuView extends GetView<MenuController> {
               buildCard('Log out', Icons.logout, () {
              Get.to(const PermissionsPageView());
 =======
+=======
+                'Editprofil'.tr, Icons.edit, () => Get.to(EditProfilePage())),
+            buildCard('Setting'.tr, Icons.settings,
+                () => Get.rootDelegate.toNamed(Routes.SETTING_PAGE)),
+            //   buildCard('Report', AppIcons.trending_up, ()=> Get.to(() =>const ReportView())),
+            buildCard('Help'.tr, AppIcons.help_outline, () {
+              Get.to(const HelpPageeView());
+            }),
+            buildCard('Logout'.tr, Icons.logout, () {
+>>>>>>> 620b07e3a9add182ec6d9a38daa53f5351c42b28
               Get.dialog(AlertDialog(
                 content: Row(
                   children: const [

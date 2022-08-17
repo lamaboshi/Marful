@@ -44,25 +44,57 @@ class HelpPageeView extends GetView<HelpPageeController> {
           title: const Text('Help'),
           backgroundColor: AppColors.orange,
         ),
-        body: Column(
-          children: controller.help
-              .map((e) => Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Icon(
-                        Icons.help,
-                        color: AppColors.orange,
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: controller.help
+                .map((e) => Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Expanded(
+                              flex: 1,
+                              child: Padding(
+                                padding: const EdgeInsets.all(3),
+                                child: InkWell(
+                                  onTap: () {
+                                    Get.rootDelegate.offAndToNamed(e);
+                                  },
+                                  child: Chip(
+                                    backgroundColor: AppColors.orange,
+                                    label: Text(controller
+                                        .screen[controller.help.indexOf(e)].tr),
+                                  ),
+                                ),
+                              )),
+                          Expanded(
+                            flex: 4,
+                            child: Padding(
+                              padding: const EdgeInsets.all(5),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(
+                                      flex: 6,
+                                      child: Text(
+                                        e,
+                                        style: const TextStyle(
+                                          height: 2,
+                                        ),
+                                      )),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                      const SizedBox(
-                        width: 7,
-                      ),
-                      Text(
-                        e,
-                        style: const TextStyle(fontSize: 19),
-                      )
-                    ],
-                  ))
-              .toList(),
+                    ))
+                .toList(),
+          ),
         )
         // ListView.separated(
         //     padding: const EdgeInsets.all(15),

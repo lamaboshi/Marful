@@ -11,14 +11,17 @@ import '../modules/conversation_page/bindings/conversation_page_binding.dart';
 import '../modules/conversation_page/views/conversation_page_view.dart';
 import '../modules/firstsplash_page/bindings/firstSplash_binding.dart';
 import '../modules/firstsplash_page/views/firstSplash_view.dart';
-import '../modules/haya/bindings/haya_binding.dart';
-import '../modules/haya/views/hayaIntro.dart';
-import '../modules/haya/views/haya_view.dart';
 import '../modules/help_pagee/bindings/help_pagee_binding.dart';
 import '../modules/help_pagee/views/help_pagee_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/homeMain_page/bindings/homeMain_binding.dart';
+<<<<<<< HEAD
+=======
+import '../modules/homePost_page/bindings/homePost_binding.dart';
+import '../modules/homePost_page/views/homePost_view.dart';
+import '../modules/intro_page/view/intro_view.dart';
+>>>>>>> 620b07e3a9add182ec6d9a38daa53f5351c42b28
 import '../modules/menu/bindings/menu_binding.dart';
 import '../modules/menu/views/menu_view.dart';
 import '../modules/password_page/bindings/password_binding.dart';
@@ -69,6 +72,7 @@ class AppPages {
           ),
         ]),
     GetPage(
+<<<<<<< HEAD
       name: _Paths.HAYA,
       page: () => const HayaView(),
       bindings: [
@@ -77,6 +81,8 @@ class AppPages {
       ],
     ),
     GetPage(
+=======
+>>>>>>> 620b07e3a9add182ec6d9a38daa53f5351c42b28
       name: _Paths.SignIn,
       page: () => const SignInPage(),
       binding: SignInBinding(),
@@ -87,6 +93,7 @@ class AppPages {
       binding: FirstSplashBinding(),
     ),
     GetPage(
+<<<<<<< HEAD
       name: _Paths.HAYA,
       page: () => const HayaView(),
       bindings: [
@@ -95,6 +102,8 @@ class AppPages {
       ],
     ),
     GetPage(
+=======
+>>>>>>> 620b07e3a9add182ec6d9a38daa53f5351c42b28
       name: _Paths.Content,
       page: () => const ContentView(),
       binding: ContentBinding(),
