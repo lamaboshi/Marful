@@ -64,19 +64,7 @@ class SignInPage extends GetResponsiveView<SignInController> {
                             controller.email.value = value;
                           },
                         ),
-                        //////////passeword
-                        Obx(() {
-                          return TextFieldWidget(
-                            validator: controller.forceValue,
-                            type: TextInputType.visiblePassword,
-                            label: 'Passeword'.tr,
-                            hint: '***',
-                            obscureText: !controller.isShown.value,
-                            onChanged: (value) {
-                              controller.email.value = value;
-                            },
-                          );
-                        }),
+
                         //////////passeword
                         Obx(() {
                           return TextFieldWidget(
@@ -123,25 +111,6 @@ class SignInPage extends GetResponsiveView<SignInController> {
                         const SizedBox(
                           height: 80,
                         ),
-                        //btn Sign In
-                        ElevatedButton(
-                          style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(AppColors.blue),
-                              fixedSize: MaterialStateProperty.all(
-                                  const Size.fromWidth(150))),
-                          onPressed: () {
-                            if (controller.form.currentState!.validate()) {
-                              controller.logIn();
-                            }
-                          },
-                          child: Text(
-                            'ForgotYourPasswod'.tr,
-                            style: const TextStyle(
-                                fontSize: 15, color: Colors.grey),
-                          ),
-                        ),
-
                         const SizedBox(
                           height: 80,
                         ),

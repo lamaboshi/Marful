@@ -195,6 +195,7 @@ class HomeMainController extends GetxController {
     var res = await homeMainRepo.getPostWithContent(
         contentId.value, auth.personType(), getEmail());
     post.assignAll(res);
+    print('hooooooooooooooooooooooooooooooooooooooooooooo');
     loading.value = false;
   }
 

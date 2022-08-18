@@ -44,6 +44,7 @@ import '../modules/signUp_page/view/signUpInf_view.dart';
 import '../modules/signUp_page/view/signUpUser_view.dart';
 import '../modules/websit_company/bindings/websit_company_binding.dart';
 import '../modules/websit_company/views/websit_company_page.dart';
+
 part 'app_routes.dart';
 
 class AppPages {
@@ -60,7 +61,7 @@ class AppPages {
     ),
     GetPage(
         name: _Paths.Password,
-        page: () => PasswordPageView(),
+        page: () => const PasswordPageView(),
         binding: PasswordBinding(),
         children: [
           GetPage(
@@ -81,7 +82,7 @@ class AppPages {
     GetPage(
       name: _Paths.HAYA,
       page: () => const HayaView(),
-      bindings: [HayaBinding(), MenuBinding(), HomePostBinding()],
+      binding: HayaBinding(),
     ),
     GetPage(
       name: _Paths.Content,

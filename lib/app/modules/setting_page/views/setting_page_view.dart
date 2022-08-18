@@ -23,11 +23,11 @@ class SettingPageView extends GetView<SettingPageController> {
         child: Column(
           children: [
             controller.auth.getTypeEnum() != Auth.user
-                ? buildCard('Brand', Icons.settings,
+                ? buildCard('Brand'.tr, Icons.settings,
                     () => Get.rootDelegate.toNamed(Routes.BRAND_PAGE))
                 : const SizedBox.shrink(),
             controller.auth.getTypeEnum() != Auth.user
-                ? buildCard('Content', Icons.edit,
+                ? buildCard('Content'.tr, Icons.edit,
                     () => Get.rootDelegate.toNamed(Routes.Content))
                 : const SizedBox.shrink(),
             (controller.auth.getTypeEnum() == Auth.comapny &&
@@ -44,7 +44,7 @@ class SettingPageView extends GetView<SettingPageController> {
                     }));
                   }),
             controller.auth.getTypeEnum() == Auth.comapny
-                ? buildCard('Permission', AppIcons.trending_up, () {
+                ? buildCard('Permission'.tr, AppIcons.trending_up, () {
                     Get.rootDelegate.toNamed(Routes.PERMISSIONS_PAGE);
                   })
                 : const SizedBox.shrink(),

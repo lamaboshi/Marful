@@ -425,32 +425,27 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
     );
   }
 
-  Widget buildCircul(String name) => InkWell(
-        onTap: () {
-          controller.getPostsWithContent();
-        },
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            CircleAvatar(
-              backgroundColor: AppColors.blue,
-              radius: 42,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(50),
-                child: Image.asset(
-                  'assets/images/angryimg.png',
-                  height: 80,
-                  width: 80,
-                  fit: BoxFit.cover,
-                ),
+  Widget buildCircul(String name) => Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          CircleAvatar(
+            backgroundColor: AppColors.blue,
+            radius: 42,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(50),
+              child: Image.asset(
+                'assets/images/angryimg.png',
+                height: 80,
+                width: 80,
+                fit: BoxFit.cover,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(3),
-              child: Text(name),
-            ),
-          ],
-        ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(3),
+            child: Text(name),
+          ),
+        ],
       );
   Widget buildpost(int index) => Padding(
         padding: const EdgeInsets.all(5),
