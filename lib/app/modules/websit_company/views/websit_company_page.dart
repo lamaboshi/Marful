@@ -350,7 +350,11 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                                       )),
                                   IconButton(
                                       onPressed: () {
-                                        controller.count[index]--;
+                                        if(controller.count[index]>0){
+                                      controller.count[index]--;
+                                        }else{
+                                          controller.count[index]=0;
+                                        }
                                       },
                                       icon: const Icon(
                                         Icons.remove,
@@ -372,6 +376,7 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                                   controller.totle.value +=
                                       controller.allProduct[index].price! *
                                           controller.count[index];
+                                          Get.back();
                                 },
                                 icon: const Icon(
                                   Icons.done,
@@ -447,7 +452,7 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                                   children: [
                                     Text('price'.tr),
                                     Text(
-                                      '${product.price}\$',
+                                      '${product.price }\$'   ,
                                       style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: AppColors.orange),
@@ -460,6 +465,7 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                                           .contains(product)) {
                                         controller.allProduct.add(product);
                                         controller.count.add(1);
+
                                         controller.totle.value +=
                                             product.price!;
                                       }

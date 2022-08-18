@@ -76,9 +76,11 @@ PageViewModel interPage(context) {
     ///image
     titleWidget: Align(
         alignment: Alignment.topLeft,
-        child: Text(
-          'YouCanChooseAcountToSignUp'.tr,
-          style: const TextStyle(fontSize: 15),
+        child: Center(
+          child: Text(
+            'YouCanChooseAcountToSignUp'.tr,
+            style: const TextStyle(fontSize: 15),
+          ),
         )),
 
     ///text
@@ -189,7 +191,7 @@ PageViewModel interPage(context) {
 
 //inter Influncer page
 PageViewModel interInfluncerPage(context) {
-  final height = MediaQuery.of(context).size.height;
+  final height = MediaQuery.of(context).size.height/2;
   return PageViewModel(
     decoration: const PageDecoration(
       pageColor: Colors.white,
@@ -274,7 +276,7 @@ PageViewModel interInfluncerPage(context) {
 
 //inter company page
 PageViewModel interCompanyPage(context) {
-  final height = MediaQuery.of(context).size.height;
+  final height = MediaQuery.of(context).size.height/2;
   return PageViewModel(
     decoration: const PageDecoration(
       pageColor: Colors.white,
@@ -357,7 +359,7 @@ PageViewModel interCompanyPage(context) {
 
 //inter user page
 PageViewModel interUserPage(context) {
-  final height = MediaQuery.of(context).size.height;
+  final height = MediaQuery.of(context).size.height/2;
   return PageViewModel(
     decoration: const PageDecoration(
       pageColor: Colors.white,

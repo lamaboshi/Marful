@@ -15,7 +15,7 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
       body: SingleChildScrollView(
         child: Column(children: [
           SizedBox(
-              height: screen.height * 1 / 6,
+              height: screen.height  /5,
               child: Obx(
                 () => ListView.separated(
                   itemCount: controller.contents.length,
