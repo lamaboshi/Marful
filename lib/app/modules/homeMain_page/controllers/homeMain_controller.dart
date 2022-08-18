@@ -53,55 +53,6 @@ class HomeMainController extends GetxController {
     }
   }
 
-  Future<void> getComapnyByBrand(int index) async {
-    var data =
-        await homeMainRepo.getCompanyByBrandId(post[index].post!.brandId!);
-    getifHaveUserPost(post[index])
-        ? Get.rootDelegate.toNamed(Routes.WebsiteCompany, arguments: [
-            data.email!,
-            mainUserpost
-                .where((p0) => p0.postId == post[index].post!.id!)
-                .first
-                .id
-          ]
-            // controller.auth
-            //             .getTypeEnum() ==
-            //         Auth.user
-            //     ? controller.mainUserpost
-            //         .firstWhere((element) =>
-            //             element.postId ==
-            //             controller.post[index]
-            //                 .post!.id)
-            //         .id!
-            //     : controller.auth
-            //                 .getTypeEnum() ==
-            //             Auth.infulonser
-            //         ? controller.mainInfupost
-            //             .firstWhere((element) =>
-            //                 element.postId ==
-            //                 controller
-            //                     .post[index]
-            //                     .post!
-            //                     .id)
-            //             .id!
-            //         : null
-            )
-        : QPanel(
-            alignment: Alignment.topCenter,
-            duration: const Duration(seconds: 2),
-            child: const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                'Plase InterAction To Post',
-                style: TextStyle(fontSize: 25, color: AppColors.orange),
-              ),
-            )).show();
-    // html.window.open(
-    //   '${html.window.location.protocol}/#/WebsiteCompany',
-    //   'WebsiteCompany',
-    // );
-  }
-
   Future<void> getContentComapny() async {
     if (auth.getTypeEnum() == Auth.comapny) {
       var id = (auth.getDataFromStorage() as Company).id!;
@@ -192,6 +143,50 @@ class HomeMainController extends GetxController {
     if (res.isNotEmpty) {
       post.assignAll(res);
     }
+  }
+
+  Future<void> getCompanyByJob(int index) async {
+    var data = await homeMainRepo.getCompanyByJob(post[index].post!.jobId!);
+    getifHaveUserPost(post[index])
+        ? Get.rootDelegate.toNamed(Routes.WebsiteCompany, arguments: [
+            data.email!,
+            mainUserpost
+                .where((p0) => p0.postId == post[index].post!.id!)
+                .first
+                .id
+          ]
+            // controller.auth
+            //             .getTypeEnum() ==
+            //         Auth.user
+            //     ? controller.mainUserpost
+            //         .firstWhere((element) =>
+            //             element.postId ==
+            //             controller.post[index]
+            //                 .post!.id)
+            //         .id!
+            //     : controller.auth
+            //                 .getTypeEnum() ==
+            //             Auth.infulonser
+            //         ? controller.mainInfupost
+            //             .firstWhere((element) =>
+            //                 element.postId ==
+            //                 controller
+            //                     .post[index]
+            //                     .post!
+            //                     .id)
+            //             .id!
+            //         : null
+            )
+        : QPanel(
+            alignment: Alignment.topCenter,
+            duration: const Duration(seconds: 2),
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                'Plase InterAction To Post',
+                style: TextStyle(fontSize: 25, color: AppColors.orange),
+              ),
+            )).show();
   }
 
   Future<void> getPostsWithContent() async {

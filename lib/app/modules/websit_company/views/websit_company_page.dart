@@ -1,9 +1,8 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/websit_company/controllers/websit_company_controller.dart';
 import 'package:marful/app/modules/websit_company/data/model/Product.dart';
+import 'package:marful/app/routes/app_pages.dart';
 import 'package:marful/sheard/util.dart';
 import 'package:q_overlay/q_overlay.dart';
 
@@ -15,6 +14,7 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
 
   @override
   Widget builder() {
+    controller.getAll();
     var width = screen.width;
     var height = screen.height;
     return Obx(() => controller.loading.value
@@ -121,9 +121,14 @@ class WebsiteCompanyPage extends GetResponsiveView<WebsitcompanyController> {
                                         .image!),
                                     null,
                                     null)),
-                        const SizedBox(
-                          width: 30,
-                        ),
+                        IconButton(
+                            onPressed: () {
+                              Get.rootDelegate.offAndToNamed(Routes.HOME);
+                            },
+                            icon: const Icon(
+                              Icons.arrow_back,
+                              color: Colors.black,
+                            )),
                       ],
                     ),
                   ),

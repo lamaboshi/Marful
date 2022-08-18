@@ -23,7 +23,7 @@ class GetPost {
   bool? interaction;
   bool? noInteraction;
   Post? post;
-  int? idCompany;
+  String? idCompany;
   String? name;
   double? numberLike;
   double? numDislike;

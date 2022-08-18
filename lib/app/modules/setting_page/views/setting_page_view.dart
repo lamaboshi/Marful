@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/core/component/deleteDialog.dart';
-import 'package:marful/app/modules/permissions_page/views/permissions_page_view.dart';
 import 'package:marful/app/routes/app_pages.dart';
 
 import '../../../../sheard/auth_service.dart';
@@ -47,7 +46,6 @@ class SettingPageView extends GetView<SettingPageController> {
             controller.auth.getTypeEnum() == Auth.comapny
                 ? buildCard('Permission', AppIcons.trending_up, () {
                     Get.rootDelegate.toNamed(Routes.PERMISSIONS_PAGE);
-                    Get.to(const PermissionsPageView());
                   })
                 : const SizedBox.shrink(),
             Expanded(

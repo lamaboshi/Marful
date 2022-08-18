@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marful/app/routes/app_pages.dart';
 import 'package:marful/sheard/auth_service.dart';
 import 'package:marful/sheard/date_extation.dart';
 import 'package:marful/sheard/util.dart';
+import 'package:q_overlay/q_overlay.dart';
 
 import '../../../core/values/app_colors.dart';
 import '../../../core/values/my_flutter_app_icons.dart';
@@ -554,7 +556,58 @@ class HomeMainView extends GetResponsiveView<HomeMainController> {
                             controller.auth.getTypeEnum() == Auth.user
                                 ? IconButton(
                                     onPressed: () {
-                                      controller.getComapnyByBrand(index);
+                                      if (controller.post[index].post!.jobId !=
+                                          null) {
+                                        controller.getCompanyByJob(index);
+                                      } else if (controller
+                                              .post[index].idCompany !=
+                                          null) {
+                                        if (controller.getifHaveUserPost(
+                                            controller.post[index])) {
+                                          Get.rootDelegate.history.clear();
+                                          Get.rootDelegate.offAndToNamed(
+                                              Routes.WebsiteCompany,
+                                              arguments: [
+                                                controller
+                                                    .post[index].idCompany!,
+                                                controller.mainUserpost
+                                                    .where((p0) =>
+                                                        p0.postId ==
+                                                        controller.post[index]
+                                                            .post!.id!)
+                                                    .first
+                                                    .id
+                                              ]);
+                                        } else {
+                                          QPanel(
+                                              alignment: Alignment.topCenter,
+                                              duration:
+                                                  const Duration(seconds: 2),
+                                              child: const Padding(
+                                                padding: EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  'Plase InterAction To Post',
+                                                  style: TextStyle(
+                                                      fontSize: 25,
+                                                      color: AppColors.orange),
+                                                ),
+                                              )).show();
+                                        }
+                                      } else {
+                                        QPanel(
+                                                height: 25,
+                                                child: const Center(
+                                                    child: Text(
+                                                        'Donot Have Job',
+                                                        style: TextStyle(
+                                                            fontSize: 18,
+                                                            color:
+                                                                Colors.red))),
+                                                alignment: Alignment.topCenter,
+                                                duration:
+                                                    const Duration(seconds: 2))
+                                            .show();
+                                      }
                                     },
                                     icon: const Icon(
                                       AppIcons.basket,

@@ -206,6 +206,7 @@ class HomeMainRepositry extends IHomeMainRepository {
 
   @override
   Future<Company> getCompanyByJob(int idJob) async {
+    print(idJob);
     var result =
         await _dio.get('https://localhost:7192/api/Job/GetCompany/$idJob');
     if (result.statusCode == 200) {

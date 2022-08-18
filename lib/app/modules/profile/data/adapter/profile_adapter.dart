@@ -29,10 +29,16 @@ abstract class IProfailRepository {
   Future<bool> DeletcontentCompany(int idcontentComp, int idcomp);
   Future<bool> DeletPost(int idPost);
   Future<bool> UpdatePost(int idPost, Post post);
+
   Future<bool> adduserInfo(InfulonserUser infulonserUser);
   Future<bool> adduserCompany(UserCompany userCompany);
   Future<bool> addInfuFollowedInfu(InfulonserFollowInfulonser followInfulonser);
   Future<bool> addCompanyInfulonser(CompanyInfulonser companyInfulonser);
+
+  Future<bool> deleteuserInfo(int IdinfulonserUser);
+  Future<bool> deleteuserCompany(int IduserCompany);
+  Future<bool> deleteInfuFollowedInfu(int IdfollowInfulonser);
+  Future<bool> deleteCompanyInfulonser(int IdcompanyInfulonser);
 
   Future<InfulonserUser> getuserInfo(int userId);
   Future<UserCompany> getuserCompany(int userId);
