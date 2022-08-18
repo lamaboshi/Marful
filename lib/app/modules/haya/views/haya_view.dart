@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:marful/app/core/component/dialog.dart';
+import 'package:marful/app/modules/haya/views/hayaProfil.dart';
 import 'package:marful/app/modules/haya/views/hayamain.dart';
 
 import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
-import '../../homePost_page/views/homePost_view.dart';
-import '../../menu/views/menu_view.dart';
 import '../controllers/haya_controller.dart';
+import 'hayaSplash.dart';
 
 class HayaView extends GetView<HayaController> {
   const HayaView({Key? key}) : super(key: key);
@@ -23,7 +22,6 @@ class HayaView extends GetView<HayaController> {
             Tab(
               icon: Icon(Icons.home),
             ),
-           
             Tab(
               icon: Icon(Icons.person),
             ),
@@ -40,8 +38,8 @@ class HayaView extends GetView<HayaController> {
                 icon: const Icon(Icons.search)),
             IconButton(
                 onPressed: () {
-                  Get.dialog(const DialogWidget(),barrierDismissible: false);
-               //   Get.rootDelegate.toNamed(Routes.CONVERSATION_PAGE);
+                  Get.dialog(const DialogWidget(), barrierDismissible: false);
+                  //   Get.rootDelegate.toNamed(Routes.CONVERSATION_PAGE);
                 },
                 icon: const Icon(Icons.message))
           ],
@@ -49,10 +47,10 @@ class HayaView extends GetView<HayaController> {
         // drawer: MenuPage(),
         body: TabBarView(children: [
           //HomeMainView(),
-          HayaMain(),  HomeMenuView(),
+          const HayaMain(),
           //   PasswordPageView(),
-          //ProfilePage(),
-          HomeMenuView(),
+          ProfilePage(),
+          const HayaMenu(),
         ]),
       ),
     );

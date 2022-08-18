@@ -4,7 +4,6 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:marful/app/modules/haya/controllers/haya_controller.dart';
 
 import '../../../core/values/app_colors.dart';
-import '../../../core/values/h.dart';
 import '../../../core/values/my_flutter_app_icons.dart';
 
 class HayaMain extends GetView<HayaController> {

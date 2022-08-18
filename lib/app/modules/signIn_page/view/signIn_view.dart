@@ -7,17 +7,16 @@ import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
 
-class SignInPage extends GetView<SignInController> {
-  const SignInPage({Key? key}) : super(key: key);
+class SignInPage extends GetResponsiveView<SignInController> {
+  SignInPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
+  Widget builder() {
     return Scaffold(
       body: Stack(children: [
         //image
         Image(
-          height: height * 1.03 / 3,
+          height: screen.height * 1.03 / 3,
           fit: BoxFit.fill,
           image: const AssetImage(
             "assets/images/signin.png",
@@ -25,8 +24,8 @@ class SignInPage extends GetView<SignInController> {
         ),
         //card with signUp information
         Container(
-          padding: EdgeInsets.only(top: height * 0.93 / 3),
-          height: height * 4 / 3,
+          padding: EdgeInsets.only(top: screen.height * 0.93 / 3),
+          height: screen.height * 4 / 3,
           child: Card(
             elevation: 15,
             shape: const RoundedRectangleBorder(
@@ -47,7 +46,7 @@ class SignInPage extends GetView<SignInController> {
                         child: Text(
                           'SignIntoyouraccount'.tr,
                           textAlign: TextAlign.start,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 23, fontWeight: FontWeight.w500),
                         ),
                       ),
@@ -101,9 +100,10 @@ class SignInPage extends GetView<SignInController> {
                           onTap: () {
                             Get.rootDelegate.toNamed(Routes.Password);
                           },
-                          child:  Text(
+                          child: Text(
                             'ForgotYourPasswod'.tr,
-                            style: TextStyle(fontSize: 15, color: Colors.grey),
+                            style: const TextStyle(
+                                fontSize: 15, color: Colors.grey),
                           ),
                         ),
                       ),
@@ -118,11 +118,13 @@ class SignInPage extends GetView<SignInController> {
                             fixedSize: MaterialStateProperty.all(
                                 const Size.fromWidth(150))),
                         onPressed: () {
-                          controller.logIn();
+                          screen.isPhone
+                              ? Get.rootDelegate.offNamed(Routes.HAYA)
+                              : controller.logIn();
                         },
                         child: Text(
                           "signin".tr,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 18,
                             color: Colors.white,
                           ),
@@ -133,7 +135,7 @@ class SignInPage extends GetView<SignInController> {
                           Get.rootDelegate.toNamed(Routes.FirstSplash);
                         },
                         // ignore: sort_child_properties_last
-                        child:  Text('CreateYourAccount?'.tr),
+                        child: Text('CreateYourAccount?'.tr),
                         style: ButtonStyle(
                           foregroundColor:
                               MaterialStateProperty.all(Colors.black),
