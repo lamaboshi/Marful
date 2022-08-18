@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -13,11 +15,8 @@ import '../../../routes/app_pages.dart';
 import '../data/company_repo.dart';
 
 class SignUpController extends GetxController {
-  String? forceValue(dynamic value) {
-    if (value == null) {
-      return 'requird';
-    }
-    if (value is String && value.isEmpty) {
+  String? forceValue(String? value) {
+    if (value == null || value.isEmpty) {
       return 'requird';
     }
     return null;

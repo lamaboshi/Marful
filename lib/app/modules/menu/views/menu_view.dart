@@ -11,6 +11,7 @@ import '../../../../sheard/util.dart';
 import '../../../core/values/my_flutter_app_icons.dart';
 import '../../help_pagee/views/help_pagee_view.dart';
 import '../../profile/views/edit_profile.dart';
+import '../../setting_page/views/setting_page_view.dart';
 import '../controllers/menu_controller.dart';
 
 class HomeMenuView extends GetView<MenuController> {

@@ -1,7 +1,8 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:marful/app/core/values/app_colors.dart';
-
 import '../controllers/help_pagee_controller.dart';
 
 class EveryHelpPage extends GetView<HelpPageeController> {
@@ -19,15 +20,14 @@ class EveryHelpPage extends GetView<HelpPageeController> {
           children: [
             Positioned.fill(
               child: Opacity(
-                  opacity: 0.25,
-                  child: Image.asset('assets/images/Internship.gif')),
+                  opacity: .25,
+                  child: Image.asset('assets/images/Ambassador.gif')),
             ),
             Positioned.fill(
-              //   textDirection: TextDirection.ltr,
               top: 60,
               left: 30,
               right: 30,
-              child: Text(controller.help[controller.index.value],style: TextStyle(fontSize: 19),),
+              child: Text(controller.help[controller.index.value],style:const TextStyle(fontSize: 19),),
             )
           ],
         ));

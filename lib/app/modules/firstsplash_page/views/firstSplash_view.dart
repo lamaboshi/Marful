@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/firstsplash_page/controllers/firstSplash_controller.dart';
@@ -38,7 +40,7 @@ class FiestSplashView extends GetView<FirstSplashController> {
                                 color: AppColors.blue,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 45.0)),
-                                                                 ],
+                      ],
                     ),
                     const SizedBox(
                       height: 5,

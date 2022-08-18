@@ -1,5 +1,6 @@
-import 'package:get/get.dart';
+// ignore_for_file: file_names
 
+import 'package:get/get.dart';
 import '../../../routes/app_pages.dart';
 
 class FirstSplashController extends GetxController {
@@ -11,14 +12,9 @@ class FirstSplashController extends GetxController {
     opacity.value = 0.9;
     await Future.delayed(const Duration(seconds: 2), () {
       Get.rootDelegate.offNamed(Routes.Intro);
-      //  Get.to(IntroPage());
     });
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
   @override
   void onClose() {}

@@ -1,9 +1,8 @@
+// ignore_for_file: file_names
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signUp_page/controllers/signUp_controller.dart';
-import 'package:marful/sheard/util.dart';
-
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
 
@@ -41,22 +40,14 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                 child: Column(
                   children: [
                     Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Obx(
-                          () => ClipRRect(
-                            borderRadius: BorderRadius.circular(40),
-                            child: controller.stringPickImage.value.isEmpty
-                                ? Image.asset(
-                                    'assets/images/person.png',
-                                    height: 100,
-                                    width: 100,
-                                    fit: BoxFit.cover,
-                                  )
-                                : Utility.imageFromBase64String(
-                                    controller.stringPickImage.value, 100, 100),
-                          ),
-                        )),
-                    const SizedBox(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: CircleAvatar(
+                        radius: height * 80 / height,
+                        backgroundImage:
+                            const AssetImage('assets/images/person.png'),
+                      ),
+                    ),
+                    SizedBox(
                       height: 5,
                     ),
                     InkWell(
@@ -70,10 +61,12 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                     Container(
                       padding:
                           const EdgeInsets.only(left: 20, top: 10, right: 20),
-                      child: Column(
-                        children: [
+                      child: Form(
+                        key: controller.companyForm,
+                        child: Column(children: [
                           //Name
                           TextFieldWidget(
+                            validator: controller.forceValue,
                             obscureText: false,
                             onChanged: (value) {
                               controller.company.value.name = value;
@@ -86,6 +79,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
 
                           //Phone
                           TextFieldWidget(
+                            validator: controller.forceValue,
                             obscureText: false,
                             onChanged: (value) {
                               controller.company.value.phone = value;
@@ -98,6 +92,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
 
                           //TelePhone
                           TextFieldWidget(
+                            validator: controller.forceValue,
                             obscureText: false,
                             onChanged: (value) {
                               controller.company.value.telePhone = value;
@@ -108,9 +103,21 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                             prefIcon: Icons.phone,
                           ),
 
-                          ///Description
+                          //TelePhone
+                          TextFieldWidget(
+                            validator: controller.forceValue,
+                            obscureText: false,
+                            onChanged: (value) {
+                              controller.company.value.telePhone = value;
+                            },
+                            type: TextInputType.number,
+                            label: 'TelePhone',
+                            hint: "5225356",
+                            prefIcon: Icons.phone,
+                          ),
 
                           TextFieldWidget(
+                            validator: controller.forceValue,
                             obscureText: false,
                             onChanged: (value) {
                               controller.company.value.description = value;
@@ -123,6 +130,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
 
                           //Address
                           TextFieldWidget(
+                            validator: controller.forceValue,
                             obscureText: false,
                             onChanged: (value) {
                               controller.company.value.address = value;
@@ -135,6 +143,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
 
                           //Email
                           TextFieldWidget(
+                            validator: controller.forceValue,
                             obscureText: false,
                             onChanged: (value) {
                               controller.company.value.email = value;
@@ -148,6 +157,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                           ////////Passeword
                           Obx(() {
                             return TextFieldWidget(
+                              validator: controller.forceValue,
                               onChanged: (value) {
                                 controller.company.value.password = value;
                               },
@@ -155,6 +165,7 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                               type: TextInputType.visiblePassword,
                               label: 'Passeword'.tr,
                               hint: "***",
+                              prefIcon: Icons.key,
                               suffixIcon: IconButton(
                                 onPressed: () {
                                   controller.isShownCompany.value =
@@ -167,7 +178,6 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                                   color: Colors.black,
                                 ),
                               ),
-                              prefIcon: Icons.key,
                             );
                           }),
                           const SizedBox(
@@ -180,57 +190,60 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                                 fixedSize: MaterialStateProperty.all(
                                     const Size.fromWidth(150))),
                             onPressed: () async {
-                              Get.dialog(AlertDialog(
-                                content: Row(
-                                  children: [
-                                    const Icon(
-                                      Icons.info_outlined,
-                                      color: AppColors.orange,
-                                    ),
-                                    const SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text('AreyousurewanttoSaveYourData'.tr),
+                              if (controller.companyForm.currentState!
+                                  .validate()) {
+                                Get.dialog(AlertDialog(
+                                  content: Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.info_outlined,
+                                        color: AppColors.orange,
+                                      ),
+                                      const SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text('AreyousurewanttoSaveYourData'.tr),
+                                    ],
+                                  ),
+                                  contentPadding:
+                                      const EdgeInsets.fromLTRB(20, 20, 20, 10),
+                                  actionsPadding:
+                                      const EdgeInsets.fromLTRB(15, 10, 15, 20),
+                                  actions: [
+                                    Row(children: [
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          controller.isSaveData.value = true;
+                                          controller.signUpCompany();
+                                        },
+                                        style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                                    AppColors.blue),
+                                            foregroundColor:
+                                                MaterialStateProperty.all(
+                                                    Colors.white)),
+                                        child: Text('Yes'.tr),
+                                      ),
+                                      const Spacer(),
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          controller.isSaveData.value = false;
+                                          controller.signUpCompany();
+                                        },
+                                        style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                                    AppColors.blue),
+                                            foregroundColor:
+                                                MaterialStateProperty.all(
+                                                    Colors.white)),
+                                        child: Text('Cancel'.tr),
+                                      ),
+                                    ]),
                                   ],
-                                ),
-                                contentPadding:
-                                    const EdgeInsets.fromLTRB(20, 20, 20, 10),
-                                actionsPadding:
-                                    const EdgeInsets.fromLTRB(15, 10, 15, 20),
-                                actions: [
-                                  Row(children: [
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        controller.isSaveData.value = true;
-                                        controller.signUpCompany();
-                                      },
-                                      style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all(
-                                                  AppColors.blue),
-                                          foregroundColor:
-                                              MaterialStateProperty.all(
-                                                  Colors.white)),
-                                      child: Text('Yes'.tr),
-                                    ),
-                                    const Spacer(),
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        controller.isSaveData.value = false;
-                                        controller.signUpCompany();
-                                      },
-                                      style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all(
-                                                  AppColors.blue),
-                                          foregroundColor:
-                                              MaterialStateProperty.all(
-                                                  Colors.white)),
-                                      child: Text('Cancel'.tr),
-                                    ),
-                                  ]),
-                                ],
-                              ));
+                                ));
+                              }
                             },
                             child: Text(
                               "SignUp".tr,
@@ -239,13 +252,13 @@ class SignUpCompanyPage extends GetView<SignUpController> {
                                 color: Colors.white,
                               ),
                             ),
+                            //  SizedBox(
+                            //   height: 40,
+                            // ),
                           ),
-                          const SizedBox(
-                            height: 40,
-                          ),
-                        ],
+                        ]),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

@@ -38,67 +38,102 @@ class SignInPage extends GetResponsiveView<SignInController> {
               child: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: Column(
-                    children: [
-                      //Sign In to your account
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          'SignIntoyouraccount'.tr,
-                          textAlign: TextAlign.start,
-                          style: const TextStyle(
-                              fontSize: 23, fontWeight: FontWeight.w500),
+                  child: Form(
+                    key: controller.form,
+                    child: Column(
+                      children: [
+                        //Sign In to your account
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            'SignIntoyouraccount'.tr,
+                            textAlign: TextAlign.start,
+                            style: const TextStyle(
+                                fontSize: 23, fontWeight: FontWeight.w500),
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-
-                      //Email
-                      TextFieldWidget(
-                        obscureText: false,
-                        type: TextInputType.emailAddress,
-                        label: 'Email'.tr,
-                        hint: "hy@gmail.com",
-                        prefIcon: Icons.email,
-                        onChanged: (value) {
-                          controller.email.value = value;
-                        },
-                      ),
-                      //////////passeword
-                      Obx(() {
-                        return TextFieldWidget(
-                          type: TextInputType.visiblePassword,
-                          label: 'Passeword'.tr,
-                          hint: '***',
-                          obscureText: !controller.isShown.value,
+                        //Email
+                        TextFieldWidget(
+                          validator: controller.forceValue,
+                          obscureText: false,
+                          type: TextInputType.emailAddress,
+                          label: 'Email'.tr,
+                          hint: "hy@gmail.com",
+                          prefIcon: Icons.email,
                           onChanged: (value) {
-                            controller.password.value = value;
+                            controller.email.value = value;
                           },
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              controller.isShown.value =
-                                  !controller.isShown.value;
+                        ),
+                        //////////passeword
+                        Obx(() {
+                          return TextFieldWidget(
+                            validator: controller.forceValue,
+                            type: TextInputType.visiblePassword,
+                            label: 'Passeword'.tr,
+                            hint: '***',
+                            obscureText: !controller.isShown.value,
+                            onChanged: (value) {
+                              controller.email.value = value;
                             },
-                            icon: Icon(
-                              controller.isShown.value
-                                  ? Icons.remove_red_eye
-                                  : CupertinoIcons.eye_slash_fill,
-                              color: Colors.black,
+                          );
+                        }),
+                        //////////passeword
+                        Obx(() {
+                          return TextFieldWidget(
+                            validator: controller.forceValue,
+                            type: TextInputType.visiblePassword,
+                            label: 'Passeword',
+                            hint: '***',
+                            obscureText: !controller.isShown.value,
+                            onChanged: (value) {
+                              controller.password.value = value;
+                            },
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                controller.isShown.value =
+                                    !controller.isShown.value;
+                              },
+                              icon: Icon(
+                                controller.isShown.value
+                                    ? Icons.remove_red_eye
+                                    : CupertinoIcons.eye_slash_fill,
+                                color: Colors.black,
+                              ),
+                            ),
+                            prefIcon: Icons.key,
+                          );
+                        }),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        //Forgot Your Passeword?
+                        Align(
+                          alignment: Alignment.topRight,
+                          child: InkWell(
+                            onTap: () {
+                              Get.rootDelegate.toNamed(Routes.Password);
+                            },
+                            child: const Text(
+                              'Forgot Your Passeword?',
+                              style:
+                                  TextStyle(fontSize: 15, color: Colors.grey),
                             ),
                           ),
-                          prefIcon: Icons.key,
-                        );
-                      }),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      //Forgot Your Passeword?
-                      Align(
-                        alignment: Alignment.topRight,
-                        child: InkWell(
-                          onTap: () {
-                            Get.rootDelegate.toNamed(Routes.Password);
+                        ),
+                        const SizedBox(
+                          height: 80,
+                        ),
+                        //btn Sign In
+                        ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(AppColors.blue),
+                              fixedSize: MaterialStateProperty.all(
+                                  const Size.fromWidth(150))),
+                          onPressed: () {
+                            if (controller.form.currentState!.validate()) {
+                              controller.logIn();
+                            }
                           },
                           child: Text(
                             'ForgotYourPasswod'.tr,
@@ -106,45 +141,43 @@ class SignInPage extends GetResponsiveView<SignInController> {
                                 fontSize: 15, color: Colors.grey),
                           ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 80,
-                      ),
-                      //btn Sign In
-                      ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(AppColors.blue),
-                            fixedSize: MaterialStateProperty.all(
-                                const Size.fromWidth(150))),
-                        onPressed: () {
-                          screen.isPhone
-                              ? Get.rootDelegate.offNamed(Routes.HAYA)
-                              : controller.logIn();
-                        },
-                        child: Text(
-                          "signin".tr,
-                          style: const TextStyle(
-                            fontSize: 18,
-                            color: Colors.white,
+
+                        const SizedBox(
+                          height: 80,
+                        ),
+                        //btn Sign In
+                        ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(AppColors.blue),
+                              fixedSize: MaterialStateProperty.all(
+                                  const Size.fromWidth(150))),
+                          onPressed: () {
+                            if (controller.form.currentState!.validate()) {
+                              controller.logIn();
+                            }
+                          },
+                          child: Text(
+                            "signin".tr,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Get.rootDelegate.toNamed(Routes.FirstSplash);
-                        },
-                        // ignore: sort_child_properties_last
-                        child: Text('CreateYourAccount?'.tr),
-                        style: ButtonStyle(
-                          foregroundColor:
-                              MaterialStateProperty.all(Colors.black),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 70,
-                      ),
-                    ],
+                        TextButton(
+                          onPressed: () {
+                            Get.rootDelegate.toNamed(Routes.FirstSplash);
+                          },
+                          // ignore: sort_child_properties_last
+                          child: Text('CreateYourAccount?'.tr),
+                          style: ButtonStyle(
+                            foregroundColor:
+                                MaterialStateProperty.all(Colors.black),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
