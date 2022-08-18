@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:marful/app/core/component/deleteDialog.dart';
 import 'package:marful/app/routes/app_pages.dart';
 import 'package:marful/sheard/util.dart';
-
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
 import '../controllers/brand_page_controller.dart';
@@ -84,34 +83,7 @@ class BrandPageView extends GetResponsiveView<BrandPageController> {
                           const SizedBox(
                             height: 20,
                           ),
-                          // ExpansionTile(
-                          //   title: const Text('Choose content'),
-                          //   leading: const Icon(Icons.menu),
-                          //   tilePadding: const EdgeInsets.all(0),
-                          //   childrenPadding: const EdgeInsets.all(0),
-                          //   children: [
-                          //     for (var item in brand)
-                          //       Padding(
-                          //         padding: const EdgeInsets.fromLTRB(3, 10, 0, 0),
-                          //         child: InkWell(
-                          //           onTap: () {},
-                          //           child: Column(
-                          //             crossAxisAlignment:
-                          //                 CrossAxisAlignment.start,
-                          //             children: [
-                          //               Text(item),
-                          //               const SizedBox(
-                          //                 height: 5,
-                          //               ),
-                          //               const Divider(),
-                          //             ],
-                          //           ),
-                          //         ),
-                          //       ),
-                          //   ],
-                          // ),
-
-                          Align(
+                         Align(
                             alignment: Alignment.center,
                             child: ElevatedButton(
                               onPressed: () {
@@ -128,20 +100,6 @@ class BrandPageView extends GetResponsiveView<BrandPageController> {
                           const SizedBox(
                             height: 30,
                           ),
-                          // Align(
-                          //   alignment: Alignment.topRight,
-                          //   child: FloatingActionButton.extended(
-                          //   //  heroTag: 'uniqueTag',
-                          //     backgroundColor: AppColors.orange,
-                          //     label: Row(
-                          //       children: const [Icon(Icons.close), Text('close')],
-                          //     ),
-                          //     //      const Icon(Icons.close),
-                          //     onPressed: () {
-                          //       Get.back();
-                          //     },
-                          //   ),
-                          // ),
                         ],
                       ),
                     ),
@@ -156,6 +114,7 @@ class BrandPageView extends GetResponsiveView<BrandPageController> {
                 height: screen.height / 12,
                 child: Obx(
                   () => ListView.separated(
+              physics: const BouncingScrollPhysics(),
                     itemCount: controller.contents.length,
                     scrollDirection: Axis.horizontal,
                     padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),

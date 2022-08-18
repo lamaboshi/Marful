@@ -1,9 +1,10 @@
+// ignore_for_file: file_names
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/signUp_page/controllers/signUp_controller.dart';
+import 'package:q_overlay/q_overlay.dart';
 
-import '../../../../sheard/util.dart';
 import '../../../core/component/textField.dart';
 import '../../../core/values/app_colors.dart';
 
@@ -41,21 +42,13 @@ class SignUpUserPage extends GetView<SignUpController> {
                 child: Column(
                   children: [
                     Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Obx(
-                          () => ClipRRect(
-                            borderRadius: BorderRadius.circular(40),
-                            child: controller.stringPickImage.value.isEmpty
-                                ? Image.asset(
-                                    'assets/images/person.png',
-                                    height: 100,
-                                    width: 100,
-                                    fit: BoxFit.cover,
-                                  )
-                                : Utility.imageFromBase64String(
-                                    controller.stringPickImage.value, 100, 100),
-                          ),
-                        )),
+                      padding: const EdgeInsets.only(top: 10),
+                      child: CircleAvatar(
+                        radius: height * 80 / height,
+                        backgroundImage:
+                            const AssetImage('assets/images/person.png'),
+                      ),
+                    ),
                     const SizedBox(
                       height: 5,
                     ),
@@ -83,6 +76,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                               type: TextInputType.name,
                               label: 'Name'.tr,
                               hint: "Haya Eid",
+                              validator: controller.forceValue,
                               prefIcon: Icons.person,
                             ),
                             //UserName
@@ -95,6 +89,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                               label: 'UserName'.tr,
                               hint: "Haya ",
                               prefIcon: Icons.person,
+                              validator: controller.forceValue,
                             ),
                             //Age
                             TextFieldWidget(
@@ -106,6 +101,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                               label: 'Age'.tr,
                               hint: "21 ",
                               prefIcon: Icons.description,
+                              validator: controller.forceValue,
                             ),
                             //Phone
                             TextFieldWidget(
@@ -117,6 +113,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                               label: 'PhoneNumber'.tr,
                               hint: "099717424666 ",
                               prefIcon: Icons.phone,
+                              validator: controller.forceValue,
                             ),
                             //address
                             TextFieldWidget(
@@ -128,6 +125,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                               label: 'location'.tr,
                               hint: "aleppo ",
                               prefIcon: Icons.location_on,
+                              validator: controller.forceValue,
                             ),
                             //PayBal
                             TextFieldWidget(
@@ -139,6 +137,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                               label: 'PayBal'.tr,
                               hint: "hsd235dfgdf ",
                               prefIcon: Icons.paypal,
+                              validator: controller.forceValue,
                             ),
 
                             //Email
@@ -151,6 +150,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                               label: 'Email'.tr,
                               hint: "hy@gmail.com ",
                               prefIcon: Icons.email,
+                              validator: controller.forceValue,
                             ),
                             ////////Passeword
                             Obx(() {
@@ -175,6 +175,7 @@ class SignUpUserPage extends GetView<SignUpController> {
                                   ),
                                 ),
                                 prefIcon: Icons.key,
+                                validator: controller.forceValue,
                               );
                             }),
                             const SizedBox(
@@ -187,57 +188,81 @@ class SignUpUserPage extends GetView<SignUpController> {
                                   fixedSize: MaterialStateProperty.all(
                                       const Size.fromWidth(150))),
                               onPressed: () async {
-                                Get.dialog(AlertDialog(
-                                  content: Row(
-                                    children: [
-                                      const Icon(
-                                        Icons.info_outlined,
-                                        color: AppColors.orange,
-                                      ),
-                                      const SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text('AreyousurewanttoSaveYourData'.tr),
+                                if (controller.userForm.currentState!
+                                    .validate()) {
+                                  Get.dialog(AlertDialog(
+                                    content: Row(
+                                      children: [
+                                        const Icon(
+                                          Icons.info_outlined,
+                                          color: AppColors.orange,
+                                        ),
+                                        const SizedBox(
+                                          width: 5,
+                                        ),
+                                        Text('AreyousurewanttoSaveYourData'.tr),
+                                      ],
+                                    ),
+                                    contentPadding: const EdgeInsets.fromLTRB(
+                                        20, 20, 20, 10),
+                                    actionsPadding: const EdgeInsets.fromLTRB(
+                                        15, 10, 15, 20),
+                                    actions: [
+                                      Row(children: [
+                                        ElevatedButton(
+                                          onPressed: () async {
+                                            controller.isSaveData.value = true;
+                                            controller.signUpUser();
+                                          },
+                                          style: ButtonStyle(
+                                              backgroundColor:
+                                                  MaterialStateProperty.all(
+                                                      AppColors.blue),
+                                              foregroundColor:
+                                                  MaterialStateProperty.all(
+                                                      Colors.white)),
+                                          child: Text('Yes'.tr),
+                                        ),
+                                        const Spacer(),
+                                        ElevatedButton(
+                                          onPressed: () async {
+                                            controller.isSaveData.value = false;
+                                            if (controller.user.value.age! >
+                                                    1 &&
+                                                controller.user.value.age! <
+                                                    100) {
+                                              QPanel(
+                                                      duration: const Duration(
+                                                          seconds: 2),
+                                                      child: const Center(
+                                                        child: Text(
+                                                          'pelase Enter Your Really Age',
+                                                          style: TextStyle(
+                                                              fontSize: 18,
+                                                              color:
+                                                                  Colors.red),
+                                                        ),
+                                                      ),
+                                                      alignment:
+                                                          Alignment.topCenter)
+                                                  .show();
+                                            } else {
+                                              controller.signUpUser();
+                                            }
+                                          },
+                                          style: ButtonStyle(
+                                              backgroundColor:
+                                                  MaterialStateProperty.all(
+                                                      AppColors.blue),
+                                              foregroundColor:
+                                                  MaterialStateProperty.all(
+                                                      Colors.white)),
+                                          child: Text('Cancel'.tr),
+                                        ),
+                                      ]),
                                     ],
-                                  ),
-                                  contentPadding:
-                                      const EdgeInsets.fromLTRB(20, 20, 20, 10),
-                                  actionsPadding:
-                                      const EdgeInsets.fromLTRB(15, 10, 15, 20),
-                                  actions: [
-                                    Row(children: [
-                                      ElevatedButton(
-                                        onPressed: () async {
-                                          controller.isSaveData.value = true;
-                                          controller.signUpUser();
-                                        },
-                                        style: ButtonStyle(
-                                            backgroundColor:
-                                                MaterialStateProperty.all(
-                                                    AppColors.blue),
-                                            foregroundColor:
-                                                MaterialStateProperty.all(
-                                                    Colors.white)),
-                                        child: Text('Yes'.tr),
-                                      ),
-                                      const Spacer(),
-                                      ElevatedButton(
-                                        onPressed: () async {
-                                          controller.isSaveData.value = false;
-                                          controller.signUpUser();
-                                        },
-                                        style: ButtonStyle(
-                                            backgroundColor:
-                                                MaterialStateProperty.all(
-                                                    AppColors.blue),
-                                            foregroundColor:
-                                                MaterialStateProperty.all(
-                                                    Colors.white)),
-                                        child: Text('Cancel'.tr),
-                                      ),
-                                    ]),
-                                  ],
-                                ));
+                                  ));
+                                }
                               },
                               child: Text(
                                 "SignUp".tr,

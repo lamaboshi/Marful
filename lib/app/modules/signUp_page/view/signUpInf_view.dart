@@ -1,3 +1,4 @@
+// ignore_for_file: file_names
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -55,7 +56,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                                     controller.stringPickImage.value, 100, 100),
                           ),
                         )),
-                    const SizedBox(
+                    SizedBox(
                       height: 5,
                     ),
                     InkWell(
@@ -69,10 +70,12 @@ class SignUpInfluencer extends GetView<SignUpController> {
                     Container(
                       padding:
                           const EdgeInsets.only(left: 20, top: 10, right: 20),
-                      child: Column(
-                        children: [
+                      child: Form(
+                        key: controller.influencerForm,
+                        child: Column(children: [
                           //Name
                           TextFieldWidget(
+                            validator: controller.forceValue,
                             obscureText: false,
                             onChanged: (value) {
                               controller.influencer.value.name = value;
@@ -84,6 +87,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           ),
                           //UserName
                           TextFieldWidget(
+                            validator: controller.forceValue,
                             obscureText: false,
                             onChanged: (value) {
                               controller.influencer.value.userName = value;
@@ -95,6 +99,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           ),
                           //Description
                           TextFieldWidget(
+                            validator: controller.forceValue,
                             obscureText: false,
                             onChanged: (value) {
                               controller.influencer.value.description = value;
@@ -106,6 +111,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           ),
                           //Phone
                           TextFieldWidget(
+                            validator: controller.forceValue,
                             obscureText: false,
                             onChanged: (value) {
                               controller.influencer.value.phone = value;
@@ -117,6 +123,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           ),
                           //address
                           TextFieldWidget(
+                            validator: controller.forceValue,
                             obscureText: false,
                             onChanged: (value) {
                               controller.influencer.value.address = value;
@@ -128,6 +135,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           ),
                           //PayBal
                           TextFieldWidget(
+                            validator: controller.forceValue,
                             obscureText: false,
                             onChanged: (value) {
                               controller.influencer.value.paypal = value;
@@ -139,6 +147,7 @@ class SignUpInfluencer extends GetView<SignUpController> {
                           ),
                           //Email
                           TextFieldWidget(
+                            validator: controller.forceValue,
                             obscureText: false,
                             onChanged: (value) {
                               controller.influencer.value.email = value;
@@ -149,8 +158,10 @@ class SignUpInfluencer extends GetView<SignUpController> {
                             prefIcon: Icons.email,
                           ),
                           ////////Passeword
+
                           Obx(() {
                             return TextFieldWidget(
+                              validator: controller.forceValue,
                               onChanged: (value) {
                                 controller.influencer.value.password = value;
                               },
@@ -173,6 +184,9 @@ class SignUpInfluencer extends GetView<SignUpController> {
                               prefIcon: Icons.key,
                             );
                           }),
+
+                          //
+
                           const SizedBox(
                             height: 40,
                           ),
@@ -183,57 +197,60 @@ class SignUpInfluencer extends GetView<SignUpController> {
                                 fixedSize: MaterialStateProperty.all(
                                     const Size.fromWidth(150))),
                             onPressed: () async {
-                              Get.dialog(AlertDialog(
-                                content: Row(
-                                  children: [
-                                    const Icon(
-                                      Icons.info_outlined,
-                                      color: AppColors.orange,
-                                    ),
-                                    const SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text('AreyousurewanttoSaveYourData'.tr),
+                              if (controller.influencerForm.currentState!
+                                  .validate()) {
+                                Get.dialog(AlertDialog(
+                                  content: Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.info_outlined,
+                                        color: AppColors.orange,
+                                      ),
+                                      const SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text('AreyousurewanttoSaveYourData'.tr),
+                                    ],
+                                  ),
+                                  contentPadding:
+                                      const EdgeInsets.fromLTRB(20, 20, 20, 10),
+                                  actionsPadding:
+                                      const EdgeInsets.fromLTRB(15, 10, 15, 20),
+                                  actions: [
+                                    Row(children: [
+                                      ElevatedButton(
+                                        onPressed: () async {
+                                          controller.isSaveData.value = true;
+                                          await controller.signUpInfluencer();
+                                        },
+                                        style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                                    AppColors.blue),
+                                            foregroundColor:
+                                                MaterialStateProperty.all(
+                                                    Colors.white)),
+                                        child: Text('Yes'.tr),
+                                      ),
+                                      const Spacer(),
+                                      ElevatedButton(
+                                        onPressed: () async {
+                                          controller.isSaveData.value = false;
+                                          await controller.signUpInfluencer();
+                                        },
+                                        style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                                    AppColors.blue),
+                                            foregroundColor:
+                                                MaterialStateProperty.all(
+                                                    Colors.white)),
+                                        child: Text('Cancel'.tr),
+                                      ),
+                                    ]),
                                   ],
-                                ),
-                                contentPadding:
-                                    const EdgeInsets.fromLTRB(20, 20, 20, 10),
-                                actionsPadding:
-                                    const EdgeInsets.fromLTRB(15, 10, 15, 20),
-                                actions: [
-                                  Row(children: [
-                                    ElevatedButton(
-                                      onPressed: () async {
-                                        controller.isSaveData.value = true;
-                                        await controller.signUpInfluencer();
-                                      },
-                                      style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all(
-                                                  AppColors.blue),
-                                          foregroundColor:
-                                              MaterialStateProperty.all(
-                                                  Colors.white)),
-                                      child: Text('Yes'.tr),
-                                    ),
-                                    const Spacer(),
-                                    ElevatedButton(
-                                      onPressed: () async {
-                                        controller.isSaveData.value = false;
-                                        await controller.signUpInfluencer();
-                                      },
-                                      style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all(
-                                                  AppColors.blue),
-                                          foregroundColor:
-                                              MaterialStateProperty.all(
-                                                  Colors.white)),
-                                      child: Text('Cancel'.tr),
-                                    ),
-                                  ]),
-                                ],
-                              ));
+                                ));
+                              }
                             },
                             child: Text(
                               "SignUp".tr,
@@ -242,13 +259,13 @@ class SignUpInfluencer extends GetView<SignUpController> {
                                 color: Colors.white,
                               ),
                             ),
+                            //  SizedBox(
+                            //   height: 40,
+                            // ),
                           ),
-                          const SizedBox(
-                            height: 40,
-                          ),
-                        ],
+                        ]),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

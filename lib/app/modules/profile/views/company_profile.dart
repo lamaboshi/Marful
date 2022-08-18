@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marful/sheard/auth_service.dart';
 import 'package:q_overlay/q_overlay.dart';
 
 import '../../../core/values/app_colors.dart';
@@ -25,12 +25,17 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                     SizedBox(width: screen.width / 6),
                     ElevatedButton(
                       style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(AppColors.blue),
+                          backgroundColor: !controller.hasFollowed.value
+                              ? MaterialStateProperty.all(AppColors.blue)
+                              : MaterialStateProperty.all(AppColors.orange),
                           fixedSize: MaterialStateProperty.all(
                               const Size.fromWidth(150))),
                       onPressed: () {
-                        controller.addFollow(controller.typeAuth.value);
+                        if (controller.hasFollowed.value) {
+                          controller.deleteFollow(controller.typeAuth.value);
+                        } else {
+                          controller.addFollow(controller.typeAuth.value);
+                        }
                       },
                       child: Text(
                         "CmpProfileFollow".tr,
@@ -43,21 +48,23 @@ class CompanyProfilePage extends GetResponsiveView<ProfileController> {
                     const SizedBox(
                       width: 18,
                     ),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.white),
-                          fixedSize: MaterialStateProperty.all(
-                              const Size.fromWidth(150))),
-                      onPressed: () {},
-                      child: Text(
-                        "CmpProfileMessage".tr,
-                        style: const TextStyle(
-                          fontSize: 18,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
+                    controller.auth.getTypeEnum() == Auth.user
+                        ? const SizedBox.shrink()
+                        : ElevatedButton(
+                            style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all(Colors.white),
+                                fixedSize: MaterialStateProperty.all(
+                                    const Size.fromWidth(150))),
+                            onPressed: () {},
+                            child: Text(
+                              "CmpProfileMessage".tr,
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
                   ],
                 ),
               )

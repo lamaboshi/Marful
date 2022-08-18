@@ -279,4 +279,32 @@ class ProfailRepository extends IProfailRepository {
       return CompanyInfulonser();
     }
   }
+
+  @override
+  Future<bool> deleteCompanyInfulonser(int IdcompanyInfulonser) async {
+    var result = await _dio.delete(
+        'https://localhost:7192/api/CompanyInfulonser/$IdcompanyInfulonser');
+    return result.statusCode == 200;
+  }
+
+  @override
+  Future<bool> deleteInfuFollowedInfu(int IdfollowInfulonser) async {
+    var result = await _dio.delete(
+        'https://localhost:7192/api/InfulonserFollowInfulonser/$IdfollowInfulonser');
+    return result.statusCode == 200;
+  }
+
+  @override
+  Future<bool> deleteuserCompany(int IduserCompany) async {
+    var result = await _dio
+        .delete('https://localhost:7192/api/UserCompany/Delete/$IduserCompany');
+    return result.statusCode == 200;
+  }
+
+  @override
+  Future<bool> deleteuserInfo(int IdinfulonserUser) async {
+    var result = await _dio.delete(
+        'https://localhost:7192/api/InfulonserUser/Delete/$IdinfulonserUser');
+    return result.statusCode == 200;
+  }
 }

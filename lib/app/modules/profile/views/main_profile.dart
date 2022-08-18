@@ -20,10 +20,11 @@ class MainProfile extends GetView<ProfileController> {
   Widget build(BuildContext context) {
     if (type != null) {
       controller.typeAuth.value = type!;
+      controller.mainId.value = id!;
       if (controller.typeAuth.value == Auth.infulonser) {
-        controller.getInfoType(id!);
+        controller.getInfoType(id!, type!);
       } else if (controller.typeAuth.value == Auth.comapny) {
-        controller.getcompanyType(id!);
+        controller.getcompanyType(id!, type!);
       }
     }
     switch (controller.typeAuth.value) {

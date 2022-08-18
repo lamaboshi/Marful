@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:q_overlay/q_overlay.dart';
-
 import '../../../core/values/app_colors.dart';
 import '../controllers/password_controller.dart';
 

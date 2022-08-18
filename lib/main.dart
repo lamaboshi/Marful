@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       key: key,
       debugShowCheckedModeBanner: false,
       translations: AppTranslation(),
-      locale: const Locale('ar', 'AR'),
+      locale: const Locale('en', 'EN'),
       defaultTransition: Transition.cupertino,
       getPages: AppPages.routes,
       enableLog: true,

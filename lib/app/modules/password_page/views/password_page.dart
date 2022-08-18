@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marful/app/modules/password_page/controllers/password_controller.dart';
-
 import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
 
 class PasswordPageView extends GetView<PasswordController> {
+  const PasswordPageView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -46,14 +47,14 @@ class PasswordPageView extends GetView<PasswordController> {
                     height: height / 2.3,
                     child: Image.asset('assets/images/Social ideas.gif'))),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: Text(
                 'Entertheregisterdemailaddress'.tr,
                 style: const TextStyle(fontSize: 20, color: Colors.black54),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: Text(
                 'wewillemailyoualinktoreset'.tr,
                 style: const TextStyle(fontSize: 18, color: Colors.black45),

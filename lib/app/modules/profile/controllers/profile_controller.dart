@@ -51,6 +51,7 @@ class ProfileController extends GetxController {
   final infoFinfo = InfulonserFollowInfulonser().obs;
   final companyInfu = CompanyInfulonser().obs;
   final hasFollowed = false.obs;
+  final mainId = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -95,13 +96,13 @@ class ProfileController extends GetxController {
           companyId: companySearch.value.id!,
           userId: (auth.getDataFromStorage() as UserModel).id!);
       hasFollowed.value = await repo.adduserCompany(data);
-      getcompanyType(companySearch.value.id!);
+      getcompanyType(companySearch.value.id!, type);
     } else if (auth.getTypeEnum() == Auth.user && type == Auth.infulonser) {
       var data = InfulonserUser(
           infulonserId: infoSearch.value.id!,
           userId: (auth.getDataFromStorage() as UserModel).id!);
       hasFollowed.value = await repo.adduserInfo(data);
-      getInfoType(infoSearch.value.id!);
+      getInfoType(infoSearch.value.id!, type);
     } else if (auth.getTypeEnum() == Auth.comapny && type == Auth.infulonser) {
       var data = CompanyInfulonser(
           infulonserId: infoSearch.value.id!,
@@ -115,7 +116,35 @@ class ProfileController extends GetxController {
           companyId: (auth.getDataFromStorage() as Company).id!);
       hasFollowed.value = await repo.addCompanyInfulonser(data);
     }
-    //  getFollowed(type);
+    if (type == Auth.infulonser) {
+      getInfoType(mainId.value, type);
+    } else if (type == Auth.comapny) {
+      getcompanyType(mainId.value, type);
+    }
+  }
+
+  Future<void> deleteFollow(Auth type) async {
+    if (auth.getTypeEnum() == type && type == Auth.infulonser) {
+      hasFollowed.value =
+          !(await repo.deleteInfuFollowedInfu(infoFinfo.value.id!));
+    } else if (auth.getTypeEnum() == Auth.user && type == Auth.comapny) {
+      hasFollowed.value = await repo.deleteuserCompany(userCompany.value.id!);
+      getcompanyType(companySearch.value.id!, type);
+    } else if (auth.getTypeEnum() == Auth.user && type == Auth.infulonser) {
+      hasFollowed.value = !(await repo.deleteuserInfo(infuUser.value.id!));
+      getInfoType(infoSearch.value.id!, type);
+    } else if (auth.getTypeEnum() == Auth.comapny && type == Auth.infulonser) {
+      hasFollowed.value =
+          !(await repo.deleteCompanyInfulonser(companyInfu.value.id!));
+    } else if (auth.getTypeEnum() == Auth.infulonser && type == Auth.comapny) {
+      hasFollowed.value =
+          !(await repo.deleteCompanyInfulonser(companyInfu.value.id!));
+    }
+    if (type == Auth.infulonser) {
+      getInfoType(mainId.value, type);
+    } else if (type == Auth.comapny) {
+      getcompanyType(mainId.value, type);
+    }
   }
 
   Future pickImage() async {
@@ -128,9 +157,10 @@ class ProfileController extends GetxController {
     }
   }
 
-  Future<void> getInfoType(int id) async {
+  Future<void> getInfoType(int id, Auth type) async {
     infoSearch.value = Infulonser();
     companySearch.value = Company();
+    follower.clear();
     loading.value = true;
     var result =
         await _dio.get('https://localhost:7192/api/Infulonser/Get/$id');
@@ -139,12 +169,12 @@ class ProfileController extends GetxController {
     await getPostInful(infoSearch.value.id!);
     await getfllowerInful(infoSearch.value.email!);
     await getfllowerInfulCount(infoSearch.value.email!);
-    await getFollowed(typeAuth.value, id);
+    await getFollowed(type, id);
     loading.value = false;
   }
 
-  Future<void> getcompanyType(int id) async {
-    hasFollowed.value = false;
+  Future<void> getcompanyType(int id, Auth type) async {
+    follower.clear();
     infoSearch.value = Infulonser();
     companySearch.value = Company();
     loading.value = true;
@@ -155,7 +185,7 @@ class ProfileController extends GetxController {
     await getPostCompany(companySearch.value.id!);
     await getfllowerCompany(companySearch.value.email!);
     await getfllowerCompanyCount(companySearch.value.email!);
-    await getFollowed(typeAuth.value, id);
+    await getFollowed(type, id);
     loading.value = false;
   }
 
@@ -210,7 +240,6 @@ class ProfileController extends GetxController {
       case Auth.none:
         break;
     }
-
   }
 
   Future<void> deletePost(int id) async {
@@ -298,7 +327,7 @@ class ProfileController extends GetxController {
     user.value = use.value;
     user.value.image = Utility.dataFromBase64String(stringPickImage.value);
     await repo.Updateuse(user.value, user.value.id!);
-        auth.stroge.deleteAllKeys();
+    auth.stroge.deleteAllKeys();
     auth.logIn(user.value.email!, user.value.password!);
   }
 

@@ -10,7 +10,7 @@ class PermissionsPageController extends GetxController {
   final authService = Get.find<AuthService>();
   final count = 0.obs;
   final newCompany = CompanyTypeModel().obs;
-  final typeCompanyList = <CompanyTypeModel>[];
+  final typeCompanyList = <CompanyTypeModel>[].obs;
   @override
   void onInit() {
     super.onInit();

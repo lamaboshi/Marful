@@ -23,20 +23,22 @@ class WebsitcompanyController extends GetxController {
   }
 
   Future<void> getAll() async {
+    allCompany.value = CompanyDto();
     loading.value = true;
-    var data = await webRepo.getdata('JUICYBEAUTY@test.com');
+    var email = (Get.rootDelegate.arguments() as List<dynamic>).first;
+    var data = await webRepo.getdata(email ?? 'JUICYBEAUTY@test.com');
     allCompany.value = data;
     loading.value = false;
   }
 
   Future<void> addBasket() async {
-    print(Get.rootDelegate.arguments().toString());
-    userpostId.value = int.parse(Get.rootDelegate.arguments().toString());
+    userpostId.value =
+        int.parse((Get.rootDelegate.arguments() as List<dynamic>).last);
     var res = false;
     for (var item in allProduct.toList()) {
       var basket = Basket(
           productId: item.id,
-          userPostId: userpostId.value,
+          userPostId: userpostId.value == 0 ? null : userpostId.value,
           totalPrice: double.parse((item.price! *
                   count[allProduct.indexOf(item).isNegative
                       ? 0

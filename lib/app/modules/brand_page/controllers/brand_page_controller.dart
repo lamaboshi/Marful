@@ -62,8 +62,8 @@ class BrandPageController extends GetxController {
   }
 
   Future<void> addbrand(Brand brand) async {
-    if(stringPickImage.value.isNotEmpty){
-brand.image = Utility.dataFromBase64String(stringPickImage.value);
+    if (stringPickImage.value.isNotEmpty) {
+      brand.image = Utility.dataFromBase64String(stringPickImage.value);
     }
     if (auth.getTypeEnum() == Auth.infulonser) {
       brand.infulonserId = (auth.getDataFromStorage() as Infulonser).id!;

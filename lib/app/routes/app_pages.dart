@@ -11,13 +11,13 @@ import '../modules/conversation_page/bindings/conversation_page_binding.dart';
 import '../modules/conversation_page/views/conversation_page_view.dart';
 import '../modules/firstsplash_page/bindings/firstSplash_binding.dart';
 import '../modules/firstsplash_page/views/firstSplash_view.dart';
+import '../modules/haya/bindings/haya_binding.dart';
+import '../modules/haya/views/haya_view.dart';
 import '../modules/help_pagee/bindings/help_pagee_binding.dart';
 import '../modules/help_pagee/views/help_pagee_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/homeMain_page/bindings/homeMain_binding.dart';
-import '../modules/homePost_page/bindings/homePost_binding.dart';
-import '../modules/homePost_page/views/homePost_view.dart';
 import '../modules/intro_page/view/intro_view.dart';
 import '../modules/menu/bindings/menu_binding.dart';
 import '../modules/menu/views/menu_view.dart';
@@ -36,8 +36,6 @@ import '../modules/search_page/bindings/search_binding.dart';
 import '../modules/search_page/views/search_view.dart';
 import '../modules/setting_page/bindings/setting_page_binding.dart';
 import '../modules/setting_page/views/setting_page_view.dart';
-import '../modules/settings/bindings/setting_binding.dart';
-import '../modules/settings/views/setting_view.dart';
 import '../modules/signIn_page/bindings/signIn_binding.dart';
 import '../modules/signIn_page/view/signIn_view.dart';
 import '../modules/signUp_page/bindings/signUp_binding.dart';
@@ -51,7 +49,6 @@ part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
-  //static const iNITIAL = Routes.websitecompany;
 
   static final routes = [
     GetPage(
@@ -64,7 +61,7 @@ class AppPages {
     ),
     GetPage(
         name: _Paths.Password,
-        page: () => PasswordPageView(),
+        page: () => const PasswordPageView(),
         binding: PasswordBinding(),
         children: [
           GetPage(
@@ -74,13 +71,18 @@ class AppPages {
         ]),
     GetPage(
       name: _Paths.SignIn,
-      page: () => const SignInPage(),
+      page: () => SignInPage(),
       binding: SignInBinding(),
     ),
     GetPage(
       name: _Paths.FirstSplash,
       page: () => const FiestSplashView(),
       binding: FirstSplashBinding(),
+    ),
+    GetPage(
+      name: _Paths.HAYA,
+      page: () => const HayaView(),
+      binding: HayaBinding(),
     ),
     GetPage(
       name: _Paths.Content,
@@ -90,7 +92,6 @@ class AppPages {
     GetPage(name: _Paths.HOME, page: () => const HomeView(), bindings: [
       HomeBinding(),
       HomeMainBinding(),
-      HomePostBinding(),
       MenuBinding(),
       ProfileBinding()
     ], middlewares: [
@@ -101,36 +102,16 @@ class AppPages {
         page: () => EditProfilePage(),
       ),
     ]),
-
-    GetPage(
-      name: _Paths.HOMEPOST,
-      page: () => const HomePostView(),
-      binding: HomePostBinding(),
-    ),
-
-    GetPage(
-      name: _Paths.HOMEPOST,
-      page: () => const HomePostView(),
-      binding: HomePostBinding(),
-    ),
     GetPage(
       name: _Paths.WebsiteCompany,
       page: () => WebsiteCompanyPage(),
       binding: WebsitcompanyBinding(),
     ),
-
-    GetPage(
-      name: _Paths.Setting,
-      page: () => SettingPage(),
-      binding: SettingBinding(),
-    ),
-
     GetPage(
       name: _Paths.SignUpUserPage,
       page: () => const SignUpUserPage(),
       binding: SignUpBinding(),
     ),
-
     GetPage(
       name: _Paths.SignUpInfluencer,
       page: () => const SignUpInfluencer(),
@@ -141,16 +122,10 @@ class AppPages {
       page: () => const SignUpCompanyPage(),
       binding: SignUpBinding(),
     ),
-    // GetPage(
-    //   name: _Paths.menu,
-    //   page: () => ProfilePage(),
-    //   binding: ProfileBinding(),
-    // ),
-
     GetPage(
         name: _Paths.Menu,
         page: () => const HomeMenuView(),
-        bindings: [MenuBinding(), SettingBinding(), ContentBinding()]),
+        bindings: [MenuBinding(), SettingPageBinding(), ContentBinding()]),
     GetPage(
       name: _Paths.Report,
       page: () => const ReportView(),
@@ -186,7 +161,6 @@ class AppPages {
       page: () => const ProductPageView(),
       binding: ProductPageBinding(),
     ),
-
     GetPage(
       name: _Paths.HELP_PAGEE,
       page: () => const HelpPageeView(),

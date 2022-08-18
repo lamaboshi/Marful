@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:q_overlay/q_overlay.dart';
-
 import '../../../../api/storge/storge_service.dart';
 import '../../../../sheard/auth_service.dart';
 import '../../../core/values/app_colors.dart';
@@ -22,7 +21,7 @@ class PasswordController extends GetxController {
     var data = await repo.getEmail(email.value);
     if (data != null) {
       restModel.value = data;
-      Get.to(() => Confirmpassword());
+      Get.to(() =>const Confirmpassword());
     }
   }
 
@@ -50,21 +49,19 @@ class PasswordController extends GetxController {
       await QPanel(
               alignment: Alignment.bottomCenter,
               height: 120,
-              child: Container(
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.admin_panel_settings_sharp,
-                      color: AppColors.orange,
-                    ),
-                    Text(
-                      ' Saved New Password',
-                      style: TextStyle(color: AppColors.blue),
-                    ),
-                  ],
-                ),
+              child: Row(
+                children:const [
+                  Icon(
+                    Icons.admin_panel_settings_sharp,
+                    color: AppColors.orange,
+                  ),
+                  Text(
+                    ' Saved New Password',
+                    style: TextStyle(color: AppColors.blue),
+                  ),
+                ],
               ),
-              duration: Duration(seconds: 2))
+              duration:const Duration(seconds: 2))
           .show();
       Get.rootDelegate.offNamed(Routes.HOME);
     }
